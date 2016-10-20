@@ -139,5 +139,8 @@ Web.config
 #Web.Debug.config
 Web.Debug.config
 
+#website.publishproj
+website.publishproj
+
 ### Bower ###
 bower_components
