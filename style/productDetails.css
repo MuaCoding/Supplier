@@ -1,0 +1,77 @@
+﻿/*Banner 轮播*/
+.productDetails-class .headImgDiv {
+    overflow: hidden;
+    background-color: #fff;
+}
+
+    .productDetails-class .headImgDiv .Img {
+        width: 100%;
+        /*overflow: hidden;*/
+    }
+
+        .productDetails-class .headImgDiv .Img > img {
+            max-width: 100%;
+        }
+
+    .productDetails-class .headImgDiv .slider-pager .slider-pager-page {
+        opacity: 0.4;
+    }
+
+        .productDetails-class .headImgDiv .slider-pager .slider-pager-page.active {
+            color: #f34242;
+            opacity: 1;
+        }
+
+.productDetails-class .transaction {
+    overflow: hidden;
+}
+
+    .productDetails-class .transaction .Name {
+        overflow: hidden;
+        padding-bottom: 5px;
+        border-bottom: solid 1px #e5e5e5;
+    }
+
+        .productDetails-class .transaction .Name > h2 {
+            font-size: 15px;
+            color: #676767;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+            width: 82%;
+            padding-left: 2%;
+            margin: 0px;
+        }
+
+        .productDetails-class .transaction .Name > a {
+            display: block;
+            overflow: hidden;
+            float: right;
+            width: 15%;
+            border-left: solid 1px #e5e5e5;
+            height: 40px;
+        }
+
+            .productDetails-class .transaction .Name > a > span {
+                color: #898989;
+                text-align: center;
+                font-size: 15px;
+                display: block;
+                overflow: hidden;
+            }
+
+
+    .productDetails-class .transaction .Order {
+        overflow: hidden;
+    }
+
+        .productDetails-class .transaction .Order > div {
+            overflow: hidden;
+        }
+
+            .productDetails-class .transaction .Order > div > span {
+                color: #cccccc;
+                font-size: 14px;
+                overflow: hidden;
+                padding: 0px;
+            }

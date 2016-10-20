@@ -1,0 +1,58 @@
+﻿<ion-view title="商品详情" class="productDetails-class">
+    <!--Header部分-->
+    <ion-nav-title>
+        <h1 class="titleNav Title">商品详情</h1>
+    </ion-nav-title>
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/ordersHome')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton PFIcon-Collect"></a><a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true" class="headImgDiv" does-continue="true">
+            <ion-slide>
+                <div class="Img">
+                    <img src="/images/productDetailsBanner.jpg" />
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="Img">
+                    <img src="/images/productDetailsBanner.jpg" />
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="Img">
+                    <img src="/images/productDetailsBanner.jpg" />
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+        <ion-list class="transaction whiteBg">
+            <ion-item class="Name"><h2>Beats Solo2 无线头戴式耳机 - 黑色</h2><a href="javascript:void(0)"><span class="PFIcon-shareIt"></span><span>分享</span></a></ion-item>
+            <ion-item class="Order">
+                <div class="row"><span class="col col-40 ellipsis">已售出：201889 件</span><span class="col col-30 ellipsis">好评率：98%</span><span class="col col-30 ellipsis">是否包邮：是</span></div>
+                <div>
+                    <label class="item-input item-select whiteBg">
+                        <any class="input-label">审核人</any>
+                        <select>
+                            <option>审阅人1</option>
+                            <option>审阅人2</option>
+                            <option>审阅人3</option>
+                            <option>审阅人4</option>
+                            <option>审阅人5</option>
+                            <option>审阅人6</option>
+                            <option>审阅人7</option>
+                            <option>审阅人8</option>
+                            <option>审阅人9</option>
+                            <option>审阅人10</option>
+                            <option>审阅人11</option>
+                        </select>
+                    </label><a href="javascript:;" class="confirm">确认进货</a>
+                </div>
+                <div></div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

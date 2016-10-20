@@ -1,0 +1,88 @@
+﻿/*筛选*/
+.productList-class .filter {
+    overflow: hidden;
+    padding: 0px;
+    border-bottom: solid 1px #e5e5e5;
+}
+
+    .productList-class .filter > a {
+        color: #666666;
+        font-size: 13px;
+        line-height: 35px;
+        text-align: center;
+        border-right: solid 1px #e5e5e5;
+        padding: 5px 0px;
+        position: relative;
+    }
+
+        .productList-class .filter > a > i {
+            font-size: 16px;
+        }
+
+        .productList-class .filter > a > span {
+            /*position: absolute;
+            display: block;
+            overflow: hidden;
+            right: 5%;
+            top: 15px;*/
+        }
+
+            .productList-class .filter > a > span > i {
+                height: 7px;
+                font-size: 13px;
+                color: #aaaaaa;
+                /*display: block;*/
+                overflow: hidden;
+            }
+
+                .productList-class .filter > a > span > i.BTriangle {
+                    line-height: 0px;
+                }
+
+        .productList-class .filter > a.active {
+            color: #ff0000;
+        }
+
+        .productList-class .filter > a > div > i.active {
+            color: #ff0000;
+        }
+
+/*产品列表*/
+.productList-class .HotProducts {
+    overflow: hidden;
+    padding: 0px 5px 5px 5px;
+    margin-top: 0px;
+}
+
+    .productList-class .HotProducts > .proList {
+        overflow: hidden;
+        width: 100%;
+    }
+
+        .productList-class .HotProducts > .proList .item {
+            width: 48%;
+            display: block;
+            overflow: hidden;
+            float: left;
+            padding: 5px;
+            margin: 1%;
+        }
+
+        .productList-class .HotProducts > .proList .Img {
+            overflow: hidden;
+            width: 100%;
+            height: 150px;
+        }
+
+        .productList-class .HotProducts > .proList h3 {
+            color: #676767;
+            font-size: 13px;
+            padding: 0px 5px;
+        }
+
+        .productList-class .HotProducts > .proList div {
+            overflow: hidden;
+            color: #e7493c;
+            font-size: 13px;
+            /*padding: 0px 5px;*/
+        }

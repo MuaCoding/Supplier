@@ -1,0 +1,196 @@
+﻿input[type="button"], input[type="submit"], input[type="reset"], input[type="text"], input[type="checkbox"], select {
+  -webkit-appearance: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  cursor: url('/images/finger.png'), auto;
+}
+
+/* 隐藏滚动条，但依旧具备可以滚动的功能 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+h3{
+  font-weight: normal;
+}
+/*.headBar {
+  border-bottom: 1px solid #eaeaea;
+  background: url('/images/headBG.jpg') #fff top center no-repeat;
+  background-size: 100% 3px;
+}*/
+/*********头部***********/
+.titleNav {
+  color: #fff;
+  font-size: 17px !important;
+  font-weight: 500;
+  line-height: 44px !important;
+  margin-bottom: 0px;
+}
+
+.headBtn {
+  display: block;
+  color: #777;
+  font-size: 13px;
+  line-height: 33px !important;
+}
+
+.headBtn.PFIcon-down:after {
+  font-size: 10px;
+}
+
+
+.headReturn, .headRButton {
+    overflow: hidden;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    line-height: 35px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-width: 33px;
+    max-width: 90px;
+}
+
+
+    .headReturn > i {
+        font-size: 20px;
+        margin: 0px 5px 0px auto;
+        float: left;
+        line-height: 34px;
+    }
+
+
+.headRButton {
+    font-size: 17px;
+}
+
+
+.headBar{
+    background: #f34242;
+}
+/******内容******/
+.box {
+  height: 500px;
+  width: 100%;
+}
+
+.contentDiv {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.Content {
+  overflow: hidden;
+  min-height: 100%;
+  padding-bottom: 44px !important;
+}
+
+.scroll-content {
+  background-color: #ebebeb;
+}
+
+.scroll-content > .scroll {
+  min-height: 100%;
+}
+
+.imgMin {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+.imgMax {
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+.mText {
+  display: -webkit-box !important;
+  overflow: hidden;
+  -webkit-box-orient: vertical !important;
+  white-space: initial !important;
+  text-overflow: initial !important;
+  -webkit-line-clamp: 2;
+}
+
+ion-modal-view {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;   
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+ion-list > .list {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+ion-list > .list > .item {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+ion-list > .list > .item > a {
+  padding: 0;
+}
+
+.noData {
+  color: #aaa;
+  font-size: 15px;
+  text-align: center;
+  padding: 10px;
+}
+
+/*----------          底部          ----------*/
+.footBar .tab-nav {
+  border-top: 1px solid #eaeaea !important;
+  background: #fff !important;
+}
+
+.footBar .tab-item { 
+  color: #888;
+}
+
+.footBar .tab-item.tab-item-active {
+  color: #f34242;
+}
+
+.footBar .tab-item .icon {
+  height: 28px;
+  line-height: 20px;
+}
+
+.footBar .tab-item .icon:before {
+  font-size: 19px;
+}
+
+.upLink {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: block;
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px;
+}
+
+.upLink.on {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+}
+

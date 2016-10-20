@@ -1,0 +1,182 @@
+﻿.inputSearch {
+    background-color: #fe7b7b;
+    margin: 4px;
+    border-radius: 5px;
+}
+
+    .inputSearch > a, .inputSearch > input {
+        color: #fff !important;
+        font-size: 15px;
+        height: 35px;
+    }
+
+    .inputSearch > i {
+        color: #fff;
+    }
+
+/*Banner 轮播*/
+.home-Class .headImgDiv {
+    overflow: hidden;
+    background-color: #fff;
+}
+
+    .home-Class .headImgDiv .Img {
+        width: 100%;
+        /*overflow: hidden;*/
+    }
+
+        .home-Class .headImgDiv .Img > img {
+            max-width: 100%;
+        }
+
+    .home-Class .headImgDiv .slider-pager .slider-pager-page {
+        opacity: 0.4;
+    }
+
+  .home-Class .headImgDiv .slider-pager .slider-pager-page.active {
+    color: #f34242;
+    opacity: 1;
+}
+
+
+/*新品上架*/
+.home-Class .NewProductsDiv {
+    overflow: hidden;
+    padding: 0px 10px 5px 10px;
+}
+
+    .home-Class .NewProductsDiv .list {
+        display: -webkit-inline-box;
+        display: -moz-inline-box;
+        display: -ms-inline-flexbox;
+        display: -webkit-inline-flex;
+        display: inline-flex;
+    }
+
+.home-Class .NewProducts {
+    overflow: hidden;
+    float: left;
+    display: block;
+    /*width: 150px;*/
+    border: solid 1px #e5e5e5 !important;
+    position: relative;
+    margin-right: 5px !important;
+}
+
+.home-Class .NewProducts {
+}
+
+    .home-Class .NewProducts .Img {
+        overflow: hidden;
+        width: 90px;
+        height: 70px;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+    }
+
+    .home-Class .NewProducts .Prod {
+        overflow: hidden;
+        float: left;
+        margin-left: 100px;
+        padding: 13px 0px;
+        width: 150px;
+    }
+
+        .home-Class .NewProducts .Prod > h3 {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 16px;
+            color: #000;
+            margin: 0px auto 10px auto;
+        }
+
+        .home-Class .NewProducts .Prod > span {
+            overflow: hidden;
+            padding: 2px 5px;
+            font-size: 12px;
+            color: #fff;
+            background-color: #f34242;
+        }
+
+/*热销产品*/
+.home-Class .HotProducts {
+    overflow: hidden;
+    padding: 43px 5px 5px 5px;
+    margin-top: 0px;
+    position: relative;
+}
+
+    .home-Class .HotProducts .headTitle {
+        position: absolute;
+        top: 0px;
+        left: 5px;
+    }
+
+    .home-Class .HotProducts > .proList {
+        overflow: hidden;
+        width: 100%;
+    }
+
+        .home-Class .HotProducts > .proList .item {
+            width: 48%;
+            display: block;
+            overflow: hidden;
+            float: left;
+            background: initial;
+            padding: 5px;
+            margin: 1%;
+            border: solid 1px #eee;
+        }
+
+        .home-Class .HotProducts > .proList .Img {
+            overflow: hidden;
+            width: 100%;
+            height: 150px;
+        }
+
+        .home-Class .HotProducts > .proList h3 {
+            color: #676767;
+            font-size: 13px;
+            padding: 0px 5px;
+        }
+
+        .home-Class .HotProducts > .proList div {
+            overflow: hidden;
+            color: #e7493c;
+            font-size: 13px;
+            /*padding: 0px 5px;*/
+        }
+
+/*首页标题*/
+.home-Class .headTitle {
+    width: 100%;
+    height: 43px;
+    overflow: hidden;
+}
+
+    .home-Class .headTitle > h3 {
+        float: left;
+        color: #676767;
+        font-size: 15px;
+        line-height: 43px;
+    }
+
+    .home-Class .headTitle > .More {
+        display: block;
+        float: right;
+        color: #208fd5;
+        font-size: 13px;
+        line-height: 43px;
+        margin-right: 15px;
+    }
+
+        .home-Class .headTitle > .More > i {
+            /*float: right;
+            display: block;
+            line-height: 43px;
+            color: #208fd5;
+            font-size: 13px;*/
+            margin-left: 5px;
+        }

@@ -1,0 +1,141 @@
+﻿@charset "utf-8"; /* CSS Document */
+
+*:focus {
+    outline: none;
+}
+/*消除谷歌下input边框* /
+
+/* 清除内外边距 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+    _background-image: url(about:blank);
+    _background-attachment: fixed;
+}
+
+/* 设置默认字体 */
+body, button, input, select, textarea {
+    font-family: "Microsoft yahei",Helvetica,sans-serif;
+    /*font-family: "微软雅黑","宋体","Arail";*/
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.titleFont {
+    font-family: "Microsoft yahei","微软雅黑","Tahoma","Verdana","Arial","sans-serif";
+}
+
+.contentFont {
+    font-family: "宋体","新宋体","Arial","sans-serif";
+}
+
+.enFont {
+    font-family: "Arial","sans-serif";
+}
+
+.yahei {
+    font-family: "微软雅黑","宋体","Arail";
+}
+
+.songti {
+    font-family: "宋体","微软雅黑","Arail";
+}
+
+.Arail {
+    font-family: "Arail","宋体","微软雅黑";
+}
+
+.Courier_New {
+    font-family: "Courier New", Courier, monospace;
+}
+
+.Georgia {
+    font-family: Georgia, "Arail", Times, serif;
+}
+
+
+/* 列表元素 */
+ul, ol, li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+
+/* a标签 */
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+
+
+.pull-left{
+    float:left;
+}
+
+.pull-right{
+    float:right;
+}
+
+.hide {
+    display: none;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.box-sizing{
+    box-sizing: border-box;
+    -moz-box-sizing:border-box; 
+    -webkit-box-sizing:border-box;
+}
+.whiteBg {
+    background-color: #fff;
+}
+/* 定义边距 */
+.mt5 {
+    margin-top: 5px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.mb5 {
+    margin-bottom: 5px;
+}
+
+.ml5 {
+    margin-left: 5px;
+}
+
+.ml95 {
+    margin-left: 95px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}

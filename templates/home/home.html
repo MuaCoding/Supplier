@@ -1,0 +1,105 @@
+﻿
+<ion-view title="批发电商" class="home-Class">
+    <!--Header部分-->
+    <ion-nav-title class="headerBar">
+        <div class="inputSearch"><a class="item-input-wrapper inputSearch"><i class="icon ion-ios-search placeholder-icon"></i>找什么呢？搜索试试吧</a></div>
+        <!--<ion-header-bar class="item-input-inset">-->
+        <!--<label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search" ng-model="searchContent">
+        </label>-->
+        <!--<button class="button button-clear">
+            取消
+        </button>-->
+        <!--</ion-header-bar>-->
+    </ion-nav-title>
+    <ion-nav-buttons side="left" class="">
+
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/home')"><i class="PFIcon-address"></i>广东</a>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <!-- banner -->
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true" class="headImgDiv" does-continue="true">
+            <ion-slide>
+                <div class="Img"><img src="/images/Banner.jpg" /></div>
+            </ion-slide>
+            <ion-slide>
+                <div class="Img"><img src="/images/Banner.jpg" /></div>
+            </ion-slide>
+            <ion-slide>
+                <div class="Img"><img src="/images/Banner.jpg" /></div>
+            </ion-slide>
+        </ion-slide-box>
+
+       <div class="NewProductsDiv whiteBg mb10">
+            <div class="headTitle">
+                <h3>新品上架</h3>
+                <a class="More" ui-sref="productList">MORE<i class="PFIcon-RTriangle"></i></a>
+            </div>
+            <ion-scroll direction="x" shouldfreeze="x" scrollbar-x="false" locking="true" zooming="false" has-bouncing="true" class="NewPro" ng-class="NewPro" style="height:100px;">
+                <ion-list>
+                    <ion-item ng-href="javascript:void(0)" class="NewProducts mr5">
+                        <div class="Img imgMin" style="background-image: url(/images/Products.jpg)"></div>
+                        <div class="Prod">
+                            <h3 class="ellipsis">Lightning to USB 数据线</h3>
+                            <span>￥12.00 起</span>
+                        </div>
+                    </ion-item>
+                    <ion-item ng-href="javascript:void(0)" class="NewProducts mr5">
+                        <div class="Img imgMin" style="background-image: url(/images/Products.jpg)"></div>
+                        <div class="Prod">
+                            <h3 class="ellipsis">Lightning to USB 数据线</h3>
+                            <span>￥12.00 起</span>
+                        </div>
+                    </ion-item>
+                    <ion-item ng-href="javascript:void(0)" class="NewProducts mr5">
+                        <div class="Img imgMin" style="background-image: url(/images/Products.jpg)"></div>
+                        <div class="Prod">
+                            <h3 class="ellipsis">Lightning to USB 数据线</h3>
+                            <span>￥12.00 起</span>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </ion-scroll>
+        </div>
+
+        <div class="row HotProducts whiteBg">
+            <div class="headTitle">
+                <h3>热销产品</h3>
+            </div>
+            <ion-list class="proList mb10">
+                <ion-item ng-href="javascript:void(0)">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ng-href="javascript:void(0)">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ng-href="javascript:void(0)">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ng-href="javascript:void(0)">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ng-href="javascript:void(0)">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ng-href="javascript:void(0)">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>

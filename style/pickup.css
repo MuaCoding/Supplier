@@ -1,0 +1,56 @@
+.pickup-Class .pickup-wrap	{
+	position: relative;
+	padding: 15px;
+	display: block;
+	font-size: 14px;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.pickup-Class .pickup-wrap .pickup-info{
+	position: relative;
+	display: block;
+	margin-left: 30px;
+	box-sizing: border-box;
+	-moz-box-sizing:border-box; 
+    -webkit-box-sizing:border-box;
+}
+
+.pickup-Class .pickup-wrap:last-child{
+	border-bottom: 1px solid #eaeaea;
+}
+
+.pickup-Class .pickup-wrap .pickup-info >.pickup-location{
+	display: block;
+	padding: 15px 10px;
+	background-color: #f2f2f2;
+	border: 1px solid #eaeaea;
+	border-radius: 2px;
+}
+
+.pickup-Class .pickup-wrap .pickup-info .pickup-toaddress{
+	position: relative;
+	width: 100%;
+}
+.pickup-Class .pickup-wrap .pickup-info .pickup-toaddress .input{
+	width: 50%;
+	border: 1px solid #eaeaea;
+	margin-right: 3%;
+	display: inline-block;
+}
+
+.pickup-Class .pickup-wrap .pickup-info .pickup-toaddress .tophone{
+	width: 46%;
+	border: 1px solid #f34242;
+	background-color: #f34242;
+	text-align: center;
+	height: 34px;
+	line-height: 34px;
+	color: #fff;
+	display: inline-block;
+}
+
+.pickup-Class .pickup-wrap .pickup-info .pickup-toaddress input{
+	padding: 10px;
+	background-color: #fff;
+	font-size: 14px;
+}

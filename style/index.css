@@ -1,0 +1,27 @@
+﻿.headerBar {
+    background-color: #f34242 !important;
+}
+
+.inputSearch {
+    background-color: #fe7b7b;
+    margin: 4px;
+    border-radius: 5px;
+}
+
+    .inputSearch > a, .inputSearch > input {
+        color: #fff !important;
+        font-size: 15px;
+        height: 35px;
+    }
+
+    .inputSearch > i {
+        color: #fff;
+    }
+
+/*.bar {
+    height: 65px;
+}
+
+    .bar .title {
+        height: auto;
+    }*/

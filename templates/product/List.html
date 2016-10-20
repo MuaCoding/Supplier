@@ -1,0 +1,42 @@
+﻿<ion-view title="产品列表" class="productList-class">
+    <!--Header部分-->
+    <ion-nav-title>
+        <h1 class="titleNav Title">商品列表</h1>
+    </ion-nav-title>
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/ordersHome')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="search icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="row filter whiteBg mb10">
+            <a class="col"><span>价格</span><span><i class="PFIcon-sort on"></i><i class="PFIcon-sort BTriangle xia"></i></span></a>
+            <a class="col"><span>销量</span><span><i class="PFIcon-sort on"></i><i class="PFIcon-sort BTriangle xia"></i></span></a>
+            <a class="col"><span>成交额</span><span><i class="PFIcon-sort on"></i><i class="PFIcon-sort BTriangle xia"></i></span></a>
+            <a class="col"><i class="PFIcon-filter"></i>筛选</a>
+        </div>
+
+        <div class="row HotProducts mb10">
+            <ion-list class="proList mb10">
+                <ion-item ui-sref="productDetails">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ui-sref="productDetails">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ui-sref="productDetails">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>
