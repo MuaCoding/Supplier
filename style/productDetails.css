@@ -24,6 +24,7 @@
 
 .productDetails-class .transaction {
     overflow: hidden;
+    display: block;
 }
 
     .productDetails-class .transaction .Name {
@@ -63,6 +64,7 @@
 
     .productDetails-class .transaction .Order {
         overflow: hidden;
+        padding: 0px 10px;
     }
 
         .productDetails-class .transaction .Order > div {
@@ -71,7 +73,130 @@
 
             .productDetails-class .transaction .Order > div > span {
                 color: #cccccc;
-                font-size: 14px;
+                font-size: 12px;
                 overflow: hidden;
-                padding: 0px;
+                padding: 5px 0px;
             }
+
+    /*产品规格*/
+    .productDetails-class .transaction .Specifications {
+        border: solid 1px #e5e5e5;
+        float: left;
+        display: block;
+        overflow: hidden;
+        width: 65%;
+        border-radius: 2px;
+        color: #444;
+        font-size: 16px;
+        padding: 6px 0 5px 16px;
+        line-height: 35px;
+        height: 43px;
+        font-size: 13px;
+    }
+
+        .productDetails-class .transaction .Specifications > i {
+            width: 33px;
+            border-right: solid 1px #e5e5e5;
+            padding: 7px 10px 4px 0;
+            float: left;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+            .productDetails-class .transaction .Specifications > i.BTriangle {
+                border: none;
+                float: right;
+                margin: 0px;
+            }
+
+    /*确认进货*/
+    .productDetails-class .transaction .confirm {
+        background-color: #f34242;
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+        border-radius: 2px;
+        width: 33%;
+        float: right;
+        line-height: 43px;
+    }
+
+/*品牌商信息*/
+.productDetails-class .Brands {
+    overflow: hidden;
+    display: block;
+}
+
+    .productDetails-class .Brands .BTitle {
+        overflow: hidden;
+        border: solid 1px #e5e5e5;
+        padding: 5px 15px 0px 15px;
+    }
+
+        .productDetails-class .Brands .BTitle > h3 {
+            float: left;
+            overflow: hidden;
+            border-bottom: solid 1px #f34242;
+            color: #636363;
+            font-size: 13px;
+            line-height: 35px;
+            margin: 0px;
+        }
+
+        .productDetails-class .Brands .BTitle > a {
+            float: right;
+            overflow: hidden;
+            color: #636363;
+            font-size: 13px;
+            line-height: 31px;
+            height: 35px;
+        }
+
+    .productDetails-class .Brands .BDetail {
+        overflow: hidden;
+        padding: 20px 15px;
+    }
+
+        .productDetails-class .Brands .BDetail > span {
+            display: block;
+            overflow: hidden;
+            float: left;
+            width: 64%;
+            font-size: 13px;
+            color: #636363;
+        }
+
+            .productDetails-class .Brands .BDetail > span > span {
+                color: #f34242;
+            }
+
+        .productDetails-class .Brands .BDetail > a {
+            display: block;
+            overflow: hidden;
+            text-align: center;
+            text-align: center;
+            font-size: 13px;
+            color: #f34242;
+            border: solid 1px #f34242;
+            border-radius: 2px;
+            float: right;
+            width: 32%;
+            line-height: 43px;
+            position: absolute;
+            right: 15px;
+            top: 21px;
+        }
+
+.productDetails-class .DetailSwitch {
+    overflow: hidden;
+    display: block;
+}
+
+    .productDetails-class .DetailSwitch .button-bar > .button {
+        /*background: no-repeat;*/
+        border: none;
+        font-size: 13px;
+        color: #636363;
+        height: 40px;
+        line-height: 45px;
+    }

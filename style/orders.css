@@ -62,6 +62,7 @@
  .orders-group .orders-item-wrap  .orders-item .orders-item-info .orders-item-message .orders-item-name{
 	display: block;
 	font-size: 15px;
+	font-weight:300;
 }
 
  .orders-group .orders-item-wrap .orders-item .orders-item-info .orders-item-message .orders-item-text{

@@ -88,7 +88,11 @@
         url: "/pickup",
         templateUrl:"/templates/orders/pickup.html"
     })
-
+    //4.4发票
+    .state('invoice', {
+        url: "/invoice",
+        templateUrl:"/templates/orders/invoice.html"
+    })
        /*-------------------------------------- 产品 --------------------------------------*/
     .state('productList', {
         url: "/productList",

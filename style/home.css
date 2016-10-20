@@ -33,16 +33,16 @@
         opacity: 0.4;
     }
 
-  .home-Class .headImgDiv .slider-pager .slider-pager-page.active {
-    color: #f34242;
-    opacity: 1;
-}
+        .home-Class .headImgDiv .slider-pager .slider-pager-page.active {
+            color: #f34242;
+            opacity: 1;
+        }
 
 
 /*新品上架*/
 .home-Class .NewProductsDiv {
     overflow: hidden;
-    padding: 0px 10px 5px 10px;
+    padding: 0px 3% 5px 3%;
 }
 
     .home-Class .NewProductsDiv .list {
@@ -60,7 +60,7 @@
     /*width: 150px;*/
     border: solid 1px #e5e5e5 !important;
     position: relative;
-    margin-right: 5px !important;
+    margin-right: 10px !important;
 }
 
 .home-Class .NewProducts {
@@ -72,14 +72,14 @@
         height: 70px;
         position: absolute;
         left: 5px;
-        top: 5px;
+        top: 10px;
     }
 
     .home-Class .NewProducts .Prod {
         overflow: hidden;
         float: left;
         margin-left: 100px;
-        padding: 13px 0px;
+        padding: 20px 5px 20px 0px;
         width: 150px;
     }
 
@@ -89,13 +89,13 @@
             text-overflow: ellipsis;
             font-size: 16px;
             color: #000;
-            margin: 0px auto 10px auto;
+            margin: 0px auto 5px auto;
         }
 
         .home-Class .NewProducts .Prod > span {
             overflow: hidden;
             padding: 2px 5px;
-            font-size: 12px;
+            font-size: 10px;
             color: #fff;
             background-color: #f34242;
         }
@@ -110,8 +110,8 @@
 
     .home-Class .HotProducts .headTitle {
         position: absolute;
-        top: 0px;
-        left: 5px;
+        top: 5px;
+        left: 3%;
     }
 
     .home-Class .HotProducts > .proList {
@@ -125,7 +125,7 @@
             overflow: hidden;
             float: left;
             background: initial;
-            padding: 5px;
+            padding: 10px;
             margin: 1%;
             border: solid 1px #eee;
         }
@@ -139,7 +139,7 @@
         .home-Class .HotProducts > .proList h3 {
             color: #676767;
             font-size: 13px;
-            padding: 0px 5px;
+            margin: 10px auto 0px auto;
         }
 
         .home-Class .HotProducts > .proList div {
