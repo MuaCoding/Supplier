@@ -15,7 +15,7 @@
 		<!-- <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher> -->
 		<div class="ordersHome-Content">
 			<ion-scroll class="scroll-view">
-				<ion-list class="orders-group margin-xs-bottom" ng-repeat = "cart in cartData" show-delete="edit.showDelete">
+				<ion-list class="orders-group margin-xs-bottom" ng-repeat = "cart in cartData" show-delete="edit.showDelete" show-delete="shouldShowDelete">
 					<ion-item class="item-remove-animate">
 						<div class="orders-title-wrap border-bottom">
 							<i class="fa fa-circle-thin fa-xs-font fa-xs-left-absolult hide" aria-hidden="true"></i>
@@ -48,6 +48,13 @@
 								<ion-delete-button  style="color:#aaa;" >
 		                            <ion-checkbox class="isChecked check" data-id="{{good.id}}" onchange = "checked()" style="left:-18px;border:none;"> </ion-checkbox>
 		        				</ion-delete-button>
+		        				<ion-option-button class="button-assertive"
+						            ng-click="delete(good.id)">
+						            删除
+						        </ion-option-button>
+						        <ion-reorder-button class="ion-navicon" on-reorder="moveItem(good.id, $fromIndex, $toIndex)">
+						        	
+						        </ion-reorder-button>
 							</ion-item>
 						</ion-list>
 					</ion-item>

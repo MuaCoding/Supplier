@@ -77,6 +77,15 @@
         showDelte =false;
 	}
 
+    $scope.moveItem = function(good, fromIndex, toIndex) {
+        $scope.goods.splice(fromIndex, 1);
+        $scope.goods.splice(toIndex, 0, good);
+    };
+
+    $scope.delete =function(good){
+         $scope.goods.splice($scope.id.indexOf(good.id), 1);
+    }
+
     $scope.popup = function(){
 
        $scope.data = {}
