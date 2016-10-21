@@ -34,7 +34,7 @@
             <ion-item class="Order">
                 <div class="row Description"><span class="col col-40 ellipsis">已售出：201889 件</span><span class="col col-30 ellipsis">好评率：98%</span><span class="col col-30 ellipsis">是否包邮：是</span></div>
                 <div>
-                    <a class="Specifications"><i class="PFIcon-address"></i>产品规格数量选择<i class="PFIcon-BTriangle BTriangle"></i></a>
+                    <a class="ASpecifications on" ng-click="payProClick();"><i class="PFIcon-address"></i>产品规格数量选择<i class="PFIcon-BTriangle BTriangle"></i></a>
                     <a href="javascript:;" class="confirm">确认进货</a>
                 </div>
                 <div class="row"><span class="col ellipsis">交易支持：混批</span><span class="col ellipsis" style="text-align:right;">交易保障：15天无理由退换货</span></div>
@@ -48,5 +48,36 @@
             <ion-item class="button-bar"><a class="button button-outline">产品详情</a><a class="button button-outline">成交(2312)</a><a class="button button-outline">评价(1245)</a><a class="button button-outline">进货保障</a></ion-item>
             <ion-item></ion-item>
         </ion-list>
+
     </ion-content>
+
+    <script id="ez-popover.html" type="text/ng-template">
+        <ion-popover-view class="productDetails-buy">
+            <div class="item Specifications">
+                <div class="">
+                    <div class="Img"></div>
+                    <h2></h2>
+                    <a href="javascript:void(0)" class="close"></a>
+                </div>
+                <ion-scroll class="item Specifications" direction="y" zooming="false">
+                    <ion-list class="productList">
+                        <ion-item>
+                            <h3>颜色选择</h3>
+                            <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
+                            <div class="mt10"><a href="javascript:void(0)">红色</a><a href="javascript:void(0)">白色</a><a href="javascript:void(0)">黑色</a></div>
+                        </ion-item>
+                        <ion-item>
+                            <h3>版本</h3>
+                            <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
+                            <div class="mt10"><a href="javascript:void(0)" class="active">普通版<i class="PFIcon-Tick"></i></a><a href="javascript:void(0)">尊贵版</a><a href="javascript:void(0)">旗舰版</a><a href="javascript:void(0)">限量版</a></div>
+                        </ion-item>
+                        <ion-item>
+                            <h3>批价</h3>
+                            <div class="mt10"><a href="javascript:void(0)">1~99件<span>￥230.00</span></a><a href="javascript:void(0)">≥100件<span>￥230.00</span></a><a href="javascript:void(0)">≥999件<span>￥230.00</span></a></div>
+                        </ion-item>
+                    </ion-list>
+                </ion-scroll>
+            </div>
+        </ion-popover-view>
+    </script>
 </ion-view>

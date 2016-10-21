@@ -1,11 +1,13 @@
 ﻿@font-face {
-    font-family: 'iconfont';
-    src: url('//at.alicdn.com/t/font_1476929358_2871847.eot'); /* IE9*/
-    src: url('//at.alicdn.com/t/font_1476929358_2871847.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('//at.alicdn.com/t/font_1476929358_2871847.woff') format('woff'), /* chrome、firefox */
-    url('//at.alicdn.com/t/font_1476929358_2871847.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-    url('//at.alicdn.com/t/font_1476929358_2871847.svg#iconfont') format('svg'); /* iOS 4.1- */
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1477040280_839472.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_1477040280_839472.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_1477040280_839472.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/font_1477040280_839472.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_1477040280_839472.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
+                    
+                    
 
 [class^="PFIcon-"], [class*=" PFIcon-"] {
     font-family: 'iconfont';
@@ -62,6 +64,9 @@
 .PFIcon-Rarrow:before {
     content: "\e609";
 }
+.PFIcon-Tick:before {
+    content: "\e610";
+}
 
 .PFIcon-sort:before {
     content: "\e60a";
@@ -74,6 +79,38 @@
 .PFIcon-shareIt:before {
     content: "\e60c";
 }
+
+.PFIcon-BTriangle:before {
+    content: "\e60d";
+}
+
+/*发票*/
+.PFIcon-Checked:before {
+    content: "\e611";
+    
+}
+
+.PFIcon-Circle:before {
+    content: "\e60f";
+}
+
+
+/*取货方式*/
+.PFIcon-Hook:before {
+    position: absolute;
+    content: "\e60e";
+    color: #f34242;
+    
+}
+
+
+
+
+.PFIcon-Square:before {
+    content: "\e612";
+    color: #aaa;
+}
+
 
 .PFIcon-BTriangle:before {
     content: "\e60d";

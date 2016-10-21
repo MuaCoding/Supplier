@@ -79,7 +79,7 @@
             }
 
     /*产品规格*/
-    .productDetails-class .transaction .Specifications {
+    .productDetails-class .transaction .ASpecifications {
         border: solid 1px #e5e5e5;
         float: left;
         display: block;
@@ -92,9 +92,10 @@
         line-height: 35px;
         height: 43px;
         font-size: 13px;
+        position: relative;
     }
 
-        .productDetails-class .transaction .Specifications > i {
+        .productDetails-class .transaction .ASpecifications > i {
             width: 33px;
             border-right: solid 1px #e5e5e5;
             padding: 7px 10px 4px 0;
@@ -103,10 +104,12 @@
             font-size: 20px;
         }
 
-            .productDetails-class .transaction .Specifications > i.BTriangle {
+            .productDetails-class .transaction .ASpecifications > i.BTriangle {
                 border: none;
                 float: right;
                 margin: 0px;
+                position: absolute;
+                right: 0px;
             }
 
     /*确认进货*/
@@ -199,4 +202,132 @@
         color: #636363;
         height: 40px;
         line-height: 45px;
+        bottom: -50%;
     }
+
+
+.productDetails-buy .Specifications {
+    height: 100%;
+}
+    /*.productDetails-buy .Specifications .*/
+    .productDetails-buy .Specifications > ion-scroll {
+        border: none;
+        padding: 10px;
+    }
+
+    .productDetails-buy .Specifications .productList {
+        overflow: hidden;
+        border-bottom: solid 1px #e5e5e5;
+    }
+
+        .productDetails-buy .Specifications .productList ion-item {
+            position: relative;
+            margin-top: 5px;
+        }
+
+        .productDetails-buy .Specifications .productList h3 {
+            overflow: hidden;
+            color: #666666;
+            font-size: 13px;
+        }
+
+        .productDetails-buy .Specifications .productList a.All {
+            display: block;
+            overflow: hidden;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            color: #666666;
+            font-size: 13px;
+        }
+
+            .productDetails-buy .Specifications .productList a.All > i {
+                /*font-size:25px;
+                float: right;*/
+            }
+
+        .productDetails-buy .Specifications .productList div {
+            overflow: hidden;
+        }
+
+            .productDetails-buy .Specifications .productList div > a {
+                overflow: hidden;
+                display: block;
+                float: left;
+                font-size: 12px;
+                color: #444444;
+                background-color: #eeeeee;
+                text-align: center;
+                padding: 2px 15px;
+                margin: 0px 10px 5px auto;
+                position: relative;
+                border-radius: 2px;
+            }
+
+                .productDetails-buy .Specifications .productList div > a > span {
+                    color: #f34242;
+                    display: block;
+                    height: 15px;
+                    line-height: 15px;
+                }
+
+                .productDetails-buy .Specifications .productList div > a.active {
+                    border: solid 1px #f34242;
+                    padding: 1px 14px;
+                }
+
+                    .productDetails-buy .Specifications .productList div > a.active > i {
+                        display: block;
+                        position: absolute;
+                        right: 0px;
+                        bottom: -1px;
+                        font-size: 15px;
+                        color: #f34242;
+                        height: 15px;
+                        width: 15px;
+                    }
+
+.productDetails-buy.popover {
+    opacity: 1;
+    width: 100%;
+    top: initial;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    border-radius: 0;
+    opacity: 1;
+}
+
+.productDetails-buy > .popover-arrow {
+    display: none;
+}
+
+/* 添加上“on”类名执行动画 */
+.ASpecifications.on {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-name: people;
+    animation-name: people;
+    opacity: 1;
+}
+
+@-webkit-keyframes ASpecifications /* Safari 和 Chrome */
+{
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes ASpecifications {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}

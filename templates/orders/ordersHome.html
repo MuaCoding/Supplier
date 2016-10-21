@@ -15,7 +15,7 @@
 		<!-- <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher> -->
 		<div class="ordersHome-Content">
 			<ion-scroll class="scroll-view">
-				<ion-list class="orders-group margin-xs-bottom" ng-repeat = "cart in cartData" show-delete="edit.showDelete" show-delete="shouldShowDelete">
+				<ion-list class="orders-group margin-xs-bottom" ng-repeat = "cart in cartData" show-delete="edit.showDelete">
 					<ion-item class="item-remove-animate">
 						<div class="orders-title-wrap border-bottom">
 							<i class="fa fa-circle-thin fa-xs-font fa-xs-left-absolult hide" aria-hidden="true"></i>
@@ -48,13 +48,6 @@
 								<ion-delete-button  style="color:#aaa;" >
 		                            <ion-checkbox class="isChecked check" data-id="{{good.id}}" onchange = "checked()" style="left:-18px;border:none;"> </ion-checkbox>
 		        				</ion-delete-button>
-		        				<ion-option-button class="button-assertive"
-						            ng-click="delete(good.id)">
-						            删除
-						        </ion-option-button>
-						        <ion-reorder-button class="ion-navicon" on-reorder="moveItem(good.id, $fromIndex, $toIndex)">
-						        	
-						        </ion-reorder-button>
 							</ion-item>
 						</ion-list>
 					</ion-item>
@@ -70,7 +63,7 @@
 				<div class="count-total count-flex">
 					<span class="zx-font">订单总价（不含运费）：</span><span class="font-denger" style="font-weight:400;">￥230.00</span>
 				</div>
-				<a class="count-next count-flex" ui-sref="ordersInfo">
+				<a class="count-next count-flex" ng-href="#/ordersInfo">
 					下一步
 				</a>
 			</div>

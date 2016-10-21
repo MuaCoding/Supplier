@@ -1,11 +1,75 @@
-<ion-view>
+<ion-view class="invoice-Class" title="发票">
 	<ion-nav-buttons side="left">
-	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/footers/home')">返回</a>
+	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/ordersInfo')">返回</a>
 	</ion-nav-buttons>
 	<ion-nav-title>
 		<h1 class="titleNav">设置发票信息</h1>
 	</ion-nav-title>
-	<ion-content>
-		invoice
+	<ion-content overflow-scroll="true" class="scroll-content has-header">
+		<div class="invoice-Content">
+			<ion-scroll class="scroll-view">
+				<!-- 明细 -->
+
+				<div class="invoice" ng-if="input.type == '2'">
+					<div class="margin-xs-bottom">
+						<ion-list>
+							<ion-item>
+								<div class="breakdown">
+									<h4 class="invoice-type-title">发票类型</h4>
+									<div class="invoice-type">
+										纸质发票
+									</div>
+								</div>
+								
+							</ion-item>
+						</ion-list>
+					</div>
+
+					<div class="margin-xs-bottom">
+						<ion-list>
+							<ion-item>
+								<div class="breakdown">
+									<h4 class="invoice-type-title">发票抬头</h4>
+									<div class="invoice-type-checked">
+										<span class="people" ng-click="checked('genre','1')">
+											<i class="fa" ng-class="{'fa-check-circle': input.genre == '1','font-denger': input.genre == '1','fa-circle-thin': input.genre != '1','font-secondary': input.genre != '1'}" aria-hidden="true"></i>
+											个人
+										</span>
+										<span class="people ml15" ng-click="checked('genre','2')">
+											<i class="fa" ng-class="{'fa-check-circle': input.genre == '2','font-denger': input.genre == '2','fa-circle-thin': input.genre != '2','font-secondary': input.genre != '2'}" aria-hidden="true"></i>
+											单位
+										</span>
+									</div>
+									<div class="check-input" ng-if="input.genre == '2'">
+										<input type="text" placeholder="请填写单位名称" class="full-width">
+									</div>
+								</div>
+								
+							</ion-item>
+						</ion-list>
+					</div>
+				</div>
+				<ion-list class="no-invoice">
+					<ion-item>
+						<h4 class="no-invoice-title border-bottom">发票内容</h4>
+						<div class="no-invoice-checked">
+							<div class="no-open margin-xs-bottom" ng-click="active('type','1')">
+							<i class="fa" ng-class="{'fa-check-circle': input.type == '1','font-denger': input.type == '1','fa-circle-thin': input.type != '1','font-secondary': input.type != '1'}"  aria-hidden="true"></i>
+							不开发票
+							</div>
+							<div class="no-open" ng-click="active('type','2')">
+								<i class="fa" ng-class="{'fa-check-circle': input.type == '2','font-denger': input.type == '2','fa-circle-thin': input.type != '2','font-secondary': input.type != '2'}"  aria-hidden="true"></i>
+								明细
+							</div>
+						</div>
+					</ion-item>
+				</ion-list>
+			</ion-scroll>
+			<div class="confirm-wrap">
+				<a href="" class="confirm">
+					确定
+				</a>
+			</div>
+		</div>
 	</ion-content>
 </ion-view>

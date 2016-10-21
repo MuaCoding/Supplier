@@ -86,12 +86,14 @@
     // 4.3选择收货方式
     .state('pickup', {
         url: "/pickup",
-        templateUrl:"/templates/orders/pickup.html"
+        templateUrl:"/templates/orders/pickup.html",
+        controller: 'pickupController'
     })
     //4.4发票
     .state('invoice', {
         url: "/invoice",
-        templateUrl:"/templates/orders/invoice.html"
+        templateUrl:"/templates/orders/invoice.html",
+        controller: 'invoiceController'
     })
        /*-------------------------------------- 产品 --------------------------------------*/
     .state('productList', {
@@ -106,7 +108,7 @@
     .state('productDetails', {
         url: "/productDetails",
         templateUrl: "/templates/product/Details.html",
-        //controller: 'productDetailsController'
+        controller: 'productDetailsController'
     })
 
 })

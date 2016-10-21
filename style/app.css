@@ -194,3 +194,8 @@ ion-list > .list > .item > a {
   z-index: 3;
 }
 
+
+.full-width{
+  width: 100%;
+}
+

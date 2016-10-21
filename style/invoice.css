@@ -1,0 +1,111 @@
+.invoice-Class .invoice-Content {
+	width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 45px;
+}
+
+
+.invoice-Class .invoice-Content .scroll-view{
+	height: 100%;
+}
+
+
+.invoice-Class .no-invoice{
+	background-color: #fff;
+}
+.invoice-Class .no-invoice .no-invoice-title{
+	display: block;
+	padding: 15px 10px;
+	text-align: left;
+	font-size: 15px;
+
+}
+
+.invoice-Class .no-invoice .no-invoice-checked{
+	display: block;
+	padding: 15px 10px;
+}
+
+.invoice-Class .no-invoice .no-invoice-checked .no-open{
+	position: relative;
+	display: block;
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+}
+
+.invoice-Class .no-invoice .no-invoice-checked .no-open .fa{
+	position: relative;
+	top: 2px;
+	margin-right: 5px;
+	font-size: 22px;
+	
+}
+
+.invoice-Class .invoice-Content .confirm-wrap{
+	position: fixed;
+	display: block;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 15px 10px;
+	text-align: center;
+}
+
+.invoice-Class .invoice-Content .confirm-wrap .confirm{
+	display: block;
+	margin: auto;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 15px;
+	background-color: #f34242;
+	border-radius: 3px;
+}
+
+.invoice-Class .invoice .breakdown .invoice-type-title{
+	display: block;
+	padding: 10px 10px;
+	font-size: 15px;
+}
+.invoice-Class .invoice .breakdown{
+	display: block;
+	padding: 5px 0  10px 0 ;
+}
+.invoice-Class .invoice .breakdown .invoice-type{
+	display: block;
+	margin-left: 10px;
+	text-align: center;
+	width: 90px;
+	height: 35px;
+	line-height: 35px;
+	border-radius: 3px;
+	border:1px solid #f34242;
+	font-size: 13px;
+}
+
+.invoice-Class .invoice .breakdown .invoice-type-checked{
+	display: block;
+	padding: 0 10px;
+}
+
+
+.invoice-Class .invoice .breakdown .invoice-type-checked .people .fa{
+	position: relative;
+	top: 2px;
+	margin-right: 5px;
+	font-size: 22px;
+}
+
+.invoice-Class .invoice .breakdown .check-input{
+	display: block;
+	padding: 5px 10px;  
+}
+
+.invoice-Class .invoice .breakdown .check-input input{
+	background-color: #eaeaea;
+	padding: 10px 5px;
+	border-radius: 3px;
+}

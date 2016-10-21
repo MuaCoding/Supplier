@@ -207,6 +207,9 @@
 	top: 8px;
 	right: 0;
 }
+
+
+
 .fa-absolute{
 	position: absolute;
 	top: 20px;
@@ -252,6 +255,11 @@
 	position: absolute;
 	top: 30px;
 	left: 15px;
+}
+.fa-pickup-self{
+	position: absolute;
+	top: 1px;
+	left: 0;
 }
 
 .fa-pickup-default-absolute{
@@ -302,9 +310,15 @@
 	font-size: 14px;
 }
 
+.sm-font{
+	font-size: 20px;
+}
+
+
 /***********底边线***************/
 .border-bottom{
 	border-bottom: 1px solid #eaeaea;
+
 }
 .border-top{
 	border-top: 1px solid #eaeaea;

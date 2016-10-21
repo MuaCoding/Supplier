@@ -28,6 +28,29 @@
         };
     });
 })
+.controller('productDetailsController', function ($scope, $ionicPopover) {
+    //商品信息购买界面
+    $scope.popoverPro;
+    $ionicPopover.fromTemplateUrl("ez-popover.html", {
+        scope: $scope
+    })
+    .then(function (popover) {
+        $scope.popoverPro = popover;
+    });
+
+    //打开商品信息购买界面
+    $scope.payProClick = function ($event) {
+        $scope.popoverPro.show($event);
+    };
+    //关闭商品信息购买界面
+    $scope.closePopover = function () {
+        $scope.popoverPro.hide();
+    };
+    //销毁事件回调处理：清理popover对象
+    $scope.$on("$destroy", function () {
+        $scope.popoverPro.remove();
+    });
+})
 
 .controller('sortHomeController', function () {
 
@@ -77,15 +100,6 @@
         showDelte =false;
 	}
 
-    $scope.moveItem = function(good, fromIndex, toIndex) {
-        $scope.goods.splice(fromIndex, 1);
-        $scope.goods.splice(toIndex, 0, good);
-    };
-
-    $scope.delete =function(good){
-         $scope.goods.splice($scope.id.indexOf(good.id), 1);
-    }
-
     $scope.popup = function(){
 
        $scope.data = {}
@@ -101,6 +115,41 @@
                 console.log("取消")
             }
        })
+    }
+
+})
+
+
+//发票
+.controller('invoiceController',function($scope){
+    $scope.input = {}
+
+    $scope.input.type = 1;
+    $scope.active = function(key,value){
+
+        $scope.input[key] = value;
+    }
+
+    $scope.input.genre = 1;
+    $scope.checked = function(key,value){
+
+        $scope.input[key] = value;
+    }
+})
+
+//取货方式
+.controller('pickupController',function($scope){
+    $scope.input = {}
+
+    
+
+    var i=0;
+    $scope.is_pick = function(index){
+        i=index;
+        //$scope.input.type = value;
+    }
+    $scope.activeType=function(index){
+        return i==index;
     }
 
 })

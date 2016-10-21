@@ -6,14 +6,33 @@
 		<h1 class="titleNav">选择取货方式</h1>
 	</ion-nav-title>
 	<ion-nav-buttons side="right">
-		<a href="javascrpt:;" class="edit-btn" ng-click="">管理地址</a>
+		<a href="javascrpt:;" class="edit-btn">管理地址</a>
 	</ion-nav-buttons>
 	<ion-content>
 		<div class="Content">
 			<ion-list>
 				<ion-item>
-					<div class="pickup-wrap">
-						<i class="fa fa-square-o fa-pickup-absolute fa-sm-font font-secondary" aria-hidden="true"></i>
+					<div class="pickup-wrap" ng-click= "is_pick($index)">
+						<div class="left-check">
+							<i class="fa-pickup-absolute fa-sm-font" ng-class ="{'PFIcon-Hook': activeType(1)}" aria-hidden="true"></i>
+						</div>
+						<div class="pickup-info">
+
+							<div class="pickup-name">
+								刘先生，13927596598 
+							</div>
+							<div class="pickup-address">
+								深圳市南山区西丽街道南新花园A栋10H
+							</div>
+						</div>
+					</div>
+				</ion-item>
+				<ion-item>
+					<div class="pickup-wrap" ng-click= "is_pick($index)">
+						<div class="left-check">
+							<i class="fa-pickup-absolute fa-sm-font" ng-class ="{'PFIcon-Hook': activeType(2)}" aria-hidden="true"></i>
+						</div>
+						
 						<div class="pickup-info">
 
 							<div class="pickup-name">
@@ -27,26 +46,12 @@
 				</ion-item>
 				<ion-item>
 					<div class="pickup-wrap">
-						<i class="fa fa-square-o fa-pickup-absolute fa-sm-font font-secondary" aria-hidden="true"></i>
-						<div class="pickup-info">
-
-							<div class="pickup-name">
-								刘先生，13927596598 
-							</div>
-							<div class="pickup-address">
-								深圳市南山区西丽街道南新花园A栋10H
-							</div>
+						<div class="pickup-title" ng-click= "is_pick($index)">
+							<i class="fa-pickup-self fa-sm-font" ng-class ="{'PFIcon-Hook': activeType(3)}" aria-hidden="true"></i>
+							<p class="">自行取货</p>
 						</div>
-					</div>
-				</ion-item>
-				<ion-item>
-					<div class="pickup-wrap">
-						<i class="fa fa-square-o fa-pickup-default-absolute fa-sm-font font-secondary" aria-hidden="true"></i>
+						<!-- <i class="PFIcon-Square fa-pickup-default-absolute fa-sm-font font-secondary" aria-hidden="true"></i> -->
 						<div class="pickup-info">
-
-							<div class="pickup-name">
-								自行取货
-							</div>
 							<div class="pickup-location margin-xs-top">
 								<p>刘先生，13927596598</p>
 								<p>深圳市南山区西丽街道南新花园A栋10H</p>
