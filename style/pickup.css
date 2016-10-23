@@ -71,3 +71,11 @@
 	background-color: #fff;
 	font-size: 14px;
 }
+
+.pickup-Class .pickup-wrap .pickup-info .pickup-name .default {
+	background-color: #f34242;
+	margin-left: 5px;
+	font-size: 13px;
+	padding: 0 5px;
+	color: #fff;
+}

@@ -11,43 +11,29 @@
 	<ion-content>
 		<div class="Content">
 			<ion-list>
-				<ion-item>
+				<ion-item ng-repeat = "people in pickData">
 					<div class="pickup-wrap" ng-click= "is_pick($index)">
 						<div class="left-check">
-							<i class="fa-pickup-absolute fa-sm-font" ng-class ="{'PFIcon-Hook': activeType(1)}" aria-hidden="true"></i>
+							<i class="fa-pickup-absolute fa-sm-font" ng-class ="{'PFIcon-Hook': activeType ===$index}" aria-hidden="true"></i>
 						</div>
 						<div class="pickup-info">
 
 							<div class="pickup-name">
-								刘先生，13927596598 
+								<span ng-bind="people.name"></span> ，
+								<span ng-bind="people.phone"></span>
+								<span class="default" ng-if = "activeType ===$index">默认</span>
 							</div>
-							<div class="pickup-address">
-								深圳市南山区西丽街道南新花园A栋10H
-							</div>
-						</div>
-					</div>
-				</ion-item>
-				<ion-item>
-					<div class="pickup-wrap" ng-click= "is_pick($index)">
-						<div class="left-check">
-							<i class="fa-pickup-absolute fa-sm-font" ng-class ="{'PFIcon-Hook': activeType(2)}" aria-hidden="true"></i>
-						</div>
-						
-						<div class="pickup-info">
-
-							<div class="pickup-name">
-								刘先生，13927596598 
-							</div>
-							<div class="pickup-address">
-								深圳市南山区西丽街道南新花园A栋10H
+							<div class="pickup-address" ng-bind="people.address">
+								
 							</div>
 						</div>
 					</div>
 				</ion-item>
+				
 				<ion-item>
 					<div class="pickup-wrap">
 						<div class="pickup-title" ng-click= "is_pick($index)">
-							<i class="fa-pickup-self fa-sm-font" ng-class ="{'PFIcon-Hook': activeType(3)}" aria-hidden="true"></i>
+							<i class="fa-pickup-self fa-sm-font" ng-class ="{'PFIcon-Hook': activeType ===$index}" aria-hidden="true"></i>
 							<p class="">自行取货</p>
 						</div>
 						<!-- <i class="PFIcon-Square fa-pickup-default-absolute fa-sm-font font-secondary" aria-hidden="true"></i> -->

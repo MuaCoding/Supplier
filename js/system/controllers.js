@@ -100,21 +100,9 @@
         showDelte =false;
 	}
 
-    $scope.popup = function(){
-
-       $scope.data = {}
-       // var confirmPopup = $ionicPopup.confirm({
-       //  template: '确认要删除这1种商品吗？'
-       // })；
-
-       confirmPopup.then(function(res){
-            if(res){
-                console.log('确定');
-            }
-            else{
-                console.log("取消")
-            }
-       })
+    $scope.delete = function(index){
+        
+        // $scope.cartData.splice($scope.cartData.indexOf(index), 1)
     }
 
 })
@@ -140,17 +128,25 @@
 //取货方式
 .controller('pickupController',function($scope){
     $scope.input = {}
+    $scope.pickData=[{
 
+        name: "刘先生",
+        phone: 13760269597,
+        address: "深圳市南山区西丽街道南新花园A栋10H"
+    },{
+        name: "陈先生",
+        phone: 13760269597,
+        address: "深圳市南山区西丽街道南新花园A栋10H"
+    }]
+
+
+    $scope.activeType = 0;
+    $scope.is_pick = function(index){
+        
+        $scope.activeType = index;
+    }
     
 
-    var i=0;
-    $scope.is_pick = function(index){
-        i=index;
-        //$scope.input.type = value;
-    }
-    $scope.activeType=function(index){
-        return i==index;
-    }
 
 })
 
