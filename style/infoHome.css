@@ -1,0 +1,45 @@
+﻿.infoHome-class {
+    background-color: #f1f1f1;
+}
+
+    .infoHome-class .list {
+    }
+
+        .infoHome-class .list ion-item {
+            overflow: hidden;
+            background-color: #fff;
+            border-bottom: solid 1px #dddddd;
+            padding: 20px 30px 5px 100px;
+            position: relative;
+        }
+
+            .infoHome-class .list ion-item h3 {
+                font-size: 17px;
+                color: #636363;
+            }
+
+            .infoHome-class .list ion-item span, .infoHome-class .list ion-item p {
+                font-size: 14px;
+                color: #808080;
+            }
+
+            .infoHome-class .list ion-item span {
+                /*position: absolute;
+                left: 100px;
+                bottom: 5px;*/
+                display: block;
+                overflow: hidden;
+                font-size: 12px;
+                height: 15px;
+                line-height: 15px;
+            }
+
+            .infoHome-class .list ion-item > i {
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                height: 100%;
+                font-size: 30px;
+                color: #808080;
+                line-height: 90px;
+            }

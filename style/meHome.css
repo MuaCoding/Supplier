@@ -1,0 +1,102 @@
+.me-Class .me-Content{
+	height: 100%;
+}
+.me-Class .scroll-view{
+	height: 100%;
+}
+
+.me-Class .user-info .Images{
+	width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    border: 1px solid #eee;
+    border-radius: 100%;
+}
+
+.me-Class .user-info .user-status {
+	position: relative;
+	display: block;
+	padding: 15px 10px 15px 90px;
+	background-color: #fff;
+	
+}
+
+.me-Class .user-info .user-status .user-name {
+	margin: 5px 0 10px;
+}
+.me-Class .user-info .user-status .line{
+	width: 1px;
+	margin: 0 5px;
+	background-color: #eaeaea;
+}
+
+/*.me-Class .wares-status{
+	display: block;
+	width: 100%;
+	padding: 15px 0;
+}*/
+
+
+.me-Class .wares-status >a{
+	width: 25%;
+	
+}
+.me-Class .wares-status .wares-status-content{
+	display: block;
+	text-align: center;
+	border-right: 1px solid #eaeaea;
+}
+.me-Class .wares-status .wares-status-content:last-child{
+	border-right: none;
+}
+
+.me-Class .wares-status .wares-status-content .wares {
+	position: relative;
+}
+.me-Class .wares-status .wares-status-content .wares .bg-circle {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: -7px;
+	right: -7px;
+	border-radius: 100%;
+	text-align: center;
+	background-color: #fff;
+	border: 1px solid #f34242;
+	font-size: 12px;
+	color: #f34242;
+	line-height: 13px;
+}
+
+.me-Class .action-group .action-group-item{
+	display: block;
+	padding: 0 10px;
+	border-bottom: 1px solid #eaeaea;
+	overflow: hidden;
+}
+
+.me-Class .action-group .action-group-item .icon-inner {
+	display: block;
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	font-size: 20px;
+	margin-right: 5px;
+	overflow: hidden;
+	line-height: 50px;
+}
+
+.me-Class .action-group .action-group-item .action-group-sub {
+    color: #222;
+    font-size: 15px;
+    margin-bottom: 0px;
+    height: 50px;
+    line-height: 49px;
+}
+
+.me-Class .action-group .action-group-item .icon-forword {
+    height: 50px;
+    line-height: 48px;
+}

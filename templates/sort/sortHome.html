@@ -1,5 +1,53 @@
-﻿<ion-view>
-	<ion-content>
-		
-	</ion-content>
+﻿<ion-view title="所有分类" class="sortHome-class">
+    <!--Header部分-->
+    <ion-nav-title>
+        <h1 class="titleNav Title">所有分类</h1>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="ionConLeft">
+            <ion-scroll class="item" direction="y" zooming="false">
+                <ion-list>
+                    <ion-item ng-repeat="item in proList.classList" ng-click="proEvent.set($index)" ng-class="{'on':proEvent.get($index)}">
+                        <a href="javascript:;" ng-bind="item.Class"></a>
+                    </ion-item>
+                    <!--<ion-item>
+                        <a href="javascript:;">数码配件</a>
+                    </ion-item>
+                    <ion-item>
+                        <a href="javascript:;">移动电源</a>
+                    </ion-item>
+                    <ion-item>
+                        <a href="javascript:;">其他产品</a>
+                    </ion-item>-->
+                </ion-list>
+            </ion-scroll>
+        </div>
+        <div class="ionConRight">
+            <ion-scroll class="item" direction="y" zooming="false">
+                <ion-list>
+                    <ion-item ng-href="javascript:void(0)" ng-repeat="item in proList.classList[proEvent.proIndex].List">
+                        <div class="Img imgMax" style="background-image: url({{item.Pic}});"></div>
+                        <h3 class="ellipsis" ng-bind="item.brandName"></h3>
+                    </ion-item>
+                    <!--<ion-item ng-href="javascript:void(0)">
+                        <div class="Img imgMax" style="background-image: url(/images/sort/HomeImg.png);"></div>
+                        <h3 class="ellipsis">苹果/Apple Store</h3>
+                    </ion-item>
+                    <ion-item ng-href="javascript:void(0)">
+                        <div class="Img imgMax" style="background-image: url(/images/sort/HomeImg1.png);"></div>
+                        <h3 class="ellipsis">三星电子</h3>
+                    </ion-item>
+                    <ion-item ng-href="javascript:void(0)">
+                        <div class="Img imgMax" style="background-image: url(/images/sort/HomeImg2.png);"></div>
+                        <h3 class="ellipsis">索尼</h3>
+                    </ion-item>-->
+                </ion-list>
+            </ion-scroll>
+        </div>
+    </ion-content>
 </ion-view>

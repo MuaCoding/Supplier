@@ -80,6 +80,13 @@
     border: 1px solid #eaeaea;
 }
 
+.proItem{
+	border-bottom: 1px solid #eee !important;
+}
+.proItem:last-child{
+	border-bottom:none;
+}
+
 
 /****************************************************修****************
 *
@@ -295,9 +302,20 @@
 .font-secondary{
 	color: #aaaaaa;
 }
+.font-default{
+	color: #666;
+}
 
 .font-color-not{
 	color: #eaeaea;
+}
+
+.font-success{
+	color: #8bc34a;
+}
+
+.font-white{
+	color: #fff;
 }
 
 /***************全局背景颜色********************/
