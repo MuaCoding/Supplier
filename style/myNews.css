@@ -1,0 +1,14 @@
+.myNews-Class .myNews-Content {
+	height: 100%;
+
+}
+
+.myNews-Class .scroll-view{
+	height: 100%
+}
+
+.scroll-view .news-group .news-item{
+	position: relative;
+	display: block;
+	padding: 15px 10px;
+}

@@ -1,10 +1,9 @@
 ﻿<ion-view class="me-Class">
+	
+	
 	<ion-nav-title>
 		<h1 class="titleNav">会员中心</h1>
 	</ion-nav-title>
-	<ion-nav-buttons side="right">
-		<a href="javascrpt:;" class="edit-btn"></a>
-	</ion-nav-buttons>
 	<ion-nav-buttons side="right">
         <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
     </ion-nav-buttons>
@@ -13,7 +12,7 @@
     	<div class="me-Content">
     		<ion-scroll class="scroll-view">
 	    		<ion-list  class="user-info">
-	    			<ion-item>
+	    			<ion-item ui-sref = "accountSetting">
 	    				<a class="user-status border-bottom">
 	    					<i class="imgMin Images" style="background:url('/images/person-girl-flat.png')"></i>
 	    					<p class="user-name">Heho</p>
@@ -74,7 +73,7 @@
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item>
-					<ion-item>
+					<ion-item ui-sref = "myNews">
 						<a class="action-group-item font-default">
 							<i class="icon-inner PFIcon-news pull-left" style="color: #1fad40"></i>
 							<p class="action-group-sub pull-left">我的消息</p>
@@ -88,7 +87,7 @@
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item>
-					<ion-item style="margin-top: 10px;">
+					<ion-item style="margin-top: 10px;" ui-sref = "comment">
 						<a class="action-group-item font-default">
 							<i class="icon-inner PFIcon-praised pull-left" style="color: #77addf;font-size:24px;"></i>
 							<p class="action-group-sub pull-left">我的评价</p>

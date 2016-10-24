@@ -111,6 +111,28 @@
         controller: 'productDetailsController'
     })
 
+    /*-------------------------------------- 会员 --------------------------------------*/
+    //账户设置
+    .state('accountSetting', {
+        url: "/accountSetting",
+        templateUrl: "/templates/me/accountSetting.html"
+        
+    })
+    //我的消息
+    .state('myNews', {
+        url: "/myNews",
+        templateUrl: "/templates/me/myNews.html"
+        
+    })
+    //我的评价
+    .state('comment', {
+        url: "/comment",
+        templateUrl: "/templates/me/comment.html"
+        
+    })
+
+    
+
 })
     //返回
 .run(function ($rootScope, $location, $timeout, $ionicHistory) {

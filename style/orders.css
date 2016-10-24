@@ -274,6 +274,12 @@
 	top: 16px;
 	left: 15px;
 }
+
+.fa-comment{
+	position: absolute;
+	top: 40px;
+	right: 10px;
+}
 /*************fa边距**************/
 
 .fa-xs-right{
@@ -300,7 +306,7 @@
 }
 
 .font-secondary{
-	color: #aaaaaa;
+	color: #636363;
 }
 .font-default{
 	color: #666;
@@ -316,6 +322,14 @@
 
 .font-white{
 	color: #fff;
+}
+
+.uncheck-star{
+	color: #ccc;
+}
+
+.check-star {
+	color: #ffab39;
 }
 
 /***************全局背景颜色********************/
