@@ -14,6 +14,8 @@
 .ordersHome-Content .scroll-view{
 	height: 100%;
 }
+
+
 .orders-group{
 	display: block;
 	background-color: #fff;
@@ -79,6 +81,20 @@
     left: 0;
     border: 1px solid #eaeaea;
 }
+
+.orders-group .comment-detail{
+	display: block;
+	padding: 15px 10px;
+	text-align: left;
+	font-size: 14px;
+	white-space: normal;
+}
+
+.orders-group .comment-info{
+	display: block;
+	padding: 10px 10px 15px;
+}
+
 
 .proItem{
 	border-bottom: 1px solid #eee !important;

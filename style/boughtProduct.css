@@ -1,0 +1,106 @@
+
+
+.boughtProduct-Class .boughtProduct-Content {
+	height: 100%;
+}
+
+.boughtProduct-Class .scroll-view {
+	height: 100%;
+}
+
+.boughtProduct {
+	overflow: hidden;
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.boughtProduct .boughtProduct-item {
+
+}
+
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-header {
+	display: block;
+	padding: 0 10px;
+	overflow: hidden;
+	border: 1px solid #eaeaea;
+}
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-header .icon-inner{
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	font-size: 20px;
+	overflow: hidden;
+	line-height: 50px;
+	font-size: 14px;
+	color: #52ce49;
+}
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-header .company-name ,.boughtProduct .boughtProduct-item .boughtProduct-item-header .pro-status{
+	height: 50px;
+	text-align: left;
+	line-height: 50px;
+	font-size: 14px;
+	margin-right: 5px;
+	overflow: hidden;
+}
+
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-header .icon-go{
+	height: 50px;
+	line-height: 50px;
+}
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-info{
+	display: block;
+	padding: 15px 10px;
+	overflow: hidden;
+}
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-info .boughtProduct-avatar{
+	width: 70px;
+    height: 70px;
+    border: 1px solid #eee;
+    margin-right: 10px;
+}
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-info .info-center{
+	
+	
+}
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-info .price-total {
+	
+}
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-info .icon-next {
+	height: 70px;
+	line-height: 70px;
+}
+
+
+/*before*/
+.boughtProduct-Class .tabs .tab-item .badge {
+    background-color: #fff;
+    color: #f34242;
+    border: 1px solid #f34242;
+}
+.boughtProduct-Class .tab-item .badge {
+	top: 7%;
+	right: calc(33% - 26px);
+}
+/*after*/
+.boughtProduct-Class .tabs-top>.tabs .tab-item.tab-item-active .badge {
+ 	top: 7%;
+ 	right: calc(33% - 26px);
+ 	background-color: #fff;
+ 	color: #f34242;
+ 	border: 1px solid #f34242;
+
+ }
+
+.boughtProduct-Class .tabs-striped .tab-item.tab-item-active {
+    border-color: #f34242;
+    color: #222;
+}

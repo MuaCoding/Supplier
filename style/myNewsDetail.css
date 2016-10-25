@@ -1,0 +1,32 @@
+.NewsDetail-Class .NewsDetail-Content {
+	height: 100%;
+}
+
+.NewsDetail-Class .scroll-view {
+	height: 100%;
+}
+
+.NewsDetail-Class .NewsDetail-group {
+	display: block;
+
+}
+
+
+
+.NewsDetail-Class .NewsDetail-group .item-header{
+	display: block;
+	height: 60px;
+	line-height: 60px;
+	text-align: left;
+	margin: 0 10px;
+	border-bottom: 1px solid #eaeaea; 
+	font-size: 14px;
+}
+
+.NewsDetail-Class .NewsDetail-group .item-info {
+	display: block;
+	text-align: left;
+	margin: 0 10px;
+	font-size: 13px;
+	padding: 20px 0;
+}

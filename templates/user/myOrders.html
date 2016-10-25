@@ -1,8 +1,8 @@
-﻿<ion-view  class="orders-Class" title="我的进货单">
+<ion-view  class="orders-Class" title="我的进货单">
 	<!-- header -->
 	
 	<ion-nav-buttons side="left">
-	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/footers/home')">返回</a>
+	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/userHome')">返回</a>
 	</ion-nav-buttons>
 	<ion-nav-title>
 		<h1 class="titleNav">我的进货单</h1>
@@ -15,30 +15,30 @@
 		<!-- <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher> -->
 		<div class="ordersHome-Content">
 			<ion-scroll class="scroll-view">
-				<ul class="orders-group margin-xs-bottom" ng-repeat = "cart in cartData" show-delete="edit.showDelete">
+				<ul class="orders-group margin-xs-bottom" ng-repeat = "products in proData" show-delete="edit.showDelete">
 					<li class="item-remove-animate">
 						<div class="orders-title-wrap border-bottom">
 							<i class="fa fa-circle-thin fa-xs-font fa-xs-left-absolult hide" aria-hidden="true"></i>
 							<div class="orders-title">
-								<h5 class="xs-font" style="font-size:15px;" ng-bind="cart.name"></h5>
+								<h5 class="xs-font" style="font-size:15px;" ng-bind="products.name"></h5>
 								<i class="fa fa-angle-right fa-zs-absolute" aria-hidden="true"></i>
 							</div>
 						</div>
 						<ion-list ng-init="brandNum=$index" show-delete="flag.showDelete">
-							<ion-item ng-repeat = "good in cart.goods" class="proItem" ng-href="#/productDetails?good.id">
+							<ion-item ng-repeat = "pro in products.goods" class="proItem">
 								<div class="orders-item-wrap">
 									<a href="" class="orders-item">
 										<i class="fa fa-circle-thin fa-xs-font fa-absolute" aria-hidden="true"></i>
 										<div class="orders-item-info">
-											<div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg)">
+											<div class="orders-item-avatar imgMin" style="background:url(/images/pro.png)">
 											</div>
 											<div class="orders-item-message">
-												<h3 class="orders-item-name ellipsis" ng-bind="good.tradeName"></h3>
+												<h3 class="orders-item-name ellipsis" ng-bind="pro.tradeName"></h3>
 												<div class="orders-item-text ellipsis margin-xs-top">
-													<span class="" ng-bind="good.amount"></span>
+													<span class="" ng-bind="pro.amount"></span>
 													<span>|</span>
-				 									<span >颜色分类：{{good.color}}</span>
-													<span >版本：{{good.edition}}</span>
+				 									<span >颜色分类：{{pro.color}}</span>
+													<span >版本：{{pro.edition}}</span>
 												</div>
 											</div>
 											<i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
@@ -67,9 +67,9 @@
 				<div class="count-total count-flex">
 					<span class="zx-font">订单总价（不含运费）：</span><span class="font-denger" style="font-weight:400;">￥230.00</span>
 				</div>
-				<a class="count-next count-flex" ng-href="#/ordersInfo">
+				<!-- <a class="count-next count-flex" ng-href="#/ordersInfo">
 					下一步
-				</a>
+				</a> -->
 			</div>
 			<div class="count-wrap border-top count-wrap-flex" ng-if="flag.showDelete">
 				<!-- <div class="all-select all-select-new count-flex"> -->

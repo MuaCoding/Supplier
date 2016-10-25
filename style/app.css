@@ -199,3 +199,12 @@ ion-list > .list > .item > a {
   width: 100%;
 }
 
+.text-ellipsis {
+     display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+

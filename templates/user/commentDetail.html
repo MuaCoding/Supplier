@@ -1,0 +1,57 @@
+<ion-view class="commentDetail-Class">
+	<ion-nav-buttons side="left">
+	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/userHome')">返回</a>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">评价详情</h1>
+	</ion-nav-title>
+	
+	<ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+	<ion-content overflow-scroll="true" class="scroll-content has-header">
+		<div class="commentDetail-Content">
+			<ion-scroll class= "scroll-view">
+				<ion-list class="orders-group">
+					<ion-item ng-repeat= "pro in proData">
+						<!-- 商品 -->
+						<div class="orders-item-wrap">
+							<a href="" class="orders-item">
+								<i class="fa fa-circle-thin fa-xs-font fa-absolute" aria-hidden="true"></i>
+								<div class="orders-item-info">
+									<div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg)">
+									</div>
+									<div class="orders-item-message">
+										<h3 class="orders-item-name ellipsis" ng-bind="pro.tradeName"></h3>
+										<div class="orders-item-text ellipsis margin-xs-top">
+											<span class="" ng-bind="pro.amount"></span>
+											<span>|</span>
+		 									<span >颜色分类：{{pro.color}}</span>
+											<span >版本：{{pro.edition}}</span>
+										</div>
+									</div>
+									<i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+								</div>
+							</a>
+						</div>
+						<!-- 评价内容 -->
+						<div class="comment-detail">
+							<span ng-bind="pro.comment"></span>
+						</div>
+						<div class="comment-info">
+							<span class="star">
+								<i class="PFIcon-Star check-star"></i>
+								<i class="PFIcon-Star check-star"></i>
+								<i class="PFIcon-Star check-star"></i>
+								<i class="PFIcon-Star uncheck-star"></i>
+								<i class="PFIcon-Star uncheck-star"></i>
+								<i style="margin-left:10px;color:#ffa535;font-size:12px;">一般般</i>
+							</span>
+							<p style="color: #aaaaaa;font-size: 12px;">评价时间：<span>2016-09-23 12:55:45</span></p>
+						</div>
+					</ion-item>
+				</ion-list>
+			</ion-scroll>
+		</div>
+	</ion-content>
+</ion-view>

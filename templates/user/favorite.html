@@ -1,0 +1,75 @@
+<ion-view  class="favorite-Class" title="收藏夹">
+	<!-- header -->
+	
+	<ion-nav-buttons side="left">
+	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/userHome')">返回</a>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">收藏夹</h1>
+	</ion-nav-title>
+	<ion-nav-buttons side="right">
+		<a href="javascrpt:;" class="edit-btn" ng-click="">编辑</a>
+	</ion-nav-buttons>
+	<ion-tabs class="tabs-top tabs-striped bg-white mb10">
+			<ion-tab title = "收藏的货品（23）">
+				<ion-view>
+					<ion-content overflow-scroll="true"  class="scroll-content has-header">
+						<div class="favorite-Content">
+							<ion-scroll class="scroll-view">
+								<div class="products">
+
+									<ion-list class="products-item mb10">
+						                <ion-item ng-href="#/productDetails">
+						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
+						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
+						                    <div class="cancal-btn" ng-if="">
+						                    	<i class="PFIcon-Cancal" style="font-size:15px;"></i>
+						                    	<span>取消收藏</span>
+						                    </div>
+						                </ion-item>
+						                <ion-item ng-href="#/productDetails">
+						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
+						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
+						                </ion-item>
+						                <ion-item ng-href="#/productDetails">
+						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
+						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
+						                </ion-item>
+						                <ion-item ng-href="#/productDetails">
+						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
+						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
+						                </ion-item>
+						                <ion-item ng-href="#/productDetails">
+						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
+						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
+						                </ion-item>
+						                <ion-item ng-href="#/productDetails">
+						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
+						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
+						                </ion-item>
+									</ion-list>
+								</div>
+							</ion-scroll>
+						</div>
+					</ion-content> 
+				</ion-view>
+			</ion-tab>
+			<ion-tab title = "收藏的品牌商（0）">
+				<ion-view>
+					<ion-content overflow-scroll="true"  class="scroll-content has-header">
+						<ion-list>
+							<ion-item>
+								
+							</ion-item>
+						</ion-list>
+					</ion-content> 
+				</ion-view>
+			</ion-tab>
+		</ion-tabs>
+</ion-view>	

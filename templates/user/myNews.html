@@ -1,0 +1,34 @@
+<ion-view class="myNews-Class">
+	<ion-nav-buttons side="left">
+	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/userHome')">返回</a>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">我的消息</h1>
+	</ion-nav-title>
+	
+	<ion-nav-buttons side="right">
+		<a href="javascrpt:;" class="edit-btn" ng-click="">标记为已读</a>
+	</ion-nav-buttons>
+	<ion-content overflow-scroll="true" class="scroll-content has-header">
+		<div class="myNews-Content">
+			<ion-scroll class="scroll-view">
+				<ion-list class="news-group">
+					<ion-item ui-sref = "footers.myNewsDetail">
+						<div class="news-item">
+							<p class="position:relative;">物流消息 <i class="PFIcon-NewsCircle font-denger" style="position:relative;top:-3px;"></i></p>
+							<p style="color:#888888">您的订单100920302334卖家已发货，点击此处查询。</p>
+							<i class="fa fa-angle-right fa-ms-right-absolute font-secondary" aria-hidden="true"></i>
+						</div>
+					</ion-item>
+					<ion-item>
+						<div class="news-item">
+							<p class="position:relative;">系统消息 <i class="PFIcon-NewsCircle font-denger" style="position:relative;top:-3px;" ng-if=""></i></p>
+							<p style="color:#888888">系统通知您已经成功注册成为XX电商网会员，您已经可以进行批发操作。</p>
+							<i class="fa fa-angle-right fa-ms-right-absolute font-secondary" aria-hidden="true"></i>
+						</div>
+					</ion-item>
+				</ion-list>
+			</ion-scroll>
+		</div>
+	</ion-content>
+</ion-view>

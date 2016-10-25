@@ -1,0 +1,84 @@
+<ion-view class="boughtProduct-Class">
+	<ion-nav-buttons side="left">
+	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/userHome')">返回</a>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">已买到的商品</h1>
+	</ion-nav-title>
+	
+	<ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+	<ion-tabs class="tabs-top tabs-striped bg-white mb10">
+		<ion-tab title = "待收货" badge="12">
+			<ion-view>
+				<ion-content overflow-scroll="true"  class="scroll-content has-header">
+					<div class="boughtProduct-Content">
+						<ion-scroll class="scroll-view">
+							<div class="boughtProduct">
+								<ion-list class="">
+					                <ion-item class="boughtProduct-item">
+					                	<div class="boughtProduct-item-header">
+					                		<i class="PFIcon-Sub icon-inner pull-left"></i>
+					                		<p class="company-name pull-left">深圳罗技电子科技有限公司</p>
+					                		<i class="fa fa-angle-right font-secondary icon-go pull-left" aria-hidden="true"></i>
+					                		<p class="pro-status pull-right" style="color:#f3a242;">配送途中</p>
+					                	</div>
+					                	<div class="boughtProduct-item-info">
+					                		<div class="boughtProduct-avatar imgMin pull-left" style="background-image: url(/images/Products.jpg);"></div>
+					                		<i class="fa fa-angle-right font-secondary icon-next pull-right" aria-hidden="true"></i>
+				                			<p class="pull-left" style="color:#444;font-size:13px;width:46%;">Beats Solo2 无线头戴式耳机</p>
+				                			<p class="price-total pull-right" style="color:#444;font-size:13px;">￥1885.00</p>
+				                			<p class="pull-left" style="font-size:12px;color:#636363;float:left;overflow:hidden;">等共5种货品</p>
+					                		
+					                		
+					                		
+					                   		
+					                	</div>
+					                	
+					                    
+					                    
+					                </ion-item>
+					                
+								</ion-list>
+							</div>
+						</ion-scroll>
+					</div>
+				</ion-content> 
+			</ion-view>
+		</ion-tab>
+		<ion-tab title = "待支付">
+			<ion-view>
+				<ion-content overflow-scroll="true"  class="scroll-content has-header">
+					<ion-list>
+						<ion-item>
+							
+						</ion-item>
+					</ion-list>
+				</ion-content> 
+			</ion-view>
+		</ion-tab>
+		<ion-tab title = "待评价">
+			<ion-view>
+				<ion-content overflow-scroll="true"  class="scroll-content has-header">
+					<ion-list>
+						<ion-item>
+							
+						</ion-item>
+					</ion-list>
+				</ion-content> 
+			</ion-view>
+		</ion-tab>
+		<ion-tab title = "已取消">
+			<ion-view>
+				<ion-content overflow-scroll="true"  class="scroll-content has-header">
+					<ion-list>
+						<ion-item>
+							
+						</ion-item>
+					</ion-list>
+				</ion-content> 
+			</ion-view>
+		</ion-tab>
+	</ion-tabs>
+</ion-view>

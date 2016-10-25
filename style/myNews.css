@@ -11,4 +11,9 @@
 	position: relative;
 	display: block;
 	padding: 15px 10px;
+	border-bottom: 1px solid #eaeaea; 
+}
+
+.scroll-view .news-group .news-item:last-child{
+	border-bottom: none;
 }

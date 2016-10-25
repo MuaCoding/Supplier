@@ -1,0 +1,82 @@
+
+.favorite-Class .scroll-view {
+    height: 100%;
+
+}
+
+.favorite-Class .favorite-Content{
+    height: 100%;
+}
+
+.products {
+    overflow: hidden;
+    padding: 10px 5px 5px 5px;
+    margin-top: 0px;
+    position: relative;
+    margin-bottom: 45px;
+}
+/*.products .headTitle {
+    position: absolute;
+    top: 5px;
+    left: 3%;
+}*/
+.products > .products-item {
+    overflow: hidden;
+    width: 100%;
+}
+
+.products > .products-item .item {
+    width: 48%;
+    display: block;
+    overflow: hidden;
+    float: left;
+    /*background: initial;*/
+    padding: 10px;
+    margin: 1%;
+    border: solid 1px #eee;
+}
+
+.products > .products-item .products-avatar {
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.products > .products-item h3 {
+    color: #676767;
+    font-size: 13px;
+    margin: 10px auto 3px auto;
+}
+
+.products > .products-item .price {
+    overflow: hidden;
+    color: #e7493c;
+    font-size: 13px;
+    /*padding: 0px 5px;*/
+}
+
+
+.products > .products-item .cancal-btn{
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    padding:  5px 10px; 
+    text-align: center;
+    z-index: 3;
+    border: 1px solid #eaeaea;
+    font-size: 13px;
+    color: #444444;
+}
+
+
+.favorite-Class .tabs-striped .tab-item.tab-item-active {
+    border-color: #f34242;
+    color: #222;
+}
+
+.favorite-Class .item-complex .item-content {
+    height: 100%;
+}
+

@@ -1,0 +1,27 @@
+<ion-view class="NewsDetail-Class">
+	<ion-nav-buttons side="left">
+	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/myNews')">返回</a>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">消息内容</h1>
+	</ion-nav-title>
+	<ion-content>
+		<div class="NewsDetail-Content">
+			<ion-scroll class="scroll-view">
+				<ion-list class= "NewsDetail-group">
+					<ion-item>
+						<div class="item-header">
+							物流消息
+						</div>
+						<div class="item-info">
+							<p>
+								您的订单 100920302334 卖家已发货，点击<a style="color:#227fe8;" ng-href = "">此处</a>查询。
+							</p>
+							<p style="font-size:12px;color:#aaaaaa;">消息接收时间：2016-10-05 12:52:48</p>
+						</div>
+					</ion-item>
+				</ion-list>
+			</ion-scroll>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,6 +1,6 @@
 ﻿angular.module('myApp', ['ionic', 'controllers'])
 .config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
-   // $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
     $ionicConfigProvider.views.maxCache(5);                                               //视图缓存最大为5
     $ionicConfigProvider.tabs.position("bottom");                                         //tabs 位置是在顶部还是底部 参数可以是：top | bottom  
     $ionicConfigProvider.tabs.style("standard");                                           //tabs 条带风格 参数可以是： standard | striped
@@ -19,15 +19,14 @@
     /**********************tab路由****************************/
     //2.首页
       .state('footers.home', {
-            url: "/home",
-            views: {
-                'home-footer': {
-                    templateUrl: "/templates/home/home.html",
-
-                    controller: 'homeController'
-                }
-            }
-        })
+          url: "/home",
+          views: {
+              'home-footer': {
+                  templateUrl: "/templates/home/home.html",
+                  controller: 'homeController'
+              }
+          }
+      })
 
     //分类
     .state('footers.sort', {
@@ -41,7 +40,7 @@
     })
 
     //咨讯
-    .state('footers.information',{
+    .state('footers.information', {
         url: "/information",
         views: {
             'information-footer': {
@@ -61,38 +60,40 @@
     //     }
     // })
     //个人中心
-    .state('footers.me', {
-        url: "/me",
+    .state('footers.user', {
+        url: "/user",
         views: {
-            'me-footer': {
-                templateUrl:"/templates/me/meHome.html"
+            'user-footer': {
+                templateUrl: "/templates/user/userHome.html"
             }
         }
     })
+
+    
 
     //***************************************************独立层级*****************************************************
      // 4.我的订货单
      // 4.1我的订货单首页
     .state('orders', {
         url: "/orders",
-        templateUrl:"/templates/orders/ordersHome.html",
+        templateUrl: "/templates/orders/ordersHome.html",
         controller: 'ordersHomeController'
     })
     // 4.2填写订单信息
     .state('ordersInfo', {
         url: "/ordersInfo",
-        templateUrl:"/templates/orders/ordersInfo.html"
+        templateUrl: "/templates/orders/ordersInfo.html"
     })
     // 4.3选择收货方式
     .state('pickup', {
         url: "/pickup",
-        templateUrl:"/templates/orders/pickup.html",
+        templateUrl: "/templates/orders/pickup.html",
         controller: 'pickupController'
     })
     //4.4发票
     .state('invoice', {
         url: "/invoice",
-        templateUrl:"/templates/orders/invoice.html",
+        templateUrl: "/templates/orders/invoice.html",
         controller: 'invoiceController'
     })
        /*-------------------------------------- 产品 --------------------------------------*/
@@ -100,8 +101,8 @@
         url: "/productList",
         //views: {
         //    'sort-footer': {
-                templateUrl: "/templates/product/List.html",
-                controller: 'productListController'
+        templateUrl: "/templates/product/List.html",
+        controller: 'productListController'
         //    }
         //},
     })
@@ -115,23 +116,77 @@
     //账户设置
     .state('accountSetting', {
         url: "/accountSetting",
-        templateUrl: "/templates/me/accountSetting.html"
-        
+        templateUrl: "/templates/user/accountSetting.html"
+
     })
     //我的消息
-    .state('myNews', {
+    .state('footers.myNews', {
         url: "/myNews",
-        templateUrl: "/templates/me/myNews.html"
-        
-    })
-    //我的评价
-    .state('comment', {
-        url: "/comment",
-        templateUrl: "/templates/me/comment.html"
-        
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/myNews.html"
+            }
+        }
+
     })
 
-    
+    //我的消息详情
+    .state('footers.myNewsDetail', {
+        url: "/myNewsDetail",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/myNewsDetail.html"
+            }
+        }
+
+    })
+    //我的评价
+    .state('footers.comment', {
+        url: "/comment",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/comment.html"
+            }
+        }
+
+    })
+    //评价详情
+    .state('commentDetail', {
+        url: "/commentDetail",
+        templateUrl: "/templates/user/commentDetail.html",
+        controller: 'commentDetailController'
+
+    })
+
+    //我的进货单
+    .state('myOrders', {
+        url: "/myOrders",
+        templateUrl: "/templates/user/myOrders.html",
+        controller: 'myOrdersController'
+
+    })
+
+    //收藏夹
+    .state('footers.favorite', {
+        url: "/favorite",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/favorite.html"
+            }
+        }
+    })
+
+    //已买到的商品
+
+    .state('footers.boughtProduct', {
+        url: "/boughtProduct",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/boughtProduct.html"
+            }
+        }
+    })
+
 
 })
     //返回

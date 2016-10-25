@@ -1,0 +1,56 @@
+<ion-view class="me-Class">
+	<ion-nav-buttons side="left">
+	    <a href="javascript:void(0)" class="headReturn PFIcon-back" ng-click="$ionicGoBack('/userHome')">返回</a>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">账户设置</h1>
+	</ion-nav-title>
+	
+	<ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+	<ion-content overflow-scroll="true" class="scroll-content has-header">
+		<div class="me-Content">
+			<ion-scroll class="scroll-view">
+				<ion-list class="action-group">
+	    			<ion-item>
+						<a class="action-group-item font-default">
+							<i class="icon-inner PFIcon-basic pull-left" style="color: #77addf"></i>
+							<p class="action-group-sub pull-left">基本信息</p>
+							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+						</a>
+					</ion-item>
+					<ion-item>
+						<a class="action-group-item font-default">
+							<i class="icon-inner PFIcon-AvatarSetting pull-left" style="color: #96c54c"></i>
+							<p class="action-group-sub pull-left">头像设置</p>
+							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+						</a>
+					</ion-item>
+					<ion-item>
+						<a class="action-group-item font-default">
+							<i class="icon-inner PFIcon-Receiving pull-left" style="color: #ed7844"></i>
+							<p class="action-group-sub pull-left">收货地址管理</p>
+							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+						</a>
+					</ion-item>
+					<ion-item style="margin-top: 10px;">
+						<a class="action-group-item font-default">
+							<i class="icon-inner PFIcon-authentication pull-left" style="color: #52ce49"></i>
+							<p class="action-group-sub pull-left">账户认证信息</p>
+							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+						</a>
+					</ion-item>
+					
+					<ion-item style="margin-bottom: 15px;">
+						<a class="action-group-item font-default">
+							<i class="icon-inner PFIcon-ModifyPassword pull-left" style="color: #7d7d7d"></i>
+							<p class="action-group-sub pull-left">修改密码</p>
+							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+						</a>
+					</ion-item>
+	    		</ion-list>
+			</ion-scroll>
+		</div>
+	</ion-content>
+</ion-view>
