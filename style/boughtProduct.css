@@ -56,6 +56,7 @@
 	display: block;
 	padding: 15px 10px;
 	overflow: hidden;
+	border: 1px solid #eee;
 }
 
 .boughtProduct .boughtProduct-item .boughtProduct-item-info .boughtProduct-avatar{
@@ -65,20 +66,38 @@
     margin-right: 10px;
 }
 
-.boughtProduct .boughtProduct-item .boughtProduct-item-info .info-center{
-	
-	
-}
-
-.boughtProduct .boughtProduct-item .boughtProduct-item-info .price-total {
-	
-}
-
 .boughtProduct .boughtProduct-item .boughtProduct-item-info .icon-next {
 	height: 70px;
 	line-height: 70px;
 }
 
+.boughtProduct .boughtProduct-item .bottom-btn {
+	width: 100%;
+	overflow: hidden;
+
+}
+
+.boughtProduct .boughtProduct-item .bottom-btn .left-btn {
+	width: 50%;
+}
+.boughtProduct .boughtProduct-item .bottom-btn .right-btn {
+	width: 49%;
+}
+
+.boughtProduct .boughtProduct-item .bottom-btn .btn {
+	display: block;
+	width: 100%;
+	text-align: center;
+	padding: 0 5px;
+	height: 45px;
+	line-height: 45px;
+	font-size: 13px;
+	
+}
+
+.border-right{
+	border-right: 1px solid #eee;
+}
 
 /*before*/
 .boughtProduct-Class .tabs .tab-item .badge {
