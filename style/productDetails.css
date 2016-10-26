@@ -271,12 +271,16 @@
                     line-height: 15px;
                 }
 
-                .productDetails-buy .Specifications .productList div > a.active {
+                .productDetails-buy .Specifications .productList div > a > i {
+                    display: none;
+                }
+
+                .productDetails-buy .Specifications .productList div > a.on {
                     border: solid 1px #f34242;
                     padding: 1px 14px;
                 }
 
-                    .productDetails-buy .Specifications .productList div > a.active > i {
+                    .productDetails-buy .Specifications .productList div > a.on > i {
                         display: block;
                         position: absolute;
                         right: 0px;

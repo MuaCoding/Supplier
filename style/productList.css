@@ -91,10 +91,6 @@
 .productDetails-buy {
     overflow: hidden;
 }
-    /*头部*/
-    .productDetails-buy .headBar > .buttons > .headReturn {
-        font-size: 20px;
-    }
 
     /*主体*/
     .productDetails-buy .scroll-content {
@@ -114,6 +110,7 @@
             color: #666666;
             height: 44px;
             line-height: 44px;
+            min-width: 20px;
         }
 
         .productDetails-buy .contentTop > a {
@@ -165,10 +162,25 @@
                 margin: 0px 2% 10px auto;
             }
 
-                .productDetails-buy .screenList div > a.active {
+                .productDetails-buy .screenList div > a > i {
+                    display: none;
+                }
+
+                .productDetails-buy .screenList div > a.on {
                     border: solid 1px #f34242;
                     padding: 1px 14px;
                 }
+
+                    .productDetails-buy .screenList div > a.on > i {
+                        display: block;
+                        position: absolute;
+                        right: 0px;
+                        bottom: -1px;
+                        font-size: 15px;
+                        color: #f34242;
+                        height: 15px;
+                        width: 15px;
+                    }
 
         .productDetails-buy .screenList .price > input, .productDetails-buy .screenList .price > span {
             float: left;

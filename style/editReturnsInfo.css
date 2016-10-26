@@ -1,0 +1,39 @@
+.editReturnsInfo-Class .scroll-view{
+	height: 100%;
+
+}
+
+.editReturnsInfo-Class .editReturnsInfo-Content{
+	height: 100%;
+}
+
+.editReturnsInfo-Class .edit-info .edit-prompt {
+	display: block;
+	padding: 20px 10px;
+	text-align: left;
+	white-space: normal;
+	font-size: 13px;
+}
+
+.input-group {
+	position: relative;
+	overflow: hidden;
+	border-bottom: 1px solid #eaeaea;
+}
+.input-group:last-child {
+	border-bottom:none;
+}
+.input-group .input-label{
+	position: absolute;
+	font-size: 13px;
+	left: 10px;
+
+}
+
+.addon{
+	padding: 15px 10px 15px 70px; 
+}
+
+.field {
+	
+}

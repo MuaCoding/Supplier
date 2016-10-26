@@ -51,19 +51,19 @@
 	font-size: 14px;
 }
 
-.ordersInfo-Class .orders-information .orders-amount{
+.orders-amount{
 	display: block;
 	border-top: 1px solid #eaeaea;
 	border-bottom: 1px solid #eaeaea;
 }
-.ordersInfo-Class .orders-information .orders-amount .amount{
+.orders-amount .amount{
 	display: block;
 	padding: 15px 0;
 	margin: 0 10px;
 
 }
 
-.ordersInfo-Class .orders-information .orders-amount .orders-amount-total{
+.orders-amount .orders-amount-total{
 	display: block;
 	padding: 15px 10px;
 }

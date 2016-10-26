@@ -1,19 +1,19 @@
-<ion-view class="boughtProduct-Class">
+<ion-view class="returns-Class">
 	<ion-nav-buttons side="left">
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/user')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	<ion-nav-title>
-		<h1 class="titleNav">已买到的商品</h1>
+		<h1 class="titleNav">退换货管理</h1>
 	</ion-nav-title>
 	
 	<ion-nav-buttons side="right">
         <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
     </ion-nav-buttons>
 	<ion-tabs class="tabs-top tabs-striped bg-white mb10">
-		<ion-tab title = "待收货" badge="12">
+		<ion-tab title = "退货中" badge="2">
 			<ion-view>
 				<ion-content overflow-scroll="true"  class="scroll-content has-header">
-					<div class="boughtProduct-Content">
+					<div class="returns-Content">
 						<ion-scroll class="scroll-view">
 							<div class="boughtProduct">
 								<ion-list class="">
@@ -22,7 +22,7 @@
 					                		<i class="PFIcon-Sub icon-inner pull-left"></i>
 					                		<p class="company-name pull-left">深圳罗技电子科技有限公司</p>
 					                		<!-- <i class="fa fa-angle-right font-secondary icon-go pull-left" aria-hidden="true"></i> -->
-					                		<p class="pro-status pull-right" style="color:#f3a242;">配送途中</p>
+					                		<p class="pro-status pull-right" style="color:#f3a242;">正在寄回品牌商</p>
 					                	</div>
 					                	<div class="boughtProduct-item-info" ui-sref = "footers.ordersDetail">
 					                		<div class="boughtProduct-avatar imgMin pull-left" style="background-image: url(/images/Products.jpg);"></div>
@@ -31,12 +31,16 @@
 				                			<p class="price-total pull-right" style="color:#444;font-size:13px;margin-top:10px;">￥1885.00</p>
 				                			<p class="pull-left" style="font-size:12px;color:#636363;float:left;overflow:hidden;">等共5种货品</p>
 					                	</div>
-					                	<div class="bottom-btn">
+					                	<div class="bottom-btn" ui-sref="footers.returnsDetail">
+					                		<div class="view-btn color-danger">查看信息</div>
+					                	</div>
+
+					                	<div class="bottom-btn" ng-if= "">
 					                		<div class="left-btn pull-left">
 					                			<span class="btn border-right">延长收货</span>
 					                		</div>
 					                		<div class="right-btn pull-left">
-					                			<span class="btn" style="color:#f34242;">确认收货</span>
+					                			<span class="btn color-danger">确认收货</span>
 					                		</div>
 					                	</div>
 					                    
@@ -47,7 +51,7 @@
 					                		<i class="PFIcon-Sub icon-inner pull-left"></i>
 					                		<p class="company-name pull-left">深圳罗技电子科技有限公司</p>
 					                		<!-- <i class="fa fa-angle-right font-secondary icon-go pull-left" aria-hidden="true"></i> -->
-					                		<p class="pro-status pull-right" style="color:#f3a242;">配送途中</p>
+					                		<p class="pro-status pull-right" style="color:#f3a242;">等待寄回</p>
 					                	</div>
 					                	<div class="boughtProduct-item-info" ui-sref = "footers.ordersDetail">
 					                		<div class="boughtProduct-avatar imgMin pull-left" style="background-image: url(/images/Products.jpg);"></div>
@@ -58,10 +62,10 @@
 					                	</div>
 					                	<div class="bottom-btn">
 					                		<div class="left-btn pull-left">
-					                			<span class="btn border-right">延长收货</span>
+					                			<span class="btn border-right">取消退货</span>
 					                		</div>
-					                		<div class="right-btn pull-left">
-					                			<span class="btn" style="color:#f34242;">确认收货</span>
+					                		<div class="right-btn pull-left" ui-sref = "footers.editReturnsInfo">
+					                			<span class="btn color-danger">填写寄回信息</span>
 					                		</div>
 					                	</div>
 					                    
@@ -74,18 +78,52 @@
 				</ion-content> 
 			</ion-view>
 		</ion-tab>
-		<ion-tab title = "待支付">
+		<ion-tab title = "换货中" badge="1">
 			<ion-view>
 				<ion-content overflow-scroll="true"  class="scroll-content has-header">
-					<ion-list>
-						<ion-item>
-							
-						</ion-item>
-					</ion-list>
+					<div class="returns-Content">
+						<ion-scroll class="scroll-view">
+							<div class="boughtProduct">
+								<ion-list class="">
+					                <ion-item class="boughtProduct-item" style = "margin-bottom:10px;">
+					                	<div class="boughtProduct-item-header">
+					                		<i class="PFIcon-Sub icon-inner pull-left"></i>
+					                		<p class="company-name pull-left">深圳罗技电子科技有限公司</p>
+					                		<!-- <i class="fa fa-angle-right font-secondary icon-go pull-left" aria-hidden="true"></i> -->
+					                		<p class="pro-status pull-right" style="color:#f3a242;">换货中</p>
+					                	</div>
+					                	<div class="boughtProduct-item-info" ui-sref = "footers.ordersDetail">
+					                		<div class="boughtProduct-avatar imgMin pull-left" style="background-image: url(/images/Products.jpg);"></div>
+					                		<i class="fa fa-angle-right font-secondary icon-next pull-right" aria-hidden="true"></i>
+				                			<p class="pull-left" style="color:#444;font-size:13px;width:47%;margin-top:10px;">Beats Solo2 无线头戴式耳机</p>
+				                			<p class="price-total pull-right" style="color:#444;font-size:13px;margin-top:10px;">￥1885.00</p>
+				                			<p class="pull-left" style="font-size:12px;color:#636363;float:left;overflow:hidden;">等共5种货品</p>
+					                	</div>
+
+					                	<div class="bottom-btn">
+					                		<div class="view-btn color-danger">查看信息</div>
+					                	</div>
+
+					                	<div class="bottom-btn" ng-if="">
+					                		<div class="left-btn pull-left">
+					                			<span class="btn border-right">延长收货</span>
+					                		</div>
+					                		<div class="right-btn pull-left">
+					                			<span class="btn" style="color:#f34242;">确认收货</span>
+					                		</div>
+					                	</div>
+					                    
+					                    
+					                </ion-item>
+					                
+								</ion-list>
+							</div>
+						</ion-scroll>
+					</div>
 				</ion-content> 
 			</ion-view>
 		</ion-tab>
-		<ion-tab title = "待评价">
+		<ion-tab title = "已完成">
 			<ion-view>
 				<ion-content overflow-scroll="true"  class="scroll-content has-header">
 					<ion-list>

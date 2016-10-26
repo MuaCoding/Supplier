@@ -1,0 +1,37 @@
+.returns-Class .returns-Content {
+	height: 100%;
+}
+
+.returns-Class .scroll-view {
+	height: 100%;
+}
+
+
+.item .color-danger{
+	color: #f34242;
+}
+
+/*before*/
+.returns-Class .tabs .tab-item .badge {
+    background-color: #fff;
+    color: #f34242;
+    border: 1px solid #f34242;
+}
+.returns-Class .tab-item .badge {
+	top: 7%;
+	right: calc(33% - 26px);
+}
+/*after*/
+.returns-Class .tabs-top>.tabs .tab-item.tab-item-active .badge {
+ 	top: 7%;
+ 	right: calc(33% - 26px);
+ 	background-color: #fff;
+ 	color: #f34242;
+ 	border: 1px solid #f34242;
+
+ }
+
+.returns-Class .tabs-striped .tab-item.tab-item-active {
+    border-color: #f34242;
+    color: #222;
+}

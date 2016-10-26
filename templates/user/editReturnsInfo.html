@@ -1,0 +1,39 @@
+<ion-view class="editReturnsInfo-Class">
+	
+	<ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/returns')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">填写寄回信息</h1>
+	</ion-nav-title>
+	
+	<!-- <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons> -->
+	<ion-content overflow-scroll="true"  class="scroll-content has-header">
+		<div class="editReturnsInfo-Content">
+			<ion-scroll class="scroll-view">
+				<ion-list>
+					<ion-item class="edit-info">
+						<div class="edit-prompt border-bottom">
+							<span>
+								温馨提示：请确保寄回的货品完好无损，请仔细阅读ＸＸ电商网的《退换货服务条款》和《售后服务政策》，如果不符合要求的退换货将不予以受理。
+							</span>
+						</div>
+						<div class="input-group addon">
+							<div class="input-label">
+								物流公司
+							</div>
+							<input type="text" class="full-width form-control" ng-model="input.username" required placeholder="请输入公司名">
+						</div>
+						<div class="input-group addon">
+							<div class="input-label">
+								物流单号
+							</div>
+							<input type="text" class="full-width form-control" ng-model="input.username" required placeholder="请输入物流单号">
+						</div>
+					</ion-item>
+				</ion-list>
+			</ion-scroll>
+		</div>	
+	</ion-content>

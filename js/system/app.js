@@ -1,4 +1,4 @@
-﻿angular.module('myApp', ['ionic', 'controllers'])
+﻿angular.module('myApp', ['ionic', 'controllers','DS.services'])
 .config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
     // $locationProvider.html5Mode(true);
     $ionicConfigProvider.views.maxCache(5);                                               //视图缓存最大为5
@@ -64,7 +64,7 @@
         url: "/user",
         views: {
             'user-footer': {
-                templateUrl: "/templates/user/userHome.html"
+                templateUrl: "/templates/user/user.html"
             }
         }
     })
@@ -96,6 +96,19 @@
         templateUrl: "/templates/orders/invoice.html",
         controller: 'invoiceController'
     })
+
+    //4.5订单详情
+    .state('footers.ordersDetail', {
+        url: "/ordersDetail",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/orders/ordersDetail.html",
+                controller: 'ordersDetailController'
+            }
+        }
+    })
+
+    
        /*-------------------------------------- 产品 --------------------------------------*/
     .state('productList', {
         url: "/productList",
@@ -187,6 +200,47 @@
         }
     })
 
+    //交易记录查找
+    .state('footers.recordSearch', {
+        url: "/recordSearch",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/recordSearch.html"
+            }
+        }
+    })
+
+    //退货单管理
+    .state('footers.returns', {
+        url: "/returns",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/returns.html"
+            }
+        }
+    })
+
+    //退货单详情
+    .state('footers.returnsDetail', {
+        url: "/returnsDetail",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/returnsDetail.html",
+                controller: 'returnsDetailController'
+            }
+        }
+    })
+
+    //
+    .state('footers.editReturnsInfo', {
+        url: "/editReturnsInfo",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/editReturnsInfo.html",
+                // controller: 'editReturnsInfoController'
+            }
+        }
+    })
 
 })
     //返回

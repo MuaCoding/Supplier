@@ -1,0 +1,33 @@
+﻿<ion-popover-view class="productDetails-buy">
+    <div class="item Specifications">
+        <div class="">
+            <div class="Img"></div>
+            <h2></h2>
+            <a href="javascript:void(0)" class="close"></a>
+        </div>
+        <ion-scroll class="item Specifications" direction="y" zooming="false">
+            <ion-list class="productList">
+                <ion-item>
+                    <h3>颜色选择</h3>
+                    <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
+                    <div class="mt10">
+                        <a href="javascript:;" ng-repeat="item in AllModel.ColorModel track by $index" ng-click="SetCheck(item,AllModel.ColorModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <h3>版本</h3>
+                    <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
+                    <div class="mt10">
+                        <a href="javascript:;" ng-repeat="item in AllModel.VersionModel track by $index" ng-click="SetCheck(item,AllModel.VersionModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <h3>批价</h3>
+                    <div class="mt10">
+                        <a href="javascript:;" ng-repeat="item in AllModel.PriceModel track by $index" ng-click="SetCheck(item,AllModel.PriceModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<span>{{item.TypePrice}}</span><i class="PFIcon-Tick"></i></a>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </ion-scroll>
+    </div>
+</ion-popover-view>

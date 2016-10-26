@@ -8,7 +8,7 @@
     </ion-nav-buttons>
 
     <ion-nav-buttons side="right">
-        <a href="javascript:void(0)" class="search icon ion-ios-search placeholder-icon"></a>
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
     </ion-nav-buttons>
 
     <ion-content>
@@ -21,17 +21,32 @@
 
         <div class="row HotProducts mb10">
             <ion-list class="proList mb10">
-                <ion-item ng-href="/productDetails">
+                <ion-item ui-sref="productDetails">
                     <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
                     <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
                     <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
                 </ion-item>
-                <ion-item ng-href="/productDetails">
+                <ion-item ui-sref="productDetails">
                     <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
                     <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
                     <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
                 </ion-item>
-                <ion-item ng-href="/productDetails">
+                <ion-item ui-sref="productDetails">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ui-sref="productDetails">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ui-sref="productDetails">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                </ion-item>
+                <ion-item ui-sref="productDetails">
                     <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
                     <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
                     <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
@@ -39,67 +54,4 @@
             </ion-list>
         </div>
     </ion-content>
-    <script id="pd-Screening.html" type="text/ng-template">
-        <ion-modal-view class="productDetails-buy">
-            <ion-header-bar class="headBar">
-                <a href="javascript:void(0)" class="buttons buttons-left headReturn" ng-click="closeModal();"><i class="PFIcon-back"></i>返回</a>
-                <h1 class="title title-center header-item titleNav ">商品列表</h1>
-                <div class="buttons buttons-right">
-                    <a href="javascript:void(0)" class="headReturn icon ion-ios-search placeholder-icon"></a>
-                    <a href="javascript:void(0)" class="headReturn PFIcon-filter"></a>
-                </div>
-            </ion-header-bar>
-            <ion-content>
-                <div class="contentTop"><h2>筛选商品</h2><a href="javascript:;" ng-click="closeModal();">x</a></div>
-                <ion-list class="screenList">
-                    <ion-item>
-                        <h3>品牌</h3><a href="javascript:;">全部<i class="PFIcon-BTriangle"></i></a>
-                        <div>
-                            <a href="javascript:;">三星</a>
-                            <a href="javascript:;">华为</a>
-                            <a href="javascript:;">小米</a>
-                            <a href="javascript:;">摩托罗拉</a>
-                            <a href="javascript:;">苹果</a>
-                            <a href="javascript:;">魅族</a>
-                        </div>
-                    </ion-item>
-                    <ion-item>
-                        <h3>类型</h3><a href="javascript:;">全部<i class="PFIcon-BTriangle"></i></a>
-                        <div>
-                            <a href="javascript:;">移动电源</a>
-                            <a href="javascript:;">手机壳</a>
-                            <a href="javascript:;">耳机线</a>
-                            <a href="javascript:;">车载支架</a>
-                            <a href="javascript:;">贴膜</a>
-                            <a href="javascript:;">除尘套装</a>
-                        </div>
-                    </ion-item>
-                    <ion-item>
-                        <h3>起批数量</h3>
-                        <div>
-                            <a href="javascript:;">1~99件</a>
-                            <a href="javascript:;">≥100件</a>
-                            <a href="javascript:;">≥999件</a>
-                        </div>
-                    </ion-item>
-                    <ion-item>
-                        <h3>价格区间</h3>
-                        <div class="price">
-                            <input type="text" placeholder="请输入价格" /><span>至</span><input type="text" placeholder="请输入价格" />
-                        </div>
-                    </ion-item>
-                    <ion-item>
-                        <h3>其他选项</h3>
-                        <div class="Option">
-                            <ion-checkbox>卖家承担运费</ion-checkbox>
-                            <ion-checkbox>7天无理由退换</ion-checkbox>
-                            <!--<ion-checkbox></ion-checkbox>-->
-                        </div>
-                    </ion-item>
-                </ion-list>
-                <div class="button-bar mt10"><a class="button clear">清空筛选条件</a><a class="button">确认筛选</a></div>
-            </ion-content>
-        </ion-modal-view>
-
-    </script>
 </ion-view>

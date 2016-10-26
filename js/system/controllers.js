@@ -6,7 +6,7 @@
 })
 
 //产品
-.controller('productListController', function ($scope,$ionicModal) {
+.controller('productListController', function ($scope,ModalFact) {
     $(".Products > a > .Img").css({ "height": ($("body").width() - $(".Products > a > .Img").width()) * 0.6 })
 
     $(".filter > a").each(function () {
@@ -27,36 +27,182 @@
 
         };
     });
-     //商品列表筛选界面
-    $ionicModal.fromTemplateUrl("pd-Screening.html", {
-        scope: $scope,
-        animation: "slide-in-up"
-    }).then(function (modal) {
-        $scope.modal = modal;
-    });
-    $scope.screenClick = function () {
-        $scope.modal.show();
+      $scope.screenClick = function () {
+        ModalFact.show($scope, "/templates/model/pd-Screening.html");
     };
     $scope.closeModal = function () {
-        $scope.modal.hide();
+        ModalFact.hide();
     };
-    //Cleanup the modal when we are done with it!
-    $scope.$on("$destroy", function () {
-        $scope.modal.remove();
+
+    //离开视图时执行事件
+    $scope.$on("$ionicView.beforeLeave", function () {
+        ModalFact.hide();
     });
-    // Execute action on hide modal
-    $scope.$on("modal.hidden", function () {
-        // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on("modal.removed", function () {
-        // Execute action
-    });
+
+    $scope.AllModel = {
+        BrandModel: [
+                {
+                    Id: null,
+                    TypeName: "三星",
+                    Check: false
+                },
+                {
+                    Id: null,
+                    TypeName: "华为",
+                    Check: false
+                },
+                {
+                    Id: null,
+                    TypeName: "小米",
+                    Check: false
+                },
+                {
+                    Id: null,
+                    TypeName: "摩托罗拉",
+                    Check: false
+                },
+                {
+                    Id: null,
+                    TypeName: "苹果",
+                    Check: false
+                },
+                {
+                    Id: null,
+                    TypeName: "魅族",
+                    Check: false
+                },
+        ],
+        TypeModel: [
+        {
+            Id: null,
+            TypeName: "移动电源",
+            Check: false
+        },
+        {
+            Id: null,
+            TypeName: "手机壳",
+            Check: false
+        },
+        {
+            Id: null,
+            TypeName: "耳机线",
+            Check: false
+        },
+        {
+            Id: null,
+            TypeName: "车载支架",
+            Check: false
+        },
+        {
+            Id: null,
+            TypeName: "贴膜",
+            Check: false
+        },
+        {
+            Id: null,
+            TypeName: "除尘套装",
+            Check: false
+        },
+        ],
+        NumberModel: [
+        {
+            Id: null,
+            TypeName: "1~99件",
+            Check: false
+        },
+        {
+            Id: null,
+            TypeName: "≥100件",
+            Check: false
+        },
+        {
+            Id: null,
+            TypeName: "≥999件",
+            Check: false
+        },
+        ]
+    };
+
+    $scope.SetCheck = function (v1, v2) {
+        for (var i = 0; i < v2.length; i++) {
+            v2[i].Check = false;
+        }
+        v1.Check = !v1.Check;
+    };
 })
 .controller('productDetailsController', function ($scope, $ionicPopover) {
+    $scope.AllModel = {
+        ColorModel: [
+            {
+                Id: null,
+                TypeName: "红色",
+                Check: false
+            },
+            {
+                Id: null,
+                TypeName: "白色",
+                Check: false
+            },
+            {
+                Id: null,
+                TypeName: "黑色",
+                Check: false
+            },
+        ],
+        VersionModel: [
+           {
+               Id: null,
+               TypeName: "普通版",
+               Check: false
+           },
+           {
+               Id: null,
+               TypeName: "尊贵版",
+               Check: false
+           },
+           {
+               Id: null,
+               TypeName: "旗舰版",
+               Check: false
+           },
+           {
+               Id: null,
+               TypeName: "限量版",
+               Check: false
+           },
+        ],
+        PriceModel: [
+           {
+               Id: null,
+               TypeName: "1~99件",
+               TypePrice: "￥230.00",
+               Check: false
+           },
+           {
+               Id: null,
+               TypeName: "≥100件",
+               TypePrice: "￥230.00",
+               Check: false
+           },
+           {
+               Id: null,
+               TypeName: "≥999件",
+               TypePrice: "￥230.00",
+               Check: false
+           },
+        ],
+    };
+
+    $scope.SetCheck = function (v1, v2) {
+        for (var i = 0; i < v2.length; i++) {
+            v2[i].Check = false;
+        }
+        v1.Check = !v1.Check;
+    };
+
     //商品信息购买界面
     $scope.popoverPro;
-    $ionicPopover.fromTemplateUrl("ez-popover.html", {
+    $ionicPopover.fromTemplateUrl("/templates/model/ez-popover.html", {
         scope: $scope
     })
     .then(function (popover) {
@@ -213,6 +359,44 @@
     };
 })
 
+
+//订单详情
+.controller('ordersDetailController', function($scope){
+    $scope.proData = [
+            {
+                name: "深圳罗技电子科技有限公司",
+                goods: [
+                    {
+                        id: 1,
+                        tradeName: "Beats Solo1 无线头戴式耳机",
+                        amount: "￥" + 198.00,
+                        color: "黑色",
+                        edition: "普通版"
+                    }
+                ]
+            }
+        ]
+})
+
+
+
+//returnsDetail
+.controller('returnsDetailController', function($scope){
+    $scope.proData = [
+            {
+                name: "深圳罗技电子科技有限公司",
+                goods: [
+                    {
+                        id: 1,
+                        tradeName: "Beats Solo1 无线头戴式耳机",
+                        amount: "￥" + 198.00,
+                        color: "黑色",
+                        edition: "普通版"
+                    }
+                ]
+            }
+        ]
+})
 
 //发票
 .controller('invoiceController', function ($scope) {

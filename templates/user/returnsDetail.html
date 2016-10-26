@@ -1,0 +1,94 @@
+<ion-view class="returnsDetail-Class">
+	<ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/returns')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">退货单详情</h1>
+	</ion-nav-title>
+	<ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+	
+	<ion-content overflow-scroll="true" class="scroll-content has-header">
+		<div class="returnsDetail-Content">
+			<ion-scroll class="scroll-view">
+				<ion-list>
+					<ion-item class="returnDetail" style="margin-bottom:10px;">
+						<div class="returnDetail-header border-bottom">
+							<p class="header-info pull-left" style="color:#444444;">退货单信息</p>
+							<i class="fa fa-angle-right font-secondary header-info pull-right icon-next" aria-hidden="true"></i>
+							<p class="header-info pull-right" style="color:#4299f3;">查看原始订单</p>
+						</div>
+						<div class="returnDetail-content">
+							<p>订单编号<span class="pull-right">100245745545</span></p>
+							<p>申请退货时间<span class="pull-right">2016-06-20 15:24:50</span></p>
+						</div>
+					</ion-item>
+					<ion-item class="orders-info" style = "margin-bottom:10px;">
+						<p class="orders-info-header">
+							最新进度
+							<span class="pull-right" style="color:#f3a242;">正在寄回品牌商</span>
+						</p>
+						<div class="orders-info-status">
+							<p style="color:#444444;">你的快件已收件，下一步等待发往深圳集散中心</p>
+							<p>2016-06-20 15:24:50</p>
+							<i class="fa fa-angle-right font-secondary icon-go" aria-hidden="true"></i>
+						</div>
+					</ion-item>
+				</ion-list>
+				<ion-list ng-repeat = "products in proData">
+					<ion-item class="returnDetail">
+						<div class="returnDetail-header">
+							<p class="header-info pull-left" style="color:#444444;">退货信息</p>
+							<i class="fa fa-angle-right font-secondary header-info pull-right icon-next" aria-hidden="true"></i>
+							<p class="header-info pull-right" style="color:#444444;" ng-bind="products.name"></p>
+						</div>
+					</ion-item>
+					<ion-item class="orders-group" ng-repeat = "pro in products.goods">
+						<div class="orders-item-wrap">
+							<a href="" class="orders-item">
+								<i class="fa fa-circle-thin fa-xs-font fa-absolute" aria-hidden="true"></i>
+								<div class="orders-item-info">
+									<div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg)">
+									</div>
+									<div class="orders-item-message">
+										<h3 class="orders-item-name ellipsis" ng-bind="pro.tradeName"></h3>
+										<div class="orders-item-text ellipsis margin-xs-top">
+											<span class="" ng-bind="pro.amount"></span>
+											<span>|</span>
+		 									<span >颜色分类：{{pro.color}}</span>
+											<span >版本：{{pro.edition}}</span>
+										</div>
+									</div>
+									<i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+								</div>
+							</a>
+						</div>
+					</ion-item>
+					<ion-item>
+						<div class="orders-amount">
+							<div class="amount border-bottom">
+								<p class="font-secondary">订单金额<span class="pull-right">3478.00元</span></p>
+							    <p class="font-secondary">等待退款金额<span class="pull-right">3478.00元</span></p>
+							</div>
+							<!-- <div class="orders-amount-total">
+								<p class="">订单总金额<span class="pull-right font-denger">3748.00元</span></p>
+							</div> -->
+						</div>
+					</ion-item>
+					<ion-item>
+						<div class="btn-wrap">
+							<a class="confirm-btn">
+								<span>退货完成</span>
+							</a>
+						</div>
+					</ion-item>
+					<!-- <div class="click-here">
+						<spam href="">需要售后服务？点击这里</span>
+					</div> -->
+				</ion-list>
+			</ion-scroll>
+
+		</div>	
+	</ion-content>	
+</ion-view>	

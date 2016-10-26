@@ -1,0 +1,48 @@
+﻿<ion-modal-view class="productDetails-buy">
+    <ion-header-bar class="headBar">
+        <a href="javascript:void(0)" class="buttons buttons-left headReturn" ng-click="closeModal();"><i class="PFIcon-back"></i>返回</a>
+        <h1 class="title title-center header-item titleNav ">商品列表</h1>
+        <div class="buttons buttons-right">
+            <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+            <a href="javascript:void(0)" class="headRButton PFIcon-filter"></a>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="contentTop"><h2>筛选商品</h2><a href="javascript:;" ng-click="closeModal();">x</a></div>
+        <ion-list class="screenList">
+            <ion-item>
+                <h3>品牌</h3><a href="javascript:;">全部<i class="PFIcon-BTriangle"></i></a>
+                <div>
+                    <a href="javascript:;" ng-repeat="item in AllModel.BrandModel track by $index" ng-click="SetCheck(item,AllModel.BrandModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                </div>
+            </ion-item>
+            <ion-item>
+                <h3>类型</h3><a href="javascript:;">全部<i class="PFIcon-BTriangle"></i></a>
+                <div>
+                    <a href="javascript:;" ng-repeat="item in AllModel.TypeModel track by $index" ng-click="SetCheck(item,AllModel.TypeModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                </div>
+            </ion-item>
+            <ion-item>
+                <h3>起批数量</h3>
+                <div>
+                    <a href="javascript:;" ng-repeat="item in AllModel.NumberModel track by $index" ng-click="SetCheck(item,AllModel.NumberModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                </div>
+            </ion-item>
+            <ion-item>
+                <h3>价格区间</h3>
+                <div class="price">
+                    <input type="text" placeholder="请输入价格" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" /><span>至</span><input type="text" placeholder="请输入价格" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" />
+                </div>
+            </ion-item>
+            <ion-item>
+                <h3>其他选项</h3>
+                <div class="Option">
+                    <ion-checkbox>卖家承担运费</ion-checkbox>
+                    <ion-checkbox>7天无理由退换</ion-checkbox>
+                    <!--<ion-checkbox></ion-checkbox>-->
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="button-bar mt10"><a class="button clear">清空筛选条件</a><a class="button">确认筛选</a></div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,82 @@
+.ordersDetail-Class .ordersDetail-Content{
+	height: 100%;
+}
+
+.ordersDetail-Class .scroll-view{
+	height: 100%;
+}
+
+/***共用****/
+.orders-info .orders-info-header {
+	display: block;
+	padding: 0 10px;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #eaeaea;
+	color: #444444;
+}
+
+.orders-info .orders-info-content{
+	display: block;
+	padding: 15px 10px;
+}
+
+
+
+.orders-info .orders-info-status{
+	position: relative;
+	display: block;
+	padding: 15px 10px;
+	overflow: hidden;
+}
+
+.orders-info .orders-info-status .icon-go {
+	position: absolute;
+	top: 30px;
+	right: 10px;
+}
+
+/*********************************************************/
+.ordersDetail-Class  .item p {
+	font-size: 13px;
+}
+
+.ordersDetail-Class .pro-content .pro-content-header {
+	display: block;
+	padding: 0 10px;
+	overflow: hidden;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.ordersDetail-Class  .pro-content .header-info {
+	height: 50px;
+	line-height: 50px;
+}
+
+.btn-wrap {
+	display: block;
+	padding: 20px 10px;
+}
+
+.btn-wrap .confirm-btn{
+	display: block;
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	color: #fff;
+	background-color: #f34242;
+	border-radius: 4px; 
+	font-size: 14px;
+}
+
+
+.click-here{
+	display: block;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	color: #888;
+	background-color: #f1f1f1;
+	text-align: center;
+}
