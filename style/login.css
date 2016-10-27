@@ -5,3 +5,31 @@
 	margin-bottom: 55px;
 }
 
+.gray-text {
+	position: relative;
+	display: -webkit-box;
+	margin: 1px 10px;
+	color: #888;
+	font-size: 12px;
+	-webkit-box-pack: center;
+}
+
+.gray-layout{
+	position: relative;
+	padding: 1px 4px;
+	background-color: #DDDDDD;
+	z-index: 3;
+	display: block;
+	border-radius: 100%;
+}
+
+.gray-text:after {
+    content: "";
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: #cbcbcb;
+    -webkit-transform: scaleY(0.5);
+}
