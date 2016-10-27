@@ -1,0 +1,61 @@
+<ion-view class="basicData-Class">
+	
+	<ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">账户设置</h1>
+	</ion-nav-title>
+	
+	<!-- <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons> -->
+	<ion-content  class="scroll-content has-header">
+		<div class="basicData-Content">
+			<ion-list>
+				<ion-item>
+					<div class="input-group addon">
+						<div class="input-label">
+							昵称
+						</div>
+						<input type="text" class="full-width form-control" ng-model="input.nickname" name="nickname" required placeholder="请输入您的昵称">
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							性别
+						</div>
+						<div class="input-checked">
+							<span class="input-text pull-left" ng-click="single_check('gender','先生')"><i class="mr10" ng-class ="{'PFIcon-Hook': input.gender === '先生'}"></i>先生</span>
+							<span class="input-text ml30 pull-left" ng-click="single_check('gender','女士')"><i class="mr10" ng-class ="{'PFIcon-Hook': input.gender ==='女士'}"></i>女士</span>
+						</div>
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							身份
+						</div>
+						<p class="input-select">请选择</p>
+						<i class="PFIcon-BTriangle icon-down font30"></i>
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							固定电话
+						</div>
+						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入您的固定电话">
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							邮编
+						</div>
+						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入邮政编码">
+					</div>
+
+					<div class="btn-wrap">
+						<a class="confirm-btn">
+							<span>保存当前消息</span>
+						</a>
+					</div>
+				</ion-item>
+			</ion-list>
+		</div>
+	</ion-content>
+</ion-view>		

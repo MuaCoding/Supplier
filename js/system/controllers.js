@@ -221,6 +221,27 @@
     $scope.$on("$destroy", function () {
         $scope.popoverPro.remove();
     });
+     var arr = [];
+
+    $scope.varlist = {
+        itemNum: arr,
+        total: 0
+    }
+    $scope.varlist.itemNum == 1;
+
+    // 减
+    $scope.minus = function ($index) {
+        if ($scope.varlist.itemNum[$index] == 1) {
+            return;
+        } else {
+            $scope.varlist.itemNum[$index]--;
+        }
+    }
+    // 加
+    $scope.add = function ($index) {
+        $scope.varlist.itemNum[$index]++;
+    }
+
 })
 
 .controller('sortHomeController', function ($scope) {
@@ -506,5 +527,51 @@
         else {
             $scope.proData[index1].goods.splice(index2, 1);
         };
+    };
+})
+
+
+//会员中心--账户设置
+
+.controller('basicDataController', function ($scope) {
+    $scope.input = {}
+
+    
+    $scope.input={gender:"先生"};
+    $scope.single_check = function(name, value) {
+        $scope.input.gender === '先生'
+        $scope.input[name] = value;
+    }
+})
+
+//账户设置-收货地址管理
+.controller('addressManageController', function ($scope) {
+    $scope.input = {}
+    $scope.pickData = [{
+
+        name: "刘先生",
+        phone: 13760269597,
+        address: "深圳市南山区西丽街道南新花园A栋10H"
+    }, {
+        name: "陈先生",
+        phone: 13760269597,
+        address: "深圳市南山区西丽街道南新花园A栋10H"
+    }]
+
+    $scope.activeType = 0;
+    $scope.is_pick = function (index) {
+
+        $scope.activeType = index;
+    }
+})
+
+//账户设置-地址管理 -- 添加新地址
+.controller('newAddressController', function ($scope) {
+    $scope.input = {}
+    
+
+    $scope.agree = true;
+    $scope.is_agree = function() {
+        $scope.agree = !$scope.agree;
     };
 })

@@ -231,7 +231,7 @@
         }
     })
 
-    //
+    //填写退货单信息
     .state('footers.editReturnsInfo', {
         url: "/editReturnsInfo",
         views: {
@@ -240,6 +240,90 @@
                 // controller: 'editReturnsInfoController'
             }
         }
+    })
+
+
+    //基本信息
+    .state('footers.basicData', {
+        url: "/basicData",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/basicData.html",
+                controller: 'basicDataController'
+            }
+        }
+    })
+
+    
+    //头像设置
+    .state('footers.avatarSettings', {
+        url: "/avatarSettings",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/avatarSettings.html",
+                // controller: 'editReturnsInfoController'
+            }
+        }
+    })
+    // 重置密码
+    .state('footers.resetPassword', {
+        url: "/resetPassword",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/resetPassword.html",
+                // controller: 'editReturnsInfoController'
+            }
+        }
+    })
+
+    //账户安全设置
+    .state('footers.accountSecurity', {
+        url: "/accountSecurity",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/accountSecurity.html",
+                // controller: 'editReturnsInfoController'
+            }
+        }
+    })
+    //修改密码
+    .state('footers.changePassword', {
+        url: "/changePassword",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/changePassword.html",
+                // controller: 'editReturnsInfoController'
+            }
+        }
+    })
+
+    //账户设置 -- 收货地址管理
+    .state('footers.addressManage', {
+        url: "/addressManage",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/addressManage.html",
+                controller: 'addressManageController'
+            }
+        }
+    })
+
+    //账户设置 -- 添加新地址
+    .state('footers.newAddress', {
+        url: "/newAddress",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/newAddress.html",
+                controller: 'newAddressController'
+            }
+        }
+    })
+
+    //登录
+    .state('login', {
+        url: "/login",
+        templateUrl: "/templates/user/login.html"
+        //controller: 'loginController'
     })
 
 })

@@ -1,0 +1,52 @@
+<ion-view class="login-Class">
+	
+	<ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">用户登录</h1>
+	</ion-nav-title>
+	
+	<!-- <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons> -->
+	<ion-content  class="scroll-content has-header">
+
+		<div class="Content">
+			<ion-list>
+				<ion-item>
+					<form action="">
+						<div class="input-group addon">
+							<div class="input-label">
+								用户名
+							</div>
+							<input type="text" class="full-width form-control" ng-model="input.username" name="username" required placeholder="电子邮箱或手机号码">
+						</div>
+						<div class="input-group addon">
+							<div class="input-label">
+								密码
+							</div>
+							<input type="password" class="full-width form-control" ng-model="input.username" name="username" required placeholder="请输入密码">
+						</div>
+						<div class="btn-wrap">
+							<a class="confirm-btn">
+								<span>立即登录</span>
+							</a>
+						</div>
+						<div class="btn-wrap">
+							<a class="wechat-btn">
+								<span>使用微信授权登录</span>
+							</a>
+						</div>
+					</form>
+					
+				</ion-item>
+				
+			</ion-list>
+			
+		</div>
+		<div class="forger-wrap">
+			<span>忘记密码？点击此处</span>
+		</div>
+	</ion-content>
+</ion-view>

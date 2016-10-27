@@ -205,30 +205,77 @@
         bottom: -50%;
     }
 
+    .productDetails-class .DetailSwitch .ImgBa {
+        overflow: hidden;
+    }
 
+        .productDetails-class .DetailSwitch .ImgBa > div {
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .productDetails-class .DetailSwitch .ImgBa > div > img {
+                max-width: 100%;
+                display: block;
+            }
+
+/*商品购买信息页面*/
 .productDetails-buy .Specifications {
     height: 100%;
+    padding: 6px;
+    background-color: #fff !important;
 }
-    /*.productDetails-buy .Specifications .*/
+
+    /*商品名称*/
+    .productDetails-buy .Specifications .Commodity {
+        position: relative;
+        padding: 10px;
+    }
+
+        .productDetails-buy .Specifications .Commodity > h2 {
+            overflow: hidden;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .productDetails-buy .Specifications .Commodity > a {
+            display: block;
+            overflow: hidden;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            width: 20px;
+            font-size: 14px;
+            color: #666666;
+        }
+    /*商品购买选择*/
+
+    .productDetails-buy .Specifications h3 {
+        overflow: hidden;
+        color: #666666;
+        font-size: 13px;
+    }
+
     .productDetails-buy .Specifications > ion-scroll {
         border: none;
         padding: 10px;
+        height: 80%;
     }
 
     .productDetails-buy .Specifications .productList {
         overflow: hidden;
         border-bottom: solid 1px #e5e5e5;
+        display: block;
     }
 
         .productDetails-buy .Specifications .productList ion-item {
             position: relative;
             margin-top: 5px;
+            background-color: #fff;
         }
 
         .productDetails-buy .Specifications .productList h3 {
-            overflow: hidden;
-            color: #666666;
-            font-size: 13px;
+            margin: 5px auto 3px auto;
         }
 
         .productDetails-buy .Specifications .productList a.All {
@@ -248,6 +295,7 @@
 
         .productDetails-buy .Specifications .productList div {
             overflow: hidden;
+            padding-bottom: 5px;
         }
 
             .productDetails-buy .Specifications .productList div > a {
@@ -291,6 +339,51 @@
                         width: 15px;
                     }
 
+    /*进货数量*/
+    .productDetails-buy .Specifications .PurchaseNumber {
+        padding: 15px 0px;
+        border-bottom: solid 1px #e5e5e5;
+        overflow: hidden;
+    }
+
+        .productDetails-buy .Specifications .PurchaseNumber > h3 {
+            float: left;
+        }
+
+    .productDetails-buy .Specifications .NumberDiv {
+        overflow: hidden;
+        float: right;
+    }
+
+        .productDetails-buy .Specifications .NumberDiv > a {
+            display: block;
+            overflow: hidden;
+            float: left;
+            font-size: 15px;
+            color: #f34242;
+            border: solid 1px #f34242;
+            border-radius: 2px;
+            width: 34px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+        }
+
+        .productDetails-buy .Specifications .NumberDiv > input {
+            overflow: hidden;
+            float: left;
+            font-size: 14px;
+            color: #aaaaaa;
+            text-align: center;
+            border: solid 1px #ccc;
+            width: 30%;
+        }
+
+
+.popover-backdrop.active {
+    background-color: rgba(0,0,0,0.6) !important;
+}
+
 .productDetails-buy.popover {
     opacity: 1;
     width: 100%;
@@ -300,6 +393,8 @@
     margin: 0;
     border-radius: 0;
     opacity: 1;
+    min-height: 50%;
+    background-color: #fff;
 }
 
 .productDetails-buy > .popover-arrow {
@@ -307,15 +402,15 @@
 }
 
 /* 添加上“on”类名执行动画 */
-.ASpecifications.on {
-    -webkit-animation-duration: 2s;
-    animation-duration: 2s;
-    -webkit-animation-name: people;
-    animation-name: people;
+.popover.active {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: popover;
+    animation-name: popover;
     opacity: 1;
 }
 
-@-webkit-keyframes ASpecifications /* Safari 和 Chrome */
+@-webkit-keyframes popover /* Safari 和 Chrome */
 {
     0% {
         opacity: 0;
@@ -326,7 +421,7 @@
     }
 }
 
-@keyframes ASpecifications {
+@keyframes popover {
     0% {
         opacity: 0;
     }

@@ -1,29 +1,29 @@
-.pickup-Class .pickup-wrap	{
+.pickup-wrap	{
 	position: relative;
 	padding: 15px;
 	display: block;
 	font-size: 14px;
 	border-bottom: 1px solid #eaeaea;
 }
-.pickup-Class .pickup-wrap .pickup-title{
+.pickup-wrap .pickup-title{
 	position: relative;
 	display: block;
 	padding-left: 30px;
 }
 
-.pickup-Class .pickup-wrap .left-check i{
+.pickup-wrap .left-check i{
 	width: 22px;
 	height: 22px;
 	border:1px solid #aaa;
 }
 
-.pickup-Class .pickup-wrap .pickup-title i{
+.pickup-wrap .pickup-title i{
 	width: 22px;
 	height: 22px;
 	border:1px solid #aaa;
 
 }
-.pickup-Class .pickup-wrap .pickup-info{
+.pickup-wrap .pickup-info{
 	position: relative;
 	display: block;
 	margin-left: 30px;
@@ -32,11 +32,19 @@
     -webkit-box-sizing:border-box;
 }
 
-.pickup-Class .pickup-wrap:last-child{
+.pickup-wrap .address-info{
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	-moz-box-sizing:border-box; 
+    -webkit-box-sizing:border-box;
+}
+
+.pickup-wrap:last-child{
 	border-bottom: 1px solid #eaeaea;
 }
 
-.pickup-Class .pickup-wrap .pickup-info >.pickup-location{
+.pickup-wrap .pickup-info >.pickup-location{
 	display: block;
 	padding: 15px 10px;
 	background-color: #f2f2f2;
@@ -44,18 +52,18 @@
 	border-radius: 2px;
 }
 
-.pickup-Class .pickup-wrap .pickup-info .pickup-toaddress{
+.pickup-wrap .pickup-info .pickup-toaddress{
 	position: relative;
 	width: 100%;
 }
-.pickup-Class .pickup-wrap .pickup-info .pickup-toaddress .input{
+.pickup-wrap .pickup-info .pickup-toaddress .input{
 	width: 50%;
 	border: 1px solid #eaeaea;
 	margin-right: 3%;
 	display: inline-block;
 }
 
-.pickup-Class .pickup-wrap .pickup-info .pickup-toaddress .tophone{
+.pickup-wrap .pickup-info .pickup-toaddress .tophone{
 	width: 46%;
 	border: 1px solid #f34242;
 	background-color: #f34242;
@@ -66,13 +74,21 @@
 	display: inline-block;
 }
 
-.pickup-Class .pickup-wrap .pickup-info .pickup-toaddress input{
+.pickup-wrap .pickup-info .pickup-toaddress input{
 	padding: 10px;
 	background-color: #fff;
 	font-size: 14px;
 }
 
-.pickup-Class .pickup-wrap .pickup-info .pickup-name .default {
+.pickup-wrap .pickup-info .pickup-name .default {
+	background-color: #f34242;
+	margin-left: 5px;
+	font-size: 13px;
+	padding: 0 5px;
+	color: #fff;
+}
+
+.pickup-wrap .address-info .pickup-name .default {
 	background-color: #f34242;
 	margin-left: 5px;
 	font-size: 13px;
