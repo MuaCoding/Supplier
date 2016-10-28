@@ -326,6 +326,21 @@
         //controller: 'loginController'
     })
 
+    //忘记密码
+    .state('footers.forgotPassword', {
+        url: "/forgotPassword",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/forgotPassword.html"
+               // controller: 'newAddressController'
+            }
+        }
+        
+    })
+
+    
+
+
 })
     //返回
 .run(function ($rootScope, $location, $timeout, $ionicHistory) {

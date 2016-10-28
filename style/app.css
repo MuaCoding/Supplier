@@ -17,6 +17,7 @@ body {
 
 .activated{
     background:none !important;
+     -moz-border-bottom-colors:none;
 }
 
 
