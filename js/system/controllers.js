@@ -27,7 +27,7 @@
 
         };
     });
-      $scope.screenClick = function () {
+    $scope.screenClick = function () {
         ModalFact.show($scope, "/templates/model/pd-Screening.html");
     };
     $scope.closeModal = function () {
@@ -221,25 +221,24 @@
     $scope.$on("$destroy", function () {
         $scope.popoverPro.remove();
     });
-     var arr = [];
+    var arr = [];
 
     $scope.varlist = {
-        itemNum: arr,
-        total: 0
+        itemNum: 1,
+        total: 1,
     }
-    $scope.varlist.itemNum == 1;
 
     // 减
-    $scope.minus = function ($index) {
-        if ($scope.varlist.itemNum[$index] == 1) {
+    $scope.minus = function () {
+        if ($scope.varlist.itemNum == 1) {
             return;
         } else {
-            $scope.varlist.itemNum[$index]--;
+            $scope.varlist.itemNum--;
         }
     }
     // 加
-    $scope.add = function ($index) {
-        $scope.varlist.itemNum[$index]++;
+    $scope.add = function () {
+        $scope.varlist.itemNum++;
     }
 
 })
@@ -382,21 +381,50 @@
 
 
 //订单详情
-.controller('ordersDetailController', function($scope){
+.controller('ordersDetailController', function($scope,$ionicPopover){
+    
+
     $scope.proData = [
-            {
-                name: "深圳罗技电子科技有限公司",
-                goods: [
-                    {
-                        id: 1,
-                        tradeName: "Beats Solo1 无线头戴式耳机",
-                        amount: "￥" + 198.00,
-                        color: "黑色",
-                        edition: "普通版"
-                    }
-                ]
-            }
-        ]
+        {
+            name: "深圳罗技电子科技有限公司",
+            goods: [
+                {
+                    id: 1,
+                    tradeName: "Beats Solo1 无线头戴式耳机",
+                    amount: "￥" + 198.00,
+                    color: "黑色",
+                    edition: "普通版"
+                }
+            ]
+        }
+    ]
+
+    // //离开视图时执行事件
+    // $scope.$on("$ionicView.beforeLeave", function () {
+    //     $scope.closePrompt();
+        
+    // });
+
+    // $scope.popover;
+
+    $ionicPopover.fromTemplateUrl("/templates/model/proPrompt.html", {
+        scope: $scope
+    }).then(function (popover) {
+        $scope.popover = popover;
+    })
+
+    $scope.proPrompt = function () {
+        $scope.popover.show();
+    }
+    $scope.closePrompt = function () {
+        $scope.popover.hide();
+    };
+
+    // $scope.$on("$destroy", function () {
+    //     $scope.popover.remove();
+    //     alert('0')
+    // });
+    
 })
 
 
@@ -539,7 +567,7 @@
     
     $scope.input={gender:"先生"};
     $scope.single_check = function(name, value) {
-        $scope.input.gender === '先生'
+       
         $scope.input[name] = value;
     }
 })

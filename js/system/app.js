@@ -325,20 +325,39 @@
         templateUrl: "/templates/user/login.html"
         //controller: 'loginController'
     })
-
     //忘记密码
     .state('footers.forgotPassword', {
         url: "/forgotPassword",
         views: {
             'user-footer': {
-                templateUrl: "/templates/user/forgotPassword.html"
-               // controller: 'newAddressController'
+                templateUrl: "/templates/user/forgotPassword.html",
+                //controller: 'forgotPasswordController'
             }
         }
-        
+    })
+    //确认收货
+    .state('footers.confirm', {
+        url: "/confirm",
+        views: {
+            'user-footer': {
+                templateUrl: "/templates/user/confirm.html",
+                //controller: 'forgotPasswordController'
+            }
+        }
+    })
+    //退货操作
+    .state('backGoods', {
+        url: "/backGoods",
+        templateUrl: "/templates/user/backGoods.html"
+        //controller: 'forgotPasswordController'
     })
 
-    
+    //换货操作
+    .state('replaceGoods', {
+        url: "/replaceGoods",
+        templateUrl: "/templates/user/replaceGoods.html"
+        //controller: 'forgotPasswordController'
+    })
 
 
 })

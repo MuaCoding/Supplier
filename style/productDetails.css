@@ -6,12 +6,9 @@
 
     .productDetails-class .headImgDiv .Img {
         width: 100%;
+        padding-bottom: 60%;
         /*overflow: hidden;*/
     }
-
-        .productDetails-class .headImgDiv .Img > img {
-            max-width: 100%;
-        }
 
     .productDetails-class .headImgDiv .slider-pager .slider-pager-page {
         opacity: 0.4;
@@ -220,165 +217,219 @@
             }
 
 /*商品购买信息页面*/
-.productDetails-buy .Specifications {
-    height: 100%;
-    padding: 6px;
-    background-color: #fff !important;
+/*商品名称*/
+.productDetails-buy {
+    overflow: visible;
 }
 
-    /*商品名称*/
-    .productDetails-buy .Specifications .Commodity {
+    .productDetails-buy .Commodity {
         position: relative;
-        padding: 10px;
+        padding: 16px;
+        background-color: #fff !important;
     }
 
-        .productDetails-buy .Specifications .Commodity > h2 {
-            overflow: hidden;
-            font-size: 14px;
-            color: #666666;
-        }
-
-        .productDetails-buy .Specifications .Commodity > a {
-            display: block;
-            overflow: hidden;
+        .productDetails-buy .Commodity > .Img {
             position: absolute;
-            right: 0px;
-            top: 0px;
-            width: 20px;
-            font-size: 14px;
-            color: #666666;
-        }
-    /*商品购买选择*/
-
-    .productDetails-buy .Specifications h3 {
-        overflow: hidden;
-        color: #666666;
-        font-size: 13px;
-    }
-
-    .productDetails-buy .Specifications > ion-scroll {
-        border: none;
-        padding: 10px;
-        height: 80%;
-    }
-
-    .productDetails-buy .Specifications .productList {
-        overflow: hidden;
-        border-bottom: solid 1px #e5e5e5;
-        display: block;
-    }
-
-        .productDetails-buy .Specifications .productList ion-item {
-            position: relative;
-            margin-top: 5px;
+            top: -30px;
+            left: 16px;
             background-color: #fff;
+            height: 70px;
+            width: 70px;
+            padding: 5px;
+            overflow: hidden;
         }
 
-        .productDetails-buy .Specifications .productList h3 {
-            margin: 5px auto 3px auto;
+            .productDetails-buy .Commodity > .Img > a {
+                border: solid 1px #e5e5e5;
+                display: block;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+            }
+
+        .productDetails-buy .Commodity > h2 {
+            overflow: hidden;
+            font-size: 14px;
+            color: #666666;
+            margin: 0px 30px 0px 70px;
         }
 
-        .productDetails-buy .Specifications .productList a.All {
+        .productDetails-buy .Commodity > a {
             display: block;
             overflow: hidden;
             position: absolute;
             right: 0px;
             top: 0px;
+            width: 40px;
+            font-size: 14px;
+            color: #666666;
+            height: 48px;
+            line-height: 48px;
+        }
+
+    .productDetails-buy .Specifications {
+        padding: 6px;
+        background-color: #fff !important;
+        position: relative;
+    }
+        /*商品购买选择*/
+        .productDetails-buy .Specifications h3 {
+            overflow: hidden;
             color: #666666;
             font-size: 13px;
         }
 
-            .productDetails-buy .Specifications .productList a.All > i {
-                /*font-size:25px;
-                float: right;*/
-            }
-
-        .productDetails-buy .Specifications .productList div {
-            overflow: hidden;
-            padding-bottom: 5px;
+        .productDetails-buy .Specifications > ion-scroll {
+            border: none;
+            padding: 10px;
+            height: 40vh;
         }
 
-            .productDetails-buy .Specifications .productList div > a {
-                overflow: hidden;
-                display: block;
-                float: left;
-                font-size: 12px;
-                color: #444444;
-                background-color: #eeeeee;
-                text-align: center;
-                padding: 2px 15px;
-                margin: 0px 10px 5px auto;
+        .productDetails-buy .Specifications .productList {
+            overflow: hidden;
+            display: block;
+        }
+
+            .productDetails-buy .Specifications .productList ion-item {
                 position: relative;
-                border-radius: 2px;
+                margin-top: 5px;
+                background-color: #fff;
             }
 
-                .productDetails-buy .Specifications .productList div > a > span {
-                    color: #f34242;
+            .productDetails-buy .Specifications .productList h3 {
+                margin: 5px auto 3px auto;
+            }
+
+            .productDetails-buy .Specifications .productList a.All {
+                display: block;
+                overflow: hidden;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                color: #666666;
+                font-size: 13px;
+            }
+
+                .productDetails-buy .Specifications .productList a.All > i {
+                    /*font-size:25px;
+                float: right;*/
+                }
+
+            .productDetails-buy .Specifications .productList div {
+                overflow: hidden;
+                padding-bottom: 5px;
+            }
+
+                .productDetails-buy .Specifications .productList div > a {
+                    overflow: hidden;
                     display: block;
-                    height: 15px;
-                    line-height: 15px;
+                    float: left;
+                    font-size: 12px;
+                    color: #444444;
+                    background-color: #eeeeee;
+                    text-align: center;
+                    padding: 2px 15px;
+                    margin: 0px 10px 5px auto;
+                    position: relative;
+                    border-radius: 2px;
                 }
 
-                .productDetails-buy .Specifications .productList div > a > i {
-                    display: none;
-                }
-
-                .productDetails-buy .Specifications .productList div > a.on {
-                    border: solid 1px #f34242;
-                    padding: 1px 14px;
-                }
-
-                    .productDetails-buy .Specifications .productList div > a.on > i {
-                        display: block;
-                        position: absolute;
-                        right: 0px;
-                        bottom: -1px;
-                        font-size: 15px;
+                    .productDetails-buy .Specifications .productList div > a > span {
                         color: #f34242;
+                        display: block;
                         height: 15px;
-                        width: 15px;
+                        line-height: 15px;
                     }
 
-    /*进货数量*/
-    .productDetails-buy .Specifications .PurchaseNumber {
-        padding: 15px 0px;
-        border-bottom: solid 1px #e5e5e5;
+                    .productDetails-buy .Specifications .productList div > a > i {
+                        display: none;
+                    }
+
+                    .productDetails-buy .Specifications .productList div > a.on {
+                        border: solid 1px #f34242;
+                        padding: 1px 14px;
+                    }
+
+                        .productDetails-buy .Specifications .productList div > a.on > i {
+                            display: block;
+                            position: absolute;
+                            right: 0px;
+                            bottom: -1px;
+                            font-size: 15px;
+                            color: #f34242;
+                            height: 15px;
+                            width: 15px;
+                        }
+
+            /*进货数量*/
+            .productDetails-buy .Specifications .productList .PurchaseNumber {
+                padding-top: 15px;
+                border-top: solid 1px #e5e5e5;
+                overflow: hidden;
+            }
+
+                .productDetails-buy .Specifications .productList .PurchaseNumber > h3 {
+                    float: left;
+                }
+
+            .productDetails-buy .Specifications .productList .NumberDiv {
+                overflow: hidden;
+                float: right;
+            }
+
+                .productDetails-buy .Specifications .productList .NumberDiv > a {
+                    display: block;
+                    overflow: hidden;
+                    float: left;
+                    font-size: 15px;
+                    color: #f34242;
+                    border: solid 1px #f34242;
+                    border-radius: 2px;
+                    width: 34px;
+                    height: 34px;
+                    line-height: 34px;
+                    text-align: center;
+                    background-color: #fff;
+                    padding: 0px;
+                    margin: 0px 3px;
+                }
+
+                .productDetails-buy .Specifications .productList .NumberDiv > input {
+                    overflow: hidden;
+                    float: left;
+                    font-size: 14px;
+                    color: #aaaaaa;
+                    text-align: center;
+                    border: solid 1px #ccc;
+                    width: 30%;
+                }
+
+    .productDetails-buy .Billing {
         overflow: hidden;
+        border-top: solid 1px #e5e5e5;
+        padding: 15px 20px;
+        background-color: #fff;
     }
 
-        .productDetails-buy .Specifications .PurchaseNumber > h3 {
-            float: left;
-        }
-
-    .productDetails-buy .Specifications .NumberDiv {
-        overflow: hidden;
-        float: right;
-    }
-
-        .productDetails-buy .Specifications .NumberDiv > a {
+        .productDetails-buy .Billing > span {
+            overflow: hidden;
             display: block;
-            overflow: hidden;
-            float: left;
-            font-size: 15px;
-            color: #f34242;
-            border: solid 1px #f34242;
-            border-radius: 2px;
-            width: 34px;
-            height: 34px;
-            line-height: 34px;
-            text-align: center;
-        }
-
-        .productDetails-buy .Specifications .NumberDiv > input {
-            overflow: hidden;
             float: left;
             font-size: 14px;
-            color: #aaaaaa;
-            text-align: center;
-            border: solid 1px #ccc;
-            width: 30%;
+            color: #666666;
+            line-height: 30px;
         }
 
+        .productDetails-buy .Billing > a {
+            overflow: hidden;
+            display: block;
+            float: right;
+            font-size: 14px;
+            color: #fff;
+            background-color: #f34242;
+            text-align: center;
+            line-height: 30px;
+        }
 
 .popover-backdrop.active {
     background-color: rgba(0,0,0,0.6) !important;
@@ -393,8 +444,8 @@
     margin: 0;
     border-radius: 0;
     opacity: 1;
-    min-height: 50%;
-    background-color: #fff;
+    min-height: 60%;
+    /*background-color: #fff;*/
 }
 
 .productDetails-buy > .popover-arrow {

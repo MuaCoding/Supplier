@@ -1,0 +1,90 @@
+.afterService {
+	width: 300px;
+	height: 185px;
+	opacity: 1;
+	border-radius: 3px !important;
+	background-color: #fff;
+	margin-left: -150px
+
+}
+
+.afterService .service-body{
+	width: 100%;
+	height: 100%;
+	color: #444444;
+	font-size: 14px;
+	
+}
+
+.afterService .service-body .header{
+	width: 100%;
+	display: block;
+	
+	line-height: 30px;
+	padding: 10px 20px;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.afterService .service-body .header .icon{
+	
+	line-height: 30px;
+	font-size: 20px;
+}
+
+.afterService .service-body .policy {
+	display: block;
+	width: 100%;
+	padding: 0 20px;
+	height: 30px;
+	line-height: 30px;
+	color: #808080;
+	text-align: center;
+	font-size: 13px;
+}
+
+
+
+.button-warp{
+    padding: 20px;
+}
+
+
+.col-xs-2{
+	width: 50%;
+}
+.back-btn {
+	display: block;
+	width: 100%;
+    float: left;
+    font-size: 13px;
+    color: #636363;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border: solid 1px #f34242;
+    color: #f34242;
+    background-color: #fff;
+    margin-right: 5px;
+}
+.replace-btn {
+	display: block;
+	width: 100%;
+    float: left;
+    font-size: 13px;
+    color: #636363;
+    height: 45px;
+    line-height: 45px;
+    border: solid 1px #f34242;
+    color: #fff;
+    background-color: #f34242;
+    text-align: center;
+    margin-left: 5px;
+}
+
+/*.afterService .button-warp .back-btn.clear {
+    border: solid 1px #f34242;
+    color: #f34242;
+    background-color: #fff;
+    margin-left: 10px;
+}*/
+
