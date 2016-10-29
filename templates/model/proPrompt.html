@@ -4,12 +4,13 @@
             售后服务
             <i class="icon PFIcon-Cancal pull-right" ng-click="closePrompt()"></i>
         </p>
-        <div class="button-bar">
-            <div class="col-xs-2">
-                <a class="back-btn" ui-sref ="backGoods">我要退货</a>
+        <div class="button-warp">
+            <div class="col-xs-2 pull-left">
+                <a class="back-btn" ng-click ="exchange();">我要退货</a>
             </div>
-            <div class="col-xs-2">
-                <a class="replace-btn" ui-sref = "replaceGoods">我要换货</a>
+            <div class="col-xs-2 pull-left">
+                <a class="replace-btn" ng-click="proReplace();">我要换货</a>
+                <!-- <a class="replace-btn" ui-sref = "replaceGoods">我要换货</a> -->
             </div>
         </div>
         <div class="policy">

@@ -1,0 +1,48 @@
+<ion-view class="backGoods-Class">
+	
+	<ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+	<ion-nav-title>
+		<h1 class="titleNav">退货操作</h1>
+	</ion-nav-title>
+	
+	<ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+	<ion-content overflow-scroll="true"  class="scroll-content has-header">
+		<div class="back-Content">
+			<ion-scroll class="scroll-view">
+				<div class="boughtProduct">
+					<ion-list class="">
+		                <ion-item class="boughtProduct-item" style = "margin-bottom:10px;" ng-repeat= "items in proData">
+		                	<div class="boughtProduct-item-header">
+		                		<i class="icon pull-left"></i>
+		                		<p class="company-name pull-left" style="margin-left:10px;" ng-bind="items.name"></p>
+		                		<i class="fa fa-angle-right font-secondary icon-go pull-right" aria-hidden="true"></i>
+		                		<!-- <p class="pro-status pull-right" style="color:#f3a242;">正在寄回品牌商</p> -->
+		                	</div>
+		                	<div class="boughtProduct-item-info"  style="padding-left:40px;" ng-repeat= "item in items.goods">
+		                		<i class="icon-select"></i>
+		                		<div class="boughtProduct-avatar imgMin pull-left" style="background-image: url(/images/Products.jpg);"></div>
+		                		<!-- <i class="fa fa-angle-right font-secondary icon-next pull-right" aria-hidden="true"></i> -->
+	                			<p class="pull-left" style="color:#444;font-size:13px;width:47%;margin-top:10px;" ng-bind="item.tradeName"></p>
+	                			<p class="price-total pull-right" style="color:#444;font-size:13px;margin-top:10px;" ng-bind="item.amount"></p>
+	                			<p class="pull-left" style="font-size:12px;color:#636363;float:left;overflow:hidden;">等共{{item.number}}种货品</p>
+		                	</div>
+		                </ion-item>
+		                
+					</ion-list>
+				</div>
+			</ion-scroll>
+			<div class="count-wrap border-top count-wrap-flex" ng-if="!edit.showDelete">
+				<div class="count-total count-flex">
+					<span style="font-size:13px;color: #aaaaaa;">您已选2件货品</span>
+				</div>
+				<a class="count-next count-flex" style="font-size:13px;" ng-href="#/ordersInfo">
+					提交退货申请
+				</a>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>	

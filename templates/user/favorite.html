@@ -19,11 +19,13 @@
 								<div class="products">
 
 									<ion-list class="products-item mb10">
-						                <ion-item ng-href="#/productDetails">
-						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
-						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
-						                    <div class="cancal-btn" ng-if="">
+						                <ion-item>
+						                	<div ng-href="#/productDetails">
+						                		<div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
+							                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
+							                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
+						                	</div>
+						                    <div class="cancal-btn" ng-click="confirm();">
 						                    	<i class="PFIcon-Cancal" style="font-size:15px;"></i>
 						                    	<span>取消收藏</span>
 						                    </div>

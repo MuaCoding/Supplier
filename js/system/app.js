@@ -184,7 +184,8 @@
         url: "/favorite",
         views: {
             'user-footer': {
-                templateUrl: "/templates/user/favorite.html"
+                templateUrl: "/templates/user/favorite.html",
+                controller: 'favoriteController'
             }
         }
     })
@@ -348,8 +349,8 @@
     //退货操作
     .state('backGoods', {
         url: "/backGoods",
-        templateUrl: "/templates/user/backGoods.html"
-        //controller: 'forgotPasswordController'
+        templateUrl: "/templates/user/backGoods.html",
+        controller: 'backGoodsController'
     })
 
     //换货操作
@@ -358,7 +359,18 @@
         templateUrl: "/templates/user/replaceGoods.html"
         //controller: 'forgotPasswordController'
     })
+    
 
+    //立即评价
+    .state('footers.reviews', {
+        url: "/reviews",
+        views: {
+            'user-footer': {
+               templateUrl: "/templates/user/reviews.html",
+               controller: 'reviewsController'
+            }
+        }
+    })
 
 })
     //返回

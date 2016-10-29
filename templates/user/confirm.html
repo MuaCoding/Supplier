@@ -16,13 +16,30 @@
 			<ion-list class="confirm-info">
 				<ion-item>
 					<div class="confirm-bg">
-						<img src="" alt="">
+						<!-- <img src="" alt=""> -->
+						<div class="imgMin images" style="background:url(/images/do.png);"></div>
+						<span class="parole">
+							恭喜您，确认收货成功！
+						</span>
 					</div>
 				</ion-item>
-				<ion-item>
-					<p></p>
+				<ion-item class="confirm-detail">
+					<p>订单编号<span class="pull-right">1003582388132</span></p>
+					<p>支付方式<span class="pull-right">微信支付</span></p>
+					<p>发票抬头<span class="pull-right">个人发票、抬头：无</span></p>
+					<p>订单提交时间<span class="pull-right">2016-06-20 15:24:50</span></p>
 				</ion-item>
-				
+				<ion-item>
+					<div class="button-warp">
+			            <div class="col-xs-2 pull-left">
+			                <a class="back-btn" ng-click ="$ionicGoBack('/user')">返回会员中心</a>
+			            </div>
+			            <div class="col-xs-2 pull-left">
+			                <a class="replace-btn" ui-sref="footers.reviews">立即评价</a>
+			                <!-- <a class="replace-btn" ui-sref = "replaceGoods">我要换货</a> -->
+			            </div>
+			        </div>
+				</ion-item>
 			</ion-list>
 			
 		</div>

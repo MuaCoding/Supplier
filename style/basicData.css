@@ -1,14 +1,15 @@
- .input-group input::-webkit-input-placeholder {
+.input-group input::-webkit-input-placeholder {
             color: #888 !important;
         }
 
-　　 .input-group input:-moz-placeholder {
+.input-group input:-moz-placeholder {
     color: #888 !important;
 }
 
-　　 .input-group input::-moz-placeholder {
+.input-group input::-moz-placeholder {
     color: #888 !important;
 }
 .input-group select, .input-group input{
 	color: #888;
 }
+

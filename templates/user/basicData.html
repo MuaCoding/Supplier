@@ -40,17 +40,56 @@
 						<!-- <p class="input-select">请选择</p>
 						<i class="PFIcon-BTriangle icon-down font30"></i> -->
 					</div>
+					<div class="input-group addon" style="padding-right: 41%;">
+						<div class="input-label">
+							邮箱
+						</div>
+						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入邮箱">
+						<div class="smscode">
+							使用当前绑定邮箱
+						</div>
+					</div>
+					<div class="input-group addon" style="padding-right: 41%;">
+						<div class="input-label">
+							手机
+						</div>
+						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入手机号码">
+						<div class="smscode">
+							使用当前绑定手机
+						</div>
+					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							固定电话
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入您的固定电话">
+						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入手机号码">
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							联系地址
+						</div>
+						<select name="input" id="" class="full-width input-select">
+							<option value="请选择">请选择</option>
+							<option value="请选择">品牌商</option>
+						</select>
+					</div>
+					<div class="input-group addon">
+						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入详细地址">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							邮编
 						</div>
 						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入邮政编码">
+					</div>
+					<div class="input-group addon" style="padding-right: 41%;">
+						<div class="input-label">
+							关联微信
+						</div>
+						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="尚未关联">
+						<div class="smscode" style="border-color: #3abf3a;color :#3abf3a;">
+							使用微信授权绑定
+						</div>
 					</div>
 
 					<div class="btn-wrap">

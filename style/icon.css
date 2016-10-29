@@ -198,6 +198,7 @@
 
 .PFIcon-Star:before {
     content: "\e62a";
+    font-size: 18px;
 }
 
 .PFIcon-Cancal:before {

@@ -381,7 +381,7 @@
 
 
 //订单详情
-.controller('ordersDetailController', function($scope,$ionicPopover){
+.controller('ordersDetailController', function($scope,$state,$ionicPopover){
     
 
     $scope.proData = [
@@ -420,16 +420,29 @@
         $scope.popover.hide();
     };
 
+    $scope.proReplace=function(){
+        $scope.popover.remove();
+        $state.go("replaceGoods");
+    }
+
+    $scope.exchange = function(){
+        $scope.popover.remove();
+        $state.go("backGoods");
+    }
+
     // $scope.$on("$destroy", function () {
     //     $scope.popover.remove();
     //     alert('0')
+    // });
+    // $scope.$on("$destroy", function () {
+    //     $scope.ppopover.remove();
     // });
     
 })
 
 
 
-//returnsDetail
+//退货详情
 .controller('returnsDetailController', function($scope){
     $scope.proData = [
             {
@@ -499,7 +512,8 @@
             color: "黑色",
             edition: "普通版",
             comment: "还行吧！ 粉色是欧洲买的 用了一年了已经 和这次买的比较了一下 外包装方面国内的真心简易了好多哦！总的来说我觉得粉色质感较好 线的柔软度更好些看着也略宽略厚实一些 耳机的金属质感粉色更强些 音质方面么我这种门外汉估计也分辨不出来的?? 因为我是外貌协会的"
-        }]
+        }
+    ]
 })
 
 
@@ -593,6 +607,26 @@
     }
 })
 
+
+//立即评价
+
+.controller('reviewsController', function($scope){
+    $scope.proData = [
+            {
+                name: "深圳罗技电子科技有限公司",
+                goods: [
+                    {
+                        id: 1,
+                        tradeName: "Beats Solo1 无线头戴式耳机",
+                        amount: "￥" + 198.00,
+                        color: "黑色",
+                        edition: "普通版"
+                    }
+                ]
+            }
+        ]
+})
+
 //账户设置-地址管理 -- 添加新地址
 .controller('newAddressController', function ($scope) {
     $scope.input = {}
@@ -603,3 +637,47 @@
         $scope.agree = !$scope.agree;
     };
 })
+
+//退货操作
+.controller('backGoodsController', function($scope){
+    $scope.proData = [
+        {
+            name: "深圳罗技电子科技有限公司",
+            goods: [
+                {
+                    id: 1,
+                    tradeName: "Beats Solo1 无线头戴式耳机",
+                    amount: "￥" + 1980.00,
+                    color: "黑色",
+                    edition: "普通版",
+                    number: 5
+                },{
+                    id: 2,
+                    tradeName: "Apple 数据闪充数据线",
+                    amount: "￥" + 1980.00,
+                    color: "黑色",
+                    edition: "普通版"
+                }
+            ]
+        },
+    ]
+})
+
+
+//favoriteController收藏确认
+.controller('favoriteController', function($scope,$state,$ionicPopover){
+    $ionicPopover.fromTemplateUrl("/templates/model/confirm.html", {
+        scope: $scope
+    }).then(function (popover) {
+        $scope.popover = popover;
+    })
+
+    $scope.confirm = function () {
+        $scope.popover.show();
+    }
+    $scope.closeConfirm = function () {
+        $scope.popover.remove();
+    };
+
+})
+

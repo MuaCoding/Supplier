@@ -46,12 +46,14 @@
 
 .button-warp{
     padding: 20px;
+    overflow: hidden;
 }
 
 
 .col-xs-2{
 	width: 50%;
 }
+
 .back-btn {
 	display: block;
 	width: 100%;
@@ -88,3 +90,6 @@
     margin-left: 10px;
 }*/
 
+.afterService > .popover-arrow {
+    opacity: 0;
+}

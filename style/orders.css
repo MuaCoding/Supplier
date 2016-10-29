@@ -143,7 +143,7 @@
 }
 
 /*************order 底部下一步****************/
-.orders-Class .count-wrap{
+.count-wrap{
 	position: fixed;
 	width: 100%;
     height: 50px;
@@ -155,7 +155,7 @@
 }
 
 
-.orders-Class .count-wrap-flex{
+.count-wrap-flex{
 	display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -165,7 +165,7 @@
     flex-wrap: wrap;
 }
 
-.orders-Class .count-flex{
+.count-flex{
 	display: block;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -175,12 +175,12 @@
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
 }
-.orders-Class .count-wrap .count-total{
+.count-wrap .count-total{
 	display: block;
 	padding-left: 10px;
 	line-height: 49px;
 }
-.orders-Class .count-wrap .count-next{
+.count-wrap .count-next{
 	display: block;
     max-width: 98px;
     line-height: 50px;
@@ -190,7 +190,7 @@
     font-size: 16px;
 }
 
-.orders-Class .count-wrap .all-select {
+.count-wrap .all-select {
 	width: 32px;
 	text-align: center;
 	overflow: hidden;
@@ -198,13 +198,13 @@
 	text-align: left;
 }
 
-.orders-Class .count-wrap .all-select-new{
+.count-wrap .all-select-new{
 	max-width: 60px;
 	margin-left: 15px;
 	margin-top: 9px;
 }
 
-.orders-Class .count-wrap .count-btn .btn{
+.count-wrap .count-btn .btn{
 	display: inline-block;
 	text-align: center;
 	height: 33px;

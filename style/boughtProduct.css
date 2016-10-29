@@ -23,7 +23,19 @@
 	display: block;
 	padding: 0 10px;
 	overflow: hidden;
-	border: 1px solid #eaeaea;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.boughtProduct .boughtProduct-item .boughtProduct-item-header .icon{
+	position: relative;
+    top: 14px;
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    border: 1px solid #eaeaea;
+    border-radius: 100%;
+    font-size: 19px;
+
 }
 
 .boughtProduct .boughtProduct-item .boughtProduct-item-header .icon-inner{
@@ -53,11 +65,24 @@
 }
 
 .boughtProduct .boughtProduct-item .boughtProduct-item-info{
+	position: relative;
 	display: block;
 	padding: 15px 10px;
 	overflow: hidden;
-	border: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 }
+.boughtProduct .boughtProduct-item .boughtProduct-item-info .icon-select{
+	position: absolute;
+    top: 35px;
+    left: 10px;
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    border: 1px solid #eaeaea;
+    border-radius: 100%;
+    font-size: 19px;
+}
+
 
 .boughtProduct .boughtProduct-item .boughtProduct-item-info .boughtProduct-avatar{
 	width: 70px;

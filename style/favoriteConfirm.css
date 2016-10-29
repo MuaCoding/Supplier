@@ -1,0 +1,37 @@
+.favoriteConfirm{
+	width: 250px;
+	height: 100px;
+	opacity: 1;
+	border-radius: 3px !important;
+	background-color: #fff;
+	margin-left: -125px;
+}
+
+
+.favoriteConfirm .favoriteConfirm-body{
+	width: 100%;
+	height: 100%;
+	color: #444444;
+	font-size: 14px;
+	
+}
+
+.favoriteConfirm .favoriteConfirm-body .header{
+	width: 100%;
+	display: block;
+	line-height: 30px;
+	padding: 10px 20px;
+}
+
+.favoriteConfirm .favoriteConfirm-body .btn-area{
+	display: block;
+	padding: 0 20px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 13px;
+}
+
+
+.favoriteConfirm > .popover-arrow {
+    opacity: 0;
+}

@@ -1,6 +1,30 @@
-.confirm .confirm-bg{
+.confirm-Class .confirm-bg{
+	position: relative;
 	display: block;
 	width: 100%;
-	height: 250px;
+	height: 150px;
 	background-color: #e03434;
+}
+
+.confirm-Class .confirm-bg .images {
+	position: absolute;
+	height: 80px;
+	width: 90px;
+	top: 30px;
+	left: 20px;
+}
+
+.confirm-Class .confirm-bg .parole {
+	display: block;
+	margin-left: 130px;
+	height: 150px;
+	line-height: 140px;
+	font-size: 15px;
+	color: #fff;
+	font-weight: 100;
+}
+
+.confirm-Class .list .confirm-detail{
+	display: block;
+	padding: 20px 10px 10px 10px;
 }
