@@ -1,4 +1,30 @@
-﻿.inputSearch {
+﻿.hAddress {
+    position: relative;
+}
+
+    .hAddress > i {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+
+    .hAddress > select {
+        background: none;
+        border: none;
+        color: #fff;
+        height: 100%;
+        padding-left: 25px;
+    }
+
+.headSearch .inputSearch {
+    padding: 0px;
+}
+
+ .bar .title {
+    margin: 0px;
+}
+
+.inputSearch {
     background-color: #fe7b7b;
     margin: 4px;
     border-radius: 5px;
@@ -6,7 +32,7 @@
 
     .inputSearch > a, .inputSearch > input {
         color: #fff !important;
-        font-size: 15px;
+        font-size: 14px;
         height: 35px;
     }
 

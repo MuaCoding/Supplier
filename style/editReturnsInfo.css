@@ -30,7 +30,7 @@
 	position: absolute;
 	font-size: 13px;
 	left: 10px;
-
+	z-index: -5;
 }
 
 .input-group select , .input-group input {
@@ -95,11 +95,11 @@
 	display: block;
 	padding: 0 5px;
 	height: 34px;
-	line-height: 34px;
+	line-height: 32px;
 	border: 1px solid #f34242;
 	text-align: center;
 	color: #f34242;
-	font-size: 13px;
+	font-size: 12px;
 	background-color: #fff;
 }
 .addon{
@@ -107,6 +107,17 @@
 }
 
 .field {
-	padding: 15px 10px 15px 30%;
+	padding: 15px 10px 15px 25%;
 }
 
+@media only screen and (max-width: 321px) {
+	.field {
+		padding-right: 38%;
+	}
+}
+
+@media  only screen and (min-width: 375px) and (max-width: 414px) {
+	.field {
+		padding-right: 33%;
+	}
+}

@@ -1,0 +1,10 @@
+﻿<ion-popover-view class="bigPicture" >
+    <a href="javascript:void(0)" class="headReturn activeBtn1 HBIcon-return" ng-click="closePopover();"></a>
+    <ion-slide-box class="imgSlide" does-continue="false" auto-play="false" show-pager="true" ng-click="closePopover();">
+        <ion-slide ng-repeat="item in bigPictureList track by $index">
+            <ion-scroll class="imgScroll" zooming="true" min-zoom="1">
+                <i class="Images" ng-click="closePopover();"><img src="{{item}}" /></i>
+            </ion-scroll>
+        </ion-slide>
+    </ion-slide-box>
+</ion-popover-view>

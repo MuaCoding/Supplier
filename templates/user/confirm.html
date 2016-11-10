@@ -1,7 +1,7 @@
 <ion-view class="confirm-Class" title="确认收货">
 	
 	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/forgotPassword')"><i class="PFIcon-back"></i>返回</a>
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/ordersDetail')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	<ion-nav-title>
 		<h1 class="titleNav">确认收货</h1>
@@ -32,10 +32,10 @@
 				<ion-item>
 					<div class="button-warp">
 			            <div class="col-xs-2 pull-left">
-			                <a class="back-btn" ng-click ="$ionicGoBack('/user')">返回会员中心</a>
+			                <a class="back-btn" ng-click ="$ionicGoBack('/tabs/user')">返回会员中心</a>
 			            </div>
 			            <div class="col-xs-2 pull-left">
-			                <a class="replace-btn" ui-sref="footers.reviews">立即评价</a>
+			                <a class="replace-btn" ng-href="/reviews">立即评价</a>
 			                <!-- <a class="replace-btn" ui-sref = "replaceGoods">我要换货</a> -->
 			            </div>
 			        </div>

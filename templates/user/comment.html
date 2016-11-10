@@ -1,6 +1,6 @@
 <ion-view class="comments-Class">
 	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/user')"><i class="PFIcon-back"></i>返回</a>
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	
 	<ion-nav-title>
@@ -14,7 +14,7 @@
 		<div class="comments-Content">
 			<ion-scroll class= "scroll-view">
 				<ion-list class="comments-group">
-					<ion-item ui-sref = "commentDetail" class="">
+					<ion-item ng-href = "/commentDetail" class="">
 						<div class="comments-group-item">
 							<i class="imgMin item-avatar" style="background:url('/images/ear.jpg')"></i>
 							<p>这款产品还可以。就是左右两个小写的b特鲜艳</p>

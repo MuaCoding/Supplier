@@ -40,7 +40,7 @@
 						<!-- <p class="input-select">请选择</p>
 						<i class="PFIcon-BTriangle icon-down font30"></i> -->
 					</div>
-					<div class="input-group addon" style="padding-right: 41%;">
+					<div class="input-group field">
 						<div class="input-label">
 							邮箱
 						</div>
@@ -49,11 +49,11 @@
 							使用当前绑定邮箱
 						</div>
 					</div>
-					<div class="input-group addon" style="padding-right: 41%;">
+					<div class="input-group field">
 						<div class="input-label">
 							手机
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入手机号码">
+						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入手机号码" pattern="[0-9]*" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
 						<div class="smscode">
 							使用当前绑定手机
 						</div>
@@ -62,7 +62,7 @@
 						<div class="input-label">
 							固定电话
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入手机号码">
+						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入手机号码" pattern="[0-9]*" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
@@ -82,7 +82,7 @@
 						</div>
 						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入邮政编码">
 					</div>
-					<div class="input-group addon" style="padding-right: 41%;">
+					<div class="input-group field">
 						<div class="input-label">
 							关联微信
 						</div>

@@ -1,0 +1,16 @@
+﻿<ion-modal-view class="Search-class">
+
+    <ion-header-bar class="headBar">
+        <a href="javascript:void(0)" class="headReturn buttons buttons-left" ng-click="closeSearch();"><i class="PFIcon-back"></i>返回</a>
+        <div class="item-input-wrapper inputSearch"><i class="icon ion-ios-search placeholder-icon"></i><input type="text" placeholder="找什么呢？搜索试试吧" /></div>
+        <a href="javascript:" class=" headReturn buttons buttons-right ASearch">搜索</a>
+    </ion-header-bar>
+
+
+    <ion-content>
+        <ion-list class="SearchList" hide-on-keyboard-open>
+            <ion-item ng-repeat="item in AllModel.SearchModel track by $index" ng-click="SetCheck(item,AllModel.SearchModel)" ng-class="{'on':item.Check}" class="item item-button-right">{{item.SearchName}}<a href="javascript:;" class="button button-clear button-small PFIcon-close" ng-click="onItemDelete(item)"></a></ion-item>
+        </ion-list>
+        <button class="button button-outline button-full mt30 SearchClear" ng-click="onDelete()">清空搜索记录</button>
+    </ion-content>
+</ion-modal-view>

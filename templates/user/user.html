@@ -12,8 +12,8 @@
     	<div class="me-Content">
     		<ion-scroll class="scroll-view">
 	    		<ion-list  class="user-info">
-	    			<ion-item ui-sref = "accountSetting">
-	    				<a class="user-status border-bottom">
+	    			<ion-item >
+	    				<a class="user-status border-bottom" ng-href="/accountSetting">
 	    					<i class="imgMin Images" style="background:url('/images/default.png')"></i>
 	    					<p class="user-name">Heho</p>
 							<p style="font-size:12px;margin-bottom:5px;">
@@ -59,57 +59,57 @@
 					
 	    		</ion-list>
 	    		<ion-list class="action-group">
-	    			<ion-item style="margin-top: 10px;" ui-sref ="myOrders">
+	    			<ion-item style="margin-top: 10px;" ng-href ="myOrders">
 						<a class="action-group-item font-default">
 							<i class="icon-inner PFIcon-inventory pull-left" style="color: #888"></i>
 							<p class="action-group-sub pull-left">进销存</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item> 
-	    			<ion-item style="margin-top: 10px;" ui-sref ="myOrders">
-						<a class="action-group-item font-default">
+	    			<ion-item style="margin-top: 10px;">
+						<a class="action-group-item font-default" ng-href ="/myOrders">
 							<i class="icon-inner PFIcon-stock pull-left" style="color: #f77441"></i>
 							<p class="action-group-sub pull-left">我的进货单</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item> 
-					<ion-item ui-sref = "footers.favorite">
-						<a class="action-group-item font-default">
+					<ion-item >
+						<a class="action-group-item font-default" ng-href="/favorite">
 							<i class="icon-inner PFIcon-favorite pull-left" style="color: #f7e441"></i>
 							<p class="action-group-sub pull-left">收藏夹</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item>
-					<ion-item ui-sref = "footers.myNews">
-						<a class="action-group-item font-default">
+					<ion-item >
+						<a class="action-group-item font-default" ng-href = "/myNews">
 							<i class="icon-inner PFIcon-news pull-left" style="color: #1fad40"></i>
 							<p class="action-group-sub pull-left">我的消息</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item>
-					<ion-item style="margin-top: 10px;" ui-sref="footers.boughtProduct">
-						<a class="action-group-item font-default">
+					<ion-item style="margin-top: 10px;">
+						<a class="action-group-item font-default" ng-href="/boughtProduct">
 							<i class="icon-inner PFIcon-bought pull-left" style="color: #dfc377"></i>
 							<p class="action-group-sub pull-left">已买到的货品</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item>
-					<ion-item style="margin-top: 10px;" ui-sref = "footers.comment">
-						<a class="action-group-item font-default">
+					<ion-item style="margin-top: 10px;">
+						<a class="action-group-item font-default" ng-href="/comment">
 							<i class="icon-inner PFIcon-praised pull-left" style="color: #77addf;font-size:24px;"></i>
 							<p class="action-group-sub pull-left">我的评价</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item>
-					<ion-item ui-sref ="footers.recordSearch">
-						<a class="action-group-item font-default">
+					<ion-item>
+						<a class="action-group-item font-default" ng-href ="/recordSearch">
 							<i class="icon-inner PFIcon-query pull-left" style="color: #23dbae"></i>
 							<p class="action-group-sub pull-left">交易记录查询</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item>
-					<ion-item ui-sref ="footers.returns">
-						<a class="action-group-item font-default">
+					<ion-item>
+						<a class="action-group-item font-default" ng-href ="/returns">
 							<i class="icon-inner PFIcon-ReturnPolicy pull-left" style="color: #595959"></i>
 							<p class="action-group-sub pull-left">退换货管理</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>

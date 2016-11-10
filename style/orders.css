@@ -26,7 +26,7 @@
 	display: block;
 	padding: 15px 10px;
 	overflow: hidden;
-	color: #888;
+	color: #000;
 
 }
  .orders-group .orders-title-wrap .orders-title{
@@ -64,7 +64,6 @@
  .orders-group .orders-item-wrap  .orders-item .orders-item-info .orders-item-message .orders-item-name{
 	display: block;
 	font-size: 15px;
-	font-weight:300;
 }
 
  .orders-group .orders-item-wrap .orders-item .orders-item-info .orders-item-message .orders-item-text{

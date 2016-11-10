@@ -1,23 +1,49 @@
-﻿
-<ion-view title="批发电商" class="home-Class">
+﻿<ion-view title="批发电商" class="home-Class">
     <!--Header部分-->
-    <ion-nav-title class="headerBar">
-        <div class="inputSearch"><a class="item-input-wrapper inputSearch"><i class="icon ion-ios-search placeholder-icon"></i>找什么呢？搜索试试吧</a></div>
-        <!--<ion-header-bar class="item-input-inset">-->
-        <!--<label class="item-input-wrapper">
-            <i class="icon ion-ios-search placeholder-icon"></i>
-            <input type="search" placeholder="Search" ng-model="searchContent">
-        </label>-->
-        <!--<button class="button button-clear">
-            取消
-        </button>-->
-        <!--</ion-header-bar>-->
+    <ion-nav-title class="headerBar headSearch" modal-linkage>
+        <div class="inputSearch"><a class="item-input-wrapper inputSearch" ng-click="openSearch();"><i class="icon ion-ios-search placeholder-icon"></i>找什么呢？搜索试试吧</a></div>
     </ion-nav-title>
-    <ion-nav-buttons side="left" class="">
-
-        <a href="javascript:void(0)" class="headReturn" ><i class="PFIcon-address"></i>广东</a>
+    <ion-nav-buttons side="left">
+        <div class="headReturn hAddress">
+            <i class="PFIcon-address"></i>
+            <select>
+                <option>北京</option>
+                <option>天津</option>
+                <option>河北</option>
+                <option>山西</option>
+                <option>内蒙古</option>
+                <option>辽宁</option>
+                <option>吉林</option>
+                <option>黑龙江</option>
+                <option>上海</option>
+                <option>江苏</option>
+                <option>浙江</option>
+                <option>安徽</option>
+                <option>福建</option>
+                <option>江西</option>
+                <option>山东</option>
+                <option>河南</option>
+                <option>湖北</option>
+                <option>湖南</option>
+                <option>广东</option>
+                <option>广西</option>
+                <option>海南</option>
+                <option>重庆</option>
+                <option>四川</option>
+                <option>贵州</option>
+                <option>云南</option>
+                <option>西藏</option>
+                <option>陕西</option>
+                <option>甘肃</option>
+                <option>青海</option>
+                <option>宁夏</option>
+                <option>新疆</option>
+                <option>台湾</option>
+                <option>香港</option>
+                <option>澳门</option>
+            </select>
+        </div>
     </ion-nav-buttons>
-
     <ion-content>
         <!-- banner -->
         <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true" class="headImgDiv" does-continue="true">
@@ -32,10 +58,10 @@
             </ion-slide>
         </ion-slide-box>
 
-       <div class="NewProductsDiv whiteBg mb10">
+        <div class="NewProductsDiv whiteBg mb10">
             <div class="headTitle">
                 <h3>新品上架</h3>
-                <a class="More" ui-sref="productList">MORE<i class="PFIcon-RTriangle"></i></a>
+                <a class="More" ng-href="/productList">MORE<i class="PFIcon-RTriangle"></i></a>
             </div>
             <ion-scroll direction="x" shouldfreeze="x" scrollbar-x="false" locking="true" zooming="false" has-bouncing="true" class="NewPro" ng-class="NewPro" style="height:100px;">
                 <ion-list>
@@ -69,27 +95,27 @@
                 <h3>热销产品</h3>
             </div>
             <ion-list class="proList mb10">
-                <ion-item ng-href="#/productDetails">
+                <ion-item ng-href="/productDetails">
                     <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
                     <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
                     <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
                 </ion-item>
-                <ion-item ng-href="#/productDetails">
+                <ion-item ng-href="/productDetails">
                     <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
                     <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
                     <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
                 </ion-item>
-                <ion-item ng-href="#/productDetails">
+                <ion-item ng-href="/productDetails">
                     <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
                     <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
                     <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
                 </ion-item>
-                <ion-item ng-href="#/productDetails">
+                <ion-item ng-href="/productDetails">
                     <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
                     <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
                     <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
                 </ion-item>
-                
+
             </ion-list>
         </div>
     </ion-content>

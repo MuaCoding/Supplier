@@ -55,7 +55,7 @@
 									<div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg)">
 									</div>
 									<div class="orders-item-message">
-										<h3 class="orders-item-name ellipsis" ng-bind="pro.tradeName"></h3>
+										<p class="orders-item-name ellipsis" ng-bind="pro.tradeName"></p>
 										<div class="orders-item-text ellipsis margin-xs-top">
 											<span class="" ng-bind="pro.amount"></span>
 											<span>|</span>
@@ -79,12 +79,12 @@
 							</div>
 						</div>
 					</ion-item>
-					<ion-item ui-sref="footers.confirm">
-						<div class="btn-wrap">
-							<a class="confirm-btn">
+					<ion-item>
+						<a class="btn-wrap" style="padding:20px 10px;" ng-href="/confirm">
+							<div class="confirm-btn">
 								<span>确认收货</span>
-							</a>
-						</div>
+							</div>
+						</a>
 					</ion-item>
 					<a class="click-here" ng-click = "proPrompt()">
 						<span href="">需要售后服务？点击这里</span>

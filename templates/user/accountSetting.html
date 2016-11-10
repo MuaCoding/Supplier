@@ -1,6 +1,6 @@
 <ion-view class="me-Class">
 	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/user')"><i class="PFIcon-back"></i>返回</a>
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	<ion-nav-title>
 		<h1 class="titleNav">账户设置</h1>
@@ -13,41 +13,41 @@
 		<div class="me-Content">
 			<ion-scroll class="scroll-view">
 				<ion-list class="action-group">
-	    			<ion-item ui-sref = "footers.basicData">
+	    			<ion-item ng-href = "/basicData">
 						<div class="action-group-item font-default">
 							<i class="icon-inner PFIcon-basic pull-left" style="color: #77addf"></i>
 							<p class="action-group-sub pull-left">基本信息</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</div>
 					</ion-item>
-					<ion-item ui-sref = "footers.avatarSettings">
+					<ion-item ng-href = "/avatarSettings">
 						<div class="action-group-item font-default">
 							<i class="icon-inner PFIcon-AvatarSetting pull-left" style="color: #96c54c"></i>
 							<p class="action-group-sub pull-left">头像设置</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</div>
 					</ion-item>
-					<ion-item ui-sref = "footers.addressManage">
-						<a class="action-group-item font-default">
+					<ion-item ng-href = "/addressManage">
+						<div class="action-group-item font-default">
 							<i class="icon-inner PFIcon-Receiving pull-left" style="color: #ed7844"></i>
 							<p class="action-group-sub pull-left">收货地址管理</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
+						</div>
 					</ion-item>
-					<ion-item style="margin-top: 10px;" ui-sref = "footers.accountSecurity">
-						<a class="action-group-item font-default">
+					<ion-item ng-href = "/accountSecurity" style="margin-top: 10px;" >
+						<div class="action-group-item font-default">
 							<i class="icon-inner PFIcon-authentication pull-left" style="color: #52ce49"></i>
 							<p class="action-group-sub pull-left">账户认证信息</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
+						</div>
 					</ion-item>
 					
-					<ion-item style="margin-bottom: 15px;" ui-sref ="footers.changePassword">
-						<a class="action-group-item font-default">
+					<ion-item ng-href="/changePassword" style="margin-bottom: 15px;" >
+						<div class="action-group-item font-default">
 							<i class="icon-inner PFIcon-ModifyPassword pull-left" style="color: #7d7d7d"></i>
 							<p class="action-group-sub pull-left">修改密码</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
+						</div>
 					</ion-item>
 	    		</ion-list>
 			</ion-scroll>

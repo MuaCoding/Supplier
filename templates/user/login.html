@@ -20,18 +20,19 @@
 							<div class="input-label">
 								用户名
 							</div>
-							<input type="text" class="full-width form-control" ng-model="input.username" name="username" required placeholder="电子邮箱或手机号码">
+							<input type="text" class="full-width form-control login" ng-model="data.U_Name" name="data.U_Name" required placeholder="电子邮箱或手机号码">
 						</div>
 						<div class="input-group addon">
 							<div class="input-label">
 								密码
 							</div>
-							<input type="password" class="full-width form-control" ng-model="input.username" name="username" required placeholder="请输入密码">
+							<input type="password" class="full-width form-control password" ng-model="data.U_Password" name="data.U_Password" required placeholder="请输入密码">
 						</div>
 						<div class="btn-wrap">
-							<a class="confirm-btn">
+							<a class="confirm-btn" ng-click="submit()">
 								<span>立即登录</span>
 							</a>
+														
 						</div>
 						<div class="gray-text">
 							<span class="gray-layout">OR</span>

@@ -1,32 +1,83 @@
-﻿angular.module('controllers', [])
+angular.module('DS.controllers', [])
 
 //首页
-.controller('homeController', function ($scope) {
+.controller('homeController', function ($scope, ModalFact) {
+    ////打开
+    //$scope.openSearch = function () {
+    //    ModalFact.show($scope, "/templates/model/Search.html");
+    //}
+    ////关闭
+    //$scope.closeSearch = function () {
+    //    ModalFact.clear();
+    //}
 
+    //离开视图时执行事件
+    $scope.$on("$ionicView.beforeLeave", function () {
+        ModalFact.hide();
+    });
+    $scope.AllModel = {
+        SearchModel: [
+
+        ],
+    };
+    if (localStorage.getItem("SearchList")) {
+        var UserSearchList = JSON.parse(localStorage.getItem("SearchList"));
+        $scope.AllModel.SearchModel = UserSearchList;
+    }
+
+    //if (!localStorage.getItem("SearchList")) {
+    //    var NewSearchList =[];
+    //    NewSearchList.push({
+    //        SearchName: "iPhone 5s 贴膜",
+    //    });
+    //    localStorage.setItem("SearchList", JSON.stringify(NewSearchList));
+    //}
+    //else {
+    //    var NewSearchList = JSON.parse(localStorage.getItem("SearchList"));
+    //    NewSearchList.push({
+    //        SearchName: "iPhone 5s 贴膜",
+    //    });
+    //    localStorage.setItem("SearchList", JSON.stringify(NewSearchList));
+    //}
+    $scope.SetCheck = function (v1, v2) {
+        for (var i = 0; i < v2.length; i++) {
+            v2[i].Check = false;
+        }
+        v1.Check = !v1.Check;
+    };
+
+    $scope.onItemDelete = function (item) {
+        $scope.AllModel.SearchModel.splice($scope.AllModel.SearchModel.indexOf(item), 1);
+    }
+    $scope.onDelete = function () {
+        $scope.AllModel.SearchModel = [];
+    }
 })
 
+
 //产品
-.controller('productListController', function ($scope,ModalFact) {
-    $(".Products > a > .Img").css({ "height": ($("body").width() - $(".Products > a > .Img").width()) * 0.6 })
+.controller('productListController', function ($scope, ModalFact) {
+    //$(".Products > a > .Img").css({ "height": ($("body").width() - $(".Products > a > .Img").width()) * 0.6 })
 
-    $(".filter > a").each(function () {
-        $(this).children("div").css({ "right": ($(this).width() - $(this).children("span").width()) / 4 });
-    });
-    $(".filter").on("click", "a", function () {
-        if ($(this).hasClass("active") == true) {
-            $(this).find(".on")
-            if ($(this).find(".on").hasClass("active") == false) {
-                $(this).addClass("active").siblings("i").removeClass("active");
-            }
-        }
-        else {
-            $(this).find(".xia").addClass("active").siblings("i").removeClass("active");
-        }
-        if ($(this).hasClass("active") == false) {
-            $(this).addClass("active").siblings("a").removeClass("active");
+    //$(".filter > a").each(function () {
+    //    $(this).children("div").css({ "right": ($(this).width() - $(this).children("span").width()) / 4 });
+    //});
+    //$(".filter").on("click", "a", function () {
+    //    if ($(this).hasClass("active") == true) {
+    //        $(this).find(".on")
+    //        if ($(this).find(".on").hasClass("active") == false) {
+    //            $(this).addClass("active").siblings("i").removeClass("active");
+    //        }
+    //    }
+    //    else {
+    //        $(this).find(".xia").addClass("active").siblings("i").removeClass("active");
+    //    }
+    //    if ($(this).hasClass("active") == false) {
+    //        $(this).addClass("active").siblings("a").removeClass("active");
 
-        };
-    });
+    //    };
+    //});
+
     $scope.screenClick = function () {
         ModalFact.show($scope, "/templates/model/pd-Screening.html");
     };
@@ -241,6 +292,18 @@
         $scope.varlist.itemNum++;
     }
 
+    $scope.isActive = false;
+    $scope.ChangeIsActive = function () {
+        $scope.isActive = !$scope.isActive;
+    }
+
+    $scope.De_Switch = function (v1, v2) {
+        for (var i = 0; i < v2.length; i++) {
+            v2[i].Check = false;
+        }
+        v1.Check = !v1.Check;
+    };
+
 })
 
 .controller('sortHomeController', function ($scope) {
@@ -367,15 +430,18 @@
 
     $scope.flag={showDelete:false};
 
-
-
     $scope.delete = function (index1, index2) {
-        if ($scope.cartData[index1].goods.length <= 1) {
-            $scope.cartData.splice(index1, 1);
+        //if ($scope.cartData[index1].goods.length <= 1) {
+        //    $scope.cartData.splice(index1, 1);
+        //}
+        //else {
+        //    $scope.cartData[index1].goods.splice(index2, 1);
+        //};
+        for (var i = 0; i < index2.length; i++) {
+            if (index2[i].id == index1.id) {
+                index2.splice(i,1)
+            }
         }
-        else {
-            $scope.cartData[index1].goods.splice(index2, 1);
-        };
     };
 })
 
@@ -497,6 +563,7 @@
 
         $scope.activeType = index;
     }
+
 })
 
 
@@ -524,35 +591,35 @@
     $scope.proData = [
             {
                 name: "品牌商：深圳罗技电子科技有限公司1",
-                goods: [{
-                    id: 1,
-                    tradeName: "Beats Solo1 无线头戴式耳机11",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }, {
-                    id: 2,
-                    tradeName: "Beats Solo8 无线头戴式耳机22",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }
+                    goods: [{
+                        id: 1,
+                        tradeName: "Beats Solo1 无线头戴式耳机11",
+                        amount: "￥" + 198.00,
+                        color: "黑色",
+                        edition: "普通版"
+                    }, {
+                        id: 2,
+                        tradeName: "Beats Solo8 无线头戴式耳机22",
+                        amount: "￥" + 198.00,
+                        color: "黑色",
+                        edition: "普通版"
+                    }
                 ]
             }, {
                 name: "品牌商：深圳罗技电子科技有限公司2",
-                goods: [{
-                    id: 3,
-                    tradeName: "Beats Solo1 无线头戴式耳机33",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }, {
-                    id: 4,
-                    tradeName: "Beats Solo8 无线头戴式耳机44",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }
+                    goods: [{
+                        id: 3,
+                        tradeName: "Beats Solo1 无线头戴式耳机33",
+                        amount: "￥" + 198.00,
+                        color: "黑色",
+                        edition: "普通版"
+                    }, {
+                        id: 4,
+                        tradeName: "Beats Solo8 无线头戴式耳机44",
+                        amount: "￥" + 198.00,
+                        color: "黑色",
+                        edition: "普通版"
+                    }
                 ]
             }
         ]
@@ -584,6 +651,24 @@
        
         $scope.input[name] = value;
     }
+    
+    var vm=$scope.vm={};
+    vm.cb = function () {
+        console.log(vm.CityPickData1.areaData)
+        console.log(vm.CityPickData2.areaData)
+        console.log(vm.CityPickData3.areaData)
+        console.log(vm.CityPickData4.areaData)
+    }
+    vm.CityPickData2 = {
+        areaData: ['请选择城市'],
+        title: '没有初始城市',
+        hardwareBackButtonClose: false
+    }
+})
+
+//设置头像
+.controller('avatarSettingsController', function ($scope) {
+    $scope.input = {}
 })
 
 //账户设置-收货地址管理
@@ -640,27 +725,52 @@
 
 //退货操作
 .controller('backGoodsController', function($scope){
-    $scope.proData = [
+    $scope.input = {}
+    $scope.proDatas = [
         {
             name: "深圳罗技电子科技有限公司",
-            goods: [
+            products: [
                 {
                     id: 1,
                     tradeName: "Beats Solo1 无线头戴式耳机",
                     amount: "￥" + 1980.00,
                     color: "黑色",
                     edition: "普通版",
-                    number: 5
+                    number: 5,
+                    Check:false
                 },{
                     id: 2,
                     tradeName: "Apple 数据闪充数据线",
                     amount: "￥" + 1980.00,
                     color: "黑色",
-                    edition: "普通版"
+                    edition: "普通版",
+                    Check:false
                 }
             ]
-        },
+        }
     ]
+
+   //是否全选
+    $scope.check_all = function(){
+        // for(var i=0;i<$scope.proDatas[0].products.length;i++){
+
+        //     $scope.proDatas[0].products[i].Check=$scope.proDatas[0].products[i].Check;
+        // }
+        // $scope.proDatas[0].products = $scope.proDatas[0].products;
+        console.log( $scope.proDatas[0].products)
+       
+    }
+
+    //单选
+    $scope.toggle = function(pro){
+       return pro.check = !pro.check;
+    }
+
+    //计算总数量
+    $scope.get_total = function() {
+
+    };
+
 })
 
 
@@ -674,10 +784,87 @@
 
     $scope.confirm = function () {
         $scope.popover.show();
+        
     }
     $scope.closeConfirm = function () {
-        $scope.popover.remove();
+        $scope.popover.hide();
     };
 
 })
 
+//登录
+.controller('loginController', function ($scope, $state, $rootScope, HttpFact, judgeFact, PopupFact, privilegeFact) {
+
+    //数据获取
+    $scope.data = {
+        U_Name: "",
+        U_Password: "",
+        fingerprint: new Fingerprint().get() //获取游览器指纹
+    }
+
+    $scope.submit = function () {
+    // if (judgeFact.mob($scope.input.userName) == false) {
+    //   return false;
+    // }
+
+    console.log($scope.data)
+    // if (judgeFact.email($scope.input.userName) == false) {
+    //   return false;
+    // }
+
+
+    if ($scope.data.U_Password == "" || $scope.data.U_Password == null) {
+      PopupFact.alert("提示", "密码不能为空");
+      return false;
+    };
+
+    // if ($scope.data.userPass2 == "" || $scope.data.userPass2 == null) {
+    //   PopupFact.alert("prompt", "Comfirmed password can not be empty!");
+    //   return false;
+    // };
+
+    // if ($scope.data.userPass != $scope.data.userPass2) {
+    //   PopupFact.alert("prompt", "Passwords should be the same!");
+    //   return false;
+    // };
+
+    HttpFact.post(domain + "/api/User/getLogin",$scope.data).then(
+    function (data) {
+      switch (data.res_Code) {
+          case -1:
+            PopupFact.alert("提示", "用户名不存在");
+            break;
+
+          case 0:
+            PopupFact.alert("提示", "用户名或密码输入有误");
+            break;
+
+          case 1:
+            localStorage.setItem("User-Token", data.res_Token);
+            // localStorage.setItem('ZMS_userName', data.res_UserInfo.NickName);
+            // if (data.res_UserInfo.Pic == "" || data.res_UserInfo.Pic == null) {
+            //   localStorage.setItem('ZMS_userPic', "/images/headImg.jpg");
+            // }
+            // else {
+            //   localStorage.setItem('ZMS_userPic', data.res_UserInfo.Pic);
+            // }
+
+            // localStorage.setItem('ZMS_userType', data.res_UserInfo.Type);
+            PopupFact.alert("提示", "登录成功", '$state.go("tabs.home")');
+            break;
+        };
+    },
+    function (data) {
+        PopupFact.alert("提示", "登录失败");
+    });
+
+  }
+
+  //视图第一次加载读取数据
+  $scope.$on("$ionicView.loaded", function () {
+    if (localStorage.getItem("User-Token") != undefined) {
+      $state.go("tabs.home");
+    };
+  });
+    
+})

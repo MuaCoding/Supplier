@@ -7,8 +7,8 @@
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/ordersHome')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 
-    <ion-nav-buttons side="right">
-        <a href="javascript:void(0)" class="headRButton PFIcon-Collect"></a><a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    <ion-nav-buttons side="right" modal-linkage>
+        <a href="javascript:void(0)" class="headRButton PFIcon-Collect A_Collect" ng-click="ChangeIsActive()" ng-class="{true: 'PFIcon-favorite active', false: ''}[isActive]"></a><a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon" ng-click="openSearch();"></a>
     </ion-nav-buttons>
 
     <ion-content>
@@ -39,19 +39,42 @@
             <ion-item class="BDetail"><span>深圳市罗技电子科技有限公司</span><span>是否需要会员购买：<span>是</span></span><a href="javascript:void(0)">申请成为会员</a></ion-item>
         </ion-list>
         <ion-list class="DetailSwitch whiteBg mt10">
-            <ion-item class="button-bar"><a class="button button-outline">产品详情</a><a class="button button-outline">成交(2312)</a><a class="button button-outline">评价(1245)</a><a class="button button-outline">进货保障</a></ion-item>
-            <ion-item class="ImgBa">
-                <div><img src="/images/sort/TB2d_2DhFXXXXaEXXXXXXXXXXXX_!!647482297.jpg" /></div>
-                <div><img src="/images/sort/TB22T99hFXXXXXwXFXXXXXXXXXX_!!647482297.jpg" /></div>
-                <div><img src="/images/sort/TB24d6ehFXXXXbLXpXXXXXXXXXX_!!647482297.jpg" /></div>
-                <div><img src="/images/sort/TB2C_TmhFXXXXX_XpXXXXXXXXXX_!!647482297.jpg" /></div>
-                <div><img src="/images/sort/TB2c7fdhFXXXXbjXpXXXXXXXXXX_!!647482297.jpg" /></div>
-                <div><img src="/images/sort/TB2e4rkhFXXXXaDXpXXXXXXXXXX_!!647482297.jpg" /></div>
-                <div><img src="/images/sort/TB2gkfAhFXXXXbDXXXXXXXXXXXX_!!647482297.jpg" /></div>
-                <div><img src="/images/sort/TB2juTHhFXXXXagXXXXXXXXXXXX_!!647482297.jpg" /></div>
-                <div><img src="/images/sort/TB2M1HfhFXXXXaMXpXXXXXXXXXX_!!647482297.jpg" /></div>
-                <div><img src="/images/sort/TB2qXTJhFXXXXX4XXXXXXXXXXXX_!!647482297.jpg" /></div>
-                    <div><img src="/images/sort/TB2UQYyhFXXXXb1XXXXXXXXXXXX_!!647482297.jpg" /></div>
+            <ion-item class="button-bar">
+                <a class="button button-outline" ng-click="De_Switch()" ng-class="{'on':item.Check}">产品详情</a>
+                <a class="button button-outline" ng-click="De_Switch()" ng-class="{'on':item.Check}">成交(2312)</a>
+                <a class="button button-outline" ng-click="De_Switch()" ng-class="{'on':item.Check}">评价(1245)</a>
+                <a class="button button-outline" ng-click="De_Switch()" ng-class="{'on':item.Check}">进货保障</a>
+            </ion-item>
+            
+            <ion-item class="Evaluation" picture_img>
+                <ion-list>
+                    <ion-item>
+                        <div class="userEva"><div class="Img"></div><span class="userName">阿三发射点发生</span><span class="EvaTime">2016-12-22</span></div>
+                        <p>音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错</p>
+                        <div class="Picture">
+                            <a href="javascript:;" class="imgMax" style="background-image:url(/images/product/1.jpg)" ng-click="openPopover();"></a>
+                            <a href="javascript:;" class="imgMax" style="background-image:url(/images/product/2.jpg)" ng-click="openPopover();"></a>
+                            <a href="javascript:;" class="imgMax" style="background-image:url(/images/product/3.jpg)" ng-click="openPopover();"></a>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        <div class="userEva"><div class="Img"></div><span class="userName">阿三发射点发生</span><span class="EvaTime">2016-12-22</span></div>
+                        <p>音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错</p>
+                    </ion-item>
+                    <ion-item>
+                        <div class="userEva"><div class="Img"></div><span class="userName">阿三发射点发生</span><span class="EvaTime">2016-12-22</span></div>
+                        <p>音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错</p>
+                    </ion-item>
+                    <ion-item>
+                        <div class="userEva"><div class="Img"></div><span class="userName">阿三发射点发生</span><span class="EvaTime">2016-12-22</span></div>
+                        <p>音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错</p>
+                    </ion-item>
+                    <ion-item>
+                        <div class="userEva"><div class="Img"></div><span class="userName">阿三发射点发生</span><span class="EvaTime">2016-12-22</span></div>
+                        <p>音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错</p>
+                    </ion-item>
+                   
+                </ion-list>
             </ion-item>
         </ion-list>
     </ion-content>

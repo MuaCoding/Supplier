@@ -1,27 +1,29 @@
-﻿angular.module('myApp', ['ionic', 'controllers','DS.services'])
+﻿var domain = "http://192.168.1.107:86";
+
+angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive','imageview','showonLoad'])
 .config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     $ionicConfigProvider.views.maxCache(5);                                               //视图缓存最大为5
     $ionicConfigProvider.tabs.position("bottom");                                         //tabs 位置是在顶部还是底部 参数可以是：top | bottom  
     $ionicConfigProvider.tabs.style("standard");                                           //tabs 条带风格 参数可以是： standard | striped
     $ionicConfigProvider.platform.android.navBar.alignTitle('center');             //标题栏标题居中
     $ionicConfigProvider.scrolling.jsScrolling(true);                                       //滚动优化（滚动更平滑）
-    $urlRouterProvider.otherwise("/footers/home");                                                 //设置默认进入页面
+    $urlRouterProvider.otherwise("/tabs/home");                                                 //设置默认进入页面
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);                                              //设置默认进入页面
 
     $stateProvider
      /*------------------------------------------首页路由---------------------------------------*/
-    .state('footers', {
-        url: '/footers',
-        templateUrl: "/templates/footer/footer.html"
+    .state('tabs', {
+        url: '/tabs',
+        templateUrl: "/templates/footer/tab.html"
     })
 
     /**********************tab路由****************************/
     //2.首页
-      .state('footers.home', {
+      .state('tabs.home', {
           url: "/home",
           views: {
-              'home-footer': {
+              'home-tab': {
                   templateUrl: "/templates/home/home.html",
                   controller: 'homeController'
               }
@@ -29,10 +31,10 @@
       })
 
     //分类
-    .state('footers.sort', {
+    .state('tabs.sort', {
         url: "/sort",
         views: {
-            'sort-footer': {
+            'sort-tab': {
                 templateUrl: "/templates/sort/sortHome.html",
                 controller: 'sortHomeController'
             }
@@ -40,10 +42,10 @@
     })
 
     //咨讯
-    .state('footers.information', {
+    .state('tabs.information', {
         url: "/information",
         views: {
-            'information-footer': {
+            'information-tab': {
                 templateUrl: "/templates/information/infoHome.html"
 
             }
@@ -51,19 +53,19 @@
     })
 
     //进货单
-    // .state('footers.orders', {
+    // .state('tabs.orders', {
     //     url: "/orders",
     //     views: {
-    //         'orders-footer': {
+    //         'orders-tab': {
     //             templateUrl: "/templates/orders/ordersHome.html"
     //         }
     //     }
     // })
     //个人中心
-    .state('footers.user', {
+    .state('tabs.user', {
         url: "/user",
         views: {
-            'user-footer': {
+            'user-tab': {
                 templateUrl: "/templates/user/user.html"
             }
         }
@@ -98,14 +100,10 @@
     })
 
     //4.5订单详情
-    .state('footers.ordersDetail', {
+    .state('ordersDetail', {
         url: "/ordersDetail",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/orders/ordersDetail.html",
-                controller: 'ordersDetailController'
-            }
-        }
+        templateUrl: "/templates/orders/ordersDetail.html",
+        controller: 'ordersDetailController'
     })
 
     
@@ -113,7 +111,7 @@
     .state('productList', {
         url: "/productList",
         //views: {
-        //    'sort-footer': {
+        //    'sort-tab': {
         templateUrl: "/templates/product/List.html",
         controller: 'productListController'
         //    }
@@ -133,34 +131,22 @@
 
     })
     //我的消息
-    .state('footers.myNews', {
+    .state('myNews', {
         url: "/myNews",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/myNews.html"
-            }
-        }
+        templateUrl: "/templates/user/myNews.html"
 
     })
 
     //我的消息详情
-    .state('footers.myNewsDetail', {
+    .state('myNewsDetail', {
         url: "/myNewsDetail",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/myNewsDetail.html"
-            }
-        }
+        templateUrl: "/templates/user/myNewsDetail.html"
 
     })
     //我的评价
-    .state('footers.comment', {
+    .state('comment', {
         url: "/comment",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/comment.html"
-            }
-        }
+        templateUrl: "/templates/user/comment.html"
 
     })
     //评价详情
@@ -180,171 +166,108 @@
     })
 
     //收藏夹
-    .state('footers.favorite', {
+    .state('favorite', {
         url: "/favorite",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/favorite.html",
-                controller: 'favoriteController'
-            }
-        }
+        templateUrl: "/templates/user/favorite.html",
+        controller: 'favoriteController'
     })
 
     //已买到的商品
 
-    .state('footers.boughtProduct', {
+    .state('boughtProduct', {
         url: "/boughtProduct",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/boughtProduct.html"
-            }
-        }
+        templateUrl: "/templates/user/boughtProduct.html"
     })
 
     //交易记录查找
-    .state('footers.recordSearch', {
+    .state('recordSearch', {
         url: "/recordSearch",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/recordSearch.html"
-            }
-        }
+        templateUrl: "/templates/user/recordSearch.html"
     })
 
     //退货单管理
-    .state('footers.returns', {
+    .state('returns', {
         url: "/returns",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/returns.html"
-            }
-        }
+        templateUrl: "/templates/user/returns.html"
     })
 
     //退货单详情
-    .state('footers.returnsDetail', {
+    .state('returnsDetail', {
         url: "/returnsDetail",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/returnsDetail.html",
-                controller: 'returnsDetailController'
-            }
-        }
+        templateUrl: "/templates/user/returnsDetail.html",
+        controller: 'returnsDetailController'
     })
 
     //填写退货单信息
-    .state('footers.editReturnsInfo', {
+    .state('editReturnsInfo', {
         url: "/editReturnsInfo",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/editReturnsInfo.html",
+        templateUrl: "/templates/user/editReturnsInfo.html"
                 // controller: 'editReturnsInfoController'
-            }
-        }
     })
 
 
     //基本信息
-    .state('footers.basicData', {
+    .state('basicData', {
         url: "/basicData",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/basicData.html",
-                controller: 'basicDataController'
-            }
-        }
+        templateUrl: "/templates/user/basicData.html",
+        controller: 'basicDataController'
     })
 
     
     //头像设置
-    .state('footers.avatarSettings', {
+    .state('avatarSettings', {
         url: "/avatarSettings",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/avatarSettings.html",
-                // controller: 'editReturnsInfoController'
-            }
-        }
+        templateUrl: "/templates/user/avatarSettings.html",
+        controller: 'avatarSettingsController'
     })
+
+
     // 重置密码
-    .state('footers.resetPassword', {
+    .state('resetPassword', {
         url: "/resetPassword",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/resetPassword.html",
-                // controller: 'editReturnsInfoController'
-            }
-        }
+        templateUrl: "/templates/user/resetPassword.html",
     })
 
     //账户安全设置
-    .state('footers.accountSecurity', {
+    .state('accountSecurity', {
         url: "/accountSecurity",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/accountSecurity.html",
-                // controller: 'editReturnsInfoController'
-            }
-        }
+        templateUrl: "/templates/user/accountSecurity.html"
     })
     //修改密码
-    .state('footers.changePassword', {
+    .state('changePassword', {
         url: "/changePassword",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/changePassword.html",
-                // controller: 'editReturnsInfoController'
-            }
-        }
+        templateUrl: "/templates/user/changePassword.html"
     })
 
     //账户设置 -- 收货地址管理
-    .state('footers.addressManage', {
+    .state('addressManage', {
         url: "/addressManage",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/addressManage.html",
-                controller: 'addressManageController'
-            }
-        }
+        templateUrl: "/templates/user/addressManage.html",
+        controller: 'addressManageController'
     })
 
     //账户设置 -- 添加新地址
-    .state('footers.newAddress', {
+    .state('newAddress', {
         url: "/newAddress",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/newAddress.html",
-                controller: 'newAddressController'
-            }
-        }
+        templateUrl: "/templates/user/newAddress.html",
+        controller: 'newAddressController'
     })
 
     //登录
     .state('login', {
         url: "/login",
-        templateUrl: "/templates/user/login.html"
-        //controller: 'loginController'
+        templateUrl: "/templates/user/login.html",
+        controller: 'loginController'
     })
     //忘记密码
-    .state('footers.forgotPassword', {
+    .state('forgotPassword', {
         url: "/forgotPassword",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/forgotPassword.html",
-                //controller: 'forgotPasswordController'
-            }
-        }
+        templateUrl: "/templates/user/forgotPassword.html"
     })
     //确认收货
-    .state('footers.confirm', {
+    .state('confirm', {
         url: "/confirm",
-        views: {
-            'user-footer': {
-                templateUrl: "/templates/user/confirm.html",
-                //controller: 'forgotPasswordController'
-            }
-        }
+        templateUrl: "/templates/user/confirm.html"
     })
     //退货操作
     .state('backGoods', {
@@ -362,23 +285,21 @@
     
 
     //立即评价
-    .state('footers.reviews', {
+    .state('reviews', {
         url: "/reviews",
-        views: {
-            'user-footer': {
-               templateUrl: "/templates/user/reviews.html",
-               controller: 'reviewsController'
-            }
-        }
+        templateUrl: "/templates/user/reviews.html",
+        controller: 'reviewsController'
     })
 
 })
+
+
     //返回
 .run(function ($rootScope, $location, $timeout, $ionicHistory) {
     //重制返回事件，无上一页时返回首页
     $rootScope.$ionicGoBack = function (customUrl) {
         if (!customUrl) {
-            customUrl = "/footers/home";
+            customUrl = "/tabs/home";
         }
         if ($ionicHistory.backView()) {
             $ionicHistory.goBack(-1);

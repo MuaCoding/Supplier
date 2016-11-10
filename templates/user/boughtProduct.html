@@ -1,6 +1,6 @@
 <ion-view class="boughtProduct-Class">
 	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/user')"><i class="PFIcon-back"></i>返回</a>
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	<ion-nav-title>
 		<h1 class="titleNav">已买到的商品</h1>
@@ -24,13 +24,13 @@
 					                		<!-- <i class="fa fa-angle-right font-secondary icon-go pull-left" aria-hidden="true"></i> -->
 					                		<p class="pro-status pull-right" style="color:#f3a242;">配送途中</p>
 					                	</div>
-					                	<div class="boughtProduct-item-info" ui-sref = "footers.ordersDetail">
+					                	<a class="boughtProduct-item-info" ng-href = "/ordersDetail">
 					                		<div class="boughtProduct-avatar imgMin pull-left" style="background-image: url(/images/Products.jpg);"></div>
 					                		<i class="fa fa-angle-right font-secondary icon-next pull-right" aria-hidden="true"></i>
 				                			<p class="pull-left" style="color:#444;font-size:13px;width:47%;margin-top:10px;">Beats Solo2 无线头戴式耳机</p>
 				                			<p class="price-total pull-right" style="color:#444;font-size:13px;margin-top:10px;">￥1885.00</p>
 				                			<p class="pull-left" style="font-size:12px;color:#636363;float:left;overflow:hidden;">等共5种货品</p>
-					                	</div>
+					                	</a>
 					                	<div class="bottom-btn">
 					                		<div class="left-btn pull-left">
 					                			<span class="btn border-right">延长收货</span>
@@ -49,19 +49,19 @@
 					                		<!-- <i class="fa fa-angle-right font-secondary icon-go pull-left" aria-hidden="true"></i> -->
 					                		<p class="pro-status pull-right" style="color:#f3a242;">配送途中</p>
 					                	</div>
-					                	<div class="boughtProduct-item-info" ui-sref = "footers.ordersDetail">
+					                	<a class="boughtProduct-item-info" ng-href = "/ordersDetail">
 					                		<div class="boughtProduct-avatar imgMin pull-left" style="background-image: url(/images/Products.jpg);"></div>
 					                		<i class="fa fa-angle-right font-secondary icon-next pull-right" aria-hidden="true"></i>
 				                			<p class="pull-left" style="color:#444;font-size:13px;width:47%;margin-top:10px;">Beats Solo2 无线头戴式耳机</p>
 				                			<p class="price-total pull-right" style="color:#444;font-size:13px;margin-top:10px;">￥1885.00</p>
 				                			<p class="pull-left" style="font-size:12px;color:#636363;float:left;overflow:hidden;">等共5种货品</p>
-					                	</div>
+					                	</a>
 					                	<div class="bottom-btn">
 					                		<div class="left-btn pull-left">
 					                			<span class="btn border-right">延长收货</span>
 					                		</div>
 					                		<div class="right-btn pull-left">
-					                			<span class="btn" style="color:#f34242;">确认收货</span>
+					                			<a class="btn" style="color:#f34242;" ng-href="/confirm">确认收货</a>
 					                		</div>
 					                	</div>
 					                    

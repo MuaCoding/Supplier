@@ -10,13 +10,15 @@
 	<!-- <ion-nav-buttons side="right">
         <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
     </ion-nav-buttons> -->
-	<ion-content  class="scroll-content has-header">
+	<ion-content  class="scroll-content has-header" modal-linkage upload-img-linkage>
 		<div class="avatarSettings-Content">
 			<ion-list>
 				<ion-item>
 					<div class="settings-wrap">
 						<i class="settings-avatar imgMin" style="background:url(/images/default.png)"></i>
+						
 					</div>
+					
 					<div class="text-center">
 						<span>选择图片作为头像</span>
 					</div>
@@ -24,6 +26,12 @@
 						<div class="modify-btn">确认修改头像</div>
 					</div>
 				</ion-item>
+				<div flow-init="{singleFile:true}" flow-btn>
+                    <!-- <div class="banner-img" data-rate="1">
+                        <img ng-src="{{staticImageUrl + image}}" err-src="../images/button_tianjia.png" show-center-on-loaded>
+                    </div> -->
+                    
+                </div>
 			</ion-list>
 		</div>
 	</ion-content>

@@ -1,4 +1,10 @@
-﻿/*Banner 轮播*/
+﻿/*收藏*/
+.A_Collect.active {
+    color: #fcff00;
+    line-height: 32px !important;
+}
+
+/*Banner 轮播*/
 .productDetails-class .headImgDiv {
     overflow: hidden;
     background-color: #fff;
@@ -192,15 +198,19 @@
     display: block;
 }
 
-    .productDetails-class .DetailSwitch .button-bar > .button {
-        /*background: no-repeat;*/
-        border: none;
-        font-size: 13px;
-        color: #636363;
-        height: 40px;
-        line-height: 45px;
-        bottom: -50%;
+    .productDetails-class .DetailSwitch .button-bar {
+        border-bottom: solid 1px #eee;
     }
+
+        .productDetails-class .DetailSwitch .button-bar > .button {
+            /*background: no-repeat;*/
+            border: none;
+            font-size: 13px;
+            color: #636363;
+            height: 40px;
+            line-height: 45px;
+            bottom: -50%;
+        }
 
     .productDetails-class .DetailSwitch .ImgBa {
         overflow: hidden;
@@ -215,6 +225,75 @@
                 max-width: 100%;
                 display: block;
             }
+
+.productDetails-class .Evaluation {
+    overflow: hidden;
+    background-color: #f7f7f7;
+}
+
+    .productDetails-class .Evaluation .item {
+        margin: 10px 0px;
+        border-top: solid 1px #eee;
+        border-bottom: solid 1px #eee;
+        background: #fff;
+    }
+
+    .productDetails-class .Evaluation .userEva {
+        overflow: hidden;
+        position: relative;
+        padding: 10px 90px 10px 0px;
+        margin: 0px 10px;
+        border-bottom: solid 1px #eee;
+    }
+
+        .productDetails-class .Evaluation .userEva > .Img {
+            overflow: hidden;
+            height: 25px;
+            width: 25px;
+            float: left;
+            border-radius: 50%;
+            background-color: #000;
+            margin-right: 10px;
+        }
+
+        .productDetails-class .Evaluation .userEva > span {
+            height: 25px;
+            line-height: 25px;
+            display: block;
+            overflow: hidden;
+            float: left;
+            font-size: 14px;
+            color: #7f7f7f;
+        }
+
+        .productDetails-class .Evaluation .userEva > .EvaTime {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+    .productDetails-class .Evaluation p {
+        font-size: 14px;
+        color: #7f7f7f;
+        padding: 5px 10px;
+        overflow: hidden;
+        white-space: pre-wrap;
+        height: 105px;
+    }
+
+    .productDetails-class .Evaluation .Picture {
+        overflow: hidden;
+        padding: 10px;
+    }
+
+        .productDetails-class .Evaluation .Picture > a {
+            display: block;
+            overflow: hidden;
+            width: 30%;
+            padding-bottom: 30%;
+            float: left;
+            margin: 5px 1.5%;
+        }
 
 /*商品购买信息页面*/
 /*商品名称*/

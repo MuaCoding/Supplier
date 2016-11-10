@@ -1,0 +1,83 @@
+﻿/*搜索框*/
+.Search-class .ASearch {
+    overflow: hidden;
+    display: block;
+    float: right;
+    font-size: 15px;
+    color: #ffffff;
+    height: 34px;
+    line-height: 34px;
+    width: 40px;
+    text-align: center;
+}
+
+.Search-class .inputSearch {
+    background-color: #fe7b7b;
+    margin: 0px;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0px 5px 0px 10px;
+}
+
+    .Search-class .inputSearch > i {
+        color: #fff;
+        font-size: 15px;
+    }
+
+    .Search-class .inputSearch > input {
+        color: #fff !important;
+        font-size: 14px;
+        height: 34px;
+        margin: 0px;
+        padding: 0px;
+        background-color: #fe7b7b;
+        width: 100%;
+    }
+
+        /*修改搜索框的placeholder字体颜色*/
+        .Search-class .inputSearch > input::-webkit-input-placeholder {
+            color: #fff !important;
+        }
+
+　　 .Search-class .inputSearch > input:-moz-placeholder {
+    color: #fff !important;
+}
+
+　　 .Search-class .inputSearch > input::-moz-placeholder {
+    color: #fff !important;
+}
+
+　　 .Search-class .inputSearch > input:-ms-input-placeholder {
+    color: #fff !important;
+}
+
+/*搜索记录*/
+.Search-class .SearchList {
+    overflow: hidden;
+}
+
+    .Search-class .SearchList .item {
+        overflow: hidden;
+        height: 50px;
+        line-height: 50px;
+        padding: 0px 10px;
+        border-bottom: solid 1px #d8d8d8;
+        color: #636363;
+        font-size: 13px;
+    }
+
+        .Search-class .SearchList .item > a {
+            color: #666666;
+            font-size: 12px;
+            right: 0px;
+            padding-left: 10px;
+        }
+
+/*清空搜索记录按钮*/
+.Search-class .SearchClear {
+    font-size: 13px;
+    color: #636363;
+    border: solid 1px #bbbbbb;
+    width: 50%;
+    margin: 30px auto 0px auto;
+}

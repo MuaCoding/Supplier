@@ -1,6 +1,6 @@
 <ion-view class="myNews-Class">
 	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/user')"><i class="PFIcon-back"></i>返回</a>
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	<ion-nav-title>
 		<h1 class="titleNav">我的消息</h1>
@@ -13,7 +13,7 @@
 		<div class="myNews-Content">
 			<ion-scroll class="scroll-view">
 				<ion-list class="news-group">
-					<ion-item ui-sref = "footers.myNewsDetail">
+					<ion-item ng-href = "/myNewsDetail">
 						<div class="news-item">
 							<p class="position:relative;">物流消息 <i class="PFIcon-NewsCircle font-denger" style="position:relative;top:-3px;"></i></p>
 							<p style="color:#888888">您的订单100920302334卖家已发货，点击此处查询。</p>

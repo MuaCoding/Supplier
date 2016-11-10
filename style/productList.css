@@ -19,25 +19,37 @@
             font-size: 16px;
         }
 
-        .productList-class .filter > a > span {
-            /*position: absolute;
-            display: block;
-            overflow: hidden;
-            right: 5%;
-            top: 15px;*/
+        .productList-class .filter > a.Flip > span {
+            position: relative;
+            padding: 2px 15px 2px 0px;
         }
 
-            .productList-class .filter > a > span > i {
-                height: 7px;
-                font-size: 13px;
-                color: #aaaaaa;
-                /*display: block;*/
+            .productList-class .filter > a.Flip > span > span {
+                display: block;
                 overflow: hidden;
+                width: 15px;
+                height: 100%;
+                position: absolute;
+                right: 0px;
+                top: 3px;
             }
 
-                .productList-class .filter > a > span > i.BTriangle {
-                    line-height: 0px;
+                .productList-class .filter > a.Flip > span > span > i {
+                    display: block;
                 }
+
+        .productList-class .filter > a > span i {
+            height: 7px;
+            font-size: 13px;
+            line-height: 15px;
+            color: #aaaaaa;
+            /*display: block;*/
+            overflow: hidden;
+        }
+
+        .productList-class .filter > a > span > span > i.BTriangle {
+            line-height: 0px;
+        }
 
         .productList-class .filter > a.active {
             color: #ff0000;
