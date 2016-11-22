@@ -1,0 +1,33 @@
+<ion-view title="资讯详情" class="informationDetail-Class">
+    <!--Header部分-->
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/information')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <h1 class="titleNav Title">资讯详情</h1>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <ion-list>
+            <ion-item>
+                <p ng-bind="informationDetail[0].a_title"></p>
+
+                <div class="informationDetail-date">
+                    <i class="pull-left" ng-bind="informationDetail[0].a_addTime"></i>
+                    <i class="pull-left" style="margin-left:15px;">浏览{{informationDetail[0].a_readTimes}}</i>
+                </div>
+                <div class="informationDetail-avatar">
+                    <img src="{{informationDetail[0].a_pic}}" />
+                </div>
+                <!--<div class="informationDetail-avatar imgMin" style="background: url({{informationDetail[0].a_pic}})">
+
+                </div>-->
+                <div class="informationDetail-content" ng-bind="informationDetail[0].a_descript"></div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>    

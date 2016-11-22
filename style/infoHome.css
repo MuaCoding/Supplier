@@ -5,7 +5,7 @@
     .infoHome-class .list {
     }
 
-        .infoHome-class .list ion-item {
+        .infoHome-class .list .item-content {
             overflow: hidden;
             background-color: #fff;
             border-bottom: solid 1px #dddddd;
@@ -13,33 +13,42 @@
             position: relative;
         }
 
-            .infoHome-class .list ion-item h3 {
-                font-size: 17px;
-                color: #636363;
-            }
+        .infoHome-class .list .item .Img {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+        }
 
-            .infoHome-class .list ion-item span, .infoHome-class .list ion-item p {
-                font-size: 14px;
-                color: #808080;
-            }
+        .infoHome-class .list .item h3 {
+            font-size: 17px;
+            color: #636363;
+        }
 
-            .infoHome-class .list ion-item span {
-                /*position: absolute;
+        .infoHome-class .list .item span, .infoHome-class .list .item p {
+            font-size: 14px;
+            color: #808080;
+        }
+
+        .infoHome-class .list .item span {
+            /*position: absolute;
                 left: 100px;
                 bottom: 5px;*/
-                display: block;
-                overflow: hidden;
-                font-size: 12px;
-                height: 15px;
-                line-height: 15px;
-            }
+            display: block;
+            overflow: hidden;
+            font-size: 12px;
+            height: 15px;
+            line-height: 15px;
+        }
 
-            .infoHome-class .list ion-item > i {
-                position: absolute;
-                right: 0px;
-                top: 0px;
-                height: 100%;
-                font-size: 30px;
-                color: #808080;
-                line-height: 90px;
-            }
+        .infoHome-class .list .item i {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            height: 100%;
+            font-size: 30px;
+            color: #808080;
+            line-height: 90px;
+        }

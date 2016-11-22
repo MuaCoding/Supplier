@@ -23,7 +23,6 @@ angular.module('DS.services', [])
                 url: url,
                 params: params
             };
-
             return execHttp(httpJson);
         },
         post: function (url, data, params) {

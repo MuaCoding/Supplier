@@ -20,7 +20,7 @@
     padding: 0px;
 }
 
- .bar .title {
+.bar .title {
     margin: 0px;
 }
 
@@ -39,6 +39,10 @@
     .inputSearch > i {
         color: #fff;
     }
+
+.home-Class a.activated {
+    background: none !important;
+}
 
 /*Banner 轮播*/
 .home-Class .headImgDiv {
@@ -129,20 +133,25 @@
 /*热销产品*/
 .home-Class .HotProducts {
     overflow: hidden;
-    padding: 43px 5px 5px 5px;
+    padding: 43px 0px 5px 0px;
     margin-top: 0px;
     position: relative;
 }
 
     .home-Class .HotProducts .headTitle {
         position: absolute;
-        top: 5px;
-        left: 3%;
+        /*top: 5px;
+        left: 3%;*/
+        top: 0px;
+        left: 0px;
+        padding: 5px 5px 5px 5px;
     }
 
     .home-Class .HotProducts > .proList {
         overflow: hidden;
-        width: 100%;
+        /*width: 100%;*/
+        display: block;
+        padding: 0px 5px 5px 5px;
     }
 
         .home-Class .HotProducts > .proList .item {

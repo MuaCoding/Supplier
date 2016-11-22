@@ -1,15 +1,96 @@
 angular.module('DS.controllers', [])
 
 //首页
-.controller('homeController', function ($scope, ModalFact) {
-    ////打开
-    //$scope.openSearch = function () {
-    //    ModalFact.show($scope, "/templates/model/Search.html");
-    //}
-    ////关闭
-    //$scope.closeSearch = function () {
-    //    ModalFact.clear();
-    //}
+.controller('homeController', function ($scope, $filter, $rootScope, $ionicHistory, $ionicScrollDelegate, $ionicSlideBoxDelegate, $timeout, HttpFact, PopupFact, privilegeFact,ModalFact) {
+
+    ////////获取热销产品数据//////////
+    var page = 1;
+    var size = 4;
+    $scope.noData = true;
+    $scope.hotProduct = {
+        array_1: []
+    }
+    
+    function getData (current,count,provId,strW,orderby) {
+        var submitData = {
+            current: current, //当前页数
+            count: count, //单页条数
+            provId: provId,
+            strW: "",
+            orderby: "PD.p_saleNum DESC,"
+        }
+        HttpFact.post(domain + "/api/Product/getProductList",submitData).then(
+            function (data){
+                jsonData = JSON.parse(data);
+                pageCount = Number(jsonData.array_0[0].pageCount);
+                pageNow = Number(jsonData.array_0[0].pageNow);
+                console.log(jsonData)
+                if (pageCount < pageNow) {
+                    $scope.noData = false;
+                }
+                else if (pageCount == pageNow) {
+                    $scope.hotProduct.array_1 = $scope.hotProduct.array_1.concat(jsonData.array_1);
+                    $scope.noData = false;
+                }
+                else {
+                    $scope.hotProduct.array_1 = $scope.hotProduct.array_1.concat(jsonData.array_1);
+                };
+                $ionicScrollDelegate.resize();
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            }
+        )
+    }
+
+    /////轮播
+    //清除缓存，否则轮播报错
+    $rootScope.$on("$ionicView.enter", function () {
+        $ionicHistory.clearCache();
+        $ionicHistory.clearHistory();
+    });
+    $scope.banners = [];
+    function getBanner(provId,count) {
+        var submit = {
+            provId: provId,
+            count:count,
+        }
+        HttpFact.post(domain + "/api/Art/getBanner",submit).then(
+            function (data) {
+                $scope.banners = JSON.parse(data);
+                $ionicSlideBoxDelegate.update();
+                $ionicScrollDelegate.resize();
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            },
+            function (data){
+                $scope.banners = [];
+            }
+        )
+    }
+
+
+    /////新品上架
+    $scope.newProducts = [];
+    function getNew (current,count,provId,strW,orderby){
+        var submitData = {
+            current: current, //当前页数
+            count: count, //单页条数
+            provId: provId,
+            strW: strW,
+            orderby: orderby
+        }
+        HttpFact.post(domain + "/api/Product/getProductList",submitData).then(
+            function (data) {
+                $scope.newProducts = JSON.parse(data);
+                console.log($scope.newProducts)
+
+                $ionicSlideBoxDelegate.update();
+                $ionicScrollDelegate.resize();
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            },
+            function (data){
+                $scope.newProducts = []; 
+            }
+        )
+    }
 
     //离开视图时执行事件
     $scope.$on("$ionicView.beforeLeave", function () {
@@ -25,20 +106,6 @@ angular.module('DS.controllers', [])
         $scope.AllModel.SearchModel = UserSearchList;
     }
 
-    //if (!localStorage.getItem("SearchList")) {
-    //    var NewSearchList =[];
-    //    NewSearchList.push({
-    //        SearchName: "iPhone 5s 贴膜",
-    //    });
-    //    localStorage.setItem("SearchList", JSON.stringify(NewSearchList));
-    //}
-    //else {
-    //    var NewSearchList = JSON.parse(localStorage.getItem("SearchList"));
-    //    NewSearchList.push({
-    //        SearchName: "iPhone 5s 贴膜",
-    //    });
-    //    localStorage.setItem("SearchList", JSON.stringify(NewSearchList));
-    //}
     $scope.SetCheck = function (v1, v2) {
         for (var i = 0; i < v2.length; i++) {
             v2[i].Check = false;
@@ -52,32 +119,30 @@ angular.module('DS.controllers', [])
     $scope.onDelete = function () {
         $scope.AllModel.SearchModel = [];
     }
+
+
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getData(page, size, 1,0, "");
+        getBanner(1,3);
+        getNew(1, 3, 1 ,"" ,"PD.p_saleNum DESC,")
+    });
+
+    //加载数据事件
+    $scope.loadMore = function () {
+        page++;
+        getData(page, size,1, 0, "");
+        getBanner(1,3);
+    }
+
+
+
 })
 
 
 //产品
 .controller('productListController', function ($scope, ModalFact) {
-    //$(".Products > a > .Img").css({ "height": ($("body").width() - $(".Products > a > .Img").width()) * 0.6 })
-
-    //$(".filter > a").each(function () {
-    //    $(this).children("div").css({ "right": ($(this).width() - $(this).children("span").width()) / 4 });
-    //});
-    //$(".filter").on("click", "a", function () {
-    //    if ($(this).hasClass("active") == true) {
-    //        $(this).find(".on")
-    //        if ($(this).find(".on").hasClass("active") == false) {
-    //            $(this).addClass("active").siblings("i").removeClass("active");
-    //        }
-    //    }
-    //    else {
-    //        $(this).find(".xia").addClass("active").siblings("i").removeClass("active");
-    //    }
-    //    if ($(this).hasClass("active") == false) {
-    //        $(this).addClass("active").siblings("a").removeClass("active");
-
-    //    };
-    //});
-
+    
     $scope.screenClick = function () {
         ModalFact.show($scope, "/templates/model/pd-Screening.html");
     };
@@ -181,7 +246,8 @@ angular.module('DS.controllers', [])
         v1.Check = !v1.Check;
     };
 })
-.controller('productDetailsController', function ($scope, $ionicPopover) {
+.controller('productDetailsController', function ($scope, $ionicPopover, $ionicScrollDelegate, $stateParams, $state, $rootScope, HttpFact, judgeFact, PopupFact) {
+    //产品规格
     $scope.AllModel = {
         ColorModel: [
             {
@@ -244,6 +310,29 @@ angular.module('DS.controllers', [])
         ],
     };
 
+    //商品详情(基本包)
+    function getDetailData (Id){
+        HttpFact.get(domain + "/api/Product/getProductDetail", {Id: Id}).then(
+            function(data){
+                basicData = JSON.parse(data);
+                console.log(basicData)
+            }
+        )
+    }
+
+
+    //商品详情(参数包)
+
+    function getParame (Id) {
+        HttpFact.get(domain + "/api/Product/getProductParame", {Id: Id}).then(
+            function (data) {
+                detailParme = JSON.parse(data)
+                console.log(detailParme)
+            }
+        )
+    }
+
+
     $scope.SetCheck = function (v1, v2) {
         for (var i = 0; i < v2.length; i++) {
             v2[i].Check = false;
@@ -297,85 +386,243 @@ angular.module('DS.controllers', [])
         $scope.isActive = !$scope.isActive;
     }
 
-    $scope.De_Switch = function (v1, v2) {
-        for (var i = 0; i < v2.length; i++) {
-            v2[i].Check = false;
-        }
-        v1.Check = !v1.Check;
-    };
-
-})
-
-.controller('sortHomeController', function ($scope) {
-    //获取数据
-    $scope.proList = {
+    $scope.pList = {
         Size: 1,
         Page: 7,
+        commodity: [{
+            Name: "Beats Solo2 无线头戴式耳机 - 黑色",
+            Banner: [
+                {
+                    Img: "/images/productDetailsBanner.jpg"
+                },
+                {
+                    Img: "/images/productDetailsBanner.jpg"
+                },
+                {
+                    Img: "/images/productDetailsBanner.jpg"
+                },
+                {
+                    Img: "/images/productDetailsBanner.jpg"
+                }
+            ]
+        }],
         classList: [
             {
-                Class: "移动电源",
+                Class: "产品详情",
                 List: [
                     {
-                        Pic: "/images/sort/HomeImg.png",
-                        brandName: "苹果/Apple Store"
+                        ImgBa: "/images/category/TB2d_2DhFXXXXaEXXXXXXXXXXXX_!!647482297.jpg"
                     },
                     {
-                        Pic: "/images/sort/HomeImg1.png",
-                        brandName: "三星电子"
+                        ImgBa: "/images/category/TB22T99hFXXXXXwXFXXXXXXXXXX_!!647482297.jpg"
                     },
                     {
-                        Pic: "/images/sort/HomeImg2.png",
-                        brandName: "索尼"
+                        ImgBa: "/images/category/TB24d6ehFXXXXbLXpXXXXXXXXXX_!!647482297.jpg"
                     },
+                    {
+                        ImgBa: "/images/category/TB2C_TmhFXXXXX_XpXXXXXXXXXX_!!647482297.jpg"
+                    },
+                    {
+                        ImgBa: "/images/category/TB2c7fdhFXXXXbjXpXXXXXXXXXX_!!647482297.jpg"
+                    },
+                    {
+                        ImgBa: "/images/category/TB2e4rkhFXXXXaDXpXXXXXXXXXX_!!647482297.jpg"
+                    },
+                    {
+                        ImgBa: "/images/category/TB2gkfAhFXXXXbDXXXXXXXXXXXX_!!647482297.jpg"
+                    },
+                    {
+                        ImgBa: "/images/category/TB2juTHhFXXXXagXXXXXXXXXXXX_!!647482297.jpg"
+                    },
+                    {
+                        ImgBa: "/images/category/TB2M1HfhFXXXXaMXpXXXXXXXXXX_!!647482297.jpg"
+                    },
+                    {
+                        ImgBa: "/images/category/TB2qXTJhFXXXXX4XXXXXXXXXXXX_!!647482297.jpg"
+                    },
+                    {
+                        ImgBa: "/images/category/TB2UQYyhFXXXXb1XXXXXXXXXXXX_!!647482297.jpg"
+                    }
                 ]
             },
             {
-                Class: "数码配件",
+                Class: "成交()",
+                List: [
+                    //{
+                    //    Img: "",
+                    //    userName: "古道边",
+                    //    EvaTime: "2016-12-22",
+                    //    Review: "音质不错",
+                    //    Picture: ["/images/product/1.jpg", "/images/product/2.jpg"]
+                    //},
+                ]
+            },
+            {
+                Class: "评价()",
                 List: [
                     {
-                        Pic: "/images/sort/HomeImg1.png",
-                        brandName: "三星电子"
+                        Img: "/images/product/1.jpg",
+                        userName: "古道边",
+                        EvaTime: "2016-12-22",
+                        Review: "音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错音质不错",
+                        Picture: ["/images/product/1.jpg", "/images/product/2.jpg", "/images/product/3.jpg", "/images/product/1.jpg", "/images/product/2.jpg", "/images/product/3.jpg", "/images/product/1.jpg", "/images/product/2.jpg", "/images/product/3.jpg"]
                     },
                     {
-                        Pic: "/images/sort/HomeImg2.png",
-                        brandName: "索尼"
+                        Img: "/images/product/1.jpg",
+                        userName: "古道边",
+                        EvaTime: "2016-12-22",
+                        Review: "音质不错",
+                        Picture: ["/images/product/1.jpg", "/images/product/2.jpg"]
                     },
                     {
-                        Pic: "/images/sort/HomeImg.png",
-                        brandName: "苹果/Apple Store"
+                        Img: "/images/product/1.jpg",
+                        userName: "古道边",
+                        EvaTime: "2016-12-22",
+                        Review: "音质不错",
+                        Picture: ["/images/product/1.jpg", "/images/product/2.jpg"]
                     },
                     {
-                        Pic: "/images/sort/HomeImg1.png",
-                        brandName: "三星电子"
-                    }
-                ]
-            },{
-                Class: "其他配件",
+                        Img: "/images/product/1.jpg",
+                        userName: "古道边",
+                        EvaTime: "2016-12-22",
+                        Review: "音质不错",
+                        Picture: ["/images/product/1.jpg", "/images/product/2.jpg"]
+                    },
+                    {
+                        Img: "/images/product/1.jpg",
+                        userName: "古道边",
+                        EvaTime: "2016-12-22",
+                        Review: "音质不错",
+                        Picture: ["/images/product/1.jpg", "/images/product/2.jpg"]
+                    },
+                    {
+                        Img: "/images/product/1.jpg",
+                        userName: "古道边",
+                        EvaTime: "2016-12-22",
+                        Review: "音质不错",
+                        Picture: ["/images/product/1.jpg", "/images/product/2.jpg"]
+                    },
+                ],
+                GetCompanyThear: function (p1) {
+                    alert(0)
+                    $http.success(function (data, status, headers, config) {
+                        switch (data) {
+                            default:
+                                $scope.CompanyThearList = [];
+                                var ThearList = [];
+                                var j = 1;
+                                if (data.length >= 5) {
+                                    for (var i = 0; i < data.length; i++) {
+                                        ThearList.push({
+                                            "Id": data[i].ProviderStyleType_Id,
+                                            "Picture": data[i].ProviderStyleType_Image
+                                        });
+                                        if (j == 3) {
+                                            $scope.CompanyThearList.push({
+                                                "List": ThearList
+                                            });
+                                            ThearList = [];
+                                            j = 0;
+                                        }
+                                        j++;
+                                    }
+                                }
+                                ThearList = [];
+                                if (data.length % 5 != 0) {
+                                    var count = data.length % 5;
+                                    for (var ii = count; ii > 0; ii--) {
+                                        ThearList.push({
+                                            "Id": data[data.length - ii].ProviderStyleType_Id,
+                                            "Picture": data[data.length - ii].ProviderStyleType_Image
+                                        });
+                                    }
+                                    $scope.CompanyThearList.push({
+                                        "List": ThearList
+                                    });
+                                }
+                                $timeout(function () {
+                                    $ionicSlideBoxDelegate.$getByHandle("slideimgs").update();
+                                    if ($scope.CompanyThearList.length <= 2) {
+                                        $ionicSlideBoxDelegate.$getByHandle("slideimgs").loop(false);
+                                    }
+                                    else {
+                                        $ionicSlideBoxDelegate.$getByHandle("slideimgs").loop(true);
+                                    }
+                                }, 300);
+                                break;
+                        }
+                    }).error(function (data, status, headers, config) {
+                        //alert("系统繁忙,请稍后重试！");   // 声明执行失败,即服务器返回错误  
+                    });
+                },
+            },
+            {
+                Class: "进货保障",
                 List: [
                     {
-                        Pic: "/images/sort/HomeImg1.png",
-                        brandName: "三星电子"
-                    },
-                    {
-                        Pic: "/images/sort/HomeImg2.png",
-                        brandName: "索尼"
-                    },
-                    {
-                        Pic: "/images/sort/HomeImg.png",
-                        brandName: "苹果/Apple Store"
-                    },
-                    {
-                        Pic: "/images/sort/HomeImg1.png",
-                        brandName: "三星电子"
-                    },
-                    {
-                        Pic: "/images/sort/HomeImg1.png",
-                        brandName: "三星电子"
+                        Description: "进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障进货保障"
                     }
                 ]
-            }
-        ]
+            },
+
+        ],
+
     };
+
+
+
+    //
+    $scope.De_Switch = {
+        proIndex: 0,
+        set: function (index) {
+            $scope.De_Switch.proIndex = index;
+            //重置滚动条高度
+            $ionicScrollDelegate.resize();
+        },
+        get: function (index) {
+            return $scope.De_Switch.proIndex == index;
+        }
+    }
+
+
+
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getDetailData($stateParams.Id);
+        getParame($stateParams.Id);
+    });
+
+    //加载数据事件
+    // $scope.loadMore = function () {
+    //     page++;
+    //     getDetailData($stateParams.Id)
+    // }
+
+})
+
+//分类
+.controller('categoryController', function ($scope, $state, $rootScope, HttpFact, judgeFact, PopupFact) {
+    //获取数据
+    $scope.proList = [];
+
+    function getCategory() {
+        HttpFact.get(domain + "/api/Product/getTypeList").then(
+            function (data) {
+                $scope.proList = JSON.parse(data);
+            },
+
+            function (data) {
+                $scope.proList = [];
+            }
+
+
+        )
+    }
+
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getCategory();
+    });
 
     $scope.proEvent = {
         proIndex: 0,
@@ -384,8 +631,146 @@ angular.module('DS.controllers', [])
         },
         get: function (index) {
             return $scope.proEvent.proIndex == index;
-        }
+        },
+        
     }
+})
+
+//某品牌列表
+.controller('categoryListController',function($scope, $filter, $stateParams, HttpFact){
+    var brandData; //接收返回data数据 
+    var pageCount; //总页数
+    var pageNow; //當前頁
+    $scope.noData = true;
+    $scope.brandCollect = {
+        array_1: []
+    }
+    function getData (current, count, provId, strW){
+        var submit = {
+            current: current, //當前頁
+            count: count, // 單頁條數
+            provId: provId,
+            strW: strW
+        }
+        console.log(submit)
+        HttpFact.post(domain + "/api/Product/getProductList",submit).then(
+            function (data){
+                brandData = JSON.parse(data)
+                console.log(brandData)
+                pageCount = Number(brandData.array_0[0].pageCount);
+                pageNow = Number(brandData.array_0[0].pageNow);
+                if (pageCount < pageNow) {
+                    $scope.noData = false;
+                }
+                else if (pageCount == pageNow) {
+                    $scope.brandCollect.array_1 = $scope.brandCollect.array_1.concat(brandData.array_1);
+                    $scope.noData = false;
+                }
+                else {
+                    $scope.brandCollect.array_1 = $scope.brandCollect.array_1.concat(brandData.array_1);
+                };
+
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            },
+            function (data) {
+                $scope.brandCollect = {
+                    array_1: []
+                }
+            }
+        )
+    }
+
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+           getData(1, 6, 1, "and p_typeId=" + $stateParams.typeId + "and p_brandId=" + $stateParams.b_id);
+    });
+
+    //加载数据事件
+    $scope.loadMore = function () {
+        pageNow++;
+        
+    }
+
+})
+
+//咨讯
+.controller('informationController', function ($scope, $filter, $stateParams, HttpFact) {
+
+    var pageNow = 1; //当前页数
+    var _size = 7;  //控制单页显示条数
+    var jsonData; //接收返回data数据 
+    var pageCount; //总页数
+    $scope.noData = true;
+    $scope.information = {
+        array_1: [], //设置为空
+    };
+
+    function getInformation(type, current, count, strW, provId) {
+        //获取数据所需参数
+        var submitData = {
+            type: type,
+            current: current, //当前页数
+            count: count, //单页条数
+            strW: strW,
+            provId: provId
+        }
+
+        HttpFact.post(domain + "/api/Art/getList", submitData).then(
+            function (data) {
+                jsonData = JSON.parse(data);
+                pageCount = Number(jsonData.array_0[0].pageCount);
+                pageNow = Number(jsonData.array_0[0].pageNow);
+                if (pageCount < pageNow) {
+                    $scope.noData = false;
+                }
+                else if (pageCount == pageNow) {
+                    $scope.information.array_1 = $scope.information.array_1.concat(jsonData.array_1);
+                    $scope.noData = false;
+                }
+                else {
+                    $scope.information.array_1 = $scope.information.array_1.concat(jsonData.array_1);
+                };
+
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            },
+            function (data) {
+                $scope.information = {
+                    array_1: []
+                };
+            }
+        )
+    }
+
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getInformation(1, pageNow, _size, "and 1 = 1", 1);
+    });
+
+    //加载数据事件
+    $scope.loadMore = function () {
+        pageNow++;
+        getInformation(1, pageNow, _size, "and 1 = 1", 1);
+    }
+})
+
+//咨讯详情
+.controller('informationDetailController', function ($scope, $filter, $stateParams, HttpFact) {
+
+    function getInformationDetail(Id) {
+        return HttpFact.get(domain + "/api/Art/getDetail?id=" + Id).then(
+            function (data) {
+                $scope.informationDetail = JSON.parse(data);
+                console.log($scope.informationDetail)
+            },
+            function (data) {
+                $scope.informationDetail = [];
+            });
+    }
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getInformationDetail($stateParams.Id);
+    });
+
 })
 //我的进货单
 .controller('ordersHomeController', function ($scope, $ionicPopup) {
@@ -406,8 +791,8 @@ angular.module('DS.controllers', [])
                     amount: "￥" + 198.00,
                     color: "黑色",
                     edition: "普通版"
-                }
-                ]
+                }]
+
             }, {
                 name: "品牌商：深圳罗技电子科技有限公司2",
                 goods: [{
@@ -428,7 +813,7 @@ angular.module('DS.controllers', [])
 		]
 
 
-    $scope.flag={showDelete:false};
+    $scope.flag = { showDelete: false };
 
     $scope.delete = function (index1, index2) {
         //if ($scope.cartData[index1].goods.length <= 1) {
@@ -439,7 +824,7 @@ angular.module('DS.controllers', [])
         //};
         for (var i = 0; i < index2.length; i++) {
             if (index2[i].id == index1.id) {
-                index2.splice(i,1)
+                index2.splice(i, 1)
             }
         }
     };
@@ -447,8 +832,8 @@ angular.module('DS.controllers', [])
 
 
 //订单详情
-.controller('ordersDetailController', function($scope,$state,$ionicPopover){
-    
+.controller('ordersDetailController', function ($scope, $state, $ionicPopover) {
+
 
     $scope.proData = [
         {
@@ -468,7 +853,7 @@ angular.module('DS.controllers', [])
     // //离开视图时执行事件
     // $scope.$on("$ionicView.beforeLeave", function () {
     //     $scope.closePrompt();
-        
+
     // });
 
     // $scope.popover;
@@ -486,12 +871,12 @@ angular.module('DS.controllers', [])
         $scope.popover.hide();
     };
 
-    $scope.proReplace=function(){
+    $scope.proReplace = function () {
         $scope.popover.remove();
         $state.go("replaceGoods");
     }
 
-    $scope.exchange = function(){
+    $scope.exchange = function () {
         $scope.popover.remove();
         $state.go("backGoods");
     }
@@ -503,13 +888,13 @@ angular.module('DS.controllers', [])
     // $scope.$on("$destroy", function () {
     //     $scope.ppopover.remove();
     // });
-    
+
 })
 
 
 
 //退货详情
-.controller('returnsDetailController', function($scope){
+.controller('returnsDetailController', function ($scope) {
     $scope.proData = [
             {
                 name: "深圳罗技电子科技有限公司",
@@ -523,7 +908,7 @@ angular.module('DS.controllers', [])
                     }
                 ]
             }
-        ]
+    ]
 })
 
 //发票
@@ -591,41 +976,41 @@ angular.module('DS.controllers', [])
     $scope.proData = [
             {
                 name: "品牌商：深圳罗技电子科技有限公司1",
-                    goods: [{
-                        id: 1,
-                        tradeName: "Beats Solo1 无线头戴式耳机11",
-                        amount: "￥" + 198.00,
-                        color: "黑色",
-                        edition: "普通版"
-                    }, {
-                        id: 2,
-                        tradeName: "Beats Solo8 无线头戴式耳机22",
-                        amount: "￥" + 198.00,
-                        color: "黑色",
-                        edition: "普通版"
-                    }
+                goods: [{
+                    id: 1,
+                    tradeName: "Beats Solo1 无线头戴式耳机11",
+                    amount: "￥" + 198.00,
+                    color: "黑色",
+                    edition: "普通版"
+                }, {
+                    id: 2,
+                    tradeName: "Beats Solo8 无线头戴式耳机22",
+                    amount: "￥" + 198.00,
+                    color: "黑色",
+                    edition: "普通版"
+                }
                 ]
             }, {
                 name: "品牌商：深圳罗技电子科技有限公司2",
-                    goods: [{
-                        id: 3,
-                        tradeName: "Beats Solo1 无线头戴式耳机33",
-                        amount: "￥" + 198.00,
-                        color: "黑色",
-                        edition: "普通版"
-                    }, {
-                        id: 4,
-                        tradeName: "Beats Solo8 无线头戴式耳机44",
-                        amount: "￥" + 198.00,
-                        color: "黑色",
-                        edition: "普通版"
-                    }
+                goods: [{
+                    id: 3,
+                    tradeName: "Beats Solo1 无线头戴式耳机33",
+                    amount: "￥" + 198.00,
+                    color: "黑色",
+                    edition: "普通版"
+                }, {
+                    id: 4,
+                    tradeName: "Beats Solo8 无线头戴式耳机44",
+                    amount: "￥" + 198.00,
+                    color: "黑色",
+                    edition: "普通版"
+                }
                 ]
             }
-        ]
+    ]
 
 
-    $scope.flag={showDelete:false};
+    $scope.flag = { showDelete: false };
 
 
 
@@ -645,14 +1030,14 @@ angular.module('DS.controllers', [])
 .controller('basicDataController', function ($scope) {
     $scope.input = {}
 
-    
-    $scope.input={gender:"先生"};
-    $scope.single_check = function(name, value) {
-       
+
+    $scope.input = { gender: "先生" };
+    $scope.single_check = function (name, value) {
+
         $scope.input[name] = value;
     }
-    
-    var vm=$scope.vm={};
+
+    var vm = $scope.vm = {};
     vm.cb = function () {
         console.log(vm.CityPickData1.areaData)
         console.log(vm.CityPickData2.areaData)
@@ -669,6 +1054,10 @@ angular.module('DS.controllers', [])
 //设置头像
 .controller('avatarSettingsController', function ($scope) {
     $scope.input = {}
+})
+
+.controller('uploadAvatarController', function ($scope) {
+
 })
 
 //账户设置-收货地址管理
@@ -695,7 +1084,7 @@ angular.module('DS.controllers', [])
 
 //立即评价
 
-.controller('reviewsController', function($scope){
+.controller('reviewsController', function ($scope) {
     $scope.proData = [
             {
                 name: "深圳罗技电子科技有限公司",
@@ -709,22 +1098,22 @@ angular.module('DS.controllers', [])
                     }
                 ]
             }
-        ]
+    ]
 })
 
 //账户设置-地址管理 -- 添加新地址
 .controller('newAddressController', function ($scope) {
     $scope.input = {}
-    
+
 
     $scope.agree = true;
-    $scope.is_agree = function() {
+    $scope.is_agree = function () {
         $scope.agree = !$scope.agree;
     };
 })
 
 //退货操作
-.controller('backGoodsController', function($scope){
+.controller('backGoodsController', function ($scope) {
     $scope.input = {}
     $scope.proDatas = [
         {
@@ -737,45 +1126,72 @@ angular.module('DS.controllers', [])
                     color: "黑色",
                     edition: "普通版",
                     number: 5,
-                    Check:false
-                },{
+                    Check: false
+                }, {
                     id: 2,
                     tradeName: "Apple 数据闪充数据线",
                     amount: "￥" + 1980.00,
                     color: "黑色",
                     edition: "普通版",
-                    Check:false
+                    Check: false
                 }
             ]
         }
     ]
 
-   //是否全选
-    $scope.check_all = function(){
+    //是否全选
+    $scope.check_all = function () {
+
+
+
         // for(var i=0;i<$scope.proDatas[0].products.length;i++){
 
-        //     $scope.proDatas[0].products[i].Check=$scope.proDatas[0].products[i].Check;
+        //    $scope.proDatas[0].products[i].Check = !$scope.proDatas[0].products[i].Check;
+
         // }
-        // $scope.proDatas[0].products = $scope.proDatas[0].products;
-        console.log( $scope.proDatas[0].products)
-       
+
+        // prodata.Check = !prodata.Check;
+
+        if ($scope.product_size == $scope.proDatas[0].products.length) {
+            $scope.proDatas[0].products.map(function (c) {
+                c.Check = false
+                return c;
+            });
+            return;
+        }
+
+        $scope.proDatas[0].products.map(function (c) {
+            c.Check = true
+            return c;
+        });
+
+
     }
 
     //单选
-    $scope.toggle = function(pro){
-       return pro.check = !pro.check;
+    $scope.toggle = function (pro) {
+        return pro.Check = !pro.Check;
     }
 
     //计算总数量
-    $scope.get_total = function() {
-
+    $scope.get_total = function () {
+        var total = 0;
+        $scope.product_size = 0;
+        angular.forEach($scope.proDatas[0].products, function (value, key) {
+            if (value.Check) {
+                $scope.product_size++;
+                total += 1;
+            }
+            console.log(key)
+        });
+        return total;
     };
 
 })
 
 
 //favoriteController收藏确认
-.controller('favoriteController', function($scope,$state,$ionicPopover){
+.controller('favoriteController', function ($scope, $state, $ionicPopover) {
     $ionicPopover.fromTemplateUrl("/templates/model/confirm.html", {
         scope: $scope
     }).then(function (popover) {
@@ -784,7 +1200,7 @@ angular.module('DS.controllers', [])
 
     $scope.confirm = function () {
         $scope.popover.show();
-        
+
     }
     $scope.closeConfirm = function () {
         $scope.popover.hide();
@@ -803,68 +1219,68 @@ angular.module('DS.controllers', [])
     }
 
     $scope.submit = function () {
-    // if (judgeFact.mob($scope.input.userName) == false) {
-    //   return false;
-    // }
+        // if (judgeFact.mob($scope.input.userName) == false) {
+        //   return false;
+        // }
 
-    console.log($scope.data)
-    // if (judgeFact.email($scope.input.userName) == false) {
-    //   return false;
-    // }
+        console.log($scope.data)
+        // if (judgeFact.email($scope.input.userName) == false) {
+        //   return false;
+        // }
 
 
-    if ($scope.data.U_Password == "" || $scope.data.U_Password == null) {
-      PopupFact.alert("提示", "密码不能为空");
-      return false;
-    };
-
-    // if ($scope.data.userPass2 == "" || $scope.data.userPass2 == null) {
-    //   PopupFact.alert("prompt", "Comfirmed password can not be empty!");
-    //   return false;
-    // };
-
-    // if ($scope.data.userPass != $scope.data.userPass2) {
-    //   PopupFact.alert("prompt", "Passwords should be the same!");
-    //   return false;
-    // };
-
-    HttpFact.post(domain + "/api/User/getLogin",$scope.data).then(
-    function (data) {
-      switch (data.res_Code) {
-          case -1:
-            PopupFact.alert("提示", "用户名不存在");
-            break;
-
-          case 0:
-            PopupFact.alert("提示", "用户名或密码输入有误");
-            break;
-
-          case 1:
-            localStorage.setItem("User-Token", data.res_Token);
-            // localStorage.setItem('ZMS_userName', data.res_UserInfo.NickName);
-            // if (data.res_UserInfo.Pic == "" || data.res_UserInfo.Pic == null) {
-            //   localStorage.setItem('ZMS_userPic', "/images/headImg.jpg");
-            // }
-            // else {
-            //   localStorage.setItem('ZMS_userPic', data.res_UserInfo.Pic);
-            // }
-
-            // localStorage.setItem('ZMS_userType', data.res_UserInfo.Type);
-            PopupFact.alert("提示", "登录成功", '$state.go("tabs.home")');
-            break;
+        if ($scope.data.U_Password == "" || $scope.data.U_Password == null) {
+            PopupFact.alert("提示", "密码不能为空");
+            return false;
         };
-    },
-    function (data) {
-        PopupFact.alert("提示", "登录失败");
+
+        // if ($scope.data.userPass2 == "" || $scope.data.userPass2 == null) {
+        //   PopupFact.alert("prompt", "Comfirmed password can not be empty!");
+        //   return false;
+        // };
+
+        // if ($scope.data.userPass != $scope.data.userPass2) {
+        //   PopupFact.alert("prompt", "Passwords should be the same!");
+        //   return false;
+        // };
+
+        HttpFact.post(domain + "/api/User/getLogin", $scope.data).then(
+        function (data) {
+            switch (data.res_Code) {
+                case -1:
+                    PopupFact.alert("提示", "用户名不存在");
+                    break;
+
+                case 0:
+                    PopupFact.alert("提示", "用户名或密码输入有误");
+                    break;
+
+                case 1:
+                    localStorage.setItem("User-Token", data.res_Token);
+                    // localStorage.setItem('ZMS_userName', data.res_UserInfo.NickName);
+                    // if (data.res_UserInfo.Pic == "" || data.res_UserInfo.Pic == null) {
+                    //   localStorage.setItem('ZMS_userPic', "/images/headImg.jpg");
+                    // }
+                    // else {
+                    //   localStorage.setItem('ZMS_userPic', data.res_UserInfo.Pic);
+                    // }
+
+                    // localStorage.setItem('ZMS_userType', data.res_UserInfo.Type);
+                    PopupFact.alert("提示", "登录成功", '$state.go("tabs.home")');
+                    break;
+            };
+        },
+        function (data) {
+            PopupFact.alert("提示", "登录失败");
+        });
+
+    }
+
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        if (localStorage.getItem("User-Token") != undefined) {
+            $state.go("tabs.home");
+        };
     });
 
-  }
-
-  //视图第一次加载读取数据
-  $scope.$on("$ionicView.loaded", function () {
-    if (localStorage.getItem("User-Token") != undefined) {
-      $state.go("tabs.home");
-    };
-  });
-    
 })

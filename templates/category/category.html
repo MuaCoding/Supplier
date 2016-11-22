@@ -1,0 +1,34 @@
+﻿<ion-view title="所有分类" class="sortHome-class">
+    <!--Header部分-->
+    <ion-nav-title>
+        <h1 class="titleNav Title">所有分类</h1>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="ionConLeft">
+            <ion-scroll class="item" direction="y" zooming="false">
+                <ion-list>
+                    <ion-item ng-repeat="items in proList" ng-click="proEvent.set($index)" ng-class="{'on':proEvent.get($index)}">
+                        <a href="javascript:;" ng-bind="items.typeName"></a>
+                    </ion-item>
+                    
+                </ion-list>
+            </ion-scroll>
+        </div>
+        <div class="ionConRight">
+            <ion-scroll class="item" direction="y" zooming="false">
+                <ion-list>
+                    <ion-item ng-href = "/categoryList/{{proList[proEvent.proIndex].typeId}}/{{item.b_id}}" ng-repeat="item in proList[proEvent.proIndex].data" >
+                        <div class="Img imgMax" style="background-image: url({{item.b_logo}});"></div>
+                        <h3 class="ellipsis" ng-bind="item.b_name"></h3>
+                    </ion-item>
+                    
+                </ion-list>
+            </ion-scroll>
+        </div>
+    </ion-content>
+</ion-view>

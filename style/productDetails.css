@@ -12,7 +12,7 @@
 
     .productDetails-class .headImgDiv .Img {
         width: 100%;
-        padding-bottom: 60%;
+        padding-bottom: 56%;
         /*overflow: hidden;*/
     }
 
@@ -212,6 +212,11 @@
             bottom: -50%;
         }
 
+        .productDetails-class .DetailSwitch .button-bar > .on {
+            border-bottom: solid 2px rgb(255, 0, 0);
+            border-radius: 0px;
+        }
+
     .productDetails-class .DetailSwitch .ImgBa {
         overflow: hidden;
     }
@@ -225,6 +230,14 @@
                 max-width: 100%;
                 display: block;
             }
+
+    .productDetails-class .DetailSwitch p {
+        font-size: 14px;
+        color: #7f7f7f;
+        padding: 5px 10px 0px 10px;
+        overflow: hidden;
+        white-space: pre-wrap;
+    }
 
 .productDetails-class .Evaluation {
     overflow: hidden;
@@ -273,26 +286,31 @@
         }
 
     .productDetails-class .Evaluation p {
-        font-size: 14px;
-        color: #7f7f7f;
-        padding: 5px 10px;
-        overflow: hidden;
-        white-space: pre-wrap;
-        height: 105px;
+        max-height: 105px;
     }
+
 
     .productDetails-class .Evaluation .Picture {
         overflow: hidden;
-        padding: 10px;
+        height: 88px;
     }
 
-        .productDetails-class .Evaluation .Picture > a {
-            display: block;
+        /*.productDetails-class .Evaluation .Picture .list {
+            display: -webkit-inline-box;
+            display: -moz-inline-box;
+            display: -ms-inline-flexbox;
+            display: -webkit-inline-flex;
+            display: inline-flex;
+        }*/
+
+        .productDetails-class .Evaluation .Picture ion-item {
+            /*display: block;*/
             overflow: hidden;
-            width: 30%;
-            padding-bottom: 30%;
+            width: 18%;
+            padding-bottom: 18%;
             float: left;
-            margin: 5px 1.5%;
+            margin: 1% 1%;
+            border-radius: 5px;
         }
 
 /*商品购买信息页面*/

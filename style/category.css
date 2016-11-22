@@ -1,0 +1,99 @@
+﻿.sortHome-class {
+    background-color: #f1f1f1;
+}
+
+.sortHome-class a.activated{
+background:none  !important;
+}
+
+    .sortHome-class .ionConLeft {
+        /*overflow: hidden;*/
+        height: 100vh;
+        margin: -44px 0px 0 0px;
+        background-color: #fff;
+        width: 27%;
+        border-right: solid 1px #dddddd;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        padding: 44px 0 46px 0;
+    }
+
+        .sortHome-class .ionConLeft > .item {
+            padding: 0px;
+            height: 100%;
+        }
+
+        .sortHome-class .ionConLeft .list {
+            overflow: visible;
+        }
+
+        .sortHome-class .item-thumbnail-left .item-content>img:first-child img{
+            left:-80px !important;
+        }
+
+        .sortHome-class .ionConLeft ion-item {
+            overflow: hidden;
+        }
+
+            .sortHome-class .ionConLeft ion-item.on {
+                background-color: #ebebeb;
+                width: 101%;
+            }
+
+                .sortHome-class .ionConLeft ion-item.on > a {
+                    color: #f34242;
+                }
+
+            .sortHome-class .ionConLeft ion-item > a {
+                display: block;
+                overflow: hidden;
+                font-size: 14px;
+                color: #636363;
+                text-align: center;
+                height: 45px;
+                line-height: 45px;
+                border-bottom: solid 1px #dddddd;
+            }
+
+    .sortHome-class .ionConRight {
+        overflow: hidden;
+        width: 71%;
+        float: right;
+        height: 100vh;
+        margin: -44px 1% 0 0px;
+        padding: 44px 0 46px 0;
+    }
+
+        .sortHome-class .ionConRight > .item {
+            height: 100%;
+            padding: 0px;
+            background: none;
+        }
+
+        .sortHome-class .ionConRight ion-item {
+            width: 48%;
+            display: block;
+            overflow: hidden;
+            float: left;
+            margin: 5px 1%;
+            padding: 8% 0px;
+            border: solid 1px #eee;
+            background: #fff;
+        }
+
+        .sortHome-class .ionConRight .Img {
+            overflow: hidden;
+            width: 80%;
+            padding-bottom: 20%;
+            display: block;
+            margin: 0px auto;
+        }
+
+        .sortHome-class .ionConRight h3 {
+            width: 80%;
+            color: #636363;
+            font-size: 13px;
+            text-align: center;
+            margin: 10% auto 0px auto;
+        }

@@ -1,0 +1,38 @@
+.informationDetail-Class {
+    height: 100%;
+}
+
+    .informationDetail-Class .item p {
+        display: block;
+        padding: 15px 10px;
+        text-align: left;
+        font-size: 17px;
+        color: rgba(0, 0, 0, 0.9);
+        white-space: normal;
+    }
+
+    .informationDetail-Class .item .informationDetail-date {
+        overflow: hidden;
+        display: block;
+        padding: 0 10px;
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .informationDetail-Class .item .informationDetail-content {
+        display: block;
+        padding: 5px 10px 15px;
+        white-space: normal;
+        color: rgba(0, 0, 0, 0.75);
+    }
+
+    .informationDetail-Class .item .informationDetail-avatar {
+        margin: 15px;
+        overflow: hidden;
+    }
+
+        .informationDetail-Class .item .informationDetail-avatar > img {
+            max-width: 100%;
+            margin: 0px auto;
+            display: block;
+        }

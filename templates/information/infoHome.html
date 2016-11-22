@@ -9,93 +9,26 @@
     </ion-nav-buttons>
 
     <ion-content>
-        <ion-list>
-            <ion-item class="item item-thumbnail-left">
-                
-                <img src="/images/info3.jpg" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
+        <ion-list ng-repeat="catagory in information.array_1">
+            <ion-item ng-if="catagory.a_gotoStatus=='False'" class="item item-thumbnail-left" ng-href="/informationDetail/{{catagory.a_id}}">
+                <div class="Img imgMax" style="background-image: url({{catagory.a_pic}});"></div>
+                <h3 ng-bind="catagory.a_title"></h3>
+                <p ng-bind="catagory.a_descript"></p>
                 <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
+                <span ng-bind="catagory.a_addTime"></span>
             </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/info.png" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/info.png" />
 
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
+            <ion-item ng-if="catagory.a_gotoStatus=='True'" class="item item-thumbnail-left" ng-href="{{catagory.a_gotoUrl}}">
+                <div class="Img imgMax" style="background-image: url({{catagory.a_pic}});"></div>
+                <h3 ng-bind="catagory.a_title"></h3>
+                <p ng-bind="catagory.a_descript"></p>
                 <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
+                <span ng-bind="catagory.a_addTime"></span>
             </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/info.png" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/info2.png" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/info2.png" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/ear.jpg" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/info.png" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/ear.jpg" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/info3.jpg" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/info3.jpg" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
-            <ion-item class="item item-thumbnail-left">
-                <img src="/images/info.png" />
-                <h3>Venkman</h3>
-                <p>我们周末去爬山吧！</p>
-                <i class="PFIcon-Rarrow"></i>
-                <span>2016-12-12</span>
-            </ion-item>
+
         </ion-list>
+        <p class="noData mb15" ng-if="!noData">没有更多数据了！</p>
+        <!-- 滚动刷新 -->
+        <ion-infinite-scroll on-infinite="loadMore();" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
     </ion-content>
 </ion-view>

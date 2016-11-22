@@ -4,58 +4,20 @@
         <div class="inputSearch"><a class="item-input-wrapper inputSearch" ng-click="openSearch();"><i class="icon ion-ios-search placeholder-icon"></i>找什么呢？搜索试试吧</a></div>
     </ion-nav-title>
     <ion-nav-buttons side="left">
-        <div class="headReturn hAddress">
-            <i class="PFIcon-address"></i>
-            <select>
-                <option>北京</option>
-                <option>天津</option>
-                <option>河北</option>
-                <option>山西</option>
-                <option>内蒙古</option>
-                <option>辽宁</option>
-                <option>吉林</option>
-                <option>黑龙江</option>
-                <option>上海</option>
-                <option>江苏</option>
-                <option>浙江</option>
-                <option>安徽</option>
-                <option>福建</option>
-                <option>江西</option>
-                <option>山东</option>
-                <option>河南</option>
-                <option>湖北</option>
-                <option>湖南</option>
-                <option>广东</option>
-                <option>广西</option>
-                <option>海南</option>
-                <option>重庆</option>
-                <option>四川</option>
-                <option>贵州</option>
-                <option>云南</option>
-                <option>西藏</option>
-                <option>陕西</option>
-                <option>甘肃</option>
-                <option>青海</option>
-                <option>宁夏</option>
-                <option>新疆</option>
-                <option>台湾</option>
-                <option>香港</option>
-                <option>澳门</option>
-            </select>
-        </div>
+        <span class="headReturn"><i class="PFIcon-address"></i>广东</span>
     </ion-nav-buttons>
     <ion-content>
         <!-- banner -->
         <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true" class="headImgDiv" does-continue="true">
-            <ion-slide>
+            <ion-slide ng-repeat="banner in banners">
+                <div class="Img"><img src="{{banner.a_pic}}" err-src="/images/Banner.jpg" /></div>
+            </ion-slide>
+            <!-- <ion-slide>
                 <div class="Img"><img src="/images/Banner.jpg" /></div>
             </ion-slide>
             <ion-slide>
                 <div class="Img"><img src="/images/Banner.jpg" /></div>
-            </ion-slide>
-            <ion-slide>
-                <div class="Img"><img src="/images/Banner.jpg" /></div>
-            </ion-slide>
+            </ion-slide> -->
         </ion-slide-box>
 
         <div class="NewProductsDiv whiteBg mb10">
@@ -65,58 +27,33 @@
             </div>
             <ion-scroll direction="x" shouldfreeze="x" scrollbar-x="false" locking="true" zooming="false" has-bouncing="true" class="NewPro" ng-class="NewPro" style="height:100px;">
                 <ion-list>
-                    <ion-item ng-href="javascript:void(0)" class="NewProducts mr5">
+                    <ion-item ng-href="javascript:void(0)" class="NewProducts mr5" ng-repeat = "product in newProducts.array_1">
                         <div class="Img imgMax" style="background-image: url(/images/Products.jpg)"></div>
                         <div class="Prod">
-                            <h3 class="ellipsis">Lightning to USB 数据线</h3>
-                            <span>￥12.00 起</span>
+                            <p class="ellipsis" style="color: #000;font-size: 16px;" ng-bind ="product.p_name"></p>
+                            <span ng-bind="product.price3"></span>
                         </div>
                     </ion-item>
-                    <ion-item ng-href="javascript:void(0)" class="NewProducts mr5">
-                        <div class="Img imgMax" style="background-image: url(/images/Products1.jpg )"></div>
-                        <div class="Prod">
-                            <h3 class="ellipsis">Lightning to USB 数据线</h3>
-                            <span>￥12.00 起</span>
-                        </div>
-                    </ion-item>
-                    <ion-item ng-href="javascript:void(0)" class="NewProducts mr5">
-                        <div class="Img imgMax" style="background-image: url(/images/Products.jpg)"></div>
-                        <div class="Prod">
-                            <h3 class="ellipsis">Lightning to USB 数据线</h3>
-                            <span>￥12.00 起</span>
-                        </div>
-                    </ion-item>
+                   
                 </ion-list>
             </ion-scroll>
         </div>
 
-        <div class="row HotProducts whiteBg">
-            <div class="headTitle">
+        <div class="HotProducts">
+            <div class="headTitle whiteBg">
                 <h3>热销产品</h3>
             </div>
-            <ion-list class="proList mb10">
-                <ion-item ng-href="/productDetails">
+            <ion-list class="proList whiteBg mb10">
+                <ion-item ng-href="/productDetails/{{hot.p_id}}" ng-repeat="hot in hotProduct.array_1">
                     <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
+                    <p class="mt10 mb5" style="color:#676767;" ng-bind="hot.b_name"></p>
+                    <div>￥<span ng-bind="hot.price3"></span><span ng-bind="brand.price2" ng-if="brand.price3 == ''"></span>- ￥<span ng-bind="hot.price1"></span></div>
                 </ion-item>
-                <ion-item ng-href="/productDetails">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
-                </ion-item>
-                <ion-item ng-href="/productDetails">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
-                </ion-item>
-                <ion-item ng-href="/productDetails">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-                    <div>￥<span>99.00</span> - ￥<span>130.00</span></div>
-                </ion-item>
-
             </ion-list>
+            <p class="noData" ng-if="!noData">没有更多数据了！</p>
+
+            <!-- 滚动刷新 -->
+            <ion-infinite-scroll on-infinite="loadMore();" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
         </div>
     </ion-content>
 </ion-view>

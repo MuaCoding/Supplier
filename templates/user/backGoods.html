@@ -17,13 +17,13 @@
 					<ion-list class="">
 		                <ion-item class="boughtProduct-item" style = "margin-bottom:10px;" ng-repeat="prodata in proDatas" >
 		                	<div class="boughtProduct-item-header" ng-click="check_all()">
-		                		<i class="icon pull-left" ng-class="{'PFIcon-Hook':prodata.Check}"></i>
+		                		<i class="icon pull-left" ng-class="{'PFIcon-Hook':product_size == proDatas[0].products.length}"></i>
 		                		<p class="company-name pull-left" style="margin-left:10px;" ng-bind="prodata.name"></p>
 		                		<i class="fa fa-angle-right font-secondary icon-go pull-right" aria-hidden="true"></i>
 		                		<!-- <p class="pro-status pull-right" style="color:#f3a242;">正在寄回品牌商</p> -->
 		                	</div>
 		                	<div class="boughtProduct-item-info"  style="padding-left:40px;" ng-repeat="pro in prodata.products" ng-click="toggle(pro)">
-		                		<i class="icon-select" ng-class="{'PFIcon-Hook': $scope.products_size == $scope.proDatas.products.length}"></i>
+		                		<i class="icon-select" ng-class="{'PFIcon-Hook': pro.Check}"></i>
 		                		<div class="boughtProduct-avatar imgMin pull-left" style="background-image: url(/images/Products.jpg);"></div>
 		                		<!-- <i class="fa fa-angle-right font-secondary icon-next pull-right" aria-hidden="true"></i> -->
 	                			<p class="pull-left" style="color:#444;font-size:13px;width:47%;margin-top:10px;" ng-bind="pro.tradeName"></p>
@@ -37,7 +37,7 @@
 			</ion-scroll>
 			<div class="count-wrap border-top count-wrap-flex" ng-if="!edit.showDelete">
 				<div class="count-total count-flex">
-					<span style="font-size:13px;color: #aaaaaa;">您已选2件货品</span>
+					<span style="font-size:13px;color: #aaaaaa;">您已选{{get_total()}}件货品</span>
 				</div>
 				<a class="count-next count-flex" style="font-size:13px;" ng-href="/ordersInfo">
 					提交退货申请

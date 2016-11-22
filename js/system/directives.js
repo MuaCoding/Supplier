@@ -41,7 +41,7 @@ angular.module('DS.directive', [])
       };
 
       //选择图片Input
-      angular.element(document.querySelector('.settings-avatar')).on('change', $rootScope.handleFileSelect);
+      angular.element(document.querySelector('.fileImg')).on('change', $rootScope.handleFileSelect);
 
       //完成图片编辑（添加给图片列表）
       $scope.completeEdit = function (imgList) {
@@ -101,16 +101,10 @@ angular.module('DS.directive', [])
                 $scope.popover = popover;
 
             })
-            var IsHide = true;
             $scope.bigPictureList = [];
             $scope.openPopover = function (str) {
-                IsHide = true;
                 $scope.popover.show();
                 $scope.bigPictureList = [];
-                if ($rootScope.rdShow) {
-                    IsHide = false;
-                    $rootScope.rdShow = false;
-                }
                 var reg = new RegExp("\"", "g");
                 for (var i = 0; i < str.length; i++) {
                     $scope.bigPictureList.push(str[i].toString().replace(reg, ""));
@@ -128,10 +122,6 @@ angular.module('DS.directive', [])
                 })
             };
             $scope.closePopover = function () {
-                $scope.bigPictureList = [];
-                if (!IsHide) {
-                    $rootScope.rdShow = true;
-                }
                 $scope.popover.hide();
 
             };
@@ -139,6 +129,31 @@ angular.module('DS.directive', [])
     }
 })
 
+.directive('pictureImgOne', function ($timeout, $rootScope, $ionicPopover, $ionicSlideBoxDelegate) {
+    return {
+        restrict: 'A',
+        controller: function ($scope, $element, $attrs) {
+            //点击放大图
+            $ionicPopover.fromTemplateUrl("/templates/model/bigPictureOne.html", {
+                scope: $scope
+            }).then(function (popover) {
+                $scope.popoverOne = popover;
+
+            })
+            $scope.bigPicture = "";
+            $scope.openPopoverOne = function (str) {
+                $scope.popoverOne.show();
+                $scope.bigPicture = "";
+                var reg = new RegExp("\"", "g");
+                $scope.bigPicture = str.toString().replace(reg, "")
+            };
+            $scope.closePopoverOne = function () {
+                $scope.popoverOne.hide();
+
+            };
+        }
+    }
+})
 
 //模型事件
 .directive('modalLinkage', function () {

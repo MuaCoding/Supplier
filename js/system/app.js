@@ -1,4 +1,4 @@
-﻿var domain = "http://192.168.1.107:86";
+﻿var domain = "http://192.168.1.112:98";
 
 angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive','imageview','showonLoad'])
 .config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
@@ -31,12 +31,12 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
       })
 
     //分类
-    .state('tabs.sort', {
-        url: "/sort",
+    .state('tabs.category', {
+        url: "/category",
         views: {
-            'sort-tab': {
-                templateUrl: "/templates/sort/sortHome.html",
-                controller: 'sortHomeController'
+            'category-tab': {
+                templateUrl: "/templates/category/category.html",
+                controller: 'categoryController'
             }
         }
     })
@@ -46,8 +46,8 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         url: "/information",
         views: {
             'information-tab': {
-                templateUrl: "/templates/information/infoHome.html"
-
+                templateUrl: "/templates/information/infoHome.html",
+                controller: 'informationController'
             }
         }
     })
@@ -74,7 +74,7 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
     
 
     //***************************************************独立层级*****************************************************
-     // 4.我的订货单
+     /************************* 4.我的进货单************************************/
      // 4.1我的订货单首页
     .state('orders', {
         url: "/orders",
@@ -106,8 +106,25 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         controller: 'ordersDetailController'
     })
 
-    
-       /*-------------------------------------- 产品 --------------------------------------*/
+    /****************************************咨讯************************************************/
+    .state('informationDetail', {
+        url: "/informationDetail/{Id:[0-9]*}",
+        templateUrl: "/templates/information/informationDetail.html",
+        controller: 'informationDetailController'
+    })
+
+     /****************************************分类************************************************/
+     //分类 -- 品牌列表
+
+     .state('categoryList', {
+        url: "/categoryList/{typeId:[0-9]*}/{b_id:[0-9]*}",
+        templateUrl: "/templates/category/categoryList.html",
+        controller: 'categoryListController'
+    })
+
+
+    /*-------------------------------------- 产品 --------------------------------------*/
+
     .state('productList', {
         url: "/productList",
         //views: {
@@ -118,7 +135,7 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         //},
     })
     .state('productDetails', {
-        url: "/productDetails",
+        url: "/productDetails/{Id:[0-9]*}",
         templateUrl: "/templates/product/Details.html",
         controller: 'productDetailsController'
     })
