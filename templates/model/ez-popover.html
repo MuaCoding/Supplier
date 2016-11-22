@@ -1,24 +1,24 @@
 ﻿<ion-popover-view class="productDetails-buy">
     <div class="Commodity">
-        <div class="Img"><a class="imgMax" style="background-image: url(/images/product/buy.jpg)"></a></div>
-        <h2>Beats Solo2 无线头戴式耳机</h2>
+        <div class="Img"><a class="imgMax" style="background-image: url('{{basicData[0].p_Pic.split(',')[0]}}')"></a></div>
+        <h2 ng-bind="basicData[0].p_name"></h2>
         <a href="javascript:void(0)" class="close" ng-click="closePopover()">x</a>
     </div>
     <div class="item Specifications">
         <ion-scroll class="item Specifications" direction="y" zooming="false" scrollbar-y="false">
             <ion-list class="productList">
                 <ion-item>
-                    <h3>颜色选择</h3>
+                    <h3 ng-bind="basicData[0].p_paramTitle1"></h3>
                     <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
                     <div class="mt10">
-                        <a href="javascript:;" ng-repeat="item in AllModel.ColorModel track by $index" ng-click="SetCheck(item,AllModel.ColorModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                        <a href="javascript:;" ng-repeat="item in detailParme track by $index | unique: 'item.p_param1'" ng-click="SetCheck(item,detailParme)" ng-class="{'on':item.Check}"><span ng-bind="item.p_param1"></span><i class="PFIcon-Tick"></i></a>
                     </div>
                 </ion-item>
                 <ion-item>
-                    <h3>版本</h3>
+                    <h3 ng-bind="basicData[0].p_paramTitle2"></h3>
                     <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
                     <div class="mt10">
-                        <a href="javascript:;" ng-repeat="item in AllModel.VersionModel track by $index" ng-click="SetCheck(item,AllModel.VersionModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                        <a href="javascript:;" ng-repeat="item in detailParme[0] track by $index" ng-click="SetCheck(item,detailParme[0])" ng-class="{'on':item.Check}">{{item.p_param2}}<i class="PFIcon-Tick"></i></a>
                     </div>
                 </ion-item>
                 <ion-item>

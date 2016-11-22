@@ -248,95 +248,105 @@ angular.module('DS.controllers', [])
 })
 .controller('productDetailsController', function ($scope, $ionicPopover, $ionicScrollDelegate, $stateParams, $state, $rootScope, HttpFact, judgeFact, PopupFact) {
     //产品规格
-    $scope.AllModel = {
-        ColorModel: [
-            {
-                Id: null,
-                TypeName: "红色",
-                Check: false
-            },
-            {
-                Id: null,
-                TypeName: "白色",
-                Check: false
-            },
-            {
-                Id: null,
-                TypeName: "黑色",
-                Check: false
-            },
-        ],
-        VersionModel: [
-           {
-               Id: null,
-               TypeName: "普通版",
-               Check: false
-           },
-           {
-               Id: null,
-               TypeName: "尊贵版",
-               Check: false
-           },
-           {
-               Id: null,
-               TypeName: "旗舰版",
-               Check: false
-           },
-           {
-               Id: null,
-               TypeName: "限量版",
-               Check: false
-           },
-        ],
-        PriceModel: [
-           {
-               Id: null,
-               TypeName: "1~99件",
-               TypePrice: "￥230.00",
-               Check: false
-           },
-           {
-               Id: null,
-               TypeName: "≥100件",
-               TypePrice: "￥230.00",
-               Check: false
-           },
-           {
-               Id: null,
-               TypeName: "≥999件",
-               TypePrice: "￥230.00",
-               Check: false
-           },
-        ],
-    };
+    // $scope.AllModel = {
+    //     ColorModel: [
+    //         {
+    //             Id: null,
+    //             TypeName: "红色",
+    //             Check: false
+    //         },
+    //         {
+    //             Id: null,
+    //             TypeName: "白色",
+    //             Check: false
+    //         },
+    //         {
+    //             Id: null,
+    //             TypeName: "黑色",
+    //             Check: false
+    //         },
+    //     ],
+    //     VersionModel: [
+    //        {
+    //            Id: null,
+    //            TypeName: "普通版",
+    //            Check: false
+    //        },
+    //        {
+    //            Id: null,
+    //            TypeName: "尊贵版",
+    //            Check: false
+    //        },
+    //        {
+    //            Id: null,
+    //            TypeName: "旗舰版",
+    //            Check: false
+    //        },
+    //        {
+    //            Id: null,
+    //            TypeName: "限量版",
+    //            Check: false
+    //        },
+    //     ],
+    //     PriceModel: [
+    //        {
+    //            Id: null,
+    //            TypeName: "1~99件",
+    //            TypePrice: "￥230.00",
+    //            Check: false
+    //        },
+    //        {
+    //            Id: null,
+    //            TypeName: "≥100件",
+    //            TypePrice: "￥230.00",
+    //            Check: false
+    //        },
+    //        {
+    //            Id: null,
+    //            TypeName: "≥999件",
+    //            TypePrice: "￥230.00",
+    //            Check: false
+    //        },
+    //     ],
+    // };
+
 
     //商品详情(基本包)
+    $scope.basicData = []
     function getDetailData (Id){
         HttpFact.get(domain + "/api/Product/getProductDetail", {Id: Id}).then(
             function(data){
-                basicData = JSON.parse(data);
-                console.log(basicData)
+                $scope.basicData = JSON.parse(data);
+                console.log($scope.basicData)
+            },
+            function (data) {
+               $scope.basicData = []
             }
         )
     }
 
 
     //商品详情(参数包)
-
+    $scope.detailParme = [];
     function getParame (Id) {
         HttpFact.get(domain + "/api/Product/getProductParame", {Id: Id}).then(
             function (data) {
-                detailParme = JSON.parse(data)
-                console.log(detailParme)
+                $scope.detailParme = JSON.parse(data)
+                console.log($scope.detailParme)
+            },
+            function (data) {
+                $scope.detailParme = [];
             }
         )
     }
 
 
     $scope.SetCheck = function (v1, v2) {
+
         for (var i = 0; i < v2.length; i++) {
             v2[i].Check = false;
         }
+
         v1.Check = !v1.Check;
     };
 
@@ -754,13 +764,12 @@ angular.module('DS.controllers', [])
 })
 
 //咨讯详情
-.controller('informationDetailController', function ($scope, $filter, $stateParams, HttpFact) {
 
+.controller('informationDetailController', function ($scope, $filter, $stateParams, HttpFact) {
     function getInformationDetail(Id) {
         return HttpFact.get(domain + "/api/Art/getDetail?id=" + Id).then(
             function (data) {
                 $scope.informationDetail = JSON.parse(data);
-                console.log($scope.informationDetail)
             },
             function (data) {
                 $scope.informationDetail = [];

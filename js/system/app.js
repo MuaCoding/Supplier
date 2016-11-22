@@ -1,6 +1,6 @@
 ﻿var domain = "http://192.168.1.112:98";
 
-angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive','imageview','showonLoad'])
+angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive', 'DS.filters','imageview','showonLoad'])
 .config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $ionicConfigProvider.views.maxCache(5);                                               //视图缓存最大为5
