@@ -10,21 +10,35 @@
                 <ion-item>
                     <h3 ng-bind="basicData[0].p_paramTitle1"></h3>
                     <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
-                    <div class="mt10">
-                        <a href="javascript:;" ng-repeat="item in detailParme track by $index | unique: 'item.p_param1'" ng-click="SetCheck(item,detailParme)" ng-class="{'on':item.Check}"><span ng-bind="item.p_param1"></span><i class="PFIcon-Tick"></i></a>
-                    </div>
+                    <ul class="mt10" >
+                        <li ng-repeat="item in temps" ng-click="select_color($index)">
+                            <a href="javascript:;"  ng-class="{'on':isSelect === $index}"><span ng-bind="item"></span><i class="PFIcon-Tick"></i></a>
+                        </li>
+                    </ul>
                 </ion-item>
                 <ion-item>
                     <h3 ng-bind="basicData[0].p_paramTitle2"></h3>
                     <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
-                    <div class="mt10">
-                        <a href="javascript:;" ng-repeat="item in detailParme[0] track by $index" ng-click="SetCheck(item,detailParme[0])" ng-class="{'on':item.Check}">{{item.p_param2}}<i class="PFIcon-Tick"></i></a>
-                    </div>
+                    <ul class="mt10" >
+                        <li ng-repeat="item in detailParme track by $index">
+                            <a href="javascript:;"  ng-click="SetCheck(item,detailParme)" ng-class="{'on':item.Check}"><span ng-bind="item.p_param2"></span><i class="PFIcon-Tick"></i></a>
+                        </li>
+                    </ul>
+                    
                 </ion-item>
                 <ion-item>
                     <h3>批价</h3>
                     <div class="mt10">
-                        <a href="javascript:;" ng-repeat="item in AllModel.PriceModel track by $index" ng-click="SetCheck(item,AllModel.PriceModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<span>{{item.TypePrice}}</span><i class="PFIcon-Tick"></i></a>
+                        <a ng-click="SetCheck(item,AllModel.PriceModel)" ng-class="{'on':item.Check}">
+                            1~99件<span>￥630.00</span><i class="PFIcon-Tick"></i>
+                        </a>
+                        <li ng-click="SetCheck(item,AllModel.PriceModel)" ng-class="{'on':item.Check}">
+                           ≥100件<span>￥430.00</span><i class="PFIcon-Tick"></i>
+                        </li>
+                        <li ng-click="SetCheck(item,AllModel.PriceModel)" ng-class="{'on':item.Check}">
+                            ≥999件<span>￥230.00</span><i class="PFIcon-Tick"></i>
+                        </li>
+                        
                     </div>
                 </ion-item>
                 <ion-item class="PurchaseNumber">

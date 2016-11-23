@@ -411,16 +411,17 @@
                     /*font-size:25px;
                 float: right;*/
                 }
-
-            .productDetails-buy .Specifications .productList div {
+                    .productDetails-buy .Specifications .productList ul {
+                        overflow:hidden;
+                    }
+            .productDetails-buy .Specifications .productList ul > li{
                 overflow: hidden;
-                padding-bottom: 5px;
+                padding-bottom: 5px;float:left;
             }
 
-                .productDetails-buy .Specifications .productList div > a {
+                .productDetails-buy .Specifications .productList ul > li > a {
                     overflow: hidden;
                     display: block;
-                    float: left;
                     font-size: 12px;
                     color: #444444;
                     background-color: #eeeeee;
@@ -431,23 +432,23 @@
                     border-radius: 2px;
                 }
 
-                    .productDetails-buy .Specifications .productList div > a > span {
+                    .productDetails-buy .Specifications .productList ul > li > a > span {
                         color: #f34242;
                         display: block;
                         height: 15px;
                         line-height: 15px;
                     }
 
-                    .productDetails-buy .Specifications .productList div > a > i {
+                    .productDetails-buy .Specifications .productList ul > li > a> i {
                         display: none;
                     }
 
-                    .productDetails-buy .Specifications .productList div > a.on {
+                    .productDetails-buy .Specifications .productList ul > li > a.on {
                         border: solid 1px #f34242;
                         padding: 1px 14px;
                     }
 
-                        .productDetails-buy .Specifications .productList div > a.on > i {
+                        .productDetails-buy .Specifications .productList  ul > li > a.on > i {
                             display: block;
                             position: absolute;
                             right: 0px;

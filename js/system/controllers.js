@@ -1,7 +1,7 @@
 angular.module('DS.controllers', [])
 
 //首页
-.controller('homeController', function ($scope, $filter, $rootScope, $ionicHistory, $ionicScrollDelegate, $ionicSlideBoxDelegate, $timeout, HttpFact, PopupFact, privilegeFact,ModalFact) {
+.controller('homeController', function ($scope, $filter, $rootScope, $ionicHistory, $ionicScrollDelegate, $ionicSlideBoxDelegate, $timeout, HttpFact, PopupFact, privilegeFact, ModalFact) {
 
     ////////获取热销产品数据//////////
     var page = 1;
@@ -10,8 +10,8 @@ angular.module('DS.controllers', [])
     $scope.hotProduct = {
         array_1: []
     }
-    
-    function getData (current,count,provId,strW,orderby) {
+
+    function getData(current, count, provId, strW, orderby) {
         var submitData = {
             current: current, //当前页数
             count: count, //单页条数
@@ -19,12 +19,11 @@ angular.module('DS.controllers', [])
             strW: "",
             orderby: "PD.p_saleNum DESC,"
         }
-        HttpFact.post(domain + "/api/Product/getProductList",submitData).then(
-            function (data){
+        HttpFact.post(domain + "/api/Product/getProductList", submitData).then(
+            function (data) {
                 jsonData = JSON.parse(data);
                 pageCount = Number(jsonData.array_0[0].pageCount);
                 pageNow = Number(jsonData.array_0[0].pageNow);
-                console.log(jsonData)
                 if (pageCount < pageNow) {
                     $scope.noData = false;
                 }
@@ -48,19 +47,19 @@ angular.module('DS.controllers', [])
         $ionicHistory.clearHistory();
     });
     $scope.banners = [];
-    function getBanner(provId,count) {
+    function getBanner(provId, count) {
         var submit = {
             provId: provId,
-            count:count,
+            count: count,
         }
-        HttpFact.post(domain + "/api/Art/getBanner",submit).then(
+        HttpFact.post(domain + "/api/Art/getBanner", submit).then(
             function (data) {
                 $scope.banners = JSON.parse(data);
                 $ionicSlideBoxDelegate.update();
                 $ionicScrollDelegate.resize();
                 $scope.$broadcast("scroll.infiniteScrollComplete");
             },
-            function (data){
+            function (data) {
                 $scope.banners = [];
             }
         )
@@ -69,7 +68,7 @@ angular.module('DS.controllers', [])
 
     /////新品上架
     $scope.newProducts = [];
-    function getNew (current,count,provId,strW,orderby){
+    function getNew(current, count, provId, strW, orderby) {
         var submitData = {
             current: current, //当前页数
             count: count, //单页条数
@@ -77,17 +76,15 @@ angular.module('DS.controllers', [])
             strW: strW,
             orderby: orderby
         }
-        HttpFact.post(domain + "/api/Product/getProductList",submitData).then(
+        HttpFact.post(domain + "/api/Product/getProductList", submitData).then(
             function (data) {
                 $scope.newProducts = JSON.parse(data);
-                console.log($scope.newProducts)
-
                 $ionicSlideBoxDelegate.update();
                 $ionicScrollDelegate.resize();
                 $scope.$broadcast("scroll.infiniteScrollComplete");
             },
-            function (data){
-                $scope.newProducts = []; 
+            function (data) {
+                $scope.newProducts = [];
             }
         )
     }
@@ -123,16 +120,16 @@ angular.module('DS.controllers', [])
 
     //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
-        getData(page, size, 1,0, "");
-        getBanner(1,3);
-        getNew(1, 3, 1 ,"" ,"PD.p_saleNum DESC,")
+        getData(page, size, 1, 0, "");
+        getBanner(1, 3);
+        getNew(1, 3, 1, "", "PD.p_saleNum DESC,")
     });
 
     //加载数据事件
     $scope.loadMore = function () {
         page++;
-        getData(page, size,1, 0, "");
-        getBanner(1,3);
+        getData(page, size, 1, 0, "");
+        getBanner(1, 3);
     }
 
 
@@ -141,8 +138,8 @@ angular.module('DS.controllers', [])
 
 
 //产品
-.controller('productListController', function ($scope, ModalFact) {
-    
+.controller('productListController', function ($scope, ModalFact,HttpFact, $ionicScrollDelegate) {
+
     $scope.screenClick = function () {
         ModalFact.show($scope, "/templates/model/pd-Screening.html");
     };
@@ -150,6 +147,48 @@ angular.module('DS.controllers', [])
         ModalFact.hide();
     };
 
+    var page = 1;
+    var size = 3;
+    $scope.noData = true;
+    $scope.listProduct = {
+        array_1: []
+    }
+    function getData(current, count, provId, strW, orderby) {
+        var submitData = {
+            current: current, //当前页数
+            count: count, //单页条数
+            provId: provId,
+            strW: "",
+            orderby: "PD.p_addtime DESC,"
+        }
+        HttpFact.post(domain + "/api/Product/getProductList", submitData).then(
+            function (data) {
+                jsonData = JSON.parse(data);
+                pageCount = Number(jsonData.array_0[0].pageCount);
+                pageNow = Number(jsonData.array_0[0].pageNow);
+                console.log(jsonData)
+                if (pageCount < pageNow) {
+                    $scope.noData = false;
+                }
+                else if (pageCount == pageNow) {
+                    $scope.listProduct.array_1 = $scope.listProduct.array_1.concat(jsonData.array_1);
+                    $scope.noData = false;
+                }
+                else {
+                    $scope.listProduct.array_1 = $scope.listProduct.array_1.concat(jsonData.array_1);
+                };
+                $ionicScrollDelegate.resize();
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            }
+        )
+    }
+
+   
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getData(page, size, 1, 0, "");
+        
+    });
     //离开视图时执行事件
     $scope.$on("$ionicView.beforeLeave", function () {
         ModalFact.hide();
@@ -245,82 +284,26 @@ angular.module('DS.controllers', [])
         }
         v1.Check = !v1.Check;
     };
+
+    //加载数据事件
+    $scope.loadMore = function () {
+        page++;
+        getData(page, size, 1, 0, "");
+    }
 })
 .controller('productDetailsController', function ($scope, $ionicPopover, $ionicScrollDelegate, $stateParams, $state, $rootScope, HttpFact, judgeFact, PopupFact) {
-    //产品规格
-    // $scope.AllModel = {
-    //     ColorModel: [
-    //         {
-    //             Id: null,
-    //             TypeName: "红色",
-    //             Check: false
-    //         },
-    //         {
-    //             Id: null,
-    //             TypeName: "白色",
-    //             Check: false
-    //         },
-    //         {
-    //             Id: null,
-    //             TypeName: "黑色",
-    //             Check: false
-    //         },
-    //     ],
-    //     VersionModel: [
-    //        {
-    //            Id: null,
-    //            TypeName: "普通版",
-    //            Check: false
-    //        },
-    //        {
-    //            Id: null,
-    //            TypeName: "尊贵版",
-    //            Check: false
-    //        },
-    //        {
-    //            Id: null,
-    //            TypeName: "旗舰版",
-    //            Check: false
-    //        },
-    //        {
-    //            Id: null,
-    //            TypeName: "限量版",
-    //            Check: false
-    //        },
-    //     ],
-    //     PriceModel: [
-    //        {
-    //            Id: null,
-    //            TypeName: "1~99件",
-    //            TypePrice: "￥230.00",
-    //            Check: false
-    //        },
-    //        {
-    //            Id: null,
-    //            TypeName: "≥100件",
-    //            TypePrice: "￥230.00",
-    //            Check: false
-    //        },
-    //        {
-    //            Id: null,
-    //            TypeName: "≥999件",
-    //            TypePrice: "￥230.00",
-    //            Check: false
-    //        },
-    //     ],
-    // };
-
-
+    
     //商品详情(基本包)
     $scope.basicData = []
-    function getDetailData (Id){
-        HttpFact.get(domain + "/api/Product/getProductDetail", {Id: Id}).then(
-            function(data){
+    function getDetailData(Id) {
+        HttpFact.get(domain + "/api/Product/getProductDetail", { Id: Id }).then(
+            function (data) {
                 $scope.basicData = JSON.parse(data);
                 console.log($scope.basicData)
+
             },
             function (data) {
-               $scope.basicData = []
+                $scope.basicData = []
             }
         )
     }
@@ -328,11 +311,36 @@ angular.module('DS.controllers', [])
 
     //商品详情(参数包)
     $scope.detailParme = [];
-    function getParame (Id) {
-        HttpFact.get(domain + "/api/Product/getProductParame", {Id: Id}).then(
+    $scope.storages = [] 
+    function getParame(Id) {
+        HttpFact.get(domain + "/api/Product/getProductParame", { Id: Id }).then(
             function (data) {
                 $scope.detailParme = JSON.parse(data)
                 console.log($scope.detailParme)
+                var temp = [] //定义变量存储push的数据
+                $scope.temps = [];
+
+                
+                for(var i = 0; i < $scope.detailParme.length; i++) {
+                    temp.push($scope.detailParme[i].p_param1);
+
+                }
+                $scope.temps=unique(temp)
+
+                var version = [];
+                $scope.versions = [];
+                for(var i = 0; i < $scope.detailParme.length; i++) {
+
+                    if($scope.isSelect == $scope.detailParme[i].p_param2) {
+                        version.push($scope.detailParme[i].p_param2)
+                    }
+                }
+
+
+                $scope.storages =  $scope.detailParme.p_storage;
+                $scope.versions = version;
+                console.log($scope.versions)
+                // console.log($scope.temps)
             },
             function (data) {
                 $scope.detailParme = [];
@@ -341,6 +349,28 @@ angular.module('DS.controllers', [])
     }
 
 
+
+    //去重复
+    function unique(arr)
+    {
+        var tmp = new Array();
+
+        for (var m in arr)
+        {
+            tmp[arr[m]] = 1;
+        }
+
+        //再把键和值的位置再次调换
+        var tmparr = new Array();
+
+        for (var n in tmp)
+        {
+            tmparr.push(n);
+        }
+
+        return tmparr;
+    }
+
     $scope.SetCheck = function (v1, v2) {
 
         for (var i = 0; i < v2.length; i++) {
@@ -348,7 +378,14 @@ angular.module('DS.controllers', [])
         }
 
         v1.Check = !v1.Check;
+        console.log(v1)
     };
+
+    $scope.isSelect = []
+    $scope.select_color = function(item) {
+        $scope.isSelect = item
+        // console.log(item)
+    }
 
     //商品信息购买界面
     $scope.popoverPro;
@@ -395,6 +432,8 @@ angular.module('DS.controllers', [])
     $scope.ChangeIsActive = function () {
         $scope.isActive = !$scope.isActive;
     }
+
+
 
     $scope.pList = {
         Size: 1,
@@ -642,12 +681,12 @@ angular.module('DS.controllers', [])
         get: function (index) {
             return $scope.proEvent.proIndex == index;
         },
-        
+
     }
 })
 
 //某品牌列表
-.controller('categoryListController',function($scope, $filter, $stateParams, HttpFact){
+.controller('categoryListController', function ($scope, $filter, $stateParams, HttpFact) {
     var brandData; //接收返回data数据 
     var pageCount; //总页数
     var pageNow; //當前頁
@@ -655,18 +694,16 @@ angular.module('DS.controllers', [])
     $scope.brandCollect = {
         array_1: []
     }
-    function getData (current, count, provId, strW){
+    function getData(current, count, provId, strW) {
         var submit = {
             current: current, //當前頁
             count: count, // 單頁條數
             provId: provId,
             strW: strW
         }
-        console.log(submit)
-        HttpFact.post(domain + "/api/Product/getProductList",submit).then(
-            function (data){
+        HttpFact.post(domain + "/api/Product/getProductList", submit).then(
+            function (data) {
                 brandData = JSON.parse(data)
-                console.log(brandData)
                 pageCount = Number(brandData.array_0[0].pageCount);
                 pageNow = Number(brandData.array_0[0].pageNow);
                 if (pageCount < pageNow) {
@@ -692,13 +729,13 @@ angular.module('DS.controllers', [])
 
     //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
-           getData(1, 6, 1, "and p_typeId=" + $stateParams.typeId + "and p_brandId=" + $stateParams.b_id);
+        getData(1, 6, 1, "and p_typeId=" + $stateParams.typeId + "and p_brandId=" + $stateParams.b_id);
     });
 
     //加载数据事件
     $scope.loadMore = function () {
         pageNow++;
-        
+
     }
 
 })
@@ -958,6 +995,8 @@ angular.module('DS.controllers', [])
         $scope.activeType = index;
     }
 
+    console.log($scope.activeType)
+
 })
 
 
@@ -1061,8 +1100,22 @@ angular.module('DS.controllers', [])
 })
 
 //设置头像
-.controller('avatarSettingsController', function ($scope) {
-    $scope.input = {}
+.controller('avatarSettingsController', function ($scope,HttpFact) {
+    $scope.input.flow = {};
+    // $scope.update_avatar = function() {
+    //     fileName: $scope.input.flow.opts.query.filename
+    //     // toastServices.show();
+    //     HttpFact.update_avatar({
+            
+    //     }).then(function(data) {
+    //         // toastServices.hide()
+    //         if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+    //             // errorServices.autoHide(data.message);
+    //         } else {
+    //             // errorServices.autoHide(data.message);
+    //         }
+    //     })
+    // }
 })
 
 .controller('uploadAvatarController', function ($scope) {
