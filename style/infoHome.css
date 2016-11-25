@@ -9,13 +9,13 @@
             overflow: hidden;
             background-color: #fff;
             border-bottom: solid 1px #dddddd;
-            padding: 20px 30px 5px 100px;
+            padding: 25px 30px 20px 100px;
             position: relative;
         }
 
         .infoHome-class .list .item .Img {
             position: absolute;
-            top: 10px;
+            top: 16px;
             left: 10px;
             width: 80px;
             height: 80px;
@@ -48,7 +48,7 @@
             right: 0px;
             top: 0px;
             height: 100%;
-            font-size: 30px;
+            font-size: 20px;
             color: #808080;
-            line-height: 90px;
+            line-height: 111px;
         }

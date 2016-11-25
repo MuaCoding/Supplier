@@ -10,9 +10,9 @@
         <!-- banner -->
         <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true" class="headImgDiv" does-continue="true">
             <ion-slide ng-repeat="banner in banners">
-                <div class="Img"><img src="{{banner.a_pic}}" err-src="/images/Banner.jpg" /></div>
+                <div class="Img imgMax" style="background-image: url({{banner.a_pic}})"></div>
             </ion-slide>
-            
+
         </ion-slide-box>
 
         <div class="NewProductsDiv whiteBg mb10">
@@ -22,15 +22,15 @@
             </div>
             <ion-scroll direction="x" shouldfreeze="x" scrollbar-x="false" locking="true" zooming="false" has-bouncing="true" class="NewPro" ng-class="NewPro" style="height:100px;">
                 <ion-list>
-                    <ion-item ng-href="javascript:void(0)" class="NewProducts mr5" ng-repeat = "product in newProducts.array_1">
+                    <ion-item ng-href="javascript:void(0)" class="NewProducts mr5" ng-repeat="product in newProducts.array_1">
                         <div class="Img imgMax" style="background-image: url('{{product.p_Pic.split(',')[0]}}')"></div>
                         <div class="Prod">
-                            <p class="ellipsis" style="color: #000;font-size: 16px;" ng-bind ="product.p_name"></p>
+                            <p class="ellipsis" style="color: #000;font-size: 16px;" ng-bind="product.p_name"></p>
                             <span>{{product.price3}}起</span>
-                            <span ng-if ="!product.price3">{{product.price2}}起</span>
+                            <span ng-if="!product.price3">{{product.price2}}起</span>
                         </div>
                     </ion-item>
-                   
+
                 </ion-list>
             </ion-scroll>
         </div>

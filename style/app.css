@@ -1,22 +1,26 @@
 ﻿input[type="button"], input[type="submit"], input[type="reset"], input[type="text"], input[type="checkbox"], select {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 html, body {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  cursor: url('/images/finger.png'), auto;
+    cursor: url('/images/finger.png'), auto;
 }
 
 /* 隐藏滚动条，但依旧具备可以滚动的功能 */
 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
-h3{
-  font-weight: normal;
+a, span, h3, p {
+    font-family: 微软雅黑;
+}
+
+h3 {
+    font-weight: normal;
 }
 /*.headBar {
   border-bottom: 1px solid #eaeaea;
@@ -25,23 +29,23 @@ h3{
 }*/
 /*********头部***********/
 .titleNav {
-  color: #fff;
-  font-size: 17px !important;
-  font-weight: 500;
-  line-height: 44px !important;
-  margin-bottom: 0px;
+    color: #fff;
+    font-size: 17px !important;
+    font-weight: 500;
+    line-height: 44px !important;
+    margin-bottom: 0px;
 }
 
 .headBtn {
-  display: block;
-  color: #777;
-  font-size: 13px;
-  line-height: 33px !important;
+    display: block;
+    color: #777;
+    font-size: 13px;
+    line-height: 33px !important;
 }
 
-.headBtn.PFIcon-down:after {
-  font-size: 10px;
-}
+    .headBtn.PFIcon-down:after {
+        font-size: 10px;
+    }
 
 
 .headReturn, .headRButton {
@@ -70,136 +74,136 @@ h3{
 }
 
 
-.headBar{
+.headBar {
     background: #f34242;
 }
 /******内容******/
 .box {
-  height: 500px;
-  width: 100%;
+    height: 500px;
+    width: 100%;
 }
 
 .contentDiv {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
 }
 
 .Content {
-  overflow: hidden;
-  min-height: 100%;
-  padding-bottom: 44px !important;
+    overflow: hidden;
+    min-height: 100%;
+    padding-bottom: 44px !important;
 }
 
 .scroll-content {
-  background-color: #ebebeb;
+    background-color: #ebebeb;
 }
 
-.scroll-content > .scroll {
-  min-height: 100%;
-}
+    .scroll-content > .scroll {
+        min-height: 100%;
+    }
 
 .imgMin {
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
 }
 
 .imgMax {
-  background-size: contain !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
 }
 
 .mText {
-  display: -webkit-box !important;
-  overflow: hidden;
-  -webkit-box-orient: vertical !important;
-  white-space: initial !important;
-  text-overflow: initial !important;
-  -webkit-line-clamp: 2;
+    display: -webkit-box !important;
+    overflow: hidden;
+    -webkit-box-orient: vertical !important;
+    white-space: initial !important;
+    text-overflow: initial !important;
+    -webkit-line-clamp: 2;
 }
 
 ion-modal-view {
-  width: 100% !important;
-  height: 100% !important;
-  top: 0 !important;
-  left: 0 !important;   
-  right: 0 !important;
-  bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
 }
 
 ion-list > .list {
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
 
-ion-list > .list > .item {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
+    ion-list > .list > .item {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
 
-ion-list > .list > .item > a {
-  padding: 0;
-}
+        ion-list > .list > .item > a {
+            padding: 0;
+        }
 
 .noData {
-  color: #aaa;
-  font-size: 15px;
-  text-align: center;
-  padding: 10px;
+    color: #aaa;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
 }
 
 /*----------          底部          ----------*/
 .footBar .tab-nav {
-  border-top: 1px solid #eaeaea !important;
-  background: #fff !important;
+    border-top: 1px solid #eaeaea !important;
+    background: #fff !important;
 }
 
-.footBar .tab-item { 
-  color: #888;
+.footBar .tab-item {
+    color: #888;
 }
 
-.footBar .tab-item.tab-item-active {
-  color: #f34242;
-}
+    .footBar .tab-item.tab-item-active {
+        color: #f34242;
+    }
 
-.footBar .tab-item .icon {
-  height: 28px;
-  line-height: 20px;
-}
+    .footBar .tab-item .icon {
+        height: 28px;
+        line-height: 20px;
+    }
 
-.footBar .tab-item .icon:before {
-  font-size: 19px;
-}
+        .footBar .tab-item .icon:before {
+            font-size: 19px;
+        }
 
 .upLink {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  display: block;
-  color: #888;
-  font-size: 13px;
-  text-align: center;
-  padding: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    color: #888;
+    font-size: 13px;
+    text-align: center;
+    padding: 10px;
 }
 
-.upLink.on {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 3;
-}
+    .upLink.on {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 3;
+    }
 
 
-.full-width{
-  width: 100%;
+.full-width {
+    width: 100%;
 }
 
 .text-ellipsis {
-     display: -webkit-box;
+    display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     -o-text-overflow: ellipsis;
@@ -207,16 +211,16 @@ ion-list > .list > .item > a {
     overflow: hidden;
 }
 
-.forger-wrap{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 55px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 14px;
-  color: #888;
+.forger-wrap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
 }
 
 /* 弹窗背景幕 */

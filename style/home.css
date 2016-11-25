@@ -52,12 +52,9 @@
 
     .home-Class .headImgDiv .Img {
         width: 100%;
-        /*overflow: hidden;*/
+        padding-bottom: 37%;
+        overflow: hidden;
     }
-
-        .home-Class .headImgDiv .Img > img {
-            max-width: 100%;
-        }
 
     .home-Class .headImgDiv .slider-pager .slider-pager-page {
         opacity: 0.4;

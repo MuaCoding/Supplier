@@ -12,11 +12,11 @@
         float: left;
         background: initial;
         padding: 10px;
-        margin: 1%;
+        margin: 15px 1% 10px 1%;
         border: solid 1px #eee;
     }
 
-    .categoryList-class  .proList .Img {
+    .categoryList-class .proList .Img {
         overflow: hidden;
         width: 100%;
         padding-bottom: 100%;

@@ -1,51 +1,70 @@
 ﻿<ion-popover-view class="productDetails-buy">
     <div class="Commodity">
-        <div class="Img"><a class="imgMax" style="background-image: url('{{basicData[0].p_Pic.split(',')[0]}}')"></a></div>
+        <div class="Img"><a class="imgMax" style="background-image: url('{{parmeImg[0]}}')"></a></div>
         <h2 ng-bind="basicData[0].p_name"></h2>
         <a href="javascript:void(0)" class="close" ng-click="closePopover()">x</a>
     </div>
-    <div class="item Specifications">
-        <ion-scroll class="item Specifications" direction="y" zooming="false" scrollbar-y="false">
+    <div class="Specifications">
+        <ion-scroll class="item Specif" direction="y" zooming="false" scrollbar-y="false">
             <ion-list class="productList">
                 <ion-item>
                     <h3 ng-bind="basicData[0].p_paramTitle1"></h3>
-                    <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
+                   <!--  <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a> -->
                     <ul class="mt10" >
-                        <li ng-repeat="item in temps" ng-click="select_color($index)">
-                            <a href="javascript:;"  ng-class="{'on':isSelect === $index}"><span ng-bind="item"></span><i class="PFIcon-Tick"></i></a>
+                        <li ng-repeat="item in temps " ng-click="select_color(item)">
+                            <a href="javascript:;" ng-class="{'on':input.color == item}"><span ng-bind="item"></span><i class="PFIcon-Tick"></i></a>
                         </li>
+                        <!--<li ng-repeat="item in TypeModelList" ng-if="item">
+                            <a href="javascript:;" ng-class="{'on':item}"><span ng-bind="item"></span><i class="PFIcon-Tick"></i></a>
+                        </li>-->
                     </ul>
                 </ion-item>
                 <ion-item>
                     <h3 ng-bind="basicData[0].p_paramTitle2"></h3>
-                    <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
+                    <!-- <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a> -->
                     <ul class="mt10" >
-                        <li ng-repeat="item in detailParme track by $index">
-                            <a href="javascript:;"  ng-click="SetCheck(item,detailParme)" ng-class="{'on':item.Check}"><span ng-bind="item.p_param2"></span><i class="PFIcon-Tick"></i></a>
+                        <li ng-repeat="version in TypeModelList track by $index" ng-click="select_version(version)">
+                            <a href="javascript:;"  ng-class="{'on':input.version == version}"><span ng-bind="version"></span><i class="PFIcon-Tick"></i></a>
                         </li>
+
                     </ul>
                     
                 </ion-item>
                 <ion-item>
                     <h3>批价</h3>
-                    <div class="mt10">
-                        <a ng-click="SetCheck(item,AllModel.PriceModel)" ng-class="{'on':item.Check}">
-                            1~99件<span>￥630.00</span><i class="PFIcon-Tick"></i>
-                        </a>
-                        <li ng-click="SetCheck(item,AllModel.PriceModel)" ng-class="{'on':item.Check}">
-                           ≥100件<span>￥430.00</span><i class="PFIcon-Tick"></i>
+                    <ul class="mt10 WholesalePrice" >
+                     <li ng-class="{'on':minimum >=1 && minimum <= lowNumber.low1-1}">
+                            <span class="Number">
+                                1~
+                                <em ng-bind="basicData[0].p_valuationNum - 1"></em>
+                                <em ng-bind="basicData[0].p_unit"></em>
+                            </span>
+                            <span>{{prices.price3 || initial1 |currency:"￥"}}</span>
+                            <i class="PFIcon-Tick"></i>
                         </li>
-                        <li ng-click="SetCheck(item,AllModel.PriceModel)" ng-class="{'on':item.Check}">
-                            ≥999件<span>￥230.00</span><i class="PFIcon-Tick"></i>
+                        <li ng-class="{'on':minimum >=lowNumber.low1&&minimum <lowNumber.low3}">
+                            <span class="Number">
+                                ≥<em ng-bind="basicData[0].p_priceScopeTitle2"></em>
+                                <em ng-bind="basicData[0].p_unit"></em>
+                            </span>
+                            <span>{{prices.price2 || initial2  |currency:"￥"}}</span><i class="PFIcon-Tick"></i>
+                        </li>
+                        <li ng-class="{'on':minimum >=lowNumber.low3}">
+                            <span class="Number">
+                                ≥<em ng-bind="basicData[0].p_priceScopeTitle3"></em>
+                                <em ng-bind="basicData[0].p_unit"></em>
+                            </span>
+                            <span>{{prices.price1 || initial3 |currency:"￥"}}</span><i class="PFIcon-Tick"></i>
                         </li>
                         
-                    </div>
+                        
+                    </ul>
                 </ion-item>
                 <ion-item class="PurchaseNumber">
-                    <h3>进货数量</h3><div class="NumberDiv"><a href="javascript:;" ng-click="add()">+</a><input type="text" ng-model="varlist.itemNum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" /><a href="javascript:;" ng-click="minus()">-</a></div>
+                    <h3>进货数量</h3><div class="NumberDiv"><a href="javascript:;" ng-click="add()">+</a><input type="text" ng-change="num_total(minimum)"  ng-model="minimum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" /><a href="javascript:;" ng-click="minus()">-</a></div>
                 </ion-item>
             </ion-list>
         </ion-scroll>
 
-    </div><div class="Billing row"><span class="col">已选5种共{{varlist.itemNum}}件商品</span><a href="javascript:;" class="confirm col">确定</a></div>
+    </div><div class="Billing row"><span class="col">共<em ng-bind="minimum"></em><em ng-bind="basicData[0].p_unit"></em>商品</span><a href="javascript:;" class="confirm col">加入购物车</a></div>
 </ion-popover-view>

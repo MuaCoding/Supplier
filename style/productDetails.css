@@ -320,9 +320,13 @@
 }
 
     .productDetails-buy .Commodity {
-        position: relative;
+        position: absolute;
         padding: 16px;
         background-color: #fff !important;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        border-bottom: solid 1px #ddd;
     }
 
         .productDetails-buy .Commodity > .Img {
@@ -365,10 +369,23 @@
         }
 
     .productDetails-buy .Specifications {
-        padding: 6px;
         background-color: #fff !important;
-        position: relative;
+        position: absolute;
+        left: 0px;
+        bottom: 71px;
+        top: 49px;
+        overflow: hidden;
+        width: 100%;
     }
+
+        .productDetails-buy .Specifications > .Specif {
+            margin: 0px;
+            position: relative;
+            padding: 0px 10px 10px 10px;
+            margin: 6px;
+            background-color: #fff !important;
+        }
+
         /*商品购买选择*/
         .productDetails-buy .Specifications h3 {
             overflow: hidden;
@@ -385,6 +402,7 @@
         .productDetails-buy .Specifications .productList {
             overflow: hidden;
             display: block;
+            padding-bottom: 25px;
         }
 
             .productDetails-buy .Specifications .productList ion-item {
@@ -411,35 +429,39 @@
                     /*font-size:25px;
                 float: right;*/
                 }
-                    .productDetails-buy .Specifications .productList ul {
-                        overflow:hidden;
-                    }
-            .productDetails-buy .Specifications .productList ul > li{
+
+            .productDetails-buy .Specifications .productList ul {
                 overflow: hidden;
-                padding-bottom: 5px;float:left;
             }
 
-                .productDetails-buy .Specifications .productList ul > li > a {
+                .productDetails-buy .Specifications .productList ul > li {
                     overflow: hidden;
-                    display: block;
-                    font-size: 12px;
-                    color: #444444;
                     background-color: #eeeeee;
                     text-align: center;
-                    padding: 2px 15px;
                     margin: 0px 10px 5px auto;
                     position: relative;
                     border-radius: 2px;
+                    float: left;
+                    font-size: 12px;
+                    color: #444444;
                 }
 
-                    .productDetails-buy .Specifications .productList ul > li > a > span {
+                    .productDetails-buy .Specifications .productList ul > li > a {
+                        font-size: 12px;
+                        color: #444444;
+                        display: block;
+                        overflow: hidden;
+                        padding: 2px 15px;
+                    }
+
+                    .productDetails-buy .Specifications .productList ul > li > span {
                         color: #f34242;
                         display: block;
                         height: 15px;
                         line-height: 15px;
                     }
 
-                    .productDetails-buy .Specifications .productList ul > li > a> i {
+                    .productDetails-buy .Specifications .productList ul > li i {
                         display: none;
                     }
 
@@ -448,7 +470,7 @@
                         padding: 1px 14px;
                     }
 
-                        .productDetails-buy .Specifications .productList  ul > li > a.on > i {
+                        .productDetails-buy .Specifications .productList ul > li > a.on > i {
                             display: block;
                             position: absolute;
                             right: 0px;
@@ -458,6 +480,24 @@
                             height: 15px;
                             width: 15px;
                         }
+
+                .productDetails-buy .Specifications .productList ul.WholesalePrice > li {
+                    padding: 5px 15px;
+                }
+
+                    .productDetails-buy .Specifications .productList ul.WholesalePrice > li > span {
+                        height: 15px;
+                        line-height: 15px;
+                    }
+
+                    .productDetails-buy .Specifications .productList ul.WholesalePrice > li > .Number {
+                        color: #444444;
+                    }
+                    .productDetails-buy .Specifications .productList ul.WholesalePrice > li.on{
+                         padding: 4px 14px;
+                         border:solid 1px #f34242;
+                    }
+
 
             /*进货数量*/
             .productDetails-buy .Specifications .productList .PurchaseNumber {
@@ -507,6 +547,10 @@
         border-top: solid 1px #e5e5e5;
         padding: 15px 20px;
         background-color: #fff;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
     }
 
         .productDetails-buy .Billing > span {

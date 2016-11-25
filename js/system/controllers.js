@@ -148,7 +148,7 @@ angular.module('DS.controllers', [])
     };
 
     var page = 1;
-    var size = 3;
+    var size = 6;
     $scope.noData = true;
     $scope.listProduct = {
         array_1: []
@@ -194,89 +194,6 @@ angular.module('DS.controllers', [])
         ModalFact.hide();
     });
 
-    $scope.AllModel = {
-        BrandModel: [
-                {
-                    Id: null,
-                    TypeName: "三星",
-                    Check: false
-                },
-                {
-                    Id: null,
-                    TypeName: "华为",
-                    Check: false
-                },
-                {
-                    Id: null,
-                    TypeName: "小米",
-                    Check: false
-                },
-                {
-                    Id: null,
-                    TypeName: "摩托罗拉",
-                    Check: false
-                },
-                {
-                    Id: null,
-                    TypeName: "苹果",
-                    Check: false
-                },
-                {
-                    Id: null,
-                    TypeName: "魅族",
-                    Check: false
-                },
-        ],
-        TypeModel: [
-        {
-            Id: null,
-            TypeName: "移动电源",
-            Check: false
-        },
-        {
-            Id: null,
-            TypeName: "手机壳",
-            Check: false
-        },
-        {
-            Id: null,
-            TypeName: "耳机线",
-            Check: false
-        },
-        {
-            Id: null,
-            TypeName: "车载支架",
-            Check: false
-        },
-        {
-            Id: null,
-            TypeName: "贴膜",
-            Check: false
-        },
-        {
-            Id: null,
-            TypeName: "除尘套装",
-            Check: false
-        },
-        ],
-        NumberModel: [
-        {
-            Id: null,
-            TypeName: "1~99件",
-            Check: false
-        },
-        {
-            Id: null,
-            TypeName: "≥100件",
-            Check: false
-        },
-        {
-            Id: null,
-            TypeName: "≥999件",
-            Check: false
-        },
-        ]
-    };
 
     $scope.SetCheck = function (v1, v2) {
         for (var i = 0; i < v2.length; i++) {
@@ -291,16 +208,33 @@ angular.module('DS.controllers', [])
         getData(page, size, 1, 0, "");
     }
 })
-.controller('productDetailsController', function ($scope, $ionicPopover, $ionicScrollDelegate, $stateParams, $state, $rootScope, HttpFact, judgeFact, PopupFact) {
-    
+.controller('productDetailsController', function ($scope, $ionicPopover,filterFilter, $timeout, $ionicScrollDelegate, $stateParams, $state, $rootScope, HttpFact, judgeFact, PopupFact, $ionicSlideBoxDelegate) {
+    $scope.input ={}
+
+    $scope.lowNumber ={
+       low1: 100,
+       low2: 250,
+       low3: 1000,
+    }
+
     //商品详情(基本包)
+    $scope.basicImg = []
+    $scope.parmeImg = []
     $scope.basicData = []
+    $scope.minimum = [] //最低购买数量
+    
+    
     function getDetailData(Id) {
         HttpFact.get(domain + "/api/Product/getProductDetail", { Id: Id }).then(
             function (data) {
                 $scope.basicData = JSON.parse(data);
-                console.log($scope.basicData)
-
+                $scope.basicImg = $scope.basicData[0].p_Pic.split(',');
+               
+                // console.log($scope.basicData)
+                $scope.minimum = Number($scope.basicData[0].p_valuationNum);
+                $scope.lowNumber.low1 = Number($scope.basicData[0].p_priceScopeTitle1);
+                $scope.lowNumber.low2 = Number($scope.basicData[0].p_priceScopeTitle2);
+                $scope.lowNumber.low3 = Number($scope.basicData[0].p_priceScopeTitle3);
             },
             function (data) {
                 $scope.basicData = []
@@ -308,39 +242,48 @@ angular.module('DS.controllers', [])
         )
     }
 
-
+    $scope.initial1 ='',
+    $scope.initial2 ='';
+    $scope.initial3 ='';
     //商品详情(参数包)
     $scope.detailParme = [];
     $scope.storages = [] 
     function getParame(Id) {
-        HttpFact.get(domain + "/api/Product/getProductParame", { Id: Id }).then(
+        var sunmit = {
+            Id: Id
+        }
+        HttpFact.get(domain + "/api/Product/getProductParame", sunmit).then(
             function (data) {
                 $scope.detailParme = JSON.parse(data)
+                $scope.input.color = $scope.detailParme.p_param1;
+                $scope.parmeImg = $scope.detailParme[0].p_pic.split(',');
                 console.log($scope.detailParme)
+
+                //匹配版本
+                var obj = filterFilter($scope.detailParme, { p_param1: $scope.input.color }, true);
+                $scope.TypeModelList = [];  //版本
+                var type = []
+                for (var i = 0; i < obj.length; i++) {
+                    type.push(obj[i].p_param2);
+                }
+                $scope.TypeModelList=unique(type)
+                //unique
                 var temp = [] //定义变量存储push的数据
                 $scope.temps = [];
-
                 
                 for(var i = 0; i < $scope.detailParme.length; i++) {
                     temp.push($scope.detailParme[i].p_param1);
-
                 }
+                
                 $scope.temps=unique(temp)
 
-                var version = [];
-                $scope.versions = [];
-                for(var i = 0; i < $scope.detailParme.length; i++) {
-
-                    if($scope.isSelect == $scope.detailParme[i].p_param2) {
-                        version.push($scope.detailParme[i].p_param2)
-                    }
-                }
-
-
-                $scope.storages =  $scope.detailParme.p_storage;
-                $scope.versions = version;
-                console.log($scope.versions)
-                // console.log($scope.temps)
+                //initial
+                $scope.initial1 = $scope.detailParme[0].p_priceScope1;
+                $scope.initial2 = $scope.detailParme[0].p_priceScope2;
+                $scope.initial3 = $scope.detailParme[0].p_priceScope3;
+               
+                console.log($scope.initial3+ '2')
+                
             },
             function (data) {
                 $scope.detailParme = [];
@@ -348,8 +291,7 @@ angular.module('DS.controllers', [])
         )
     }
 
-
-
+    console.log($scope.initial3+ '1')
     //去重复
     function unique(arr)
     {
@@ -371,20 +313,81 @@ angular.module('DS.controllers', [])
         return tmparr;
     }
 
-    $scope.SetCheck = function (v1, v2) {
 
-        for (var i = 0; i < v2.length; i++) {
-            v2[i].Check = false;
+    //选中颜色和版本
+    var value ='';
+    var key ='';
+    $scope.prices = {
+        price1: '',
+        price2: '',
+        price3: ''
+    }
+    $scope.storage = '';
+    console.log($scope.storage + "storage1")
+    function match() {
+        if(value == '' || key =='')
+        {
+            return;
+        }
+        else{
+            var arr = filterFilter($scope.detailParme, { p_param2:key ,p_param1: value }, true)
+            for(var i = 0; i < arr.length; i++) {
+                $scope.prices.price1=arr[i].p_priceScope1
+                $scope.prices.price2=arr[i].p_priceScope2
+                $scope.prices.price3=arr[i].p_priceScope3
+                $scope.storage = Number(arr[i].p_storage);
+            }
+            
+        }
+    }
+    console.log($scope.storage + "storage")
+    $scope.num_check1 = false;
+    $scope.num_check2 = false;
+    $scope.num_check3 = false;
+    //判断数量
+    function judge_storage() {
+        if(value == '' || key =='') {
+            return;
+        }
+        else {
+
+            if($scope.minimum < $scope.lowNumber.low1) {
+                $scope.num_check1 = !$scope.num_check1
+                
+            }
+            else if ($scope.minimum > $scope.lowNumber.low1 || $scope.minimum < $scope.lowNumber.low3){
+                $scope.num_check2 = !$scope.num_check2
+                
+            }
+            else if ($scope.minimum >= $scope.lowNumber.low3){
+                $scope.num_check3 = !$scope.num_check3
+                
+            }
+        }
+        
+
+    }
+    //选择版本
+    $scope.input.version = []
+    $scope.select_version = function(version){
+        $scope.input.version =version;
+        key = version;
+        match();
+        
+    }
+    //选择颜色
+    $scope.select_color = function(item) {
+        
+        $scope.input.color = item;
+        value = item;
+        match();
+        //过滤相同
+        var obj = filterFilter($scope.detailParme, { p_param1: item }, true);
+        $scope.TypeModelList = [];
+        for (var i = 0; i < obj.length; i++) {
+            $scope.TypeModelList.push(obj[i].p_param2);
         }
 
-        v1.Check = !v1.Check;
-        console.log(v1)
-    };
-
-    $scope.isSelect = []
-    $scope.select_color = function(item) {
-        $scope.isSelect = item
-        // console.log(item)
     }
 
     //商品信息购买界面
@@ -408,25 +411,33 @@ angular.module('DS.controllers', [])
     $scope.$on("$destroy", function () {
         $scope.popoverPro.remove();
     });
-    var arr = [];
 
-    $scope.varlist = {
-        itemNum: 1,
-        total: 1,
+
+    
+
+    $scope.num_total = function(value) {
+
+        $scope.minimum = value;
+        if(value == ''){
+            $scope.minimum;
+        }
+        console.log(value)
     }
 
     // 减
     $scope.minus = function () {
-        if ($scope.varlist.itemNum == 1) {
+        if ($scope.minimum <= 1) {
             return;
         } else {
-            $scope.varlist.itemNum--;
+            $scope.minimum--;
         }
     }
-    // 加
+    // 加个
     $scope.add = function () {
-        $scope.varlist.itemNum++;
+        $scope.minimum++;
     }
+
+    
 
     $scope.isActive = false;
     $scope.ChangeIsActive = function () {
@@ -497,13 +508,7 @@ angular.module('DS.controllers', [])
             {
                 Class: "成交()",
                 List: [
-                    //{
-                    //    Img: "",
-                    //    userName: "古道边",
-                    //    EvaTime: "2016-12-22",
-                    //    Review: "音质不错",
-                    //    Picture: ["/images/product/1.jpg", "/images/product/2.jpg"]
-                    //},
+                    
                 ]
             },
             {
@@ -639,6 +644,18 @@ angular.module('DS.controllers', [])
     $scope.$on("$ionicView.loaded", function () {
         getDetailData($stateParams.Id);
         getParame($stateParams.Id);
+        $ionicSlideBoxDelegate.update();
+        if ($scope.basicImg.length < 3) {
+            $ionicSlideBoxDelegate.loop(false);
+        }
+        else {
+            $ionicSlideBoxDelegate.loop(true);
+        }
+
+        $timeout(function () {
+            $ionicSlideBoxDelegate.slide(0);
+        })
+
     });
 
     //加载数据事件
@@ -1101,21 +1118,7 @@ angular.module('DS.controllers', [])
 
 //设置头像
 .controller('avatarSettingsController', function ($scope,HttpFact) {
-    $scope.input.flow = {};
-    // $scope.update_avatar = function() {
-    //     fileName: $scope.input.flow.opts.query.filename
-    //     // toastServices.show();
-    //     HttpFact.update_avatar({
-            
-    //     }).then(function(data) {
-    //         // toastServices.hide()
-    //         if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-    //             // errorServices.autoHide(data.message);
-    //         } else {
-    //             // errorServices.autoHide(data.message);
-    //         }
-    //     })
-    // }
+    
 })
 
 .controller('uploadAvatarController', function ($scope) {

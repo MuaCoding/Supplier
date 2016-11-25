@@ -13,8 +13,8 @@
 
     <ion-content picture_img_one picture_img>
         <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true" class="headImgDiv" does-continue="true">
-            <ion-slide ng-repeat = "basicImg in basicData[0].p_Pic.split(',')">
-                <div class="Img imgMax" style="background-image: url('{{basicImg}}'); "></div>
+            <ion-slide ng-repeat = "img in basicImg">
+                <div class="Img imgMax" style="background-image: url('{{img}}'); "></div>
             </ion-slide>
         </ion-slide-box>
 
