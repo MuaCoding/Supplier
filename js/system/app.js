@@ -276,10 +276,16 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         templateUrl: "/templates/user/login.html",
         controller: 'loginController'
     })
+    //注册
+    .state('signup', {
+        url: "/signup",
+        templateUrl: "/templates/user/signup.html",
+        controller: 'signupController'
+    })
     //忘记密码
-    .state('forgotPassword', {
-        url: "/forgotPassword",
-        templateUrl: "/templates/user/forgotPassword.html"
+    .state('forgot', {
+        url: "/forgot",
+        templateUrl: "/templates/user/forgot.html"
     })
     //确认收货
     .state('confirm', {

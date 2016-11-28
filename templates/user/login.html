@@ -1,4 +1,4 @@
-<ion-view class="login-Class">
+<ion-view class="login-Class" title="用户登录">
 	
 	<ion-nav-buttons side="left">
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
@@ -15,25 +15,35 @@
 		<div class="Content">
 			<ion-list>
 				<ion-item>
-					<form action="">
+					<form action="" ng-submit="signin_action()">
 						<div class="input-group addon">
 							<div class="input-label">
 								用户名
 							</div>
-							<input type="text" class="full-width form-control login" ng-model="data.U_Name" name="data.U_Name" required placeholder="电子邮箱或手机号码">
+							<input type="text" class="full-width form-control login" ng-model="input.account" name="account" ng-required="true" placeholder="电子邮箱或手机号码">
 						</div>
 						<div class="input-group addon">
 							<div class="input-label">
 								密码
 							</div>
-							<input type="password" class="full-width form-control password" ng-model="data.U_Password" name="data.U_Password" required placeholder="请输入密码">
+							<input type="password" class="full-width form-control password" ng-model="input.pwd" name="pwd" ng-required="true" placeholder="请输入密码">
+						</div>
+						<div class="input-group addon">
+							<div class="input-label">
+								验证码
+							</div>
+							<input type="text" class="full-width form-control" ng-model="input.codeValue" name="codeValue" required placeholder="请输入验证码">
+							<i data="{{codeData.codeId}}" class="imgcode imgMax" ng-click="code_active()" style="background:url('data:image/png;base64,{{codeData.img}}')" alt=""></i>
+							<!-- <countdown class="smscode" countdown="countdown" ng-class="{'color-primary':countdown.message!='获取验证码'}" countdown-disabled="signupForm.telephone.$invalid">{{countdown.message}}</countdown> -->
 						</div>
 						<div class="btn-wrap">
-							<a class="confirm-btn" ng-click="submit()">
+							<a class="confirm-btn"  ng-click="signin_action()">
 								<span>立即登录</span>
-							</a>
-														
+							</a>			
 						</div>
+						
+					</form>	
+						
 						<div class="gray-text">
 							<span class="gray-layout">OR</span>
 						</div>
@@ -44,16 +54,22 @@
 								使用微信授权登录</span>
 							</a>
 						</div>
-					</form>
+					
 					
 				</ion-item>
 				
 			</ion-list>
 			
 		</div>
-		<div class="forger-wrap" ui-sref = "footers.forgotPassword">
-			<span>忘记密码？点击此处</span>
-		</div>
+		<div class="forgot-wrap">
+            <div class="col-xs-2 pull-left">
+                <a class="forgot-btn" ng-href="/signup">没有账号？点我注册</a>
+            </div>
+            <div class="col-xs-2 pull-left">
+                <a class="signup-btn" ng-href="/forgot">忘记密码？点击此处</a>
+            </div>
+        </div>
+		
 	</ion-content>
 </ion-view>
 
