@@ -221,7 +221,7 @@ angular.module('DS.controllers', [])
     $scope.basicImg = []
     $scope.parmeImg = []
     $scope.basicData = []
-    $scope.minimum = [] //最低购买数量
+    $scope.miniNum = [] //最低购买数量
     
     
     function getDetailData(Id) {
@@ -230,11 +230,12 @@ angular.module('DS.controllers', [])
                 $scope.basicData = JSON.parse(data);
                 $scope.basicImg = $scope.basicData[0].p_Pic.split(',');
                
-                // console.log($scope.basicData)
-                $scope.minimum = Number($scope.basicData[0].p_valuationNum);
+                console.log($scope.basicData)
+                $scope.miniNum = Number($scope.basicData[0].p_valuationNum);
                 $scope.lowNumber.low1 = Number($scope.basicData[0].p_priceScopeTitle1);
                 $scope.lowNumber.low2 = Number($scope.basicData[0].p_priceScopeTitle2);
                 $scope.lowNumber.low3 = Number($scope.basicData[0].p_priceScopeTitle3);
+
             },
             function (data) {
                 $scope.basicData = []
@@ -340,7 +341,6 @@ angular.module('DS.controllers', [])
             
         }
     }
-    console.log($scope.storage + "storage")
     $scope.num_check1 = false;
     $scope.num_check2 = false;
     $scope.num_check3 = false;
@@ -375,6 +375,7 @@ angular.module('DS.controllers', [])
         match();
         
     }
+
     //选择颜色
     $scope.select_color = function(item) {
         
@@ -414,35 +415,69 @@ angular.module('DS.controllers', [])
 
 
     
+    // $scope.changeTotal = {
+    //     changeNum: ''
+    // };
 
-    $scope.num_total = function(value) {
 
-        $scope.minimum = value;
-        if(value == ''){
-            $scope.minimum;
-        }
-        console.log(value)
+    // $scope.num_total = function() {
+
+    //     $scope.miniNum = value;
+    //     if(value == ''){
+    //         $scope.miniNum;
+    //     }
+    //     console.log(value)
+    // }
+
+    // function add(){
+    //     if($scope.miniNum == "" || $scope.miniNum <1){
+    //        return $scope.miniNum = 1;
+    //     }
+    //     else{
+    //         $scope.miniNum++;
+    //     }
+    // }
+
+
+    var arr = [];
+    var inStock = 500;
+
+    var miniNum = '';
+
+    $scope.varlist = {
+        itemNum: 1,
+        total: 1,
     }
 
     // 减
     $scope.minus = function () {
-        if ($scope.minimum <= 1) {
+        if ($scope.varlist.itemNum == 1) {
             return;
         } else {
-            $scope.minimum--;
+            $scope.varlist.itemNum--;
         }
     }
-    // 加个
+    // 加
     $scope.add = function () {
-        $scope.minimum++;
+        if ($scope.varlist.itemNum >= inStock) {
+            alert("已达到最大库存数量");
+        } else {
+            $scope.varlist.itemNum++;
+        }
     }
 
-    
+    $scope.Numblur = function () {
+        if ($scope.varlist.itemNum > inStock) {
+            $scope.varlist.itemNum = inStock;
+        }
+    }
 
     $scope.isActive = false;
     $scope.ChangeIsActive = function () {
         $scope.isActive = !$scope.isActive;
     }
+
+
 
 
 
@@ -1276,64 +1311,104 @@ angular.module('DS.controllers', [])
 //登录
 .controller('loginController', function ($scope, $state, $rootScope, HttpFact, judgeFact, PopupFact, privilegeFact) {
 
-    //数据获取
-    $scope.data = {
-        U_Name: "",
-        U_Password: "",
+    $scope.input = {
+        account: '',
+        pwd:'',
+        codeId: '',
+        codeValue: '',
         fingerprint: new Fingerprint().get() //获取游览器指纹
     }
 
-    $scope.submit = function () {
-        // if (judgeFact.mob($scope.input.userName) == false) {
+    $scope.countdown = {
+        // count: "5",
+        message: "获取验证码",
+    }
+
+    // $scope.countdown.callback = function(codeId,codeValue) {
+
+    //     HttpFact.get(domain + "/api/verify/checkCode",{codeId:$scope.input.codeId,codeValue:$scope.input.sms_code}).then(
+    //         function(data){
+    //             console.log()
+    //             $scope.countdown.reset = true;
+    //         }
+    //     )
+        
+    // }
+    //数据获取
+    //获取图片验证码
+    function getcode(){
+        HttpFact.get(domain + "/api/verify/getCode").then(
+            function(data) {
+                $scope.codeData = data;
+                $scope.input.codeId = $scope.codeData.codeId;
+                console.log(data)
+            }
+        )
+    }
+    $scope.code_active = function() {
+        HttpFact.get(domain + "/api/verify/getCode").then(
+            function(data) {
+                $scope.codeData = data;
+                $scope.input.codeId = $scope.codeData.codeId;
+                console.log(data)
+            }
+        )
+    }
+    
+
+    $scope.signin_action = function () {
+
+        // if (judgeFact.mob($scope.input.account) == false) {
+        //   return false;
+        // }
+        // if (judgeFact.email($scope.input.pwd) == false) {
         //   return false;
         // }
 
-        console.log($scope.data)
-        // if (judgeFact.email($scope.input.userName) == false) {
-        //   return false;
-        // }
-
-
-        if ($scope.data.U_Password == "" || $scope.data.U_Password == null) {
-            PopupFact.alert("提示", "密码不能为空");
+        if ($scope.input.account == "" || $scope.input.account == null) {
+            PopupFact.alert("提示", "用户名不能为空");
             return false;
         };
 
-        // if ($scope.data.userPass2 == "" || $scope.data.userPass2 == null) {
-        //   PopupFact.alert("prompt", "Comfirmed password can not be empty!");
-        //   return false;
-        // };
+        if ($scope.input.pwd == "" || $scope.input.pwd == null) {
+          PopupFact.alert("提示", "密码不能为空");
+          return false;
+        };
 
-        // if ($scope.data.userPass != $scope.data.userPass2) {
-        //   PopupFact.alert("prompt", "Passwords should be the same!");
-        //   return false;
-        // };
+        if ($scope.input.codeValue == "" || $scope.input.codeValue == null) {
+          PopupFact.alert("提示", "验证码不能为空");
+          return false;
+        };
 
-        HttpFact.post(domain + "/api/User/getLogin", $scope.data).then(
+        HttpFact.post(domain + "/api/User/login", $scope.input).then(
         function (data) {
-            switch (data.res_Code) {
-                case -1:
-                    PopupFact.alert("提示", "用户名不存在");
-                    break;
-
-                case 0:
+            
+            console.log(data)
+            switch (data) {
+                case -0:
                     PopupFact.alert("提示", "用户名或密码输入有误");
                     break;
-
-                case 1:
-                    localStorage.setItem("User-Token", data.res_Token);
-                    // localStorage.setItem('ZMS_userName', data.res_UserInfo.NickName);
-                    // if (data.res_UserInfo.Pic == "" || data.res_UserInfo.Pic == null) {
-                    //   localStorage.setItem('ZMS_userPic', "/images/headImg.jpg");
-                    // }
-                    // else {
-                    //   localStorage.setItem('ZMS_userPic', data.res_UserInfo.Pic);
-                    // }
-
-                    // localStorage.setItem('ZMS_userType', data.res_UserInfo.Type);
-                    PopupFact.alert("提示", "登录成功", '$state.go("tabs.home")');
+                case -1:
+                    PopupFact.alert("提示", "您的账号违反规定，已被禁用，请联系工作人员!");
+                    break;
+                case -2:
+                    PopupFact.alert("提示", "用户名不能为空");
+                    break;
+                case -3:
+                    PopupFact.alert("提示", "密码不能为空");
+                    break;  
+                case -4:
+                    PopupFact.alert("提示", "您输入的验证码有误");
+                    break;    
+                case -5: 
+                    PopupFact.alert("提示", "获取不到信息，请重新登录");
+                    break;
+                default:
+                    localStorage.setItem("User-Token", data);
+                    // alert(localStorage.getItem("User-Token"))
                     break;
             };
+
         },
         function (data) {
             PopupFact.alert("提示", "登录失败");
@@ -1343,9 +1418,63 @@ angular.module('DS.controllers', [])
 
     //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
+        getcode();
         if (localStorage.getItem("User-Token") != undefined) {
-            $state.go("tabs.home");
+            // $state.go("tabs.home");
         };
+       
+    });
+
+
+})
+
+
+//注册
+.controller('signupController',function($scope, $state, $rootScope, HttpFact, judgeFact, PopupFact, privilegeFact){
+    $scope.input = {
+        
+    }
+
+    $scope.data = {
+        account: $scope.input.username,
+        pwd: $scope.input.pwd,
+        s_name: $scope.input.realname,
+        s_email: $scope.input.email,
+        codeEValue: $scope.input.codeValue,
+        s_phone: $scope.input.phone,
+        s_idCard: $scope.input.IdCart,
+        s_provId: $scope.input.provinceId,
+        s_storeName: $scope.input.store_name,
+        s_storeProv: $scope.input.province,
+        s_storeCity: $scope.input.city,
+        s_storeDist: $scope.input.district,
+        s_storeDetailAddr: $scope.input.detail_address,
+        s_identity: $scope.input.identity
+
+    }
+
+    //获取图片验证码
+    function getcode(){
+         HttpFact.get(domain + "/api/verify/getCode").then(
+            function(data) {
+                $scope.codeData = data;
+                $scope.input.codeId = $scope.codeData.codeId;
+               
+            }
+        )
+    }
+
+    $scope.signup_action = function(){
+
+    }
+
+     //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getcode();
+        if (localStorage.getItem("User-Token") != undefined) {
+            // $state.go("tabs.home");
+        };
+       
     });
 
 })

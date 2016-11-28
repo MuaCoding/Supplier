@@ -447,11 +447,11 @@
                 }
 
                     .productDetails-buy .Specifications .productList ul > li > a {
-                        font-size: 12px;
+                        font-size: 13px;
                         color: #444444;
                         display: block;
                         overflow: hidden;
-                        padding: 2px 15px;
+                        padding: 5px 15px;
                     }
 
                     .productDetails-buy .Specifications .productList ul > li > span {
@@ -467,7 +467,7 @@
 
                     .productDetails-buy .Specifications .productList ul > li > a.on {
                         border: solid 1px #f34242;
-                        padding: 1px 14px;
+                        padding: 4px 14px;
                     }
 
                         .productDetails-buy .Specifications .productList ul > li > a.on > i {
@@ -481,23 +481,42 @@
                             width: 15px;
                         }
 
-                .productDetails-buy .Specifications .productList ul.WholesalePrice > li {
-                    padding: 5px 15px;
+               .productDetails-buy .Specifications .productList ul.WholesalePrice {
+                    padding: 0px;
                 }
 
-                    .productDetails-buy .Specifications .productList ul.WholesalePrice > li > span {
-                        height: 15px;
-                        line-height: 15px;
+                    .productDetails-buy .Specifications .productList ul.WholesalePrice > li {
+                        padding:10px 5px;
+                        /*margin: 0px 5px 5px 5px;*/
+                        margin-right: 0px;
+                        /*width: 30%;*/
+                        -webkit-box-flex: 0;
+                        -webkit-flex: 0 0 32%;
+                        -moz-box-flex: 0;
+                        -moz-flex: 0 0 32%;
+                        -ms-flex: 0 0 32%;
+                        flex: 0 0 32%;
+                        max-width: 32%;
+                        margin-right: 2%;
                     }
 
-                    .productDetails-buy .Specifications .productList ul.WholesalePrice > li > .Number {
-                        color: #444444;
-                    }
-                    .productDetails-buy .Specifications .productList ul.WholesalePrice > li.on{
-                         padding: 4px 14px;
-                         border:solid 1px #f34242;
-                    }
+                        .productDetails-buy .Specifications .productList ul.WholesalePrice > li:nth-child(3n) {
+                            margin-right: 0px;
+                        }
 
+                        .productDetails-buy .Specifications .productList ul.WholesalePrice > li > span {
+                            height: 15px;
+                            line-height: 15px;
+                        }
+
+                        .productDetails-buy .Specifications .productList ul.WholesalePrice > li > .Number {
+                            color: #444444;
+                        }
+
+                        .productDetails-buy .Specifications .productList ul.WholesalePrice > li.on {
+                            padding:9px 4px;
+                            border: solid 1px #f34242;
+                        }
 
             /*进货数量*/
             .productDetails-buy .Specifications .productList .PurchaseNumber {

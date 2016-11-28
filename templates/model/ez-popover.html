@@ -1,7 +1,7 @@
 ﻿<ion-popover-view class="productDetails-buy">
     <div class="Commodity">
         <div class="Img"><a class="imgMax" style="background-image: url('{{parmeImg[0]}}')"></a></div>
-        <h2 ng-bind="basicData[0].p_name"></h2>
+        <h2 class="ellipsis" ng-bind="basicData[0].p_name"></h2>
         <a href="javascript:void(0)" class="close" ng-click="closePopover()">x</a>
     </div>
     <div class="Specifications">
@@ -32,39 +32,44 @@
                 </ion-item>
                 <ion-item>
                     <h3>批价</h3>
-                    <ul class="mt10 WholesalePrice" >
-                     <li ng-class="{'on':minimum >=1 && minimum <= lowNumber.low1-1}">
+                    <ul class="mt10 WholesalePrice row" >
+                       <li ng-class="{'on':varlist.itemNum >=lowNumber.low1 && varlist.itemNum <= lowNumber.low2-1}" class="col">
                             <span class="Number">
-                                1~
-                                <em ng-bind="basicData[0].p_valuationNum - 1"></em>
+                                <em ng-bind="basicData[0].p_priceScopeTitle1"></em>~
+                                <em ng-bind="basicData[0].p_priceScopeTitle2 - 1"></em>
                                 <em ng-bind="basicData[0].p_unit"></em>
                             </span>
                             <span>{{prices.price3 || initial1 |currency:"￥"}}</span>
                             <i class="PFIcon-Tick"></i>
                         </li>
-                        <li ng-class="{'on':minimum >=lowNumber.low1&&minimum <lowNumber.low3}">
+                        <li ng-class="{'on':varlist.itemNum >=lowNumber.low2 && varlist.itemNum <lowNumber.low3}" class="col">
                             <span class="Number">
-                                ≥<em ng-bind="basicData[0].p_priceScopeTitle2"></em>
+                             <em ng-bind="basicData[0].p_priceScopeTitle2"></em>
+                                ~<em ng-bind="basicData[0].p_priceScopeTitle3-1"></em>
                                 <em ng-bind="basicData[0].p_unit"></em>
                             </span>
                             <span>{{prices.price2 || initial2  |currency:"￥"}}</span><i class="PFIcon-Tick"></i>
                         </li>
-                        <li ng-class="{'on':minimum >=lowNumber.low3}">
+                        <li ng-class="{'on':varlist.itemNum >=lowNumber.low3}" class="col">
                             <span class="Number">
                                 ≥<em ng-bind="basicData[0].p_priceScopeTitle3"></em>
                                 <em ng-bind="basicData[0].p_unit"></em>
                             </span>
                             <span>{{prices.price1 || initial3 |currency:"￥"}}</span><i class="PFIcon-Tick"></i>
                         </li>
-                        
-                        
                     </ul>
                 </ion-item>
                 <ion-item class="PurchaseNumber">
-                    <h3>进货数量</h3><div class="NumberDiv"><a href="javascript:;" ng-click="add()">+</a><input type="text" ng-change="num_total(minimum)"  ng-model="minimum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" /><a href="javascript:;" ng-click="minus()">-</a></div>
+                    <h3>进货数量</h3>
+                        <div class="NumberDiv">
+                            <a href="javascript:;" ng-click="add()">+</a>
+                            <!-- ng-change="num_total(varlist.itemNum)" -->
+                            <input type="text"   ng-model="varlist.itemNum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-blur="Numblur()"/>
+                            <a href="javascript:;" ng-click="minus()">-</a>
+                        </div>
                 </ion-item>
             </ion-list>
         </ion-scroll>
 
-    </div><div class="Billing row"><span class="col">共<em ng-bind="minimum"></em><em ng-bind="basicData[0].p_unit"></em>商品</span><a href="javascript:;" class="confirm col">加入购物车</a></div>
+    </div><div class="Billing row"><span class="col">共<em ng-bind="varlist.itemNum"></em><em ng-bind="basicData[0].p_unit"></em>商品</span><a href="javascript:;" class="confirm col">加入购物车</a></div>
 </ion-popover-view>

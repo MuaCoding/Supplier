@@ -29,7 +29,7 @@
 .input-group .input-label{
 	position: absolute;
 	font-size: 13px;
-	left: 10px;
+	left: 15px;
 	z-index: -5;
 }
 
@@ -77,8 +77,13 @@
 	font-size: 19px;
 }
 
-.input-group .input-checked .input-text{
-	
+.input-group .imgcode{
+	position: absolute;
+	right: 15px;
+	top: 18px;
+	height: 28px;
+	width: 100px;
+	border: 1px solid #f34242;
 }
 
 .icon-down {
@@ -103,11 +108,11 @@
 	background-color: #fff;
 }
 .addon{
-	padding: 15px 10px 15px 25%; 
+	padding: 15px 15px 15px 25%; 
 }
 
 .field {
-	padding: 15px 10px 15px 25%;
+	padding: 15px 15px 15px 25%;
 }
 
 @media only screen and (max-width: 321px) {
