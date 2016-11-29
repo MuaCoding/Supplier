@@ -115,6 +115,11 @@
 	padding: 15px 15px 15px 25%;
 }
 
+.color-primary{
+	border: 1px solid #BDBDBD;
+    color: #BDBDBD;
+}
+
 @media only screen and (max-width: 321px) {
 	.field {
 		padding-right: 38%;

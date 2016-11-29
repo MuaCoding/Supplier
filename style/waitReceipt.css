@@ -1,0 +1,225 @@
+﻿.waitReceipt-Class {
+    background-color: #f1f1f1;
+}
+
+    .waitReceipt-Class .listPayment {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+        .waitReceipt-Class .listPayment .item {
+            overflow: hidden;
+            background-color: #fff;
+            border-bottom: solid 1px #dddddd;
+            position: relative;
+            margin-top: 15px;
+        }
+
+        /*产品的店铺*/
+        .waitReceipt-Class .listPayment .storeName {
+            overflow: hidden;
+            border-top: solid 1px #e3e5e9;
+            padding: 5px 75px 0px 30px;
+        }
+
+            .waitReceipt-Class .listPayment .storeName > h3 {
+                float: left;
+                height: 25px;
+                line-height: 25px;
+                margin: 0px;
+                max-width: 100%;
+            }
+
+                .waitReceipt-Class .listPayment .storeName > h3 > a {
+                    display: block;
+                    overflow: hidden;
+                    color: #444;
+                    font-size: 15px;
+                }
+
+            .waitReceipt-Class .listPayment .storeName > i {
+                position: absolute;
+                left: 10px;
+                top: 0px;
+                font-size: 17px;
+                color: #81838d;
+                height: 36px;
+                line-height: 33px;
+                width: 18px;
+            }
+
+            .waitReceipt-Class .listPayment .storeName > span {
+                position: absolute;
+                right: 10px;
+                top: 0px;
+                height: 36px;
+                line-height: 36px;
+                color: #f23030;
+                font-size: 15px;
+            }
+
+        /*产品*/
+        .waitReceipt-Class .listPayment .commodity {
+            background-color: #f8f8f8;
+            overflow: hidden;
+            position: relative;
+            padding: 11px 90px 20px 100px;
+            display: block;
+            height: 100px;
+            margin-top: 5px;
+        }
+            /*产品图片*/
+            .waitReceipt-Class .listPayment .commodity .Img {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                width: 80px;
+                height: 80px;
+                overflow: hidden;
+                border: solid 1px #ececec;
+                border-radius: 5px;
+                background-color: #fff;
+            }
+
+            /*标题*/
+            .waitReceipt-Class .listPayment .commodity h4 {
+                font-size: 13px;
+                color: #636363;
+                font-family: 微软雅黑;
+                white-space: normal;
+                height: 30px;
+                line-height: 15px;
+                margin: 0px;
+            }
+
+            .waitReceipt-Class .listPayment .commodity > span {
+                display: block;
+            }
+
+            .waitReceipt-Class .listPayment .commodity span, .waitReceipt-Class .listPayment .commodity p {
+                font-size: 13px;
+                color: #808080;
+                height: 18px;
+                line-height: 18px;
+            }
+
+            /*服务*/
+            .waitReceipt-Class .listPayment .commodity > .Service {
+                overflow: hidden;
+                height: 38px;
+            }
+
+                .waitReceipt-Class .listPayment .commodity > .Service > span {
+                    background-color: #dd2727;
+                    color: #fff;
+                    float: left;
+                    font-size: 11px;
+                    margin-right: 5px;
+                    padding: 0px 1px;
+                    margin-bottom: 2px;
+                }
+
+            .waitReceipt-Class .listPayment .commodity > .Amount {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+            }
+
+        /*单个产品金额及数量*/
+        .waitReceipt-Class .listPayment .Amount {
+            float: right;
+            overflow: hidden;
+            width: 80px;
+        }
+
+            .waitReceipt-Class .listPayment .Amount > span {
+                display: block;
+                overflow: hidden;
+                color: #999999;
+                text-align: right;
+                height: auto;
+                white-space: normal;
+                font-size: 11px;
+            }
+
+                .waitReceipt-Class .listPayment .Amount > span.Current {
+                    color: #000;
+                }
+
+                .waitReceipt-Class .listPayment .Amount > span.Original {
+                    font-weight: bolder;
+                    text-decoration: line-through;
+                }
+
+        /*产品服务块*/
+        .waitReceipt-Class .listPayment .huiBlock {
+            overflow: hidden;
+            background-color: #f8f8f8;
+            padding: 0px 10px;
+            margin-top: 5px;
+        }
+
+            .waitReceipt-Class .listPayment .huiBlock > span {
+                display: block;
+                overflow: hidden;
+                float: left;
+                font-size: 11px;
+                color: #000;
+            }
+
+        /*商品合计*/
+        .waitReceipt-Class .listPayment .priceAmount {
+            text-align: right;
+            overflow: hidden;
+            height: 40px;
+            line-height: 40px;
+            padding: 0px 10px;
+            border-bottom: solid 1px #e3e5e9;
+        }
+
+            .waitReceipt-Class .listPayment .priceAmount > span {
+                font-size: 12px;
+                margin-left: 5px;
+            }
+
+                .waitReceipt-Class .listPayment .priceAmount > span > b {
+                    font-size: 17px;
+                    font-weight: normal;
+                }
+
+        /*产品按钮块*/
+        .waitReceipt-Class .listPayment .priceButton {
+            overflow: hidden;
+            padding: 5px 10px;
+        }
+
+            .waitReceipt-Class .listPayment .priceButton > a {
+                display: block;
+                overflow: hidden;
+                font-size: 13px;
+                color: #000;
+                height: 30px;
+                line-height: 30px;
+                border: solid 1px #eee;
+                border-radius: 3px;
+                padding: 0px 10px;
+                margin-left: 10px;
+                float: right;
+            }
+
+                .waitReceipt-Class .listPayment .priceButton > a.Receipt {
+                    background-color: #ff5722;
+                    color: #fff;
+                }
+
+
+.button-Orange {
+    background-color: #ff5722;
+    color: #fff;
+}
+
+
+.button-Orange.activated{
+        background-color: #ff5722;
+    color: #fff;
+}

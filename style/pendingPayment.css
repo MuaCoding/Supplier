@@ -1,0 +1,137 @@
+﻿.pendingPayment-Class {
+    background-color: #f1f1f1;
+}
+
+    .pendingPayment-Class .listPayment {
+        margin-bottom: 15px;
+        display: block;
+        /*border-top: solid 1px #e3e5e9;*/
+    }
+
+        .pendingPayment-Class .listPayment .item {
+            overflow: hidden;
+            background-color: #fff;
+            border-bottom: solid 1px #dddddd;
+            /*padding: 25px 30px 20px 100px;*/
+            position: relative;
+            margin-top: 15px;
+        }
+
+        .pendingPayment-Class .listPayment .storeName {
+            overflow: hidden;
+            border-top: solid 1px #e3e5e9;
+            padding: 5px 75px 5px 30px;
+        }
+
+            .pendingPayment-Class .listPayment .storeName > h3 {
+                float: left;
+                height: 25px;
+                line-height: 25px;
+                margin: 0px;
+                max-width: 100%;
+            }
+
+                .pendingPayment-Class .listPayment .storeName > h3 > a {
+                    display: block;
+                    overflow: hidden;
+                    color: #444;
+                    font-size: 15px;
+                }
+
+            .pendingPayment-Class .listPayment .storeName > i {
+                position: absolute;
+                left: 10px;
+                top: 0px;
+                font-size: 17px;
+                color: #81838d;
+                height: 36px;
+                line-height: 33px;
+                width: 18px;
+            }
+
+            .pendingPayment-Class .listPayment .storeName > span {
+                position: absolute;
+                right: 10px;
+                top: 0px;
+                height: 36px;
+                line-height: 36px;
+                color: #f23030;
+                font-size: 15px;
+            }
+
+        .pendingPayment-Class .listPayment .commodity {
+            background-color: #f8f8f8;
+            overflow: hidden;
+            position: relative;
+            padding: 20px 10px 20px 80px;
+            display: block;
+        }
+
+            .pendingPayment-Class .listPayment .commodity .Img {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                width: 60px;
+                height: 60px;
+                overflow: hidden;
+                border: solid 1px #ececec;
+                border-radius: 5px;
+                background-color: #fff;
+            }
+
+            .pendingPayment-Class .listPayment .commodity h4 {
+                font-size: 15px;
+                color: #636363;
+                font-family: 微软雅黑;
+                white-space: normal;
+                height: 40px;
+                line-height: 20px;
+            }
+
+            .pendingPayment-Class .listPayment .commodity span, .pendingPayment-Class .listPayment .commodity p {
+                font-size: 14px;
+                color: #808080;
+            }
+
+        .pendingPayment-Class .listPayment .toPayDiv {
+            overflow: hidden;
+            padding: 5px 10px;
+        }
+
+            .pendingPayment-Class .listPayment .toPayDiv a {
+                display: block;
+                overflow: hidden;
+                font-size: 14px;
+                color: #f23030;
+                border: solid 1px #f33e3e;
+                border-radius: 3px;
+                padding: 0px 10px;
+                float: right;
+            }
+
+        .pendingPayment-Class .listPayment span {
+            display: block;
+            overflow: hidden;
+            font-size: 15px;
+        }
+
+            .pendingPayment-Class .listPayment span.Amount {
+                text-align: right;
+                padding: 5px 10px;
+                border-bottom: solid 1px #e3e5e9;
+            }
+
+                .pendingPayment-Class .listPayment span.Amount > b {
+                    font-weight: bolder;
+                    font-size: 18px;
+                }
+
+        .pendingPayment-Class .listPayment i {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            height: 100%;
+            font-size: 20px;
+            color: #808080;
+            line-height: 111px;
+        }
