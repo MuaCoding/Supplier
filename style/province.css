@@ -1,0 +1,93 @@
+.province-class{
+	overflow: visible;
+}
+
+.province-class .header {
+    position: absolute;
+    padding: 15px;
+    background-color: #fff !important;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    border-bottom: solid 1px #ddd;
+
+}
+.province-class .header .title {
+	font-size: 14px;
+	color: #444;
+}
+
+
+.province-class .Specifications {
+    background-color: #fff !important;
+    position: absolute;
+    left: 0px;
+    bottom: 15px;
+    top: 49px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.province-class .Specifications > .Specif {
+    margin: 0px;
+    position: relative;
+    padding: 0px 10px 10px 10px;
+    margin: 6px;
+    background-color: #fff !important;
+}
+
+.province-class .Specifications > ion-scroll {
+    border: none;
+    padding: 10px;
+    height: 50vh;
+}
+.popover-backdrop.active {
+    background-color: rgba(0,0,0,0.6) !important;
+}
+
+.province-class.popover {
+    opacity: 1;
+    width: 100%;
+    top: initial;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    border-radius: 0;
+    opacity: 1;
+    min-height: 40%;
+    /*background-color: #fff;*/
+}
+
+.province-class > .popover-arrow {
+    display: none;
+}
+
+/* 添加上“on”类名执行动画 */
+.popover.active {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: popover;
+    animation-name: popover;
+    opacity: 1;
+}
+
+@-webkit-keyframes popover /* Safari 和 Chrome */
+{
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes popover {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}

@@ -18,7 +18,7 @@
 						<div class="input-label">
 							用户名
 						</div>
-						<input type="text" class="full-width form-control login" ng-model="input.username" name="username" ng-required="true" placeholder="请输入用户名">
+						<input type="text" class="full-width form-control login" ng-model="input.username" name="username" ng-required="true" placeholder="请输入用户名" ng-blur = "check_name()">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
@@ -50,7 +50,7 @@
 						<div class="input-label">
 							验证码
 						</div>
-						<input type="text" class="full-width form-control password" ng-model="input.code_value" name="code_value" ng-required="true" placeholder="请输入验证码">
+						<input type="text" class="full-width form-control password" ng-model="input.code_value" name="code_value" ng-required="true" placeholder="请输入验证码" ng-blur ="check_code()">
 						
 					</div>
 					<div class="input-group addon">
@@ -79,28 +79,37 @@
 						<div class="input-label">
 							店铺名
 						</div>
-						<input type="password" class="full-width form-control password" ng-model="input.store_name" name="store_name" ng-required="true" placeholder="请输入店铺名">
+						<input type="text" class="full-width form-control password" ng-model="input.store_name" name="store_name" ng-required="true" placeholder="请输入店铺名">
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							身份类型
+						</div>
+						<input type="text" class="full-width form-control password" ng-model="input.identity" name="identity" ng-required="true" placeholder="请选择" ng-click="identity_active();">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							地址
 						</div>
-						<select type="text" class="full-width form-control password" ng-model="input.address" name="address" ng-required="true" placeholder="请输入地址">
-                            <option value="address"></option>
-                        </select>
+						<input type="text" class="full-width form-control password" ng-model="data.City" name="address" ng-click="openCityModal();">
+						
 					</div>
+
 					<div class="input-group addon">
 						<div class="input-label">
 							详细地址
 						</div>
-						<input type="text" class="full-width form-control password" ng-model="input.detail_address" name="detail_address" ng-required="true" placeholder="请输入详细地址">
+						<input type="text" class="full-width form-control password" ng-model="input.detail_address" name="detail_address" ng-required="true" placeholder="街道、楼牌号等">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							绑定省份
 						</div>
-						<input type="text" class="full-width form-control password" ng-model="input.detail_address" name="detail_address" ng-required="true" placeholder="请输入详细地址">
+						<div class="text-select" ng-click = "province_active()">
+							请选择省份
+						</div>
 					</div>
+
 					<div class="button-warp">
 			            <div class="col-xs-2 pull-left">
 			                <a class="back-btn" ng-href="/login">返回登录</a>

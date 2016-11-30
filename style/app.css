@@ -97,11 +97,26 @@ h3 {
 
 .scroll-content {
     background-color: #ebebeb;
+    -moz-user-select: text !important;
+    -webkit-user-select: text !important;
+    -ms-user-select: text !important;
+    -khtml-user-select: text !important;
+    user-select: text !important;
 }
 
-    .scroll-content > .scroll {
-        min-height: 100%;
-    }
+.scroll-content > .scroll {
+    position: relative;
+    z-index: 2;
+}
+
+ion-modal-view {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
 
 .imgMin {
     background-size: cover !important;

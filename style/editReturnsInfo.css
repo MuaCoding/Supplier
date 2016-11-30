@@ -37,6 +37,13 @@
 	background-color: #fff;
 }
 
+.input-group .text-select {
+	font-size: 13px;
+	color: #888;
+	height: 34px;
+	line-height: 37px;
+}
+
 .input-group select {
 	display: block;
     padding-top: 2px;
