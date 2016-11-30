@@ -28,17 +28,32 @@
     width: 100%;
 }
 
+.province-class .province .item {
+  border-bottom: 1px solid #eee;
+}
+
+  .province-class .province .item.activated, .province-class .province .item-content.activated {
+    background-color: #f34242;
+  }
+
+  .province-class .province .item .content {
+    color: #000;
+    font-size: 15px;
+    padding: 15px;
+  }
+
+.province-class .province .item-content.activated .content {
+  color: #fff;
+}
+
 .province-class .Specifications > .Specif {
     margin: 0px;
     position: relative;
-    padding: 0px 10px 10px 10px;
-    margin: 6px;
     background-color: #fff !important;
 }
 
 .province-class .Specifications > ion-scroll {
     border: none;
-    padding: 10px;
     height: 50vh;
 }
 .popover-backdrop.active {
