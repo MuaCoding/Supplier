@@ -1,25 +1,57 @@
+/// <reference path="../public/city.js" />
 angular.module('DS.controllers', [])
 
 //首页
-.controller('homeController', function ($scope, $filter, $rootScope, $ionicHistory, $ionicScrollDelegate, $ionicSlideBoxDelegate, $timeout, HttpFact, PopupFact, privilegeFact, ModalFact) {
+.controller('homeController', function ($scope, $filter, $rootScope, $ionicHistory, $ionicScrollDelegate, $ionicSlideBoxDelegate, $timeout, HttpFact, PopupFact, privilegeFact, ModalFact, loginJumpFact) {
+    loginJumpFact.tokenJudge("/tabs/home");
+
+    /////轮播
+    //清除缓存，否则轮播报错
+    $rootScope.$on("$ionicView.enter", function () {
+        $ionicHistory.clearCache();
+        $ionicHistory.clearHistory();
+    });
+    $scope.banners = [];
+    function getBanner(count) {
+        var submit = {
+            count: count,
+        }
+        HttpFact.user.POST(domain + "/api/Art/getBanner", submit).then(
+            function (data) {
+                $scope.banners = JSON.parse(data);
+                $ionicSlideBoxDelegate.update();
+                $ionicScrollDelegate.resize();
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            },
+            function (data) {
+                $scope.banners = [];
+            }
+        )
+    }
+
 
     ////////获取热销产品数据//////////
     var page = 1;
     var size = 4;
+    var _size = 3;
+    //banner
+    var count = 3;
+
     $scope.noData = true;
     $scope.hotProduct = {
         array_1: []
     }
 
-    function getData(current, count, provId, strW, orderby) {
-        var submitData = {
-            current: current, //当前页数
-            count: count, //单页条数
-            provId: provId,
+
+    //热销
+    function getData(page, size, strW, orderby) {
+        var hotData = {
+            current: page, //当前页数
+            count: size, //单页条数
             strW: "",
             orderby: "PD.p_saleNum DESC,"
         }
-        HttpFact.post(domain + "/api/Product/getProductList", submitData).then(
+        HttpFact.user.POST(domain + "/api/Product/getProductList", hotData).then(
             function (data) {
                 jsonData = JSON.parse(data);
                 pageCount = Number(jsonData.array_0[0].pageCount);
@@ -40,43 +72,16 @@ angular.module('DS.controllers', [])
         )
     }
 
-    /////轮播
-    //清除缓存，否则轮播报错
-    $rootScope.$on("$ionicView.enter", function () {
-        $ionicHistory.clearCache();
-        $ionicHistory.clearHistory();
-    });
-    $scope.banners = [];
-    function getBanner(provId, count) {
-        var submit = {
-            provId: provId,
-            count: count,
-        }
-        HttpFact.post(domain + "/api/Art/getBanner", submit).then(
-            function (data) {
-                $scope.banners = JSON.parse(data);
-                $ionicSlideBoxDelegate.update();
-                $ionicScrollDelegate.resize();
-                $scope.$broadcast("scroll.infiniteScrollComplete");
-            },
-            function (data) {
-                $scope.banners = [];
-            }
-        )
-    }
-
-
     /////新品上架
     $scope.newProducts = [];
-    function getNew(current, count, provId, strW, orderby) {
-        var submitData = {
-            current: current, //当前页数
-            count: count, //单页条数
-            provId: provId,
-            strW: strW,
-            orderby: orderby
+    function getNew(page, _size, strW, orderby) {
+        var newData = {
+            current: page, //当前页数
+            count: _size, //单页条数
+            strW: "",
+            orderby: "PD.p_saleNum DESC,"
         }
-        HttpFact.post(domain + "/api/Product/getProductList", submitData).then(
+        HttpFact.user.POST(domain + "/api/Product/getProductList", newData).then(
             function (data) {
                 $scope.newProducts = JSON.parse(data);
                 $ionicSlideBoxDelegate.update();
@@ -120,16 +125,16 @@ angular.module('DS.controllers', [])
 
     //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
-        getData(page, size, 1, 0, "");
-        getBanner(1, 3);
-        getNew(1, 3, 1, "", "PD.p_saleNum DESC,")
+        getData(page, size, "", "");
+        getBanner(count);
+        getNew(page, _size, "", "")
     });
 
     //加载数据事件
     $scope.loadMore = function () {
         page++;
-        getData(page, size, 1, 0, "");
-        getBanner(1, 3);
+        getData(page, size, "", "");
+        getBanner(count);
     }
 
 
@@ -138,8 +143,9 @@ angular.module('DS.controllers', [])
 
 
 //产品
-.controller('productListController', function ($scope, ModalFact,HttpFact, $ionicScrollDelegate) {
-
+.controller('productListController', function ($scope, ModalFact, HttpFact, $ionicScrollDelegate, loginJumpFact) {
+    //
+    loginJumpFact.tokenJudge("/tabs/List");
     $scope.screenClick = function () {
         ModalFact.show($scope, "/templates/model/pd-Screening.html");
     };
@@ -157,11 +163,10 @@ angular.module('DS.controllers', [])
         var submitData = {
             current: current, //当前页数
             count: count, //单页条数
-            provId: provId,
             strW: "",
             orderby: "PD.p_addtime DESC,"
         }
-        HttpFact.post(domain + "/api/Product/getProductList", submitData).then(
+        HttpFact.user.POST(domain + "/api/Product/getProductList", submitData).then(
             function (data) {
                 jsonData = JSON.parse(data);
                 pageCount = Number(jsonData.array_0[0].pageCount);
@@ -183,11 +188,11 @@ angular.module('DS.controllers', [])
         )
     }
 
-   
+
     //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
         getData(page, size, 1, 0, "");
-        
+
     });
     //离开视图时执行事件
     $scope.$on("$ionicView.beforeLeave", function () {
@@ -208,13 +213,16 @@ angular.module('DS.controllers', [])
         getData(page, size, 1, 0, "");
     }
 })
-.controller('productDetailsController', function ($scope, $ionicPopover,filterFilter, $timeout, $ionicScrollDelegate, $stateParams, $state, $rootScope, HttpFact, judgeFact, PopupFact, $ionicSlideBoxDelegate) {
-    $scope.input ={}
 
-    $scope.lowNumber ={
-       low1: 100,
-       low2: 250,
-       low3: 1000,
+//产品详情
+.controller('productDetailsController', function ($scope, $ionicPopover, filterFilter, $timeout, $ionicScrollDelegate, $stateParams, $state, $rootScope, HttpFact, judgeFact, PopupFact, $ionicSlideBoxDelegate, loginJumpFact) {
+
+    $scope.input = {}
+
+    $scope.lowNumber = {
+        low1: 100,
+        low2: 250,
+        low3: 1000,
     }
 
     //商品详情(基本包)
@@ -222,20 +230,25 @@ angular.module('DS.controllers', [])
     $scope.parmeImg = []
     $scope.basicData = []
     $scope.miniNum = [] //最低购买数量
-    
-    
+
+
     function getDetailData(Id) {
-        HttpFact.get(domain + "/api/Product/getProductDetail", { Id: Id }).then(
+        var detail = {
+            id: Id
+        }
+        HttpFact.user.GET(domain + "/api/Product/getProductDetail", detail).then(
             function (data) {
                 $scope.basicData = JSON.parse(data);
                 $scope.basicImg = $scope.basicData[0].p_Pic.split(',');
-               
+
                 console.log($scope.basicData)
                 $scope.miniNum = Number($scope.basicData[0].p_valuationNum);
                 $scope.lowNumber.low1 = Number($scope.basicData[0].p_priceScopeTitle1);
                 $scope.lowNumber.low2 = Number($scope.basicData[0].p_priceScopeTitle2);
                 $scope.lowNumber.low3 = Number($scope.basicData[0].p_priceScopeTitle3);
-
+                $ionicSlideBoxDelegate.update();
+                $ionicScrollDelegate.resize();
+                $scope.$broadcast("scroll.infiniteScrollComplete");
             },
             function (data) {
                 $scope.basicData = []
@@ -243,22 +256,22 @@ angular.module('DS.controllers', [])
         )
     }
 
-    $scope.initial1 ='',
-    $scope.initial2 ='';
-    $scope.initial3 ='';
+    $scope.initial1 = '',
+    $scope.initial2 = '';
+    $scope.initial3 = '';
+
     //商品详情(参数包)
     $scope.detailParme = [];
-    $scope.storages = [] 
+    $scope.storages = []
     function getParame(Id) {
-        var sunmit = {
-            Id: Id
-        }
-        HttpFact.get(domain + "/api/Product/getProductParame", sunmit).then(
+
+        HttpFact.user.GET(domain + "/api/Product/getProductParame?id=" + Id).then(
             function (data) {
+
                 $scope.detailParme = JSON.parse(data)
                 $scope.input.color = $scope.detailParme.p_param1;
                 $scope.parmeImg = $scope.detailParme[0].p_pic.split(',');
-                console.log($scope.detailParme)
+
 
                 //匹配版本
                 var obj = filterFilter($scope.detailParme, { p_param1: $scope.input.color }, true);
@@ -267,24 +280,24 @@ angular.module('DS.controllers', [])
                 for (var i = 0; i < obj.length; i++) {
                     type.push(obj[i].p_param2);
                 }
-                $scope.TypeModelList=unique(type)
+                $scope.TypeModelList = unique(type)
                 //unique
                 var temp = [] //定义变量存储push的数据
                 $scope.temps = [];
-                
-                for(var i = 0; i < $scope.detailParme.length; i++) {
+
+                for (var i = 0; i < $scope.detailParme.length; i++) {
                     temp.push($scope.detailParme[i].p_param1);
                 }
-                
-                $scope.temps=unique(temp)
+
+                $scope.temps = unique(temp)
 
                 //initial
                 $scope.initial1 = $scope.detailParme[0].p_priceScope1;
                 $scope.initial2 = $scope.detailParme[0].p_priceScope2;
                 $scope.initial3 = $scope.detailParme[0].p_priceScope3;
-               
-                console.log($scope.initial3+ '2')
-                
+
+
+
             },
             function (data) {
                 $scope.detailParme = [];
@@ -292,22 +305,18 @@ angular.module('DS.controllers', [])
         )
     }
 
-    console.log($scope.initial3+ '1')
     //去重复
-    function unique(arr)
-    {
+    function unique(arr) {
         var tmp = new Array();
 
-        for (var m in arr)
-        {
+        for (var m in arr) {
             tmp[arr[m]] = 1;
         }
 
         //再把键和值的位置再次调换
         var tmparr = new Array();
 
-        for (var n in tmp)
-        {
+        for (var n in tmp) {
             tmparr.push(n);
         }
 
@@ -316,69 +325,42 @@ angular.module('DS.controllers', [])
 
 
     //选中颜色和版本
-    var value ='';
-    var key ='';
+    var value = '';
+    var key = '';
     $scope.prices = {
         price1: '',
         price2: '',
         price3: ''
     }
-    $scope.storage = '';
-    console.log($scope.storage + "storage1")
+    $scope.storage = '';  //库存
     function match() {
-        if(value == '' || key =='')
-        {
-            return;
-        }
-        else{
-            var arr = filterFilter($scope.detailParme, { p_param2:key ,p_param1: value }, true)
-            for(var i = 0; i < arr.length; i++) {
-                $scope.prices.price1=arr[i].p_priceScope1
-                $scope.prices.price2=arr[i].p_priceScope2
-                $scope.prices.price3=arr[i].p_priceScope3
-                $scope.storage = Number(arr[i].p_storage);
-            }
-            
-        }
-    }
-    $scope.num_check1 = false;
-    $scope.num_check2 = false;
-    $scope.num_check3 = false;
-    //判断数量
-    function judge_storage() {
-        if(value == '' || key =='') {
+        if (value == '' || key == '') {
             return;
         }
         else {
+            var arr = filterFilter($scope.detailParme, { p_param2: key, p_param1: value }, true)
+            for (var i = 0; i < arr.length; i++) {
+                $scope.prices.price1 = arr[i].p_priceScope1
+                $scope.prices.price2 = arr[i].p_priceScope2
+                $scope.prices.price3 = arr[i].p_priceScope3
+                $scope.inStock = Number(arr[i].p_storage);
+            }
 
-            if($scope.minimum < $scope.lowNumber.low1) {
-                $scope.num_check1 = !$scope.num_check1
-                
-            }
-            else if ($scope.minimum > $scope.lowNumber.low1 || $scope.minimum < $scope.lowNumber.low3){
-                $scope.num_check2 = !$scope.num_check2
-                
-            }
-            else if ($scope.minimum >= $scope.lowNumber.low3){
-                $scope.num_check3 = !$scope.num_check3
-                
-            }
         }
-        
 
     }
     //选择版本
     $scope.input.version = []
-    $scope.select_version = function(version){
-        $scope.input.version =version;
+    $scope.select_version = function (version) {
+        $scope.input.version = version;
         key = version;
         match();
-        
+
     }
 
     //选择颜色
-    $scope.select_color = function(item) {
-        
+    $scope.select_color = function (item) {
+
         $scope.input.color = item;
         value = item;
         match();
@@ -389,6 +371,7 @@ angular.module('DS.controllers', [])
             $scope.TypeModelList.push(obj[i].p_param2);
         }
 
+        $scope.Numblur();
     }
 
     //商品信息购买界面
@@ -414,33 +397,9 @@ angular.module('DS.controllers', [])
     });
 
 
-    
-    // $scope.changeTotal = {
-    //     changeNum: ''
-    // };
-
-
-    // $scope.num_total = function() {
-
-    //     $scope.miniNum = value;
-    //     if(value == ''){
-    //         $scope.miniNum;
-    //     }
-    //     console.log(value)
-    // }
-
-    // function add(){
-    //     if($scope.miniNum == "" || $scope.miniNum <1){
-    //        return $scope.miniNum = 1;
-    //     }
-    //     else{
-    //         $scope.miniNum++;
-    //     }
-    // }
-
 
     var arr = [];
-    var inStock = 500;
+    // $scope.inStock = '';
 
     var miniNum = '';
 
@@ -459,18 +418,20 @@ angular.module('DS.controllers', [])
     }
     // 加
     $scope.add = function () {
-        if ($scope.varlist.itemNum >= inStock) {
-            alert("已达到最大库存数量");
+        if ($scope.varlist.itemNum >= $scope.inStock) {
+            PopupFact.alert("提示", "已达到最大库存数量");
+            $scope.Numblur()
         } else {
             $scope.varlist.itemNum++;
         }
     }
 
     $scope.Numblur = function () {
-        if ($scope.varlist.itemNum > inStock) {
-            $scope.varlist.itemNum = inStock;
+        if ($scope.varlist.itemNum > $scope.inStock) {
+            $scope.varlist.itemNum = $scope.inStock;
         }
     }
+
 
     $scope.isActive = false;
     $scope.ChangeIsActive = function () {
@@ -543,7 +504,7 @@ angular.module('DS.controllers', [])
             {
                 Class: "成交()",
                 List: [
-                    
+
                 ]
             },
             {
@@ -702,12 +663,14 @@ angular.module('DS.controllers', [])
 })
 
 //分类
-.controller('categoryController', function ($scope, $state, $rootScope, HttpFact, judgeFact, PopupFact) {
+.controller('categoryController', function ($scope, $state, $rootScope, HttpFact, judgeFact, PopupFact, loginJumpFact) {
+
+    loginJumpFact.tokenJudge("/tabs/category");
     //获取数据
     $scope.proList = [];
 
     function getCategory() {
-        HttpFact.get(domain + "/api/Product/getTypeList").then(
+        HttpFact.user.GET(domain + "/api/Product/getTypeList").then(
             function (data) {
                 $scope.proList = JSON.parse(data);
             },
@@ -739,6 +702,7 @@ angular.module('DS.controllers', [])
 
 //某品牌列表
 .controller('categoryListController', function ($scope, $filter, $stateParams, HttpFact) {
+
     var brandData; //接收返回data数据 
     var pageCount; //总页数
     var pageNow; //當前頁
@@ -753,7 +717,7 @@ angular.module('DS.controllers', [])
             provId: provId,
             strW: strW
         }
-        HttpFact.post(domain + "/api/Product/getProductList", submit).then(
+        HttpFact.user.POST(domain + "/api/Product/getProductList", submit).then(
             function (data) {
                 brandData = JSON.parse(data)
                 pageCount = Number(brandData.array_0[0].pageCount);
@@ -792,9 +756,9 @@ angular.module('DS.controllers', [])
 
 })
 
-//咨讯
-.controller('informationController', function ($scope, $filter, $stateParams, HttpFact) {
-
+//////资讯
+.controller('informationController', function ($scope, $filter, $stateParams, HttpFact, loginJumpFact) {
+    loginJumpFact.tokenJudge("/tabs/information");
     var pageNow = 1; //当前页数
     var _size = 7;  //控制单页显示条数
     var jsonData; //接收返回data数据 
@@ -804,19 +768,21 @@ angular.module('DS.controllers', [])
         array_1: [], //设置为空
     };
 
-    function getInformation(type, current, count, strW, provId) {
+    function getInformation(type, current, count, strW) {
         //获取数据所需参数
         var submitData = {
             type: type,
             current: current, //当前页数
             count: count, //单页条数
             strW: strW,
-            provId: provId
+
         }
 
-        HttpFact.post(domain + "/api/Art/getList", submitData).then(
+        HttpFact.user.POST(domain + "/api/Art/getList", submitData).then(
+
             function (data) {
                 jsonData = JSON.parse(data);
+                console.log(jsonData)
                 pageCount = Number(jsonData.array_0[0].pageCount);
                 pageNow = Number(jsonData.array_0[0].pageNow);
                 if (pageCount < pageNow) {
@@ -842,13 +808,13 @@ angular.module('DS.controllers', [])
 
     //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
-        getInformation(1, pageNow, _size, "and 1 = 1", 1);
+        getInformation(1, pageNow, _size, "and 1 = 1");
     });
 
     //加载数据事件
     $scope.loadMore = function () {
         pageNow++;
-        getInformation(1, pageNow, _size, "and 1 = 1", 1);
+        getInformation(1, pageNow, _size, "and 1 = 1");
     }
 })
 
@@ -856,7 +822,7 @@ angular.module('DS.controllers', [])
 
 .controller('informationDetailController', function ($scope, $filter, $stateParams, HttpFact) {
     function getInformationDetail(Id) {
-        return HttpFact.get(domain + "/api/Art/getDetail?id=" + Id).then(
+        return HttpFact.user.GET(domain + "/api/Art/getDetail?id=" + Id).then(
             function (data) {
                 $scope.informationDetail = JSON.parse(data);
             },
@@ -1068,6 +1034,21 @@ angular.module('DS.controllers', [])
     ]
 })
 
+//会员中心--待收货
+.controller('waitReceipt', function ($scope, $ionicPopup) {
+    // 确认弹出框
+    $scope.showConfirm = function () {
+        $ionicPopup.confirm({
+            title: "是否确认收货",
+            //template: "你确定要吃我的冰淇淋吗？"
+            cancelText: "取消",
+            cancelType: "button-light",
+            okText: "确认",
+            okType: "button-Orange",
+        })
+    };
+})
+
 
 //会员中心--我的进货单
 
@@ -1152,8 +1133,8 @@ angular.module('DS.controllers', [])
 })
 
 //设置头像
-.controller('avatarSettingsController', function ($scope,HttpFact) {
-    
+.controller('avatarSettingsController', function ($scope, HttpFact) {
+
 })
 
 .controller('uploadAvatarController', function ($scope) {
@@ -1310,51 +1291,39 @@ angular.module('DS.controllers', [])
 
 //登录
 .controller('loginController', function ($scope, $state, $rootScope, HttpFact, judgeFact, PopupFact, privilegeFact) {
+    //基础设置
+
 
     $scope.input = {
         account: '',
-        pwd:'',
+        pwd: '',
         codeId: '',
         codeValue: '',
         fingerprint: new Fingerprint().get() //获取游览器指纹
     }
 
-    $scope.countdown = {
-        // count: "5",
-        message: "获取验证码",
-    }
 
-    // $scope.countdown.callback = function(codeId,codeValue) {
-
-    //     HttpFact.get(domain + "/api/verify/checkCode",{codeId:$scope.input.codeId,codeValue:$scope.input.sms_code}).then(
-    //         function(data){
-    //             console.log()
-    //             $scope.countdown.reset = true;
-    //         }
-    //     )
-        
-    // }
     //数据获取
     //获取图片验证码
-    function getcode(){
+    function getcode() {
         HttpFact.get(domain + "/api/verify/getCode").then(
-            function(data) {
+            function (data) {
+                $scope.codeData = data;
+                $scope.input.codeId = $scope.codeData.codeId;
+                // console.log(data)
+            }
+        )
+    }
+    $scope.code_active = function () {
+        HttpFact.get(domain + "/api/verify/getCode").then(
+            function (data) {
                 $scope.codeData = data;
                 $scope.input.codeId = $scope.codeData.codeId;
                 console.log(data)
             }
         )
     }
-    $scope.code_active = function() {
-        HttpFact.get(domain + "/api/verify/getCode").then(
-            function(data) {
-                $scope.codeData = data;
-                $scope.input.codeId = $scope.codeData.codeId;
-                console.log(data)
-            }
-        )
-    }
-    
+
 
     $scope.signin_action = function () {
 
@@ -1371,41 +1340,41 @@ angular.module('DS.controllers', [])
         };
 
         if ($scope.input.pwd == "" || $scope.input.pwd == null) {
-          PopupFact.alert("提示", "密码不能为空");
-          return false;
+            PopupFact.alert("提示", "密码不能为空");
+            return false;
         };
 
         if ($scope.input.codeValue == "" || $scope.input.codeValue == null) {
-          PopupFact.alert("提示", "验证码不能为空");
-          return false;
+            PopupFact.alert("提示", "验证码不能为空");
+            return false;
         };
 
         HttpFact.post(domain + "/api/User/login", $scope.input).then(
         function (data) {
-            
-            console.log(data)
+
             switch (data) {
-                case -0:
+                case '0':
                     PopupFact.alert("提示", "用户名或密码输入有误");
                     break;
-                case -1:
+                case '-1':
                     PopupFact.alert("提示", "您的账号违反规定，已被禁用，请联系工作人员!");
                     break;
-                case -2:
+                case '-2':
                     PopupFact.alert("提示", "用户名不能为空");
                     break;
-                case -3:
+                case '-3':
                     PopupFact.alert("提示", "密码不能为空");
-                    break;  
-                case -4:
+                    break;
+                case '-4':
                     PopupFact.alert("提示", "您输入的验证码有误");
-                    break;    
-                case -5: 
+                    break;
+                case '-5':
                     PopupFact.alert("提示", "获取不到信息，请重新登录");
                     break;
                 default:
                     localStorage.setItem("User-Token", data);
-                    // alert(localStorage.getItem("User-Token"))
+                    console.log(localStorage.getItem("User-Token"))
+                    $state.go("tabs.home");
                     break;
             };
 
@@ -1419,10 +1388,9 @@ angular.module('DS.controllers', [])
     //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
         getcode();
-        if (localStorage.getItem("User-Token") != undefined) {
-            // $state.go("tabs.home");
+        if (localStorage.getItem("User-Token") != undefined && localStorage.getItem("User-Token") != '') {
+
         };
-       
     });
 
 
@@ -1430,9 +1398,11 @@ angular.module('DS.controllers', [])
 
 
 //注册
-.controller('signupController',function($scope, $state, $rootScope, HttpFact, judgeFact, PopupFact, privilegeFact){
+.controller('signupController', function ($scope, $rootScope, $state, $ionicHistory, $timeout, $ionicSlideBoxDelegate, $ionicActionSheet, HttpFact, ModalFact, judgeFact, PopupFact, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
+
+
     $scope.input = {
-        
+
     }
 
     $scope.data = {
@@ -1440,7 +1410,7 @@ angular.module('DS.controllers', [])
         pwd: $scope.input.pwd,
         s_name: $scope.input.realname,
         s_email: $scope.input.email,
-        codeEValue: $scope.input.codeValue,
+        codeEValue: $scope.input.code_value,
         s_phone: $scope.input.phone,
         s_idCard: $scope.input.IdCart,
         s_provId: $scope.input.provinceId,
@@ -1449,32 +1419,215 @@ angular.module('DS.controllers', [])
         s_storeCity: $scope.input.city,
         s_storeDist: $scope.input.district,
         s_storeDetailAddr: $scope.input.detail_address,
-        s_identity: $scope.input.identity
+        s_identity: $scope.input.identity,
 
     }
 
-    //获取图片验证码
-    function getcode(){
-         HttpFact.get(domain + "/api/verify/getCode").then(
-            function(data) {
-                $scope.codeData = data;
-                $scope.input.codeId = $scope.codeData.codeId;
-               
+    //获取验证码
+    $scope.countdown = {
+        // count: "5",
+        message: "获取验证码",
+    }
+    $scope.countdown.callback = function (EmailNum) {
+
+        HttpFact.get(domain + "/api/verify/getEmailCodeId", { EmailNum: $scope.input.email }).then(
+            function (data) {
+                if (data == '-1') {
+                    PopupFact.alert("提示", "邮箱格式有误");
+                }
+                else {
+                    $scope.countdown.reset = false;
+                }
+                $scope.input.emailId = data;
+                console.log($scope.input.emailId)
+            }
+        )
+
+    }
+
+    //验证码校验
+    $scope.check_code = function (codeEId, codeEValue) {
+        HttpFact.get(domain + "/api/verify/checkEmailCode", { codeEId: $scope.input.emailId, codeEValue: $scope.input.code_value }).then(
+            function (data) {
+                if (data == '0') {
+                    PopupFact.alert("提示", "输入验证码有误")
+                }
+                return;
             }
         )
     }
 
-    $scope.signup_action = function(){
+    //用户名校验
+    $scope.check_name = function (name) {
+        HttpFact.get(domain + "/api/verify/verifyLoginName", { name: $scope.input.username }).then(
+            function (data) {
+                switch (data) {
+                    case '-1':
+                        PopupFact.alert("提示", "该用户名已存在");
+                        break;
+                    case '-2':
+                        PopupFact.alert("提示", "用户名不能为手机号码或邮箱号码");
+                        break;
+                    case '-3':
+                        PopupFact.alert("提示", "用户名只能数字或字母");
+                        break;
+                    default:
+                        break;
+                }
+                return;
+            }
+        )
+    }
+
+    //选择身份
+    $scope.identity_active = function () {
+        var identity = $ionicActionSheet.show({
+            buttons: [
+                { text: "请选择" },
+                { text: "企业" },
+                { text: "个人" },
+                { text: "个体经营" },
+                { text: "社会团体" },
+                { text: "事业单位" },
+            ],
+            buttonClicked: function (index) {
+                switch (index) {
+                    case 0:
+                        $scope.input.identity = "请选择";
+                        break;
+                    case 1:
+                        $scope.input.identity = "企业";
+                        break;
+                    case 2:
+                        $scope.input.identity = "个人";
+                        break;
+                    case 3:
+                        $scope.input.identity = "个体经营";
+                        break;
+                    case 4:
+                        $scope.input.identity = "社会团体";
+                        break;
+                    case 5:
+                        $scope.input.identity = "事业单位";
+                        break;
+                    case 6:
+                        $scope.input.identity = "其他";
+                        break;
+                }
+                //选择后，退出选择状态
+                return true;
+            }
+        })
+    }
+
+    $scope.City = "";
+    $scope.cityList = cityList;
+    $scope.city1List = $scope.cityList;
+    $scope.city2List = "";
+    $scope.city3List = "";
+    if ($scope.data.City == "" || $scope.data.City == null) {
+        $scope.data.City = "请输入所在地区";
+    }
+
+    //地区1事件
+    $scope.city1Event = function (val) {
+        for (var i = 0; i < $scope.cityList.length; i++) {
+            if ($scope.cityList[i].p == val) {
+                $scope.City += val;
+                $scope.city2List = $scope.cityList[i].c;
+                break;
+            };
+        };
+        $ionicSlideBoxDelegate.$getByHandle("cityHandle").slide(1);
+    };
+
+    //地区2事件
+    $scope.city2Event = function (val) {
+        for (var i = 0; i < $scope.city2List.length; i++) {
+            if ($scope.city2List[i].n == val) {
+                if ($scope.city2List[i].a == undefined) {
+                    $scope.City += val;
+                    $scope.data.City = "";
+                    $scope.data.City = $scope.City;
+                    $scope.City = "";
+                    $scope.cityOkModal();
+                }
+                else {
+                    $scope.City += val;
+                    $scope.city3List = $scope.city2List[i].a;
+                    $ionicSlideBoxDelegate.$getByHandle("cityHandle").slide(2);
+                };
+                break;
+            };
+        };
+    };
+
+    //地区3事件
+    $scope.city3Event = function (val) {
+        $scope.City += val;
+        $scope.data.City = "";
+        $scope.data.City = $scope.City;
+        $scope.City = "";
+        $scope.cityOkModal();
+    };
+
+    $scope.openCityModal = function () {
+        ModalFact.show($scope, "/templates/model/address.html");
+        // $ionicScrollDelegate.$getByHandle('cityHandle').resize();
+        $timeout(function () {
+            $ionicSlideBoxDelegate.enableSlide(false);
+            $ionicScrollDelegate.resize();
+            $scope.$broadcast("scroll.infiniteScrollComplete");
+        },1000);
+    };
+
+    $scope.province_active = function(){
+        ModalFact.show($scope, "/templates/model/province.html");
+    }
+
+    //（未完成地址选取）关闭地址模态框
+    $scope.closeCityModal = function () {
+        $scope.City = "";
+        $scope.city1List = cityList;
+        $scope.city2List = "";
+        $scope.city3List = "";
+        
+        ModalFact.clear();
+    };
+
+    //（已完成地址选取）关闭地址模态框
+    $scope.cityOkModal = function () {
+        $scope.city1List = cityList;
+        $scope.city2List = "";
+        $scope.city3List = "";
+
+        ModalFact.clear();
+        $ionicSlideBoxDelegate.$getByHandle("cityHandle").slide(0);
+    }
+
+    //提交注册信息
+    $scope.signup_action = function () {
+
+        HttpFact.get(domain + "/api/verify/getEmailCodeId", { EmailNum: $scope.input.email }).then(
+            function (data) {
+                if (data == '-1') {
+                    PopupFact.alert("提示", "邮箱格式有误");
+                }
+                else {
+                    $scope.countdown.reset = false;
+                }
+                console.log(data)
+
+            }
+        )
 
     }
 
-     //视图第一次加载读取数据
+    //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
-        getcode();
-        if (localStorage.getItem("User-Token") != undefined) {
-            // $state.go("tabs.home");
-        };
-       
+
+
+
     });
 
 })

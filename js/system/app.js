@@ -154,6 +154,26 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
 
     })
 
+      //待付款
+    .state('pendingPayment', {
+        url: "/pendingPayment",
+        templateUrl: "/templates/user/pendingPayment.html",
+    })
+
+      //待收货
+    .state('waitReceipt', {
+        url: "/waitReceipt",
+        templateUrl: "/templates/user/waitReceipt.html",
+        controller: 'waitReceipt'
+    })
+
+     //待评价
+    .state('waitEvaluation', {
+        url: "/waitEvaluation",
+        templateUrl: "/templates/user/waitEvaluation.html",
+    })
+
+
     //我的消息详情
     .state('myNewsDetail', {
         url: "/myNewsDetail",
@@ -314,11 +334,13 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         controller: 'reviewsController'
     })
 
+
+
 })
 
 
     //返回
-.run(function ($rootScope, $location, $timeout, $ionicHistory) {
+.run(function ($rootScope, $state, $location, $timeout, $ionicHistory, HttpFact, PopupFact) {
     //重制返回事件，无上一页时返回首页
     $rootScope.$ionicGoBack = function (customUrl) {
         if (!customUrl) {
@@ -333,4 +355,7 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
             }, 1)
         }
     };
+
+
+   
 })

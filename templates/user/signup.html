@@ -13,12 +13,12 @@
 	<ion-content  class="scroll-content has-header">
 		<ion-list>
 			<ion-item>
-				<form action="" ng-submit="signup_action()">
+				<form action="" name="signupForm" ng-submit="signup_action()">
 					<div class="input-group addon">
 						<div class="input-label">
 							用户名
 						</div>
-						<input type="text" class="full-width form-control login" ng-model="input.username" name="username" ng-required="true" placeholder="电子邮箱或手机号码">
+						<input type="text" class="full-width form-control login" ng-model="input.username" name="username" ng-required="true" placeholder="请输入用户名" ng-blur = "check_name()">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
@@ -28,23 +28,36 @@
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
+							确认密码
+						</div>
+						<input type="password" class="full-width form-control password" ng-model="input.confirm_pwd" name="confirm_pwd" ng-required="true" placeholder="请输入密码">
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
 							真实姓名
 						</div>
-						<input type="password" class="full-width form-control password" ng-model="input.realname" name="realname" ng-required="true" placeholder="请输入真实姓名">
+						<input type="text" class="full-width form-control password" ng-model="input.realname" name="realname" ng-required="true" placeholder="请输入真实姓名">
 					</div>
 					
 					<div class="input-group addon">
 						<div class="input-label">
 							邮箱
 						</div>
-						<input type="password" class="full-width form-control password" ng-model="input.email" name="email" ng-required="true" placeholder="请输入邮箱">
-						<countdown class="smscode" countdown="countdown" ng-class="{'color-primary':countdown.message!='获取验证码'}" countdown-disabled="signupForm.telephone.$invalid">{{countdown.message}}</countdown>
+						<input type="email" class="full-width form-control password" ng-model="input.email" name="email" ng-required="true" placeholder="请输入邮箱">
+						<countdown class="smscode" countdown="countdown" ng-class="{'color-primary':countdown.message!='获取验证码'}" countdown-disabled="signupForm.email.$invalid">{{countdown.message}}</countdown>
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							验证码
+						</div>
+						<input type="text" class="full-width form-control password" ng-model="input.code_value" name="code_value" ng-required="true" placeholder="请输入验证码" ng-blur ="check_code()">
+						
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							手机
 						</div>
-						<input type="password" class="full-width form-control password" ng-model="input.phone" name="phone" ng-required="true" placeholder="请输入手机号码">
+						<input type="text" class="full-width form-control password" ng-model="input.phone" name="phone" ng-required="true" placeholder="请输入手机号码">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
@@ -66,14 +79,43 @@
 						<div class="input-label">
 							店铺名
 						</div>
-						<input type="password" class="full-width form-control password" ng-model="input.store_name" name="store_name" ng-required="true" placeholder="请输入店铺名">
+						<input type="text" class="full-width form-control password" ng-model="input.store_name" name="store_name" ng-required="true" placeholder="请输入店铺名">
 					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							身份类型
+						</div>
+						<input type="text" class="full-width form-control password" ng-model="input.identity" name="identity" ng-required="true" placeholder="请选择" ng-click="identity_active();">
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							地址
+						</div>
+						<input type="text" class="full-width form-control password" ng-model="data.City" name="address" ng-click="openCityModal();">
+						
+					</div>
+
+					<div class="input-group addon">
+						<div class="input-label">
+							详细地址
+						</div>
+						<input type="text" class="full-width form-control password" ng-model="input.detail_address" name="detail_address" ng-required="true" placeholder="街道、楼牌号等">
+					</div>
+					<div class="input-group addon">
+						<div class="input-label">
+							绑定省份
+						</div>
+						<div class="text-select" ng-click = "province_active()">
+							请选择省份
+						</div>
+					</div>
+
 					<div class="button-warp">
 			            <div class="col-xs-2 pull-left">
 			                <a class="back-btn" ng-href="/login">返回登录</a>
 			            </div>
 			            <div class="col-xs-2 pull-left">
-			                <a class="replace-btn" ng-click ="signup()">确认注册</a>
+			                <a class="replace-btn" ng-click ="signup()" ng-disabled="$signupForm.$valid">确认注册</a>
 			                <!-- <a class="replace-btn" ui-sref = "replaceGoods">我要换货</a> -->
 			            </div>
 			        </div>

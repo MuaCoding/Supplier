@@ -51,6 +51,22 @@ angular.module('DS.services', [])
                     method: "POST",
                     url: url,
                     data: data,
+                    contentType: "application/json;charset=UTF-8",
+                    headers: {
+                        "User-Token": window.localStorage.getItem("User-Token")
+                    },
+                    params: params
+                };
+
+                return execHttp(httpJson);
+            },
+            // beforeSend:function(request){request.setRequestHeader("User-Token",localStorage.getItem('User-Token'))},
+            GET: function (url, data, params) {
+                var httpJson = {
+                    method: "GET",
+                    url: url,
+                    data: data,
+                    contentType: "application/json;charset=UTF-8",
                     headers: {
                         "User-Token": window.localStorage.getItem("User-Token")
                     },
@@ -323,3 +339,13 @@ angular.module('DS.services', [])
 })
 
 
+//判断登录状态
+.factory('loginJumpFact', function () {
+  return {
+    tokenJudge: function (Url) {
+      if (window.localStorage.getItem("User-Token") == "" || window.localStorage.getItem("User-Token") == null) {
+        // location.href = "/login.html?url=" + Url;
+      }
+    }
+  }
+})

@@ -1,0 +1,39 @@
+﻿ <!-- <a href="javascript:void(0)" class="headReturn" ng-click="closeCityModal();"><i class="PFIcon-back"></i>返回</a> -->
+<ion-modal-view class="addressModal">
+  <ion-header-bar class="headTop headBar">
+    <h1 class="title titleNav">地址选择</h1>
+     <a href="javascript:void(0)" class="headReturn" ng-click="closeCityModal();"><i class="PFIcon-back"></i>返回</a>
+  </ion-header-bar>
+
+  <ion-content style="background-color:#fff;" overflow-scroll="true">
+    <ion-slide-box class="slideBox" show-pager="false" does-continue="false" delegate-handle="cityHandle" style="height:100%;">
+      <ion-slide>
+        <ion-scroll zooming="false" scrollbar-y="false" class="scrollCon">
+          <ion-list class="cityList">
+            <ion-item ng-href="javascript:void(0)" ng-repeat="cityItem in city1List" ng-click="city1Event(cityItem.p);">
+              <div class="ellipsis" ng-bind="cityItem.p"></div>
+            </ion-item>
+          </ion-list>
+        </ion-scroll>
+      </ion-slide>
+      <ion-slide>
+        <ion-scroll zooming="false" scrollbar-y="false" class="scrollCon">
+          <ion-list class="cityList">
+            <ion-item ng-href="javascript:void(0)" ng-repeat="cityItem in city2List" ng-click="city2Event(cityItem.n);">
+              <div class="ellipsis" ng-bind="cityItem.n"></div>
+            </ion-item>
+          </ion-list>
+        </ion-scroll>
+      </ion-slide>
+      <ion-slide>
+        <ion-scroll zooming="false" scrollbar-y="false" class="scrollCon">
+          <ion-list class="cityList">
+            <ion-item ng-href="javascript:void(0)" ng-repeat="cityItem in city3List" ng-click="city3Event(cityItem.s);">
+              <div class="ellipsis" ng-bind="cityItem.s"></div>
+            </ion-item>
+          </ion-list>
+        </ion-scroll>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-modal-view>

@@ -37,6 +37,13 @@
 	background-color: #fff;
 }
 
+.input-group .text-select {
+	font-size: 13px;
+	color: #888;
+	height: 34px;
+	line-height: 37px;
+}
+
 .input-group select {
 	display: block;
     padding-top: 2px;
@@ -113,6 +120,11 @@
 
 .field {
 	padding: 15px 15px 15px 25%;
+}
+
+.color-primary{
+	border: 1px solid #BDBDBD;
+    color: #BDBDBD;
 }
 
 @media only screen and (max-width: 321px) {
