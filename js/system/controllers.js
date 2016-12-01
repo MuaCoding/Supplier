@@ -1142,24 +1142,54 @@ angular.module('DS.controllers', [])
 })
 
 //账户设置-收货地址管理
-.controller('addressManageController', function ($scope) {
+.controller('addressManageController', function ($scope, $rootScope, $state, $ionicHistory, $timeout, $ionicSlideBoxDelegate, $ionicActionSheet, HttpFact, ModalFact,  PopupFact, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
     $scope.input = {}
-    $scope.pickData = [{
+    $scope.input.deleteId = '';
 
-        name: "刘先生",
-        phone: 13760269597,
-        address: "深圳市南山区西丽街道南新花园A栋10H"
-    }, {
-        name: "陈先生",
-        phone: 13760269597,
-        address: "深圳市南山区西丽街道南新花园A栋10H"
-    }]
 
+    //地址列表
+    function getAddressList(){
+        HttpFact.user.GET(domain + "/api/User/addressList").then(
+            function(data) {
+                $scope.addresses = JSON.parse(data)
+                console.log($scope.addresses)
+            }
+        )
+    }
+    //滑动删除事件
+    $scope.flag = { showDelete: false };
+    //滑动删除
+    $scope.remove = function (value,key) {
+
+        HttpFact.user.GET(domain + "/api/User/addressDelete?id="+value).then(
+            function(data) {
+                if(data == '1'){
+                    $scope.addresses.splice($scope.addresses.indexOf(key), 1);
+                    getAddressList()
+                }
+                else{
+                    PopupFact.alert("提示", "删除失败");
+                }
+            }
+
+        )
+    };
+
+    //设置默认
     $scope.activeType = 0;
     $scope.is_pick = function (index) {
 
         $scope.activeType = index;
     }
+
+    
+
+
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getAddressList();
+    });
+
 })
 
 
@@ -1186,11 +1216,23 @@ angular.module('DS.controllers', [])
 .controller('newAddressController', function ($scope) {
     $scope.input = {}
 
+    $scope.addData = {
+        s_name: $scope.input.fullname,
+        s_phone: $scope.input.phone,
+        s_telephone: $scope.input.telephone,
+        s_storeDetailAddr: $scope.input.detail_address,
+        s_postcode: $scope.input.postcode,
+        isDefault: $scope.agree
+    }
 
     $scope.agree = true;
     $scope.is_agree = function () {
         $scope.agree = !$scope.agree;
     };
+
+    //添加收货地址
+
+
 })
 
 //退货操作
@@ -1439,7 +1481,6 @@ angular.module('DS.controllers', [])
                     $scope.countdown.reset = false;
                 }
                 $scope.input.emailId = data;
-                console.log($scope.input.emailId)
             }
         )
 
@@ -1529,6 +1570,25 @@ angular.module('DS.controllers', [])
         $scope.data.City = "请输入所在地区";
     }
 
+    //（未完成地址选取）关闭地址模态框
+    $scope.closeCityModal = function () {
+        $scope.City = "";
+        $scope.city1List = cityList;
+        $scope.city2List = "";
+        $scope.city3List = "";
+        
+        ModalFact.clear();
+    };
+
+    //（已完成地址选取）关闭地址模态框
+    $scope.cityOkModal = function () {
+        $scope.city1List = cityList;
+        $scope.city2List = "";
+        $scope.city3List = "";
+
+        ModalFact.clear();
+        $ionicSlideBoxDelegate.$getByHandle("cityHandle").slide(0);
+    }
     //地区1事件
     $scope.city1Event = function (val) {
         for (var i = 0; i < $scope.cityList.length; i++) {
@@ -1572,7 +1632,7 @@ angular.module('DS.controllers', [])
     };
 
     $scope.openCityModal = function () {
-        ModalFact.show($scope, "/templates/model/address.html");
+        ModalFact.show($scope, "/templates/model/addon.html");
         // $ionicScrollDelegate.$getByHandle('cityHandle').resize();
         $timeout(function () {
             $ionicSlideBoxDelegate.enableSlide(false);
@@ -1581,42 +1641,55 @@ angular.module('DS.controllers', [])
         },1000);
     };
 
-    $scope.province_active = function(){
-        ModalFact.show($scope, "/templates/model/province.html");
+
+    //获取省份
+    function getPaovince() {
+        HttpFact.get("/js/public/city/province.json").then(
+            function(data) {
+                $scope.provinces = data
+            }
+        )
     }
 
+    $scope.Province = "";
+    
+    if ($scope.input.province == "" || $scope.input.province == null) {
+        $scope.input.province = "请输入所在省份";
+    }
+    //打开省份模态框
+    $scope.province_active = function(){
+        ModalFact.show($scope, "/templates/model/province.html");
+        $ionicSlideBoxDelegate.enableSlide(false);
+        $ionicScrollDelegate.resize();
+        $scope.$broadcast("scroll.infiniteScrollComplete");
+    }
+    //省份事件
+    $scope.provinceEvent = function (val) {
+        $scope.Province += val;
+        $scope.input.province = "";
+        $scope.input.province = $scope.Province;
+        $scope.Province = "";
+        $scope.closeok();
+    };
+
     //（未完成地址选取）关闭地址模态框
-    $scope.closeCityModal = function () {
-        $scope.City = "";
-        $scope.city1List = cityList;
-        $scope.city2List = "";
-        $scope.city3List = "";
-        
+    $scope.close = function () {
+        $scope.Province = "";
         ModalFact.clear();
     };
 
-    //（已完成地址选取）关闭地址模态框
-    $scope.cityOkModal = function () {
-        $scope.city1List = cityList;
-        $scope.city2List = "";
-        $scope.city3List = "";
-
+    $scope.closeok = function () {
         ModalFact.clear();
-        $ionicSlideBoxDelegate.$getByHandle("cityHandle").slide(0);
-    }
+        // $ionicSlideBoxDelegate.$getByHandle("provinceHandle").slide(0);
+    };
+    
 
     //提交注册信息
     $scope.signup_action = function () {
 
         HttpFact.get(domain + "/api/verify/getEmailCodeId", { EmailNum: $scope.input.email }).then(
             function (data) {
-                if (data == '-1') {
-                    PopupFact.alert("提示", "邮箱格式有误");
-                }
-                else {
-                    $scope.countdown.reset = false;
-                }
-                console.log(data)
+                
 
             }
         )
@@ -1625,9 +1698,7 @@ angular.module('DS.controllers', [])
 
     //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
-
-
-
+        getPaovince()
     });
 
 })

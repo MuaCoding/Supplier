@@ -1,4 +1,4 @@
-﻿var domain = "http://m.pf.uprice.cn";
+﻿var domain = "http://192.168.1.112:98";
 
 angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive', 'DS.filters','imageview','showonLoad'])
 .config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {

@@ -1,17 +1,20 @@
 /* 模态框样式 */
 /* 地址模态框 */
-
+.addressModal{
+  overflow: visible;
+}
 .addressModal .scrollCon {
   height: 100%;
 }
+
 
 .addressModal .cityList .item {
   border-bottom: 1px solid #eee;
 }
 
-  .addressModal .cityList .item.activated, .addressModal .cityList .item-content.activated {
+  /*.addressModal .cityList .item.activated, .addressModal .cityList .item-content.activated {
     background-color: #f34242;
-  }
+  }*/
 
   .addressModal .cityList .item div {
     color: #000;

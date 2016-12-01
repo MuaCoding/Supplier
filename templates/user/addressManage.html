@@ -13,22 +13,24 @@
 
 	<ion-content  class="scroll-content has-header">
 		<div class="addressManage-Content">
-			<ion-list>
-				<ion-item ng-repeat = "people in pickData">
+			<ion-list ng-init="brandNum=$index" show-delete="flag.showDelete">
+				<ion-item ng-repeat = "address in addresses">
 					<div class="pickup-wrap" ng-click= "is_pick($index)">
-						
 						<div class="address-info">
 
 							<div class="pickup-name">
-								<span ng-bind="people.name"></span> ，
-								<span ng-bind="people.phone"></span>
+								<span ng-bind="address.a_name"></span> ，
+								<span ng-bind="address.a_phone"></span>
 								<span class="default" ng-if = "activeType ===$index">默认</span>
 							</div>
-							<div class="pickup-address" ng-bind="people.address">
+							<div class="pickup-address" ng-bind="address.a_detailAddr">
 								
 							</div>
 						</div>
 					</div>
+					<ion-option-button class="bg-denger font-white" ng-click="remove({{address.a_id}},address)">
+                        删除
+                    </ion-option-button>
 				</ion-item>
 			</ion-list>
 		</div>

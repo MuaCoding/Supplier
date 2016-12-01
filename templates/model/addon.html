@@ -1,0 +1,43 @@
+<ion-popover-view class="province-class">
+    <div class="header">
+        
+        <h2 class="ellipsis title">请选择</h2>
+        <a href="javascript:void(0)" class="close" ng-click="close()">取消</a>
+    </div>
+    <div class="Specifications">
+        <ion-content style="background-color:#fff;" overflow-scroll="true">
+            <ion-slide-box class="slideBox" show-pager="false" does-continue="false" delegate-handle="cityHandle" style="height:100%;">
+            
+                <ion-slide>
+                    <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false" style="height:100%;">
+                        <ion-list class="province">
+                            <ion-item ng-href="javascript:void(0)" ng-repeat="cityItem in city1List" ng-click="city1Event(cityItem.p);">
+                                  <div class="ellipsis content" ng-bind="cityItem.p"></div>
+                            </ion-item>
+                        </ion-list>
+                    </ion-scroll>
+                </ion-slide>
+
+                <ion-slide>
+                    <ion-scroll zooming="false" scrollbar-y="false" class="scrollCon" style="height:100%;">
+                        <ion-list class="province">
+                            <ion-item ng-href="javascript:void(0)" ng-repeat="cityItem in city2List" ng-click="city2Event(cityItem.n);">
+                              <div class="ellipsis content" ng-bind="cityItem.n"></div>
+                            </ion-item>
+                         </ion-list>
+                    </ion-scroll>
+                 </ion-slide>
+                 <ion-slide>
+                    <ion-scroll zooming="false" scrollbar-y="false" class="scrollCon" style="height:100%;">
+                        <ion-list class="province">
+                            <ion-item ng-href="javascript:void(0)" ng-repeat="cityItem in city3List" ng-click="city3Event(cityItem.s);">
+                              <div class="ellipsis content" ng-bind="cityItem.s"></div>
+                            </ion-item>
+                        </ion-list>
+                    </ion-scroll>
+                </ion-slide>
+            </ion-slide-box>
+        </ion-content>
+        
+    </div>
+</ion-popover-view>

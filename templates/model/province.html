@@ -2,14 +2,15 @@
     <div class="header">
         
         <h2 class="ellipsis title">请选择</h2>
-        <!-- <a href="javascript:void(0)" class="close" ng-click="closePopover()">x</a> -->
+        <a href="javascript:void(0)" class="close" ng-click="close()">取消</a>
     </div>
     <div class="Specifications">
-        <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false">
+        <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false" style="height:100%;">
             <ion-list class="province">
-                <ion-item ng-click="provinceEvent(cityItem.p);">
-                    <p class="content">北京市</p>
+                <ion-item ng-repeat="province in provinces" ng-click="provinceEvent(province.province);">
+                    <p class="content" ng-bind="province.province"></p>
                 </ion-item>
             </ion-list>
         </ion-scroll>
+    </div>
 </ion-popover-view>

@@ -91,7 +91,8 @@
 						<div class="input-label">
 							地址
 						</div>
-						<input type="text" class="full-width form-control password" ng-model="data.City" name="address" ng-click="openCityModal();">
+						<div class="text-select" ng-bind="data.City" ng-click="openCityModal();">
+						</div>
 						
 					</div>
 
@@ -105,7 +106,7 @@
 						<div class="input-label">
 							绑定省份
 						</div>
-						<div class="text-select" ng-click = "province_active()">
+						<div class="text-select" ng-bind="input.province" ng-click = "province_active()">
 							请选择省份
 						</div>
 					</div>
@@ -116,7 +117,6 @@
 			            </div>
 			            <div class="col-xs-2 pull-left">
 			                <a class="replace-btn" ng-click ="signup()" ng-disabled="$signupForm.$valid">确认注册</a>
-			                <!-- <a class="replace-btn" ui-sref = "replaceGoods">我要换货</a> -->
 			            </div>
 			        </div>
 				</form>

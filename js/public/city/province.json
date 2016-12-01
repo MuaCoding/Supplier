@@ -1,0 +1,139 @@
+[
+    {
+        "province": "北京市",
+        "id": 11
+        
+    },
+    {
+        "province": "天津市",
+        "id": 12
+    },
+    {
+        "province": "河北省",
+        "id": 13
+    },
+    {
+        "province": "山西省",
+        "id": 14
+    },
+    {
+        "province": "内蒙古",
+        "id": 15
+    },
+    {
+        "province": "辽宁省",
+        "id": 21
+    },
+    {
+        "province": "吉林省",
+        "id": 22
+    },
+    {
+        "province": "黑龙江省",
+        "id": 23
+    },
+    {
+        "province": "上海市",
+        "id": 31
+    },
+    {
+        "province": "江苏省",
+        "id": 32
+    },
+    {
+        "province": "浙江省",
+        "id": 33
+    },
+    {
+        "province": "安徽省",
+        "id": 34
+    },
+    {
+        "province": "福建省",
+        "id": 35
+    },
+    {
+        "province": "江西省",
+        "id": 36
+    },
+    {
+        "province": "山东省",
+        "id": 37
+    },
+    {
+        "province": "河南省",
+        "id": 41
+    },
+    {
+        "province": "湖北省",
+        "id": 42
+    },
+    {
+        "province": "湖南省",
+        "id": 43
+    },
+    {
+        "province": "广东省",
+        "id": 44
+    },
+    {
+        "province": "广西",
+        "id": 45
+    },
+    {
+        "province": "海南省",
+        "id": 46
+    },
+    {
+        "province": "重庆市",
+        "id": 50
+    },
+    {
+        "province": "四川省",
+        "id": 51
+    },
+    {
+        "province": "贵州省",
+        "id": 52
+    },
+    {
+        "province": "云南省",
+        "id": 53
+    },
+    {
+        "province": "西藏",
+        "id": 54
+    },
+    {
+        "province": "陕西省",
+        "id": 61
+    },
+    {
+        "province": "甘肃省",
+        "id": 62
+    },
+    {
+        "province": "青海省",
+        "id": 63
+    },
+    {
+        "province": "宁夏",
+        "id": 64
+    },
+    {
+        "province": "新疆",
+        "id": 65
+    },
+    {
+        "province": "台湾省",
+        "id": 71
+    },
+    {
+        "province": "香港",
+        "id": 81
+    },
+    {
+        "province": "澳门",
+        "id": 82
+    }
+]
