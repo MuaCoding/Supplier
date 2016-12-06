@@ -7,8 +7,8 @@
     <div class="Specifications">
         <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false" style="height:100%;">
             <ion-list class="province">
-                <ion-item ng-repeat="province in provinces" ng-click="provinceEvent(province.province);">
-                    <p class="content" ng-bind="province.province"></p>
+                <ion-item ng-repeat="identity in identities" ng-click="identityEvent(identity.name);">
+                    <p class="content" ng-bind="identity.name"></p>
                 </ion-item>
             </ion-list>
         </ion-scroll>

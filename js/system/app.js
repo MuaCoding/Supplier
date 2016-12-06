@@ -1,6 +1,7 @@
 ﻿var domain = "http://192.168.1.112:98";
+//var domain = "http://api.pf.uprice.cn";
 
-angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive', 'DS.filters','imageview','showonLoad'])
+angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive', 'DS.filters', 'imageview', 'showonLoad'])
 .config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $ionicConfigProvider.views.maxCache(5);                                               //视图缓存最大为5
@@ -71,15 +72,15 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         }
     })
 
-    
+
 
     //***************************************************独立层级*****************************************************
      /************************* 4.我的进货单************************************/
      // 4.1我的订货单首页
     .state('orders', {
         url: "/orders",
-        templateUrl: "/templates/orders/ordersHome.html",
-        controller: 'ordersHomeController'
+        templateUrl: "/templates/orders/orders.html",
+        controller: 'ordersController'
     })
     // 4.2填写订单信息
     .state('ordersInfo', {
@@ -117,10 +118,10 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
      //分类 -- 品牌列表
 
      .state('categoryList', {
-        url: "/categoryList/{typeId:[0-9]*}/{b_id:[0-9]*}",
-        templateUrl: "/templates/category/categoryList.html",
-        controller: 'categoryListController'
-    })
+         url: "/categoryList/{typeId:[0-9]*}/{b_id:[0-9]*}",
+         templateUrl: "/templates/category/categoryList.html",
+         controller: 'categoryListController'
+     })
 
 
     /*-------------------------------------- 产品 --------------------------------------*/
@@ -129,14 +130,14 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         url: "/productList",
         //views: {
         //    'sort-tab': {
-        templateUrl: "/templates/product/List.html",
+        templateUrl: "/templates/product/productList.html",
         controller: 'productListController'
         //    }
         //},
     })
     .state('productDetails', {
         url: "/productDetails/{Id:[0-9]*}",
-        templateUrl: "/templates/product/Details.html",
+        templateUrl: "/templates/product/productDetails.html",
         controller: 'productDetailsController'
     })
 
@@ -152,25 +153,6 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         url: "/myNews",
         templateUrl: "/templates/user/myNews.html"
 
-    })
-
-      //待付款
-    .state('pendingPayment', {
-        url: "/pendingPayment",
-        templateUrl: "/templates/user/pendingPayment.html",
-    })
-
-      //待收货
-    .state('waitReceipt', {
-        url: "/waitReceipt",
-        templateUrl: "/templates/user/waitReceipt.html",
-        controller: 'waitReceipt'
-    })
-
-     //待评价
-    .state('waitEvaluation', {
-        url: "/waitEvaluation",
-        templateUrl: "/templates/user/waitEvaluation.html",
     })
 
 
@@ -239,7 +221,7 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
     .state('editReturnsInfo', {
         url: "/editReturnsInfo",
         templateUrl: "/templates/user/editReturnsInfo.html"
-                // controller: 'editReturnsInfoController'
+        // controller: 'editReturnsInfoController'
     })
 
 
@@ -250,7 +232,7 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         controller: 'basicDataController'
     })
 
-    
+
     //头像设置
     .state('avatarSettings', {
         url: "/avatarSettings",
@@ -290,6 +272,14 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         controller: 'newAddressController'
     })
 
+
+    //账户设置 -- 修改地址
+    .state('changeAddress', {
+        url: "/changeAddress/{Id:[0-9]*}",
+        templateUrl: "/templates/user/changeAddress.html",
+        controller: 'changeAddressController'
+    })
+
     //登录
     .state('login', {
         url: "/login",
@@ -325,7 +315,7 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         templateUrl: "/templates/user/replaceGoods.html"
         //controller: 'forgotPasswordController'
     })
-    
+
 
     //立即评价
     .state('reviews', {
@@ -334,7 +324,38 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         controller: 'reviewsController'
     })
 
+    //待付款
+    .state('pendingPayment', {
+        url: "/pendingPayment",
+        templateUrl: "/templates/user/pendingPayment.html"
+    })
 
+      //待收货
+    .state('waitReceipt', {
+        url: "/waitReceipt",
+        templateUrl: "/templates/user/waitReceipt.html",
+        controller: 'waitReceiptController'
+    })
+
+     //待评价
+    .state('waitEvaluation', {
+        url: "/waitEvaluation",
+        templateUrl: "/templates/user/waitEvaluation.html"
+    })
+
+     //全部货单
+    .state('allOrders', {
+        url: "/allOrders",
+        templateUrl: "/templates/user/allOrders.html",
+        controller: 'allOrdersController'
+    })
+
+     //进销存系统
+    .state('psdSystem', {
+        url: "/psdSystem",
+        templateUrl: "/templates/user/psdSystem.html",
+        controller: 'psdSystemController'
+    })
 
 })
 
@@ -356,6 +377,32 @@ angular.module('myApp', ['ionic', 'DS.controllers','DS.services','DS.directive',
         }
     };
 
+    //错误请求判断
+    $rootScope.requestJudge = function (code, event) {
+        switch (code) {
+            case 10001:
+                localStorage.removeItem("User-Token");
+                PopupFact.alert("提示", "用户信息丢失，请重新登录！", 'location.reload();');
+                break;
 
-   
+            case 10002:
+                localStorage.removeItem("User-Token");
+                PopupFact.alert("提示", "您已注销登录，请重新登录！", 'location.reload();');
+                break;
+
+            case 10003:
+                localStorage.removeItem("User-Token");
+                PopupFact.alert("提示", "用户信息被篡改，请重新登录！", 'location.reload();');
+                break;
+
+            case 10004:
+                PopupFact.alert("提示", "您的权限不足！");
+                break;
+
+            default:
+                eval(event);
+                break;
+        };
+    };
+
 })

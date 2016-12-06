@@ -1,0 +1,198 @@
+﻿<ion-view class="allOrders-Class">
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <h1 class="titleNav">全部货单</h1>
+    </ion-nav-title>
+
+    <!--<ion-nav-buttons side="right">
+        <a href="javascrpt:;" class="edit-btn" ng-click=""></a>
+    </ion-nav-buttons>-->
+    <ion-content overflow-scroll="true" class="scroll-content has-header">
+        <ion-list class="listSwitch">
+            <ion-item class="button-bar">
+                <a class="button button-outline" ng-click="De_Switch.set(0)" ng-class="{'on':De_Switch.get(0)}">全部订单</a>
+                <a class="button button-outline" ng-click="De_Switch.set(1)" ng-class="{'on':De_Switch.get(1)}">待付款</a>
+                <a class="button button-outline" ng-click="De_Switch.set(2)" ng-class="{'on':De_Switch.get(2)}">待发货</a>
+                <a class="button button-outline" ng-click="De_Switch.set(3)" ng-class="{'on':De_Switch.get(3)}">待收货</a>
+                <a class="button button-outline" ng-click="De_Switch.set(4)" ng-class="{'on':De_Switch.get(4)}">待评价</a>
+            </ion-item>
+        </ion-list>
+        <ion-list class="listOrders" ng-show="De_Switch.proIndex==0">
+            <ion-item>
+                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>待发货</span></div>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
+                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a><a>我要催单</a></div>
+            </ion-item>
+            <ion-item>
+                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>交易成功</span></div>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
+                <div class="priceButton"><a ng-click="deleteOrder()">删除订单</a><a>查看物流</a><a>去评价</a></div>
+            </ion-item>
+            <ion-item class="listPayment">
+                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>等待付款</span></div>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <span class="priceAmount">共一件商品  需付款：<b>￥220.00</b></span>
+                <div class="priceButton"><a href="javascript:;" class="toPay">去支付</a><a>取消订单</a><a>联系卖家</a></div>
+            </ion-item>
+            <ion-item>
+                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>配送中</span></div>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
+                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a></div>
+            </ion-item>
+        </ion-list>
+        <ion-list class="listOrders listPayment" ng-show="De_Switch.proIndex==1">
+            <ion-item>
+                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>等待付款</span></div>
+                <a class="commodity ">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                </a>
+                <span class="priceAmount">共一件商品  需付款：<b>￥220.00</b></span>
+                <div class="priceButton"><a href="javascript:;" class="toPay">去支付</a><a>取消订单</a><a>联系卖家</a></div>
+            </ion-item>
+        </ion-list>
+        <ion-list class="listOrders" ng-show="De_Switch.proIndex==2">
+            <ion-item>
+                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>待发货</span></div>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
+                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a><a>我要催单</a></div>
+            </ion-item>
+        </ion-list>
+        <ion-list class="listOrders" ng-show="De_Switch.proIndex==3">
+            <ion-item>
+                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>配送中</span></div>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
+                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a></div>
+            </ion-item>
+        </ion-list>
+        <ion-list class="listOrders" ng-show="De_Switch.proIndex==4">
+            <ion-item>
+                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>交易成功</span></div>
+                <a class="commodity">
+                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
+                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <span>颜色分类：闪耀磨砂黑</span>
+                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
+                    <div class="Amount">
+                        <span class="Current">￥20056312005631.00</span>
+                        <span class="Original">￥2005631.00</span>
+                        <span class="Number">×100000</span>
+                    </div>
+                </a>
+                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
+                <div class="priceButton"><a ng-click="deleteOrder()">删除订单</a><a>查看物流</a><a>去评价</a></div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

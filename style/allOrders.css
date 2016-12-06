@@ -2,16 +2,42 @@
     background: none !important;
 }*/
 
-.waitReceipt-Class {
+.allOrders-Class {
     background-color: #f1f1f1;
 }
 
-    .waitReceipt-Class .listPayment {
+    .allOrders-Class .listSwitch {
+        overflow: hidden;
+        display: block;
+    }
+
+        .allOrders-Class .listSwitch .button-bar {
+            border-bottom: solid 1px #eee;
+        }
+
+            .allOrders-Class .listSwitch .button-bar > .button {
+                /*background: no-repeat;*/
+                border: none;
+                font-size: 13px;
+                color: #636363;
+                height: 40px;
+                line-height: 45px;
+                bottom: -50%;
+            }
+
+            .allOrders-Class .listSwitch .button-bar > .on {
+                border-bottom: solid 2px rgb(255, 0, 0);
+                border-radius: 0px;
+                color: rgb(255, 0, 0);
+            }
+
+
+    .allOrders-Class .listOrders {
         display: block;
         margin-bottom: 15px;
     }
 
-        .waitReceipt-Class .listPayment .item {
+        .allOrders-Class .listOrders .item {
             overflow: hidden;
             background-color: #fff;
             border-bottom: solid 1px #dddddd;
@@ -20,13 +46,13 @@
         }
 
         /*产品的店铺*/
-        .waitReceipt-Class .listPayment .storeName {
+        .allOrders-Class .listOrders .storeName {
             overflow: hidden;
             border-top: solid 1px #e3e5e9;
             padding: 5px 75px 0px 30px;
         }
 
-            .waitReceipt-Class .listPayment .storeName > h3 {
+            .allOrders-Class .listOrders .storeName > h3 {
                 float: left;
                 height: 25px;
                 line-height: 25px;
@@ -34,14 +60,14 @@
                 max-width: 100%;
             }
 
-                .waitReceipt-Class .listPayment .storeName > h3 > a {
+                .allOrders-Class .listOrders .storeName > h3 > a {
                     display: block;
                     overflow: hidden;
                     color: #444;
                     font-size: 15px;
                 }
 
-            .waitReceipt-Class .listPayment .storeName > i {
+            .allOrders-Class .listOrders .storeName > i {
                 position: absolute;
                 left: 10px;
                 top: 0px;
@@ -52,7 +78,7 @@
                 width: 18px;
             }
 
-            .waitReceipt-Class .listPayment .storeName > span {
+            .allOrders-Class .listOrders .storeName > span {
                 position: absolute;
                 right: 10px;
                 top: 0px;
@@ -63,7 +89,7 @@
             }
 
         /*产品*/
-        .waitReceipt-Class .listPayment .commodity {
+        .allOrders-Class .listOrders .commodity {
             background-color: #f8f8f8;
             overflow: hidden;
             position: relative;
@@ -73,7 +99,7 @@
             margin-top: 5px;
         }
             /*产品图片*/
-            .waitReceipt-Class .listPayment .commodity .Img {
+            .allOrders-Class .listOrders .commodity .Img {
                 position: absolute;
                 top: 10px;
                 left: 10px;
@@ -85,8 +111,8 @@
                 background-color: #fff;
             }
 
-            /*标题*/
-            .waitReceipt-Class .listPayment .commodity h4 {
+            /*产品标题*/
+            .allOrders-Class .listOrders .commodity h4 {
                 font-size: 13px;
                 color: #636363;
                 font-family: 微软雅黑;
@@ -96,11 +122,11 @@
                 margin: 0px;
             }
 
-            .waitReceipt-Class .listPayment .commodity > span {
+            .allOrders-Class .listOrders .commodity > span {
                 display: block;
             }
 
-            .waitReceipt-Class .listPayment .commodity span, .waitReceipt-Class .listPayment .commodity p {
+            .allOrders-Class .listOrders .commodity span, .allOrders-Class .listOrders .commodity p {
                 font-size: 13px;
                 color: #808080;
                 height: 18px;
@@ -108,12 +134,12 @@
             }
 
             /*服务*/
-            .waitReceipt-Class .listPayment .commodity > .Service {
+            .allOrders-Class .listOrders .commodity > .Service {
                 overflow: hidden;
                 height: 38px;
             }
 
-                .waitReceipt-Class .listPayment .commodity > .Service > span {
+                .allOrders-Class .listOrders .commodity > .Service > span {
                     background-color: #dd2727;
                     color: #fff;
                     float: left;
@@ -123,20 +149,20 @@
                     margin-bottom: 2px;
                 }
 
-            .waitReceipt-Class .listPayment .commodity > .Amount {
+            .allOrders-Class .listOrders .commodity > .Amount {
                 position: absolute;
                 right: 10px;
                 top: 10px;
             }
 
         /*单个产品金额及数量*/
-        .waitReceipt-Class .listPayment .Amount {
+        .allOrders-Class .listOrders .Amount {
             float: right;
             overflow: hidden;
             width: 80px;
         }
 
-            .waitReceipt-Class .listPayment .Amount > span {
+            .allOrders-Class .listOrders .Amount > span {
                 display: block;
                 overflow: hidden;
                 color: #999999;
@@ -146,58 +172,44 @@
                 font-size: 11px;
             }
 
-                .waitReceipt-Class .listPayment .Amount > span.Current {
+                .allOrders-Class .listOrders .Amount > span.Current {
                     color: #000;
                 }
 
-                .waitReceipt-Class .listPayment .Amount > span.Original {
+                .allOrders-Class .listOrders .Amount > span.Original {
                     font-weight: bolder;
                     text-decoration: line-through;
                 }
 
-        /*产品服务块*/
-        .waitReceipt-Class .listPayment .huiBlock {
-            overflow: hidden;
-            background-color: #f8f8f8;
-            padding: 0px 10px;
-            margin-top: 5px;
-        }
-
-            .waitReceipt-Class .listPayment .huiBlock > span {
-                display: block;
-                overflow: hidden;
-                float: left;
-                font-size: 11px;
-                color: #000;
-            }
-
         /*商品合计*/
-        .waitReceipt-Class .listPayment .priceAmount {
+        .allOrders-Class .listOrders .priceAmount {
+            display: block;
             text-align: right;
             overflow: hidden;
             height: 40px;
             line-height: 40px;
             padding: 0px 10px;
             border-bottom: solid 1px #e3e5e9;
+            font-size: 12px;
         }
 
-            .waitReceipt-Class .listPayment .priceAmount > span {
-                font-size: 12px;
+            .allOrders-Class .listOrders .priceAmount > span {
+                /*font-size: 12px;*/
                 margin-left: 5px;
             }
 
-                .waitReceipt-Class .listPayment .priceAmount > span > b {
-                    font-size: 17px;
-                    font-weight: normal;
-                }
+            .allOrders-Class .listOrders .priceAmount b {
+                font-size: 17px;
+                font-weight: normal;
+            }
 
         /*产品按钮块*/
-        .waitReceipt-Class .listPayment .priceButton {
+        .allOrders-Class .listOrders .priceButton {
             overflow: hidden;
             padding: 5px 10px;
         }
 
-            .waitReceipt-Class .listPayment .priceButton > a {
+            .allOrders-Class .listOrders .priceButton > a {
                 display: block;
                 overflow: hidden;
                 font-size: 13px;
@@ -211,19 +223,25 @@
                 float: right;
             }
 
-                .waitReceipt-Class .listPayment .priceButton > a.Receipt {
+                /*确认收货按钮*/
+                .allOrders-Class .listOrders .priceButton > a.Receipt {
                     background-color: #ff5722;
                     color: #fff;
                 }
 
+                /*待付款按钮*/
+                .allOrders-Class .listOrders .priceButton > a.toPay {
+                    color: #f23030;
+                    border: solid 1px #f33e3e;
+                }
 
-.button-Orange {
+
+.button-Orange, .button-Orange.activated {
     background-color: #ff5722;
     color: #fff;
 }
 
-
-.button-Orange.activated{
-        background-color: #ff5722;
+.button-Red, .button-Red.activated {
+    background-color: #ff0000;
     color: #fff;
 }

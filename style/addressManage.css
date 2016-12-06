@@ -1,3 +1,17 @@
 .addressManage-Class .item-complex .item-content {
     padding: 0;
 }
+
+.addressManage-Class .addressManage-Content .pickup-wrap {
+	display: block;
+	
+}
+.addressManage-Class .addressManage-Content .pickup-wrap .address-info{
+	display: block;
+	padding-bottom: 15px;
+}
+.addressManage-Class .addressManage-Content .pickup-wrap .setting {
+	display:block;
+	padding-top: 15px;
+	border-top: 1px solid #eaeaea;;
+}

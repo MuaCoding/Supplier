@@ -4,7 +4,7 @@
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/addressManange')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	<ion-nav-title>
-		<h1 class="titleNav">添加新的收货地址</h1>
+		<h1 class="titleNav">修改地址</h1>
 	</ion-nav-title>
 	
 	<!-- <ion-nav-buttons side="right">
@@ -18,7 +18,7 @@
 						<div class="input-label">
 							收货人
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.s_name" name="fullname" required placeholder="请输入姓名">
+						<input type="text" class="full-width form-control" ng-model="input.s_name" name="fullname" required placeholder="">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
@@ -50,17 +50,9 @@
 						</div>
 						<input type="text" class="full-width form-control" ng-model="input.s_postcode" name="postcode" required placeholder="请输入邮编">
 					</div>
-					<div class="input-group addon">
-						<div class="input-label">
-							默认地址
-						</div>
-						<div class="input-checked">
-							<span class="input-text pull-left" ng-click="is_agree()"><i class="mr10" ng-class ="{'PFIcon-Hook': input.isDefault}"></i>设为默认地址</span>
-						</div>
-					</div>
 					<div class="btn-wrap">
-						<a class="confirm-btn" ng-click="add_address()">
-							<span>添加新地址</span>
+						<a class="confirm-btn" ng-click="Edit()">
+							<span>保存新地址</span>
 						</a>
 					</div>
 				</ion-item>

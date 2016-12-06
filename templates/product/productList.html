@@ -1,0 +1,41 @@
+﻿<ion-view title="产品列表" class="productList-class">
+    <!--Header部分-->
+    <ion-nav-title>
+        <h1 class="titleNav Title">商品列表</h1>
+    </ion-nav-title>
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/ordersHome')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right" modal-linkage>
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon" ng-click="openSearch();"></a>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="row filter whiteBg mb10">
+            <a class="col Flip" ng-class="{'on':item.Check}"><span>价格<span><i class="PFIcon-sort on"></i><i class="PFIcon-sort on BTriangle"></i></span></span></a>
+            <a class="col Flip" ng-class="{'on':item.Check}"><span>销量<span><i class="PFIcon-sort on"></i><i class="PFIcon-sort on BTriangle"></i></span></span></a>
+            <a class="col Flip" ng-class="{'on':item.Check}"><span>成交额<span><i class="PFIcon-sort on"></i><i class="PFIcon-sort on BTriangle"></i></span></span></a>
+            <a class="col" ng-click="screenClick();"><i class="PFIcon-filter"></i><span>筛选</span></a>
+        </div>
+
+        <div class="HotProducts mb10">
+            <ion-list class="proList mb10">
+                <!--<ion-item ui-sref="productDetails" ng-repeat="list in ProductsList.array_1">
+                    <div class="Img imgMin" style="background-image: url(/images/Products.jpg);"></div>
+                    <h3 class="mt10 mb5" ng-bind="hot.b_name"></h3>
+                    <div>￥<span ng-bind="hot.price3"></span> - ￥<span ng-bind="hot.price1"></span></div>
+                </ion-item>-->
+                <ion-item ng-href="/productDetails/{{hot.p_id}}" ng-repeat="hot in listProduct.array_1">
+                    <div class="Img imgMax" style="background-image: url('{{hot.p_Pic.split(',')[0]}}');"></div>
+                    <p class="mt10 mb5" style="color:#676767;" ng-bind="hot.p_name"></p>
+                    <div>￥<span ng-bind="hot.price3"></span><span ng-bind="brand.price2" ng-if="brand.price3 == ''"></span>- ￥<span ng-bind="hot.price1"></span></div>
+                </ion-item>
+            </ion-list>
+            <p class="noData" ng-if="!noData">没有更多数据了！</p>
+
+            <!-- 滚动刷新 -->
+            <ion-infinite-scroll on-infinite="loadMore();" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
+        </div>
+    </ion-content>
+</ion-view>

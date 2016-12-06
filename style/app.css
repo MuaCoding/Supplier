@@ -105,8 +105,7 @@ h3 {
 }
 
 .scroll-content > .scroll {
-    position: relative;
-    z-index: 2;
+    height: 100%;
 }
 
 ion-modal-view {

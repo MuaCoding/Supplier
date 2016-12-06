@@ -71,5 +71,12 @@
             </ion-list>
         </ion-scroll>
 
-    </div><div class="Billing row"><span class="col">共<em ng-bind="varlist.itemNum"></em><em ng-bind="basicData[0].p_unit"></em>商品</span><a href="javascript:;" class="confirm col">加入购物车</a></div>
+    </div>
+        <div class="Billing row">
+            <span class="col">
+                共<em ng-bind="varlist.itemNum"></em>
+                <em ng-bind="basicData[0].p_unit"></em>商品
+            </span>
+            <a href="javascript:;" class="confirm col" ng-click="add_action()">加入购物车</a>
+        </div>
 </ion-popover-view>

@@ -179,6 +179,16 @@ angular.module('DS.directive', [])
             $scope.closeSearch = function () {
                 ModalFact.clear();
             }
+
+
+            //打开
+            $scope.openpsdSystemBox = function () {
+                ModalFact.show($scope, "/templates/model/psdSystemBox.html");
+            }
+            //关闭
+            $scope.closepsdSystemBox = function () {
+                ModalFact.clear();
+            }
         }
     }
 })

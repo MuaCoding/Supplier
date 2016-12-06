@@ -1,4 +1,8 @@
-﻿.pendingPayment-Class {
+﻿/*a.activated {
+    background: none !important;
+}*/
+
+.pendingPayment-Class {
     background-color: #f1f1f1;
 }
 
@@ -93,12 +97,12 @@
                 color: #808080;
             }
 
-        .pendingPayment-Class .listPayment .toPayDiv {
+        .pendingPayment-Class .listPayment .priceButton {
             overflow: hidden;
             padding: 5px 10px;
         }
 
-            .pendingPayment-Class .listPayment .toPayDiv a {
+            .pendingPayment-Class .listPayment .priceButton a {
                 display: block;
                 overflow: hidden;
                 font-size: 14px;

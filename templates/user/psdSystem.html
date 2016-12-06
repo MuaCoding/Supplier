@@ -1,0 +1,52 @@
+﻿<ion-view class="psdSystem-Class">
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <h1 class="titleNav">进销存系统</h1>
+    </ion-nav-title>
+
+    <!--<ion-nav-buttons side="right">
+        <a href="javascrpt:;" class="edit-btn" ng-click=""></a>
+    </ion-nav-buttons>-->
+    <ion-content overflow-scroll="true" class="scroll-content has-header">
+        <ion-list class="listSwitch">
+            <ion-item class="button-bar">
+                <a class="button button-outline" ng-click="De_Switch.set(0)" ng-class="{'on':De_Switch.get(0)}"><span>采购管理</span></a>
+                <a class="button button-outline" ng-click="De_Switch.set(1)" ng-class="{'on':De_Switch.get(1)}"><span>库存管理</span></a>
+                <a class="button button-outline" ng-click="De_Switch.set(2)" ng-class="{'on':De_Switch.get(2)}"><span>销售管理</span></a>
+                <a class="button button-outline" ng-click="De_Switch.set(3)" ng-class="{'on':De_Switch.get(3)}"><span>盈利计算器</span></a>
+            </ion-item>
+        </ion-list>
+        <div class="ViewDiv" ng-if="!ts"><span>手机端仅支持查看，操作与管理需前往电脑网页端</span><a class="shutDown" ng-click="tsEvent();">×</a></div>
+        <ion-list class="listOrders" ng-show="De_Switch.proIndex==0" modal-linkage>
+            <ion-item ng-click="openpsdSystemBox()">
+                <h3 class="ellipsis">Beats Solo2 无线头戴式耳机</h3>
+                <div class="ellipsis"><span>预购数量：8000件</span> / <span>单件价格：19.00元</span></div>
+                <span class="Price">￥152000.00</span>
+                <i class="PFIcon-Rarrow"></i>
+            </ion-item>
+            <ion-item ng-click="openpsdSystemBox()">
+                <h3 class="ellipsis">Beats Solo2 无线头戴式耳机</h3>
+                <div class="ellipsis"><span>预购数量：8000件</span> / <span>单件价格：19.00元</span></div>
+                <span class="Price">￥152000.00</span>
+                <i class="PFIcon-Rarrow"></i>
+            </ion-item>
+            <ion-item ng-click="openpsdSystemBox()">
+                <h3 class="ellipsis">Beats Solo2 无线头戴式耳机</h3>
+                <div class="ellipsis"><span>预购数量：8000件</span> / <span>单件价格：19.00元</span></div>
+                <span class="Price">￥152000.00</span>
+                <i class="PFIcon-Rarrow"></i>
+            </ion-item>
+            <ion-item ng-click="openpsdSystemBox()">
+                <h3 class="ellipsis">Beats Solo2 无线头戴式耳机</h3>
+                <div class="ellipsis"><span>预购数量：8000件</span> / <span>单件价格：19.00元</span></div>
+                <span class="Price">￥152000.00</span>
+                <i class="PFIcon-Rarrow"></i>
+            </ion-item>
+        </ion-list>
+        <ion-list class="listOrders" ng-show="De_Switch.proIndex==1"><span>库存管理</span></ion-list>
+        <ion-list class="listOrders" ng-show="De_Switch.proIndex==2"><span>销售管理</span></ion-list>
+        <ion-list class="listOrders" ng-show="De_Switch.proIndex==3"><span>盈利计算器</span></ion-list>
+    </ion-content>
+</ion-view>

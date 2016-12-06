@@ -1,0 +1,91 @@
+﻿.psdSystemBox-class {
+    background: no-repeat;
+}
+
+    .psdSystemBox-class .scroll-content {
+        background: none;
+    }
+
+    /*透明背景*/
+    .psdSystemBox-class .psbBg {
+        background-color: #000;
+        opacity: 0.6;
+        min-height: 100%;
+        min-width: 100%;
+        display: block;
+        overflow: hidden;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    .psdSystemBox-class .Commodity {
+        background-color: #fff;
+        width: 90%;
+        margin: 0px 5%;
+        position: absolute;
+        top: 30%;
+        border-radius: 5px;
+    }
+
+        .psdSystemBox-class .Commodity > .list {
+            border-radius: 5px;
+            overflow: initial;
+        }
+
+        .psdSystemBox-class .Commodity .CommodityName {
+            background-color: #fafafa;
+            position: relative;
+            border-bottom: solid 1px #d1d1d1;
+            padding: 20px 35px 20px 15px;
+            overflow: initial;
+        }
+
+            .psdSystemBox-class .Commodity .CommodityName h3 {
+                overflow: hidden;
+                font-size: 14px;
+                color: #444;
+            }
+
+            .psdSystemBox-class .Commodity .CommodityName div {
+                overflow: hidden;
+                font-size: 13px;
+                color: #888;
+            }
+
+            .psdSystemBox-class .Commodity .CommodityName .closePsd {
+                width: 30px;
+                height:30px;
+                position: absolute;
+                right: -15px;
+                top: -15px;
+                font-size: 23px;
+                text-align: center;
+                line-height: 28px;
+                border-radius: 15px;
+                background-color: #555;
+            }
+
+        .psdSystemBox-class .Commodity .CommodityDetails {
+            overflow: hidden;
+            background-color: #fff;
+            position: relative;
+            padding: 20px 20px 20px 15px;
+        }
+
+            .psdSystemBox-class .Commodity .CommodityDetails > div {
+                overflow: hidden;
+                text-align: right;
+                margin: 5px 0px;
+            }
+
+                .psdSystemBox-class .Commodity .CommodityDetails > div > span {
+                    display: block;
+                    overflow: hidden;
+                    font-size: 14px;
+                    color: #666666;
+                }
+
+                .psdSystemBox-class .Commodity .CommodityDetails > div > .CDtit {
+                    float: left;
+                }

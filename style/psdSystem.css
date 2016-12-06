@@ -1,0 +1,112 @@
+﻿/*a.activated {
+    background: none !important;
+}*/
+
+.psdSystem-Class {
+    background-color: #f1f1f1;
+}
+
+    .psdSystem-Class .listSwitch {
+        overflow: hidden;
+        display: block;
+    }
+
+        .psdSystem-Class .listSwitch .button-bar {
+            border-bottom: solid 1px #eee;
+        }
+
+            .psdSystem-Class .listSwitch .button-bar > .button {
+                /*background: no-repeat;*/
+                border: none;
+                font-size: 13px;
+                color: #636363;
+                height: 40px;
+                line-height: 45px;
+                bottom: -50%;
+            }
+
+                .psdSystem-Class .listSwitch .button-bar > .button > span {
+                    height: 100%;
+                    display: inline-block;
+                    padding: 0px 5px;
+                }
+
+            .psdSystem-Class .listSwitch .button-bar > .on > span {
+                border-bottom: solid 2px rgb(255, 0, 0);
+                border-radius: 0px;
+                color: rgb(255, 0, 0);
+            }
+
+    .psdSystem-Class .ViewDiv {
+        overflow: hidden;
+        background-color: #3690ff;
+        position: relative;
+        height: 35px;
+        line-height: 35px;
+    }
+
+        .psdSystem-Class .ViewDiv > span {
+            font-size: 13px;
+            color: #fff;
+            display: block;
+            overflow: hidden;
+            padding: 0px 25px 0px 25px;
+        }
+
+        .psdSystem-Class .ViewDiv .shutDown {
+            font-size: 20px;
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            text-align: center;
+        }
+
+    .psdSystem-Class .listOrders {
+        background-color: #fff;
+    }
+
+        .psdSystem-Class .listOrders ion-item {
+            overflow: hidden;
+            border-bottom: solid 1px #d1d1d1;
+            position: relative;
+            padding: 20px 35% 20px 15px;
+        }
+
+            .psdSystem-Class .listOrders ion-item h3 {
+                overflow: hidden;
+                font-size: 14px;
+                color: #444;
+            }
+
+            .psdSystem-Class .listOrders ion-item div {
+                overflow: hidden;
+                font-size: 13px;
+                color: #888;
+            }
+
+            .psdSystem-Class .listOrders ion-item span.Price {
+                display: block;
+                overflow: hidden;
+                font-size: 13px;
+                color: #f34242;
+                position: absolute;
+                right: 35px;
+                top: 0px;
+                height: 100%;
+                line-height: 85px;
+            }
+
+            .psdSystem-Class .listOrders ion-item i {
+                display: block;
+                overflow: hidden;
+                font-size: 13px;
+                color: #aaa;
+                position: absolute;
+                right: 15px;
+                top: 0px;
+                height: 100%;
+                line-height: 83px;
+            }
