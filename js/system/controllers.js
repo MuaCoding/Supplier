@@ -459,7 +459,7 @@ angular.module('DS.controllers', [])
 
 
     $scope.add_action = function(productId,paramId,Num) {
-        HttpFact.post(domain + "/api/Order/shoppingCartAdd",{productId: $scope.productId,paramId: $scope.paramId,Num: $scope.varlist.itemNum}).then(
+        HttpFact.user.POST(domain + "/api/Order/shoppingCartAdd",{productId: $scope.productId,paramId: $scope.paramId,Num: $scope.varlist.itemNum}).then(
             function(data) {
                 switch (data) {
                     case '0':
@@ -1868,9 +1868,9 @@ angular.module('DS.controllers', [])
     //视图第一次加载读取数据
     $scope.$on("$ionicView.loaded", function () {
         getcode();
-        //if (localStorage.getItem("User-Token") != undefined && localStorage.getItem("User-Token") != '') {
+        if (localStorage.getItem("User-Token") != undefined && localStorage.getItem("User-Token") != '') {
 
-        //};
+        };
     });
 
 
