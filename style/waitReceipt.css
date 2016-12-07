@@ -1,6 +1,6 @@
-﻿/*a.activated {
+﻿.waitReceipt-Class a.activated {
     background: none !important;
-}*/
+}
 
 .waitReceipt-Class {
     background-color: #f1f1f1;
@@ -16,7 +16,7 @@
             background-color: #fff;
             border-bottom: solid 1px #dddddd;
             position: relative;
-            margin-top: 15px;
+            margin-bottom: 15px;
         }
 
         /*产品的店铺*/

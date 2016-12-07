@@ -254,8 +254,6 @@ angular.module('DS.controllers', [])
             function (data) {
                 $scope.basicData = JSON.parse(data);
                 $scope.basicImg = $scope.basicData[0].p_Pic.split(',');
-
-                console.log($scope.basicData)
                 $scope.miniNum = Number($scope.basicData[0].p_valuationNum);
                 $scope.lowNumber.low1 = Number($scope.basicData[0].p_priceScopeTitle1);
                 $scope.lowNumber.low2 = Number($scope.basicData[0].p_priceScopeTitle2);
@@ -298,7 +296,7 @@ angular.module('DS.controllers', [])
                 $scope.TypeModelList = unique(type)
                 //unique
                 var temp = [] //定义变量存储push的数据
-                $scope.temps = [];
+                $scope.temps = [];  //定义处理后的数据
 
                 for (var i = 0; i < $scope.detailParme.length; i++) {
                     temp.push($scope.detailParme[i].p_param1);
@@ -459,7 +457,7 @@ angular.module('DS.controllers', [])
 
 
     $scope.add_action = function(productId,paramId,Num) {
-        HttpFact.post(domain + "/api/Order/shoppingCartAdd",{productId: $scope.productId,paramId: $scope.paramId,Num: $scope.varlist.itemNum}).then(
+        HttpFact.user.POST(domain + "/api/Order/shoppingCartAdd",{productId: $scope.productId,paramId: $scope.paramId,Num: $scope.varlist.itemNum}).then(
             function(data) {
                 switch (data) {
                     case '0':
@@ -883,54 +881,48 @@ angular.module('DS.controllers', [])
 
 })
 //我的进货单
-.controller('ordersController', function ($scope, $rootScope, $ionicPopup, loginJumpFact, HttpFact) {
+.controller('ordersController', function ($scope, $rootScope, $ionicPopup, filterFilter, loginJumpFact, HttpFact) {
     loginJumpFact.tokenJudge("orders");
     $scope.input = {}
 
     function getShopping() {
         HttpFact.user.GET(domain + "/api/Order/shoppingCartList").then(
             function (data) {
-                $scope.shoppings = JSON.parse(data)
-                console.log($scope.shoppings)
+                $scope.shopping = JSON.parse(data)
+                // $scope.input.firm = $scope.shopping.s_companyName;
+                // console.log($scope.shopping.s_companyName)
+
+                //匹配公司
+                var obj = filterFilter($scope.shopping, { s_companyName: $scope.input.firm}, true);
+                $scope.companys = [];  //
+                var type = []
+                for (var i = 0; i < obj.length; i++) {
+                    type.push(obj[i].s_companyName);
+                }
+                
+                $scope.companys = unique(type);
+                console.log(type)
+
             }
         )
     }
-    $scope.cartData =
-		[
-            {
-                name: "品牌商：深圳罗技电子科技有限公司1",
-                goods: [{
-                    id: 1,
-                    tradeName: "Beats Solo1 无线头戴式耳机11",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }, {
-                    id: 2,
-                    tradeName: "Beats Solo8 无线头戴式耳机22",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }]
+    //去重复
+    function unique(arr) {
+        var tmp = new Array();
 
-            }, {
-                name: "品牌商：深圳罗技电子科技有限公司2",
-                goods: [{
-                    id: 3,
-                    tradeName: "Beats Solo1 无线头戴式耳机33",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }, {
-                    id: 4,
-                    tradeName: "Beats Solo8 无线头戴式耳机44",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }
-                ]
-            }
-		]
+        for (var m in arr) {
+            tmp[arr[m]] = 1;
+        }
+
+        //再把键和值的位置再次调换
+        var tmparr = new Array();
+
+        for (var n in tmp) {
+            tmparr.push(n);
+        }
+
+        return tmparr;
+    }
 
 
     $scope.flag = { showDelete: false };
