@@ -62,15 +62,13 @@
                 <ion-item class="PurchaseNumber">
                     <h3>进货数量</h3>
                         <div class="NumberDiv">
-                            <a href="javascript:;" ng-click="add()">+</a>
-                            <!-- ng-change="num_total(varlist.itemNum)" -->
-                            <input type="text"   ng-model="varlist.itemNum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-blur="Numblur()"/>
                             <a href="javascript:;" ng-click="minus()">-</a>
+                            <input type="text"   ng-model="varlist.itemNum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-blur="Numblur()"/>
+                            <a href="javascript:;" ng-click="add()">+</a>
                         </div>
                 </ion-item>
             </ion-list>
         </ion-scroll>
-
     </div>
         <div class="Billing row">
             <span class="col">

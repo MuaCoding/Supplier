@@ -1,13 +1,8 @@
 ﻿@font-face {
-  font-family: 'iconfont';  /* project id："158498" */
-  src: url('//at.alicdn.com/t/font_ii89c2cb6u81if6r.eot');
-  src: url('//at.alicdn.com/t/font_ii89c2cb6u81if6r.eot') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_ii89c2cb6u81if6r.woff') format('woff'),
-  url('//at.alicdn.com/t/font_ii89c2cb6u81if6r.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_ii89c2cb6u81if6r.svg#iconfont') format('svg');
+    font-family: 'iconfont'; /* project id 158498 */
+    src: url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.eot');
+    src: url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.woff') format('woff'), url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.ttf') format('truetype'), url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.svg#iconfont') format('svg');
 }
-                    
-                                                            
 
 [class^="PFIcon-"], [class*=" PFIcon-"] {
     font-family: 'iconfont';
@@ -64,6 +59,7 @@
 .PFIcon-Rarrow:before {
     content: "\e609";
 }
+
 .PFIcon-Tick:before {
     content: "\e610";
 }
@@ -87,7 +83,6 @@
 /*发票*/
 .PFIcon-Checked:before {
     content: "\e611";
-    
 }
 
 .PFIcon-Circle:before {
@@ -141,33 +136,44 @@
 .PFIcon-reviews:before {
     content: "\e61c";
 }
+
 .PFIcon-coupon:before {
     content: "\e61d";
 }
 
+.PFIcon-TakeDelivery:before {
+    content: "\e630";
+}
 
 
 .PFIcon-stock:before {
     content: "\e61a";
 }
+
 .PFIcon-favorite:before {
     content: "\e61f";
 }
+
 .PFIcon-news:before {
     content: "\e61b";
 }
+
 .PFIcon-bought:before {
     content: "\e614";
 }
+
 .PFIcon-praised:before {
     content: "\e620";
 }
+
 .PFIcon-query:before {
     content: "\e616";
 }
+
 .PFIcon-ReturnPolicy:before {
     content: "\e613";
 }
+
 .PFIcon-complain:before {
     content: "\e621";
 }
@@ -176,12 +182,15 @@
 .PFIcon-basic:before {
     content: "\e648";
 }
+
 .PFIcon-AvatarSetting:before {
     content: "\e627";
 }
+
 .PFIcon-Receiving:before {
     content: "\e625";
 }
+
 .PFIcon-authentication:before {
     content: "\e628";
 }

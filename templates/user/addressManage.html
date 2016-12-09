@@ -1,46 +1,44 @@
-<ion-view class="addressManage-Class" title="收货地址管理">
-	
-	<ion-nav-buttons side="left">
+<ion-view class="addressManage-Class">
+
+    <ion-nav-buttons side="left">
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
-	<ion-nav-title>
-		<h1 class="titleNav">收货地址管理</h1>
-	</ion-nav-title>
-	
-	<ion-nav-buttons side="right" >
-		<a class="edit-btn" ng-href ="newAddress">添加新地址</a>
-	</ion-nav-buttons>
+    <ion-nav-title>
+        <h1 class="titleNav">收货地址管理</h1>
+    </ion-nav-title>
 
-	<ion-content  class="scroll-content has-header">
-		<div class="addressManage-Content">
-			<ion-list ng-init="brandNum=$index" show-delete="flag.showDelete">
-				<ion-item ng-repeat = "address in addresses" style="margin-bottom: 10px;">
-					<div class="pickup-wrap">
-						<div class="address-info" ng-click= "is_pick({{address.a_id}})" >
+    <ion-nav-buttons side="right">
+        <a class="edit-btn" ng-href="newAddress">添加新地址</a>
+    </ion-nav-buttons>
 
-							<div class="pickup-name">
-								<span ng-bind="address.a_name"></span> ，
-								<span ng-bind="address.a_phone"></span>
-								<span class="default" ng-if = "address.a_isDefault == 'True'">默认</span>
-							</div>
-							<div class="pickup-address">
-								<span ng-bind="address.a_prov"></span>
-								<span ng-bind="address.a_city"></span>
-								<span ng-bind="address.a_dist"></span>
-								<span ng-bind="address.a_detailAddr"></span>
-							</div>
-							
-						</div>
-						<div class="setting">
-                            <span ng-click="default_action({{address.a_id}})">设为默认</span>
-							<a style="color: #444" ng-href="/changeAddress/{{address.a_id}}">编辑</a>
-						</div>
-					</div>
-					<ion-option-button class="bg-denger font-white" ng-click="remove({{address.a_id}},address)">
+    <ion-content class="scroll-content has-header">
+        <div class="addressManage-Content">
+            <ion-list ng-init="brandNum=$index" show-delete="flag.showDelete">
+                <ion-item ng-repeat="address in addresses" style="margin-top: 15px;">
+                    <div class="pickup-wrap">
+                        <div class="address-info" ng-click="is_pick({{address.a_id}})">
+                            <div class="pickup-name">
+                                <span ng-bind="address.a_name" class="Name ellipsis"></span> <span>，</span>
+                                <span ng-bind="address.a_phone" class="Phone ellipsis"></span>
+                                <!--<span class="default" ng-if="address.a_isDefault == 'True'">默认</span>-->
+                            </div>
+                            <div class="pickup-address">
+                                <span ng-bind="address.a_prov"></span>
+                                <span ng-bind="address.a_city"></span>
+                                <span ng-bind="address.a_dist"></span>
+                                <span ng-bind="address.a_detailAddr" class="ellipsis address"></span>
+                            </div>
+                        </div>
+                        <div class="setting">
+                            <span ng-click="default_action({{address.a_id}})"><i class="PFIcon-real Mored"></i>设为默认</span>
+                            <a ng-href="/changeAddress/{{address.a_id}}" class="Edit">编辑</a>
+                        </div>
+                    </div>
+                    <ion-option-button class="bg-denger font-white" ng-click="remove({{address.a_id}},address)">
                         删除
                     </ion-option-button>
-				</ion-item>
-			</ion-list>
-		</div>
-	</ion-content>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
 </ion-view>

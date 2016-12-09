@@ -33,18 +33,14 @@
 						<div class="input-label">
 							身份
 						</div>
-						<select name="" id="" class="full-width input-select">
-							<option value="请选择">请选择</option>
-							<option value="请选择">请选择</option>
-						</select>
-						<!-- <p class="input-select">请选择</p>
-						<i class="PFIcon-BTriangle icon-down font30"></i> -->
+                        <div class="text-select" ng-bind="input.s_identity" ng-click="identity_active();">
+                        </div>
 					</div>
 					<div class="input-group field">
 						<div class="input-label">
 							邮箱
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入邮箱">
+						<input type="text" class="full-width form-control" ng-model="input.s_email" name="telephone" required placeholder="请输入邮箱">
 						<div class="smscode">
 							使用当前绑定邮箱
 						</div>
@@ -68,10 +64,8 @@
 						<div class="input-label">
 							联系地址
 						</div>
-						<select name="input" id="" class="full-width input-select">
-							<option value="请选择">请选择</option>
-							<option value="请选择">品牌商</option>
-						</select>
+                        <div class="text-select" ng-bind="select.City" ng-click="address_active();">
+                        </div>
 					</div>
 					<div class="input-group addon">
 						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入详细地址">

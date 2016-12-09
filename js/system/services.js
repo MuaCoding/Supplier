@@ -351,11 +351,11 @@ angular.module('DS.services', [])
 
 
 //判断登录状态
-.factory('loginJumpFact', function () {
+.factory('loginJumpFact', function (PopupFact) {
     return {
         tokenJudge: function (Url) {
             if (window.localStorage.getItem("User-Token") == "" || window.localStorage.getItem("User-Token") == null) {
-                location.href = "/login?url=" + Url;
+                PopupFact.alert("提示", "用户信息已失效，重新登录", 'location.href = "/login?url="' + Url);
             }
         }
     }

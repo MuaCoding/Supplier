@@ -1,0 +1,66 @@
+﻿.Binding-Class {
+    overflow: hidden;
+}
+
+    .Binding-Class ion-content {
+        background-color: #fff;
+    }
+
+    .Binding-Class .PhoneList {
+        overflow: hidden;
+        text-align: center;
+        line-height: 45px;
+    }
+
+        .Binding-Class .PhoneList ion-item {
+            padding: 0px 10px;
+            margin-top: 20px;
+        }
+
+        .Binding-Class .PhoneList input {
+            display: inline-block;
+            overflow: hidden;
+            width: 63%;
+            height: 45px;
+            border: solid 1px #aeaeae;
+            border-radius: 3px;
+            padding: 0px 5px;
+            font-size: 15px;
+            color: #444;
+            float: left;
+        }
+
+        .Binding-Class .PhoneList .Phone {
+            width: 100%;
+        }
+
+        .Binding-Class .PhoneList span {
+            overflow: hidden;
+            font-size: 15px;
+            color: #444;
+            display: block;
+            width: 40%;
+            padding: 0px 5px;
+            float: left;
+        }
+
+        .Binding-Class .PhoneList .Obtain {
+            color: #ff0000;
+            font-size: 14px;
+            width: 33%;
+            height: 45px;
+            line-height: 45px;
+            display: inline-block;
+            border: solid 1px #ff0000;
+            border-radius: 3px;
+            float: right;
+        }
+
+        .Binding-Class .PhoneList .Binding {
+            display: block;
+            overflow: hidden;
+            background-color: #f34242;
+            font-size: 15px;
+            color: #fff;
+            border-radius: 3px;
+        }

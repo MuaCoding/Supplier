@@ -1,0 +1,19 @@
+﻿<ion-view class="Binding-Class emailBinding-Class">
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <h1 class="titleNav">邮箱绑定</h1>
+    </ion-nav-title>
+
+    <!--<ion-nav-buttons side="right">
+        <a href="javascrpt:;" class="edit-btn" ng-click=""></a>
+    </ion-nav-buttons>-->
+    <ion-content overflow-scroll="true" class="scroll-content has-header">
+        <ion-list class="PhoneList">
+            <ion-item><input type="text" placeholder="请输入邮箱" class="Phone email" ng-model="input.email" name="email" /></ion-item>
+            <ion-item><input type="text" placeholder="请输入验证码" ng-model="input.Obtain" /><a class="Obtain">获取验证码</a></ion-item>
+            <ion-item><a class="Binding" ng-click="Binding()">确认绑定</a></ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

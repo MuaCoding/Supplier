@@ -1,4 +1,4 @@
-﻿var domain = "http://192.168.1.112:98";
+﻿var domain = "http://192.168.1.14:98";
 //var domain = "http://api.pf.uprice.cn";
 
 angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive', 'DS.filters', 'imageview', 'showonLoad'])
@@ -280,6 +280,20 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
         controller: 'changeAddressController'
     })
 
+    //手机绑定
+    .state('phoneBinding', {
+        url: "/phoneBinding",
+        templateUrl: "/templates/user/phoneBinding.html",
+        controller: 'phoneBindingController'
+    })
+
+     //邮箱绑定
+    .state('emailBinding', {
+        url: "/emailBinding",
+        templateUrl: "/templates/user/emailBinding.html",
+        controller: 'emailBindingController'
+    })
+
     //登录
     .state('login', {
         url: "/login",
@@ -398,7 +412,6 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
             case 10004:
                 PopupFact.alert("提示", "您的权限不足！");
                 break;
-
             default:
                 eval(event);
                 break;
