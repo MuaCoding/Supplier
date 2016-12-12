@@ -7,19 +7,29 @@
     </ion-nav-title>
 
     <!--<ion-nav-buttons side="right">
-        <a href="javascrpt:;" class="edit-btn" ng-click=""></a>
+        <a href="javascrpt:;" ng-repeat="" class="edit-btn" ng-click=""></a>
     </ion-nav-buttons>-->
     <ion-content overflow-scroll="true" class="scroll-content has-header">
         <ion-list class="listPayment">
-            <ion-item>
+            <ion-item ng-repeat="paying in payings.list">
                 <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>等待付款</span></div>
                 <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
+                    <div class="Img imgMax" style="background-image: url('{{paying._proPic.split(',')[0]}}');"></div>
+                    <p style="height:24px;line-height:24px;" ng-bind="paying._proName"></p>
+                    <p style="height:24px;line-height:24px;">
+                        <em ng-bind="paying._paraTitle1"></em>:
+                        <em ng-bind="paying._param1"></em>
+                        <em style="margin-left:10px;" ng-bind="paying._paraTitle2"></em>:
+                        <em ng-bind="paying._param2"></em>
+                    </p>
                 </a>
                 <span class="Amount">共一件商品  需付款：<b>￥220.00</b></span>
                 <div class="priceButton"><a href="javascript:;" class="toPay">去支付</a></div>
             </ion-item>
         </ion-list>
+        <p class="noData" ng-if="!noData">没有更多数据了！</p>
+
+        <!-- 滚动刷新 -->
+        <ion-infinite-scroll on-infinite="loadMore();" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
     </ion-content>
 </ion-view>

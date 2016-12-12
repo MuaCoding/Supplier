@@ -12,17 +12,26 @@
 	    		<ion-list  class="user-info">
 	    			<ion-item >
 	    				<a class="user-status border-bottom" ng-href="/accountSetting">
-	    					<i class="imgMin Images" style="background:url('/images/default.png')"></i>
-	    					<p class="user-name">Heho</p>
-							<p style="font-size:12px;margin-bottom:5px;">
+	    					<i class="imgMin Images" style="background:url('{{user[0].pic}}')"></i>
+	    					<p class="user-name" ng-bind="user[0].nick"></p>
+							<p style="font-size:12px;margin-bottom:5px;height: 24px;line-height: 24px;">
 								<span style="border-right:1px solid #eaeaea;padding-right: 5px;">
-								    <i class="PFIcon-real font-success"></i>
+								    <i class="PFIcon-real font-success" ng-if = "isReal.res_Code == 1"></i>
+								    <i class="PFIcon-error font-secondary" ng-if = "isReal.res_Code == 0"></i>
 									实名认证
 								</span>
 								<!-- <span class="line"></span> -->
-								<span style="border-right:1px solid #eaeaea;padding: 0 5px;"><i class="PFIcon-real font-success"></i>手机绑定</span>
+								<span style="border-right:1px solid #eaeaea;padding: 0 5px;">
+									<i class="PFIcon-real font-success" ng-if = "isBindPhone.res_Code == 1"></i>
+								    <i class="PFIcon-error font-secondary" ng-if = "isBindPhone.res_Code == 0"></i>
+									手机绑定
+								</span>
 								<!-- <span class="line"></span> -->
-								<span style="padding-left: 5px;"><i class="PFIcon-error font-secondary"></i>邮箱绑定</span>
+								<span style="padding-left: 5px;">
+									<i class="PFIcon-real font-success" ng-if = "isBindEmail.res_Code == 1"></i>
+								    <i class="PFIcon-error font-secondary" ng-if = "isBindEmail.res_Code == 0"></i>
+									邮箱绑定
+								</span>
 							</p>
 							<i class="fa fa-angle-right fa-ms-right-absolute font-secondary" aria-hidden="true"></i>
 	    				</a>
@@ -33,28 +42,28 @@
                         <a class="wares-status-content pull-left col" ng-href="/pendingPayment">
                             <span class="wares">
                                 <i class="PFIcon-paying font-secondary font18" style="font-size:22px;"></i>
-                                <i class="bg-circle">2</i>
+                                <i class="bg-circle" ng-bind="number[0].wait_Pay_Count"></i>
                             </span>
                             <p style="font-size:13px;">待付款</p>
                         </a>
-                        <a class="wares-status-content pull-left col" ng-href="/waitReceipt">
+                        <a class="wares-status-content pull-left col" ng-href="/shipped">
                             <span class="wares">
                                 <i class="PFIcon-pickuping font-secondary font18"></i>
-                                <i class="bg-circle">2</i>
+                                <i class="bg-circle" ng-bind="number[0].wait_Goods_Count"></i>
                             </span>
-                            <p style="font-size:13px;">待收货</p>
+                            <p style="font-size:13px;">待发货</p>
                         </a>
-                        <a class="wares-status-content pull-left col" ng-href="/waitEvaluation">
+                        <a class="wares-status-content pull-left col" ng-href="/waitReceipt">
                             <span class="wares">
                                 <i class="PFIcon-TakeDelivery font-secondary font18"></i>
-                                <i class="bg-circle">2</i>
+                                <i class="bg-circle" ng-bind="number[0].wait_Goods_Count"></i>
                             </span>
                             <p style="font-size:13px;">待收货</p>
                         </a>
                         <a class="wares-status-content pull-left col" ng-href="/waitEvaluation">
                             <span class="wares">
                                 <i class="PFIcon-reviews font-secondary font18"></i>
-                                <i class="bg-circle">2</i>
+                                <i class="bg-circle" ng-bind="number[0].wait_Comment_Count"></i>
                             </span>
                             <p style="font-size:13px;">待评价</p>
                         </a>
@@ -62,7 +71,7 @@
                         <a class="wares-status-content pull-left col" ng-href="/allOrders">
                             <span class="wares">
                                 <i class="PFIcon-coupon font-secondary font18"></i>
-                                <i class="bg-circle">2</i>
+                                <i class="bg-circle" ng-bind="number[0].ALLOrderList_Count"></i>
                             </span>
                             <p style="font-size:13px;">全部货单</p>
 
@@ -75,7 +84,7 @@
 	    		<ion-list class="action-group">
 	    			
 	    			<ion-item style="margin-top: 10px;">
-						<a class="action-group-item font-default" ng-href ="/myOrders">
+						<a class="action-group-item font-default" ng-href ="/orders">
 							<i class="icon-inner PFIcon-stock pull-left" style="color: #f77441"></i>
 							<p class="action-group-sub pull-left">我的进货单</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>

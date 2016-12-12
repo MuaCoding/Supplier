@@ -1,7 +1,8 @@
-﻿var domain = "http://192.168.1.14:98";
+﻿var domain = "http://192.168.1.113:86";
 //var domain = "http://api.pf.uprice.cn";
+//192.168.1.113:86
 
-angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive', 'DS.filters', 'imageview', 'showonLoad'])
+angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive', 'DS.filters'])
 .config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $ionicConfigProvider.views.maxCache(5);                                               //视图缓存最大为5
@@ -53,26 +54,16 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
         }
     })
 
-    //进货单
-    // .state('tabs.orders', {
-    //     url: "/orders",
-    //     views: {
-    //         'orders-tab': {
-    //             templateUrl: "/templates/orders/ordersHome.html"
-    //         }
-    //     }
-    // })
     //个人中心
     .state('tabs.user', {
         url: "/user",
         views: {
             'user-tab': {
-                templateUrl: "/templates/user/user.html"
+                templateUrl: "/templates/user/user.html",
+                controller: 'userController'
             }
         }
     })
-
-
 
     //***************************************************独立层级*****************************************************
      /************************* 4.我的进货单************************************/
@@ -125,7 +116,7 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
 
 
     /*-------------------------------------- 产品 --------------------------------------*/
-
+    //产品列表
     .state('productList', {
         url: "/productList",
         //views: {
@@ -135,6 +126,7 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
         //    }
         //},
     })
+    //产品详情
     .state('productDetails', {
         url: "/productDetails/{Id:[0-9]*}",
         templateUrl: "/templates/product/productDetails.html",
@@ -333,7 +325,7 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
 
     //立即评价
     .state('reviews', {
-        url: "/reviews",
+        url: "/reviews/{Id:[0-9]*}",
         templateUrl: "/templates/user/reviews.html",
         controller: 'reviewsController'
     })
@@ -341,9 +333,16 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
     //待付款
     .state('pendingPayment', {
         url: "/pendingPayment",
-        templateUrl: "/templates/user/pendingPayment.html"
+        templateUrl: "/templates/user/pendingPayment.html",
+        controller: 'pendingPaymentController'
     })
-
+    //待发货
+    .state('shipped', {
+        url: "/shipped",
+        templateUrl: "/templates/user/shipped.html",
+        controller: 'shippedController'
+    })
+    
       //待收货
     .state('waitReceipt', {
         url: "/waitReceipt",
@@ -354,7 +353,15 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
      //待评价
     .state('waitEvaluation', {
         url: "/waitEvaluation",
-        templateUrl: "/templates/user/waitEvaluation.html"
+        templateUrl: "/templates/user/waitEvaluation.html",
+        controller: 'waitEvaluationController'
+    })
+
+    //提交评价 
+    .state('opinion', {
+        url: "/opinion/{Id:[0-9]*}",
+        templateUrl: "/templates/user/opinion.html",
+        controller: 'opinionController'
     })
 
      //全部货单

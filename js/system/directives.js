@@ -193,7 +193,6 @@ angular.module('DS.directive', [])
     }
 })
 
-
     ///获取验证码
 .directive('countdown', function ($interval) {
     return {
@@ -236,3 +235,4 @@ angular.module('DS.directive', [])
         }
     };
 });
+

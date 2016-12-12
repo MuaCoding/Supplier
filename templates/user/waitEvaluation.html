@@ -11,54 +11,13 @@
     </ion-nav-buttons>-->
     <ion-content overflow-scroll="true" class="scroll-content has-header">
         <ion-list class="listPayment">
-            <ion-item>
-                <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                <h3>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h3>
+            <ion-item ng-repeat = "opinion in opinions">
+                <div class="Img imgMax" style="background-image: url('{{opinion._proPic.split(',')[0]}}');"></div>
+                <h3 ng-bind="opinion._proName"></h3>
                 <span class="ellipsis">颜色分类：闪耀磨砂黑</span>
-                <a class="EvaButtom" ng-href="/reviews"><i class="PFIcon-reviews"></i>评价晒单</a>
+                <a class="EvaButtom" ng-href="/opinion/{{opinion._proId}}"><i class="PFIcon-reviews"></i>评价晒单</a>
             </ion-item>
-            <ion-item>
-                <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                <h3>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h3>
-                <span class="ellipsis">颜色分类：闪耀磨砂黑</span>
-                <a class="EvaButtom"><i class="PFIcon-reviews"></i>评价晒单</a>
-            </ion-item>
-            <ion-item>
-                <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                <h3>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h3>
-                <span class="ellipsis">颜色分类：闪耀磨砂黑</span>
-                <a class="EvaButtom"><i class="PFIcon-reviews"></i>评价晒单</a>
-            </ion-item>
-            <ion-item>
-                <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                <h3>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h3>
-                <span class="ellipsis">颜色分类：闪耀磨砂黑</span>
-                <a class="EvaButtom"><i class="PFIcon-reviews"></i>评价晒单</a>
-            </ion-item>
-            <ion-item>
-                <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                <h3>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h3>
-                <span class="ellipsis">颜色分类：闪耀磨砂黑</span>
-                <a class="EvaButtom"><i class="PFIcon-reviews"></i>评价晒单</a>
-            </ion-item>
-            <ion-item>
-                <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                <h3>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h3>
-                <span class="ellipsis">颜色分类：闪耀磨砂黑</span>
-                <a class="EvaButtom"><i class="PFIcon-reviews"></i>评价晒单</a>
-            </ion-item>
-            <ion-item>
-                <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                <h3>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h3>
-                <span class="ellipsis">颜色分类：闪耀磨砂黑</span>
-                <a class="EvaButtom"><i class="PFIcon-reviews"></i>评价晒单</a>
-            </ion-item>
-            <ion-item>
-                <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                <h3>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h3>
-                <span class="ellipsis">颜色分类：闪耀磨砂黑</span>
-                <a class="EvaButtom"><i class="PFIcon-reviews"></i>评价晒单</a>
-            </ion-item>
+            
         </ion-list>
     </ion-content>
 </ion-view>

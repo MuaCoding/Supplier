@@ -80,7 +80,7 @@ angular.module('DS.services', [])
 })
 
 //提示框
-.factory('PopupFact', function ($ionicPopup) {
+.factory('PopupFact', function ($ionicPopup, $rootScope, $state) {
     var nowPopup;
 
     return {

@@ -26,7 +26,7 @@ angular.module('DS.controllers', [])
             function (data) {
                 $scope.banners = [];
                 $rootScope.requestJudge(data.err_code, 'PopupFact.alert("提示", "数据有误，请刷新重试！", "location.href = location.href")');
-                
+
             }
         )
     }
@@ -55,7 +55,9 @@ angular.module('DS.controllers', [])
         }
         HttpFact.user.POST(domain + "/api/Product/getProductList", hotData).then(
             function (data) {
+                
                 jsonData = JSON.parse(data);
+                console.log(jsonData)
                 pageCount = Number(jsonData.array_0[0].pageCount);
                 pageNow = Number(jsonData.array_0[0].pageNow);
                 if (pageCount < pageNow) {
@@ -67,6 +69,7 @@ angular.module('DS.controllers', [])
                 }
                 else {
                     $scope.hotProduct.array_1 = $scope.hotProduct.array_1.concat(jsonData.array_1);
+                    
                 };
                 $ionicScrollDelegate.resize();
                 $scope.$broadcast("scroll.infiniteScrollComplete");
@@ -896,7 +899,7 @@ angular.module('DS.controllers', [])
             function (data) {
                 $scope.shopping = JSON.parse(data)
                 // $scope.input.firm = $scope.shopping.s_companyName;
-                // console.log($scope.shopping.s_companyName)
+                 console.log($scope.shopping)
 
                 //匹配公司
                 var obj = filterFilter($scope.shopping, { s_companyName: $scope.input.firm }, true);
@@ -1093,9 +1096,168 @@ angular.module('DS.controllers', [])
     ]
 })
 
+//会员中心
+.controller('userController', function ($scope, $rootScope, loginJumpFact, HttpFact) {
+    loginJumpFact.tokenJudge(location.href);
+    $scope.input = {}
+    
+    //获取用户信息
+    function getUser() {
+
+        HttpFact.user.GET(domain + "/api/User/getUserInfo").then(
+            function (data) {
+                $scope.user = data.res_Msg;
+            }
+        )
+    }
+
+    //判断用户是否已经绑定手机
+    function getBindPhone() {
+        HttpFact.user.GET(domain + "/api/User/Bind_Telephone?number="+1).then(
+            function (data) {
+                $scope.isBindPhone = data;
+            }
+        )
+    }
+    //判断用户是否已经绑定邮箱
+    function getBindEmail() {
+        HttpFact.user.GET(domain + "/api/User/Bind_Email?number="+2).then(
+            function (data) {
+                $scope.isBindEmail = data;
+            }
+        )
+    }
+    //判断是否实名验证
+    function getReal() {
+        HttpFact.user.GET(domain + "/api/User/Bind_Confirm?number="+3).then(
+            function (data) {
+                $scope.isReal = data;
+            }
+        )
+    }
+    //获取购物车商品个数
+    function getNumber() {
+        HttpFact.user.GET(domain + "/api/User/get_no_reader_message").then(
+            function (data) {
+                $scope.number = data.res_Msg;
+                console.log(data)
+            }
+        )
+    }
+
+
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getReal();
+        getBindEmail();
+        getBindPhone();
+        getNumber();
+    });
+
+    $scope.$on("$ionicView.afterEnter", function () {
+        getUser();
+    })
+})
+
+//会员中心 -- 待付款
+.controller('pendingPaymentController', function ($scope, $rootScope, $ionicScrollDelegate, loginJumpFact, HttpFact) {
+    $scope.input = {};
+    $scope.payings = {
+        list: []
+    };
+    var page = 1;
+    var size = 7;
+    $scope.noData = true;
+    function getPendings(page,size) {
+        var submit = {
+            current: page, //当前页数
+            count: size, //单页条数
+        }
+        HttpFact.user.POST(domain + "/api/Order/Wait_Pay", submit).then(
+            function (data) {
+                Data = JSON.parse(data.res_Msg);
+                
+                console.log(Data)
+                pageCount = Number(Data[0].pageCount);
+                pageNow = Number(Data[0].pageNow);
+
+                if (pageCount < pageNow) {
+                    $scope.noData = false;
+                }
+                else if (pageCount == pageNow) {
+                    $scope.payings.list = $scope.payings.list.concat(Data[0].list);
+                    $scope.noData = false;
+                    console.log($scope.payings.list)
+                }
+                else {
+                    $scope.payings.list = $scope.payings.list.concat(Data[0].list);
+                    console.log($scope.payings.list)
+                };
+                
+                $ionicScrollDelegate.resize();
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            },
+            function (data) {
+                $scope.payings = {
+                    list: []
+                };
+            }
+        )
+    }
+    
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getPendings(page,size)
+    });
+    
+})
+
+//会员中心--待发货
+.controller('shippedController',function ($scope, $rootScope, $ionicScrollDelegate, loginJumpFact, HttpFact){
+    $scope.input = {}
+})
+
 //会员中心--待收货
-.controller('waitReceiptController', function ($scope, $rootScope, $ionicPopup, loginJumpFact) {
+.controller('waitReceiptController', function ($scope, $rootScope, $ionicPopup, $ionicScrollDelegate, loginJumpFact, HttpFact) {
     loginJumpFact.tokenJudge("waitReceipt");
+    $scope.input = {};
+    $scope.receipts = [];
+    var page = 1;
+    var size = 7;
+    $scope.noData = true;
+    function getReceipt() {
+        var submit = {
+            current: page, //当前页数
+            count: size, //单页条数
+        }
+        HttpFact.user.POST(domain + "/api/Order/Wait_Goods", submit).then(
+            function (data) {
+                Data = JSON.parse(data.res_Msg);
+                pageCount = Number(Data[0].pageCount);
+                pageNow = Number(Data[0].pageNow);
+
+                if (pageCount < pageNow) {
+                    $scope.noData = false;
+                }
+                else if (pageCount == pageNow) {
+                    $scope.receipts = $scope.receipts.concat(Data[0].list);
+                    $scope.noData = false;
+                    console.log($scope.receipts)
+                }
+                else {
+                    $scope.receipts = $scope.receipts.concat(Data[0].list);
+                    console.log($scope.receipts)
+                };
+                
+                $ionicScrollDelegate.resize();
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            },
+            function (data) {
+                $scope.receipts = []
+            }
+        )
+    }
+
     // 确认弹出框
     $scope.showConfirm = function () {
         $ionicPopup.confirm({
@@ -1107,67 +1269,87 @@ angular.module('DS.controllers', [])
             okType: "button-Orange",
         })
     };
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getReceipt(page,size)
+    });
 })
 
-//会员中心--我的进货单
-.controller('myOrdersController', function ($scope, $rootScope, loginJumpFact) {
-    loginJumpFact.tokenJudge("myOrders");
+//会员中心--待评价
+.controller('waitEvaluationController',function ($scope, $rootScope, $ionicPopup, $ionicScrollDelegate, loginJumpFact, HttpFact){
+    $scope.input = {}
+    $scope.opinions = [];
+    var page = 1;
+    var size = 7;
+    $scope.noData = true;
+    function getPendings(page,size) {
+        var submit = {
+            current: page, //当前页数
+            count: size, //单页条数
+        }
+        HttpFact.user.POST(domain + "/api/Order/Wait_Comment", submit).then(
+            function (data) {
+                Data = JSON.parse(data.res_Msg);
+                console.log(Data)
+                pageCount = Number(Data[0].pageCount);
+                pageNow = Number(Data[0].pageNow);
+
+                if (pageCount < pageNow) {
+                    $scope.noData = false;
+                }
+                else if (pageCount == pageNow) {
+                    $scope.opinions = $scope.opinions.concat(Data[0].list);
+                    $scope.noData = false;
+                    console.log($scope.opinions)
+                }
+                else {
+                    $scope.opinions = $scope.opinions.concat(Data[0].list);
+                    console.log($scope.opinions)
+                };
+                
+                $ionicScrollDelegate.resize();
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+            },
+            function (data) {
+                $scope.opinions = [];
+            }
+        )
+    }
+    
+    //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getPendings(page,size)
+    });
+})
+
+
+//会员中心--评价
+.controller('opinionController', function ($scope, $rootScope, $ionicPopup, $ionicScrollDelegate, loginJumpFact, HttpFact){
     $scope.input = {}
     $scope.proData = [
             {
-                name: "品牌商：深圳罗技电子科技有限公司1",
-                goods: [{
-                    id: 1,
-                    tradeName: "Beats Solo1 无线头戴式耳机11",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }, {
-                    id: 2,
-                    tradeName: "Beats Solo8 无线头戴式耳机22",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }
-                ]
-            }, {
-                name: "品牌商：深圳罗技电子科技有限公司2",
-                goods: [{
-                    id: 3,
-                    tradeName: "Beats Solo1 无线头戴式耳机33",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }, {
-                    id: 4,
-                    tradeName: "Beats Solo8 无线头戴式耳机44",
-                    amount: "￥" + 198.00,
-                    color: "黑色",
-                    edition: "普通版"
-                }
+                name: "深圳罗技电子科技有限公司",
+                goods: [
+                    {
+                        id: 1,
+                        tradeName: "Beats Solo1 无线头戴式耳机",
+                        amount: "￥" + 198.00,
+                        color: "黑色",
+                        edition: "普通版"
+                    }
                 ]
             }
     ]
 
-    $scope.flag = { showDelete: false };
-    $scope.delete = function (index1, index2) {
-        if ($scope.proData[index1].goods.length <= 1) {
-            $scope.proData.splice(index1, 1);
-        }
-        else {
-            $scope.proData[index1].goods.splice(index2, 1);
-        };
-    };
 })
-
 //会员中心--账户设置
-.controller('basicDataController', function ($scope, $rootScope,$timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate, loginJumpFact, ModalFact) {
+.controller('basicDataController', function ($scope, $rootScope, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate, loginJumpFact, ModalFact, HttpFact, PopupFact) {
     loginJumpFact.tokenJudge("basicData");
     $scope.input = {}
     $scope.select = {
 
     }
-    $scope.input = { gender: "先生" };
+    $scope.input = { Sex: 1};
     $scope.single_check = function (name, value) {
 
         $scope.input[name] = value;
@@ -1192,8 +1374,8 @@ angular.module('DS.controllers', [])
 
     $scope.Identity = "";
 
-    if ($scope.input.s_identity == "" || $scope.input.s_identity == null) {
-        $scope.input.s_identity = "请输入您的身份";
+    if ($scope.input.Identity == "" || $scope.input.Identity == null) {
+        $scope.input.Identity = "请输入您的身份";
     }
 
     //打开身份模态框
@@ -1203,11 +1385,11 @@ angular.module('DS.controllers', [])
         $ionicScrollDelegate.resize();
         $scope.$broadcast("scroll.infiniteScrollComplete");
     }
-    //身份份事件
+    //身份事件
     $scope.identityEvent = function (val) {
         $scope.Identity += val;
-        $scope.input.s_identity = "";
-        $scope.input.s_identity = $scope.Identity;
+        $scope.input.Identity = "";
+        $scope.input.Identity = $scope.Identity;
         $scope.Identity = "";
         $scope.closeok();
     };
@@ -1222,18 +1404,13 @@ angular.module('DS.controllers', [])
         ModalFact.clear();
         // $ionicSlideBoxDelegate.$getByHandle("provinceHandle").slide(0);
     };
-    //选择身份
-    if ($scope.input.s_storeProv == "" || $scope.input.s_storeProv == null) {
-        $scope.input.s_storeProv = "请选择";
-    }
 
+    //判断身份证号码
     $scope.checkId = function () {
         if (judgeFact.checkIdCard($scope.input.checkIdCard) != "") {
             return;
         }
     }
-
-
 
 
     //地址选择
@@ -1266,9 +1443,8 @@ angular.module('DS.controllers', [])
     }
     //省份事件
     $scope.provinceEvent = function (val, key) {
-
-        $scope.input.s_storeProv = val;
-        $scope.input.s_provId = JSON.stringify(key);
+        $scope.input.Province = val;
+        // $scope.input.s_provId = JSON.stringify(key);
         for (var i = 0; i < $scope.cityList.length; i++) {
             if ($scope.cityList[i].p == val) {
                 $scope.address += val;
@@ -1281,11 +1457,12 @@ angular.module('DS.controllers', [])
 
     //城市事件
     $scope.cityEvent = function (val) {
-        $scope.input.s_storeCity = val
+        $scope.input.City = val
         for (var i = 0; i < $scope.citys.length; i++) {
             if ($scope.citys[i].n == val) {
                 if ($scope.citys[i].a == undefined) {
                     $scope.address += val;
+                    $scope.input.Area = "";
                     $scope.select.City = "";
                     $scope.select.City = $scope.address;
                     $scope.address = "";
@@ -1303,7 +1480,7 @@ angular.module('DS.controllers', [])
 
     //区（县）事件
     $scope.areaEvent = function (val) {
-        $scope.input.s_storeDist = val
+        $scope.input.Area = val
         $scope.address += val;
         $scope.select.City = "";
         $scope.select.City = $scope.address;
@@ -1321,8 +1498,52 @@ angular.module('DS.controllers', [])
         }, 1000);
     }
 
+    //获取注册信息
+    function getSigninInfo() {
+        HttpFact.user.GET(domain + "/api/User/getUserInfo").then(
+            function (data) {
+                $scope.input.Nick = data.res_Msg[0].nick;
+                $scope.input.Sex =  Number(data.res_Msg[0].sex);
+                $scope.input.Identity = data.res_Msg[0].identity;
+                $scope.input.Email = data.res_Msg[0].email;
+                $scope.input.Mobile = data.res_Msg[0].phone;
+                $scope.input.Telephone = data.res_Msg[0].telephone;
+                $scope.input.Province = data.res_Msg[0].storeProv;
+                $scope.input.City = data.res_Msg[0].storeCity;
+                $scope.input.Area = data.res_Msg[0].storeDist;
+                $scope.input.Address = data.res_Msg[0].storeDetailAddr;
+                $scope.input.Postcode = data.res_Msg[0].postcode;
+                $scope.select.City = data.res_Msg[0].storeProv + data.res_Msg[0].storeCity + data.res_Msg[0].storeDist;
+                
+            }
+        )
+    }
 
+    //保存修改的账户信息
+    $scope.save_action = function () {
+        if ($scope.input.Nick == "" || $scope.input.Nick == null) {
+            PopupFact.alert("提示", "昵称不能为空");
+            return false;
+        }
 
+        HttpFact.user.POST(domain + "/api/User/updateUserInfo", JSON.stringify($scope.input)).then(
+            function (data) {
+                if (data.res_Code == "1") {
+                    PopupFact.alert("提示", "修改账户基本信息成功!", "$state.go('accountSetting')")
+                }
+                else {
+                    PopupFact.alert("提示", "修改账户基本信息失败")
+                }
+                console.log(data)
+            }
+        )
+    }
+    
+    
+     //视图第一次加载读取数据
+    $scope.$on("$ionicView.loaded", function () {
+        getSigninInfo()
+    });
 })
 
 //会员中心--手机绑定
@@ -1415,7 +1636,7 @@ angular.module('DS.controllers', [])
 
 })
 
-//设置头像
+//会员中心--设置头像
 .controller('avatarSettingsController', function ($scope, $rootScope, HttpFact, loginJumpFact) {
     loginJumpFact.tokenJudge("avatarSettings");
 })
@@ -1435,7 +1656,6 @@ angular.module('DS.controllers', [])
         HttpFact.user.GET(domain + "/api/User/addressList").then(
             function (data) {
                 $scope.addresses = JSON.parse(data);
-                console.log($scope.addresses)
             }
         )
     }
@@ -1563,7 +1783,6 @@ angular.module('DS.controllers', [])
         $scope.provinces = cityList;
         $scope.citys = "";
         $scope.areas = "";
-
         ModalFact.clear();
     };
 
@@ -1802,19 +2021,6 @@ angular.module('DS.controllers', [])
     });
 })
 
-//会员中心--待收货
-.controller('waitReceiptController', function ($scope, $rootScope, $ionicPopup) {
-    // 确认弹出框
-    $scope.showConfirm = function () {
-        $ionicPopup.confirm({
-            title: "是否确认收货",
-            cancelText: "取消",
-            cancelType: "button-light",
-            okText: "确认",
-            okType: "button-Orange",
-        })
-    };
-})
 
 //会员中心--全部订单
 .controller('allOrdersController', function ($scope, $rootScope, $ionicPopup) {

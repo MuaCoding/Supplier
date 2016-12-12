@@ -7,7 +7,7 @@
 }
 
     .pendingPayment-Class .listPayment {
-        margin-bottom: 15px;
+       /* margin-bottom: 15px;*/
         display: block;
         /*border-top: solid 1px #e3e5e9;*/
     }
@@ -67,16 +67,16 @@
             background-color: #f8f8f8;
             overflow: hidden;
             position: relative;
-            padding: 20px 10px 20px 80px;
+            padding: 20px 10px 20px 85px;
             display: block;
         }
 
             .pendingPayment-Class .listPayment .commodity .Img {
                 position: absolute;
-                top: 10px;
+                top: 13px;
                 left: 10px;
-                width: 60px;
-                height: 60px;
+                width: 65px;
+                height: 65px;
                 overflow: hidden;
                 border: solid 1px #ececec;
                 border-radius: 5px;

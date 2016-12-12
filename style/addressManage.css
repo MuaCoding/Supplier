@@ -3,7 +3,7 @@
 }
 
 .addressManage-Class span {
-    font-size: 16px;
+    font-size: 14px;
     color: #777;
 }
 
@@ -30,8 +30,8 @@
 
             /*收货人名称*/
             .addressManage-Class .pickup-wrap .pickup-name span.Name {
-                color: red;
-                font-size: 17px;
+                color:#656565;
+                font-size: 15px;
             }
 
     .addressManage-Class .pickup-wrap .pickup-address span.address {

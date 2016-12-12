@@ -18,76 +18,77 @@
 						<div class="input-label">
 							昵称
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.nickname" name="nickname" required placeholder="请输入您的昵称">
+                        <input type="text" class="full-width form-control" ng-model="input.Nick" name="nickname" required placeholder="请输入您的昵称">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							性别
 						</div>
 						<div class="input-checked">
-							<span class="input-text pull-left" ng-click="single_check('gender','先生')"><i class="mr10" ng-class ="{'PFIcon-Hook': input.gender === '先生'}"></i>先生</span>
-							<span class="input-text ml30 pull-left" ng-click="single_check('gender','女士')"><i class="mr10" ng-class ="{'PFIcon-Hook': input.gender ==='女士'}"></i>女士</span>
+                            <span class="input-text pull-left" ng-click="single_check('Sex', 1)"><i class="mr10" ng-class="{'PFIcon-Hook': input.Sex == 1}"></i>先生</span>
+                            <span class="input-text ml30 pull-left" ng-click="single_check('Sex', 0)"><i class="mr10" ng-class="{'PFIcon-Hook': input.Sex == 0}"></i>女士</span>
 						</div>
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							身份
 						</div>
-                        <div class="text-select" ng-bind="input.s_identity" ng-click="identity_active();">
+                        <div class="text-select" ng-bind="input.Identity" ng-click="identity_active();">
                         </div>
 					</div>
-					<div class="input-group field">
+					<div class="input-group addon">
 						<div class="input-label">
 							邮箱
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.s_email" name="telephone" required placeholder="请输入邮箱">
+                        <input type="text" class="full-width form-control" ng-model="input.Email" name="Email" required placeholder="请输入邮箱">
 						<div class="smscode">
-							使用当前绑定邮箱
+							绑定邮箱
 						</div>
 					</div>
-					<div class="input-group field">
+					<div class="input-group addon">
 						<div class="input-label">
 							手机
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入手机号码" pattern="[0-9]*" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        <input type="text" class="full-width form-control" ng-model="input.Mobile" name="Mobile" required placeholder="请输入手机号码" pattern="[0-9]*" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
 						<div class="smscode">
-							使用当前绑定手机
+							绑定手机
 						</div>
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							固定电话
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入手机号码" pattern="[0-9]*" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        <input type="text" class="full-width form-control" ng-model="input.Telephone" name="telephone" required placeholder="请输入手机号码" pattern="[0-9]*" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							联系地址
 						</div>
-                        <div class="text-select" ng-bind="select.City" ng-click="address_active();">
+                        <div class="text-select" ng-click="address_active();">
+                        	{{select.City || "请输入所在地区"}}
                         </div>
 					</div>
 					<div class="input-group addon">
-						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入详细地址">
+                        <input type="text" class="full-width form-control" ng-model="input.Address" name="telephone" required placeholder="请输入详细地址">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
 							邮编
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="请输入邮政编码">
+                        <input type="text" class="full-width form-control" ng-model="input.Postcode" name="Postcode" required placeholder="请输入邮政编码">
 					</div>
 					<div class="input-group field">
 						<div class="input-label">
 							关联微信
 						</div>
-						<input type="text" class="full-width form-control" ng-model="input.telephone" name="telephone" required placeholder="尚未关联">
+						<input type="text" class="full-width form-control" ng-model="input.wechat" name="telephone" required placeholder="尚未关联">
 						<div class="smscode" style="border-color: #3abf3a;color :#3abf3a;">
-							使用微信授权绑定
+							微信授权绑定
 						</div>
 					</div>
 
 					<div class="btn-wrap">
-						<a class="confirm-btn">
+						<a class="confirm-btn" ng-click="save_action()">
 							<span>保存当前消息</span>
 						</a>
 					</div>

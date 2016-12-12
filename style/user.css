@@ -25,6 +25,8 @@
 
 .user-Class .user-info .user-status .user-name {
 	margin: 5px 0 10px;
+	height: 24px;
+	line-height: 24px;
 }
 .user-Class .user-info .user-status .line{
 	width: 1px;
