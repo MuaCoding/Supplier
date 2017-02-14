@@ -1,6 +1,6 @@
 .afterService {
 	width: 300px;
-	height: 185px;
+	
 	opacity: 1;
 	border-radius: 3px !important;
 	background-color: #fff;
@@ -8,6 +8,13 @@
 
 }
 
+.comfirm-wrap {
+	height: 136px;
+}
+
+.height {
+	height: 185px;
+}
 .afterService .service-body{
 	width: 100%;
 	height: 100%;

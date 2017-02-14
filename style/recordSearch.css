@@ -1,8 +1,97 @@
 
-.recordSearch-Class .recordSearch-Content{
-	height: 100%;
-}
-.recordSearch-Class .scroll-view{
-	height: 100%;
+.recordSearch-Class .recordSearch-Content {
+    height: 100%;
 }
 
+.recordSearch-Class .scroll-view {
+    height: 100%;
+}
+
+/*产品*/
+.recordSearch-Class .commodity {
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    padding: 11px 90px 20px 100px !important;
+    display: block;
+    height: 100px;
+    border-bottom: solid 1px #eee !important;
+}
+    /*产品图片*/
+    .recordSearch-Class .commodity .Img {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        border: solid 1px #ececec;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    /*产品标题*/
+    .recordSearch-Class .commodity h4 {
+        font-size: 13px;
+        color: #636363;
+        font-family: 微软雅黑;
+        white-space: normal;
+        height: 30px;
+        line-height: 15px;
+        margin: 0px;
+    }
+
+    .recordSearch-Class .commodity span {
+        display: block;
+    }
+
+    .recordSearch-Class .commodity span, .recordSearch-Class .commodity p {
+        font-size: 13px;
+        color: #808080;
+        height: 18px;
+        line-height: 18px;
+    }
+
+    /*服务*/
+    .recordSearch-Class .commodity .Service {
+        overflow: hidden;
+        height: 38px;
+    }
+
+        .recordSearch-Class .commodity .Service > span {
+            background-color: #dd2727;
+            color: #fff;
+            float: left;
+            font-size: 11px;
+            margin-right: 5px;
+            padding: 0px 1px;
+            margin-bottom: 2px;
+        }
+
+    .recordSearch-Class .commodity .Amount {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        float: right;
+        overflow: hidden;
+        width: 80px;
+    }
+
+        .recordSearch-Class .commodity .Amount > span {
+            display: block;
+            overflow: hidden;
+            color: #999999;
+            text-align: right;
+            height: auto;
+            white-space: normal;
+            font-size: 11px;
+        }
+
+            .recordSearch-Class .commodity .Amount > span.Current {
+                color: #000;
+            }
+
+            .recordSearch-Class .commodity .Amount > span.Original {
+                font-weight: bolder;
+                text-decoration: line-through;
+            }

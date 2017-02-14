@@ -1,255 +1,302 @@
 ﻿/*筛选*/
-.productList-class .filter {
+.productList-class .wrap .filter {
+    position: absolute;
+    top: 0;
+    left: 0;
     overflow: hidden;
     padding: 0px;
     border-bottom: solid 1px #e5e5e5;
+
 }
 
-    .productList-class .filter > a {
-        color: #666666;
-        font-size: 13px;
-        line-height: 35px;
-        text-align: center;
-        border-right: solid 1px #e5e5e5;
-        padding: 5px 0px;
-        position: relative;
-    }
+.productList-class .wrap .filter > a {
+    color: #666666;
+    font-size: 13px;
+    line-height: 35px;
+    text-align: center;
+    border-right: solid 1px #e5e5e5;
+    padding: 5px 0px;
+    position: relative;
+}
 
-        .productList-class .filter > a > i {
-            font-size: 16px;
-        }
+.productList-Class .activated {
+    background: none !important;
+}
+.productList-class .wrap .filter > a > i {
+    font-size: 16px;
+}
 
-        .productList-class .filter > a.Flip > span {
-            position: relative;
-            padding: 2px 15px 2px 0px;
-        }
+.productList-class .wrap .filter > a.Flip > span {
+    position: relative;
+    padding: 2px 15px 2px 0px;
+}
 
-            .productList-class .filter > a.Flip > span > span {
-                display: block;
-                overflow: hidden;
-                width: 15px;
-                height: 100%;
-                position: absolute;
-                right: 0px;
-                top: 3px;
-            }
+.productList-class .wrap .filter > a.Flip > span > span {
+    display: block;
+    overflow: hidden;
+    width: 15px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    top: 3px;
+}
 
-                .productList-class .filter > a.Flip > span > span > i {
-                    display: block;
-                }
+.productList-class .wrap .filter > a.Flip > span > span > i {
+    display: block;
+}
 
-        .productList-class .filter > a > span i {
-            height: 7px;
-            font-size: 13px;
-            line-height: 15px;
-            color: #aaaaaa;
-            /*display: block;*/
-            overflow: hidden;
-        }
+.productList-class .wrap .filter > a.Flip.active1 {
+    color: #ff0000;
+}
 
-        .productList-class .filter > a > span > span > i.BTriangle {
-            line-height: 0px;
-        }
+.productList-class .wrap .filter > a.Flip.active1 .on {
+    color: #ff0000;
+}
 
-        .productList-class .filter > a.active {
+.productList-class .wrap .filter > a > span i {
+    height: 7px;
+    font-size: 13px;
+    line-height: 15px;
+    color: #aaaaaa;
+    /*display: block;*/
+    overflow: hidden;
+}
+
+.productList-class .wrap .filter > a > span > span > i.BTriangle {
+    line-height: 0px;
+}
+
+.productList-class .wrap .filter > a.active {
+    color: #ff0000;
+}
+
+.productList-class .wrap .filter > a.active i:first-child {
+    color: #aaaaaa !important;
+}
+
+.productList-class .wrap .filter > a.active i:last-child {
+    color: #f34242;
+}
+
+
+/*.productList-class .filter > a > div > i.active {
             color: #ff0000;
-        }
+        }*/
 
-        .productList-class .filter > a > div > i.active {
-            color: #ff0000;
-        }
 
 /*产品列表*/
+
 .productList-class .HotProducts {
     overflow: hidden;
     padding: 0px 5px 5px 5px;
-    margin-top: 0px;
+    margin-top: 10px;
 }
 
-    .productList-class .HotProducts > .proList {
-        overflow: hidden;
-        width: 100%;
-    }
+.productList-class .wrap {
+    position: relative;
+    padding-top: 45px;
+    height: 100%;
+}
 
-        .productList-class .HotProducts > .proList .item {
-            width: 48%;
-            display: block;
-            overflow: hidden;
-            float: left;
-            padding: 10px;
-            margin: 1%;
-        }
+.productList-class .HotProducts > .proList {
+    overflow: hidden;
+    width: 100%;
+}
 
-        .productList-class .HotProducts > .proList .Img {
-            overflow: hidden;
-            width: 100%;
-            padding-bottom: 100%;
-        }
+.productList-class .HotProducts > .proList .item {
+    width: 48%;
+    display: block;
+    overflow: hidden;
+    float: left;
+    padding: 10px;
+    margin: 1%;
+}
 
-        .productList-class .HotProducts > .proList h3 {
-            color: #676767;
-            font-size: 13px;
-            margin: 10px auto 3px auto;
-        }
+.productList-class .HotProducts > .proList .item .activated{
+    background:none !important;
+}
 
-        .productList-class .HotProducts > .proList div {
-            overflow: hidden;
-            color: #e7493c;
-            font-size: 13px;
-            /*padding: 0px 5px;*/
-        }
+.productList-class .HotProducts > .proList .Img {
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.productList-class .HotProducts > .proList h3 {
+    color: #676767;
+    font-size: 13px;
+    margin: 10px auto 3px auto;
+}
+
+.productList-class .HotProducts > .proList div {
+    overflow: hidden;
+    color: #e7493c;
+    font-size: 13px;
+    /*padding: 0px 5px;*/
+}
+.productList-Class a.activated {
+    background: none !important;
+}
 
 /*商品列表筛选*/
+
 .productDetails-buy {
     overflow: hidden;
 }
 
-    /*主体*/
-    .productDetails-buy .scroll-content {
-        background-color: #fff;
-    }
 
-    .productDetails-buy .contentTop {
-        overflow: hidden;
-        border-bottom: solid 1px #e5e5e5;
-        padding: 0px 30px;
-    }
+/*主体*/
 
-        .productDetails-buy .contentTop > h2, .productDetails-buy .contentTop > a {
-            overflow: hidden;
-            float: left;
-            font-size: 15px;
-            color: #666666;
-            height: 44px;
-            line-height: 44px;
-            min-width: 20px;
-        }
 
-        .productDetails-buy .contentTop > a {
-            float: right;
-        }
+.productDetails-buy .scroll-content {
+    background-color: #fff;
+}
 
-    .productDetails-buy .screenList {
-        overflow: hidden;
-        display: block;
-    }
+.productDetails-buy .contentTop {
+    overflow: hidden;
+    border-bottom: solid 1px #e5e5e5;
+    padding: 0px 15px;
+}
 
-        .productDetails-buy .screenList ion-item {
-            overflow: hidden;
-            margin: 0px 30px;
-        }
+.productDetails-buy .contentTop > h2,
+.productDetails-buy .contentTop > a {
+    overflow: hidden;
+    float: left;
+    font-size: 15px;
+    color: #666666;
+    height: 44px;
+    line-height: 44px;
+    min-width: 20px;
+    text-align: center;
+}
 
-            .productDetails-buy .screenList ion-item > h3, .productDetails-buy .screenList ion-item > a {
-                overflow: hidden;
-                font-size: 15px;
-                color: #666666;
-                height: 44px;
-                line-height: 44px;
-                margin: 0px;
-            }
+.productDetails-buy .contentTop > a {
+    float: right;
+}
 
-            .productDetails-buy .screenList ion-item > a {
-                display: block;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-            }
+.productDetails-buy .screenList {
+    overflow: hidden;
+    display: block;
+}
 
-        .productDetails-buy .screenList div {
-            overflow: hidden;
-        }
+.productDetails-buy .screenList ion-item {
+    overflow: hidden;
+    margin: 0px 15px;
+}
 
-            .productDetails-buy .screenList div > a {
-                overflow: hidden;
-                display: block;
-                float: left;
-                font-size: 12px;
-                color: #444444;
-                background-color: #eeeeee;
-                text-align: center;
-                padding: 2px 0px;
-                position: relative;
-                border-radius: 2px;
-                width: 23%;
-                margin: 0px 2% 10px auto;
-            }
+.productDetails-buy .screenList ion-item > h3,
+.productDetails-buy .screenList ion-item > a {
+    overflow: hidden;
+    font-size: 15px;
+    color: #666666;
+    height: 44px;
+    line-height: 44px;
+    margin: 0px;
+}
 
-                .productDetails-buy .screenList div > a > i {
-                    display: none;
-                }
+.productDetails-buy .screenList ion-item > a {
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
 
-                .productDetails-buy .screenList div > a.on {
-                    border: solid 1px #f34242;
-                    padding: 1px 14px;
-                }
+.productDetails-buy .screenList div {
+    overflow: hidden;
+}
 
-                    .productDetails-buy .screenList div > a.on > i {
-                        display: block;
-                        position: absolute;
-                        right: 0px;
-                        bottom: -1px;
-                        font-size: 15px;
-                        color: #f34242;
-                        height: 15px;
-                        width: 15px;
-                    }
+.productDetails-buy .screenList div > a {
+    overflow: hidden;
+    display: block;
+    float: left;
+    font-size: 12px;
+    color: #444444;
+    background-color: #eeeeee;
+    text-align: center;
+    padding: 2px 3px;
+    position: relative;
+    border-radius: 2px;
+    width: 23%;
+    margin: 0px 2% 10px auto;
+}
 
-        .productDetails-buy .screenList .price > input, .productDetails-buy .screenList .price > span {
-            float: left;
-            display: block;
-            height: 34px;
-            line-height: 34px;
-            font-size: 13px;
-            color: #aaaaaa;
-            border: solid 1px #dddddd;
-            border-radius: 2px;
-            padding: 0px 10px;
-            width: 100px;
-        }
+.productDetails-buy .screenList div > a > i {
+    display: none;
+}
 
-        .productDetails-buy .screenList .price > span {
-            border: none;
-            width: auto;
-        }
+.productDetails-buy .screenList div > a.on {
+    border: solid 1px #f34242;
+    padding: 1px 2px;
+}
 
-        .productDetails-buy .screenList .Option .item-checkbox {
-            float: left;
-            border: none;
-            padding: 10px 8px 10px 33px;
-        }
+.productDetails-buy .screenList div > a.on > i {
+    display: block;
+    position: absolute;
+    right: 0px;
+    bottom: -1px;
+    font-size: 15px;
+    color: #f34242;
+    height: 15px;
+    width: 15px;
+}
 
-            .productDetails-buy .screenList .Option .item-checkbox .checkbox {
-                margin-top: 0px;
-                top: 0px;
-                left: 2px;
-                padding-left: 0px;
-            }
+.productDetails-buy .screenList .price > input,
+.productDetails-buy .screenList .price > span {
+    float: left;
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    font-size: 13px;
+    color: #aaaaaa;
+    border: solid 1px #dddddd;
+    border-radius: 2px;
+    padding: 0px 10px;
+    width: 100px;
+}
 
-            .productDetails-buy .screenList .Option .item-checkbox span {
-                color: #666;
-                font-size: 14px;
-            }
+.productDetails-buy .screenList .price > span {
+    border: none;
+    width: auto;
+}
 
-    .productDetails-buy .button-bar {
-        padding: 10px 10px;
-        border-top: solid 1px #e5e5e5;
-    }
+.productDetails-buy .screenList .Option .item-checkbox {
+    float: left;
+    border: none;
+    padding: 10px 8px 10px 33px;
+}
 
-        .productDetails-buy .button-bar > a {
-            border: none;
-            font-size: 13px;
-            color: #636363;
-            height: 40px;
-            line-height: 45px;
-            bottom: -50%;
-            background-color: #f34242;
-            color: #fff;
-            margin: 10px;
-            border-radius: 2px;
-        }
+.productDetails-buy .screenList .Option .item-checkbox .checkbox {
+    margin-top: 0px;
+    top: 0px;
+    left: 2px;
+    padding-left: 0px;
+}
 
-            .productDetails-buy .button-bar > a.clear {
-                border: solid 1px #f34242;
-                color: #f34242;
-                background-color: #fff;
-            }
+.productDetails-buy .screenList .Option .item-checkbox span {
+    color: #666;
+    font-size: 14px;
+}
+
+.productDetails-buy .button-bar {
+    padding: 10px 10px;
+    border-top: solid 1px #e5e5e5;
+}
+
+.productDetails-buy .button-bar > a {
+    border: none;
+    font-size: 13px;
+    color: #636363;
+    height: 40px;
+    line-height: 45px;
+    bottom: -50%;
+    background-color: #f34242;
+    color: #fff;
+    margin: 10px;
+    border-radius: 2px;
+}
+
+.productDetails-buy .button-bar > a.clear {
+    border: solid 1px #f34242;
+    color: #f34242;
+    background-color: #fff;
+}

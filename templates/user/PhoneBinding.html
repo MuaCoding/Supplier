@@ -1,19 +1,41 @@
-﻿<ion-view class="Binding-Class  PhoneBinding-Class">
+﻿<ion-view class="binding-Class" title="手机绑定">
     <ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/basicData')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
     <ion-nav-title>
         <h1 class="titleNav">手机绑定</h1>
     </ion-nav-title>
-
-    <!--<ion-nav-buttons side="right">
-        <a href="javascrpt:;" class="edit-btn" ng-click=""></a>
-    </ion-nav-buttons>-->
-    <ion-content overflow-scroll="true" class="scroll-content has-header">
-        <ion-list class="PhoneList">
-            <ion-item><input type="number" placeholder="请输入手机号码" class="Phone" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-model="input.phone" name="phone" /></ion-item>
-            <ion-item><input type="text" placeholder="请输入验证码" ng-model="input.Obtain" /><a class="Obtain" ng-click="Obtain()">获取验证码</a></ion-item>
-            <ion-item><a class="Binding" ng-click="Binding()">确认绑定</a></ion-item>
-        </ion-list>
+    <!-- <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons> -->
+    <ion-content class="scroll-content has-header">
+        <div class="Content">
+            <ion-list>
+                <ion-item>
+                    <form action="">
+                        <div class="input-group addon">
+                            <div class="input-label">
+                                手机
+                            </div>
+                            <input type="text" class="full-width form-control" ng-model="input.iphone" name="phone" required placeholder="请输入邮箱" pattern="[0-9]*" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        </div>
+                        <div class="input-group addon">
+                            <div class="input-label">
+                                验证码
+                            </div>
+                            <input type="password" class="full-width form-control" ng-model="input.sms" name="sms" required placeholder="请输入验证码">
+                            <div class="smscode">
+                                获取验证码
+                            </div>
+                        </div>
+                        <div class="btn-wrap">
+                            <a class="confirm-btn">
+                                <span>确认绑定</span>
+                            </a>
+                        </div>
+                    </form>
+                </ion-item>
+            </ion-list>
+        </div>
     </ion-content>
 </ion-view>

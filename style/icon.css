@@ -1,7 +1,10 @@
 ﻿@font-face {
-    font-family: 'iconfont'; /* project id 158498 */
-    src: url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.eot');
-    src: url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.woff') format('woff'), url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.ttf') format('truetype'), url('//at.alicdn.com/t/font_2e7r69dry4xwdn29.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 158498 */
+  src: url('//at.alicdn.com/t/font_fmy5p1ct4y22o6r.eot');
+  src: url('//at.alicdn.com/t/font_fmy5p1ct4y22o6r.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_fmy5p1ct4y22o6r.woff') format('woff'),
+  url('//at.alicdn.com/t/font_fmy5p1ct4y22o6r.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_fmy5p1ct4y22o6r.svg#iconfont') format('svg');
 }
 
 [class^="PFIcon-"], [class*=" PFIcon-"] {
@@ -18,8 +21,6 @@
 }
 
 /* 底部TabIcon */
-
-
 .PFIcon-category:before {
     content: "\e600";
 }
@@ -89,7 +90,6 @@
     content: "\e60f";
 }
 
-
 /*取货方式*/
 .PFIcon-Hook:before {
     position: absolute;
@@ -102,9 +102,6 @@
     content: "\e60e";
 }
 
-
-
-
 .PFIcon-Square:before {
     content: "\e612";
     color: #aaa;
@@ -114,7 +111,6 @@
 .PFIcon-BTriangle:before {
     content: "\e60d";
 }
-
 
 /*会员*/
 .PFIcon-real:before {
@@ -144,7 +140,6 @@
 .PFIcon-TakeDelivery:before {
     content: "\e630";
 }
-
 
 .PFIcon-stock:before {
     content: "\e61a";
@@ -178,7 +173,6 @@
     content: "\e621";
 }
 
-
 .PFIcon-basic:before {
     content: "\e648";
 }
@@ -199,14 +193,12 @@
     content: "\e623";
 }
 
-
-
 .PFIcon-NewsCircle:before {
     content: "\e629";
 }
 
 .PFIcon-Star:before {
-    content: "\e62a";
+    content: "\e673";
     font-size: 18px;
 }
 
@@ -226,7 +218,6 @@
     content: "\e62e";
 }
 
-
 .PFIcon-identify:before {
     content: "\e672";
 }
@@ -237,4 +228,24 @@
 
 .PFIcon-email:before {
     content: "\e624";
+}
+
+.PFIcon-DropOut:before {
+    content: "\e62a";
+}
+
+.PFIcon-Time:before {
+    content: "\e634";
+}
+
+.PFIcon-Weixin:before {
+    content: "\e631";
+}
+
+.PFIcon-Alipay:before {
+    content: "\e7da";
+}
+
+.PFIcon-BankCard:before {
+    content: "\e633";
 }

@@ -1,4 +1,4 @@
-﻿<ion-view class="waitReceipt-Class">
+﻿<ion-view class="Orders-Class waitReceipt-Class">
     <ion-nav-buttons side="left">
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
@@ -10,82 +10,44 @@
         <a href="javascrpt:;" class="edit-btn" ng-click=""></a>
     </ion-nav-buttons>-->
     <ion-content overflow-scroll="true" class="scroll-content has-header">
-        <ion-list class="listPayment">
-            <ion-item ng-repeat = "receipt in receipts">
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>配送中</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4 ng-bind = "receipt._proName"></h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <div class="huiBlock">
-                    <span>增值服务</span>
-                    <div class="Amount">
-                        <span class="Current">￥1.00</span>
-                        <span class="Original">￥1.00</span>
-                        <span class="Number">×1</span>
-                    </div>
-                </div>
-                <div class="huiBlock">
-                    <span>保险服务</span>
-                    <div class="Amount">
-                        <span class="Current">￥1.00</span>
-                        <span class="Original">￥1.00</span>
-                        <span class="Number">×1</span>
-                    </div>
-                </div>
-                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
-                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a><a>我要催单</a></div>
+        <ion-list class="listSwitch">
+            <ion-item class="button-bar">
+                <a class="button button-outline" ng-href="/allOrders">全部订单</a>
+                <a class="button button-outline" ng-href="/pendingPayment">待付款</a>
+                <a class="button button-outline" ng-href="/shipped">待发货</a>
+                <a class="button button-outline on" ng-href="/waitReceipt">待收货</a>
+                <a class="button button-outline" ng-href="/Evaluation">待评价</a>
             </ion-item>
-            <!-- <ion-item>
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>配送中</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
+        </ion-list>
+        <ion-list class="listOrders" ng-if="De_Switch.proIndex==2">
+            <ion-item ng-repeat="receipt in receipts">
+                <div class="storeName">
+                    <!-- <i class="PFIcon-store"></i> -->
+                    <h3><a class="ellipsis" ng-bind="receipt.pa_name"></a></h3><span>配送中</span>
+                </div>
+                <a class="commodity" ng-repeat="receive in receipt.data">
+                    <div class="Img imgMax" style="background-image: url('{{receive._proPic.split(',')[0]}}');"></div>
+                    <h4 ng-bind="receive._proName"></h4>
+                    <!-- <span>颜色分类：闪耀磨砂黑</span> -->
+                    <p>
+                        <span class="" ng-bind="'￥'+receive._discountPrice+' x'+receive._proNum"></span>
+                        <span ng-bind="' | '+receive._paraTitle1+'：' + receive._param1"></span>
+                        <span ng-bind="receive._paraTitle2+'：'+ receive._param2"></span>
+                    </p>
+                    <!-- <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div> -->
+                    <!-- <div class="Amount">
                         <span class="Current">￥20056312005631.00</span>
                         <span class="Original">￥2005631.00</span>
                         <span class="Number">×100000</span>
-                    </div>
+                    </div> -->
+                    <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
                 </a>
-                <div class="huiBlock">
-                    <span>增值服务</span>
-                    <div class="Amount">
-                        <span class="Current">￥1.00</span>
-                        <span class="Original">￥1.00</span>
-                        <span class="Number">×1</span>
-                    </div>
-                </div>
-                <div class="huiBlock">
-                    <span>保险服务</span>
-                    <div class="Amount">
-                        <span class="Current">￥1.00</span>
-                        <span class="Original">￥1.00</span>
-                        <span class="Number">×1</span>
-                    </div>
-                </div>
-                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
-                <div class="priceButton"><a class="Receipt">确认收货</a><a>查看物流</a><a>我要催单</a></div>
-            </ion-item> -->
+                <div class="priceAmount"><span ng-bind="'共'+receipt.o_totalCount+'件商品'"></span><span>合计：￥<b ng-bind="receipt.o_totalPrice"></b>（含运费￥0.00）</span></div>
+                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a></div>
+            </ion-item>
+            <p class="noData" ng-if="!noData">没有更多数据了！</p>
+            <!-- 滚动刷新 -->
+            <ion-infinite-scroll on-infinite="loadMore(3);" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
         </ion-list>
     </ion-content>
 </ion-view>

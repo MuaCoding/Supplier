@@ -1,15 +1,16 @@
 ﻿<ion-popover-view class="productDetails-buy">
-    <div class="Commodity">
+    <div class="Commodity" style="border-bottom: solid 1px #ddd;">
         <div class="Img"><a class="imgMax" style="background-image: url('{{parmeImg[0]}}')"></a></div>
-        <h2 class="ellipsis" ng-bind="basicData[0].p_name"></h2>
+        <h2 class="ellipsis" ng-bind="details.p_name" style="height:30px;line-height:31px;"></h2>
+        <!-- <span style="display: block; overflow: hidden; padding-left: 70px; height: 16px; line-height: 16px; margin-top: 0px; color: #8e8e8e;">库存：{{inStock || default_storage}}{{details.p_unit}}</span> -->
         <a href="javascript:void(0)" class="close" ng-click="closePopover()">x</a>
     </div>
     <div class="Specifications">
         <ion-scroll class="item Specif" direction="y" zooming="false" scrollbar-y="false">
             <ion-list class="productList">
                 <ion-item>
-                    <h3 ng-bind="basicData[0].p_paramTitle1"></h3>
-                   <!--  <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a> -->
+                    <h3 ng-bind="details.p_paramTitle1"></h3>
+                    <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
                     <ul class="mt10" >
                         <li ng-repeat="item in temps " ng-click="select_color(item)">
                             <a href="javascript:;" ng-class="{'on':input.color == item}"><span ng-bind="item"></span><i class="PFIcon-Tick"></i></a>
@@ -20,40 +21,39 @@
                     </ul>
                 </ion-item>
                 <ion-item>
-                    <h3 ng-bind="basicData[0].p_paramTitle2"></h3>
-                    <!-- <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a> -->
+                    <h3 ng-bind="details.p_paramTitle2"></h3>
+                    <a href="javascript:void(0)" class="All">全部<i class="PFIcon-BTriangle"></i></a>
                     <ul class="mt10" >
-                        <li ng-repeat="version in TypeModelList track by $index" ng-click="select_version(version)">
+                        <li ng-repeat="version in TypeModelList" ng-click="select_version(version)">
                             <a href="javascript:;"  ng-class="{'on':input.version == version}"><span ng-bind="version"></span><i class="PFIcon-Tick"></i></a>
                         </li>
 
                     </ul>
-                    
                 </ion-item>
                 <ion-item>
                     <h3>批价</h3>
                     <ul class="mt10 WholesalePrice row" >
                        <li ng-class="{'on':varlist.itemNum >=lowNumber.low1 && varlist.itemNum <= lowNumber.low2-1}" class="col">
                             <span class="Number">
-                                <em ng-bind="basicData[0].p_priceScopeTitle1"></em>~
-                                <em ng-bind="basicData[0].p_priceScopeTitle2 - 1"></em>
-                                <em ng-bind="basicData[0].p_unit"></em>
+                                <em ng-bind="details.p_priceScopeTitle1"></em>~
+                                <em ng-bind="details.p_priceScopeTitle2 - 1"></em>
+                                <em ng-bind="details.p_unit"></em>
                             </span>
                             <span>{{prices.price3 || initial1 |currency:"￥"}}</span>
                             <i class="PFIcon-Tick"></i>
                         </li>
                         <li ng-class="{'on':varlist.itemNum >=lowNumber.low2 && varlist.itemNum <lowNumber.low3}" class="col">
                             <span class="Number">
-                             <em ng-bind="basicData[0].p_priceScopeTitle2"></em>
-                                ~<em ng-bind="basicData[0].p_priceScopeTitle3-1"></em>
-                                <em ng-bind="basicData[0].p_unit"></em>
+                             <em ng-bind="details.p_priceScopeTitle2"></em>
+                                ~<em ng-bind="details.p_priceScopeTitle3-1"></em>
+                                <em ng-bind="details.p_unit"></em>
                             </span>
-                            <span>{{prices.price2 || initial2  |currency:"￥"}}</span><i class="PFIcon-Tick"></i>
+                            <span>{{prices.price2 || initial2 |currency:"￥"}}</span><i class="PFIcon-Tick"></i>
                         </li>
                         <li ng-class="{'on':varlist.itemNum >=lowNumber.low3}" class="col">
                             <span class="Number">
-                                ≥<em ng-bind="basicData[0].p_priceScopeTitle3"></em>
-                                <em ng-bind="basicData[0].p_unit"></em>
+                                ≥<em ng-bind="details.p_priceScopeTitle3"></em>
+                                <em ng-bind="details.p_unit"></em>
                             </span>
                             <span>{{prices.price1 || initial3 |currency:"￥"}}</span><i class="PFIcon-Tick"></i>
                         </li>
@@ -61,20 +61,20 @@
                 </ion-item>
                 <ion-item class="PurchaseNumber">
                     <h3>进货数量</h3>
-                        <div class="NumberDiv">
-                            <a href="javascript:;" ng-click="minus()">-</a>
-                            <input type="text"   ng-model="varlist.itemNum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-blur="Numblur()"/>
-                            <a href="javascript:;" ng-click="add()">+</a>
-                        </div>
+                    <div class="NumberDiv">
+                        <a href="javascript:;" ng-click="minus()">-</a>
+                        <input type="text" ng-model="varlist.itemNum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-click="Numblur()" />
+                        <a href="javascript:;" ng-click="add()">+</a>
+                    </div>
                 </ion-item>
             </ion-list>
         </ion-scroll>
     </div>
-        <div class="Billing row">
-            <span class="col">
-                共<em ng-bind="varlist.itemNum"></em>
-                <em ng-bind="basicData[0].p_unit"></em>商品
-            </span>
-            <a href="javascript:;" class="confirm col" ng-click="add_action()">加入购物车</a>
-        </div>
+    <div class="Billing row">
+        <span class="col ellipsis">
+            <em ng-bind="'共'+varlist.itemNum"></em>
+            <em ng-bind="details.p_unit+'商品'"></em>
+        </span>
+        <a href="javascript:;" class="confirm col" ng-click="add_action()">加入进货单</a>
+    </div>
 </ion-popover-view>

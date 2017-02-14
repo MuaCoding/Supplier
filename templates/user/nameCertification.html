@@ -1,0 +1,36 @@
+﻿<ion-view class="nameCertification-Class" title="实名认证">
+
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <h1 class="titleNav">实名认证</h1>
+    </ion-nav-title>
+
+    <!-- <ion-nav-buttons side="right">
+        <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
+    </ion-nav-buttons> -->
+    <ion-content class="scroll-content has-header" modal-linkage upload-img-linkage>
+        <div class="avatarSettings-Content">
+            <ion-list class="fillList">
+                <ion-item>
+                    <div class="text-center">
+                        <span>身份证正面照</span>
+                    </div>
+                    <input type="file" id="input-file-disable-remove" class="dropify" data-height="250" data-show-remove="false" data-max-file-size="3M" data-default-file="/images/29dbe6b86fda70dc6d49d24eb2a0b6a8.jpg" />
+                </ion-item>
+                <ion-item style="margin-top:15px;">
+                    <div class="text-center">
+                        <span>身份证背面照</span>
+                    </div>
+                    <input type="file" id="input-file-disable-remove" class="dropify" data-height="250" data-show-remove="false" data-max-file-size="3M" data-default-file="/images/29dbe6b86fda70dc6d49d24eb2a0b6a8.jpg" />
+                </ion-item>
+                <ion-item style="margin-top:15px;">
+                    <div class="modify-wrap">
+                        <div class="modify-btn">确认上传</div>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>

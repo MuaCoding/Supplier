@@ -1,63 +1,59 @@
 <ion-view class="reviews-Class" title="订单评价">
-	
-	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/confirm')"><i class="PFIcon-back"></i>返回</a>
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/allOrders')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
-	<ion-nav-title>
-		<h1 class="titleNav">订单评价</h1>
-	</ion-nav-title>
-	
-	<ion-nav-buttons side="right">
+    <ion-nav-title>
+        <h1 class="titleNav">订单评价</h1>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
         <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
     </ion-nav-buttons>
-	<ion-content  class="scroll-content has-header">
-
-		<div class="Content">
-			<ion-list class="reviews-info" ng-repeat = "products in proData">
-				<ion-item ng-repeat = "pro in products.goods" class="orders-group border-bottom">
-					<div class="orders-item-wrap">
-							<a href="" class="orders-item">
-								<i class="fa fa-circle-thin fa-xs-font fa-absolute" aria-hidden="true"></i>
-								<div class="orders-item-info">
-									<div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg)">
-									</div>
-									<div class="orders-item-message">
-										<h3 class="orders-item-name ellipsis" ng-bind="pro.tradeName"></h3>
-										<div class="orders-item-text ellipsis margin-xs-top">
-											<span class="" ng-bind="pro.amount"></span>
-											<span>|</span>
-		 									<span >颜色分类：{{pro.color}}</span>
-											<span >版本：{{pro.edition}}</span>
-										</div>
-									</div>
-									<!-- <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i> -->
-								</div>
-							</a>
-						</div>
-				</ion-item>
-				<ion-item class="textarea box-sizing">
-					<textarea placeholder="请输入您的评价，如货品是否与面熟相符等..." autofocus></textarea>
-				</ion-item>
-				<ion-item class="reviews-star">
-					<p>
-						<i class="PFIcon-Star check-star"></i>
-						<i class="PFIcon-Star check-star"></i>
-						<i class="PFIcon-Star check-star"></i>
-						<i class="PFIcon-Star uncheck-star"></i>
-						<i class="PFIcon-Star uncheck-star"></i>
-						<span style="color:#ffab39;margin-left:15px;">一般般</span>
-					</p>
-				</ion-item>
-				<ion-item>
-					<div class="btn-wrap border-top">
-						<a class="confirm-btn">
-							<span>提交当前评论</span>
-						</a>
-					</div>
-				</ion-item>
-			</ion-list>
-			
-		</div>
-		
-	</ion-content>
+    <ion-content class="scroll-content has-header">
+        <div class="Content">
+            <ion-list class="reviews-info">
+                <ion-item class="orders-group border-bottom">
+                    <div class="orders-item-wrap">
+                        <a href="" class="orders-item">
+                            <i class="fa fa-circle-thin fa-xs-font fa-absolute" aria-hidden="true"></i>
+                            <div class="orders-item-info">
+                                <div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg); top: 0;">
+                                </div>
+                                <div class="orders-item-message" style="height: 75px;">
+                                    <h3 class="orders-item-name ellipsis" ng-bind="orders.name"></h3>
+                                    <div class="orders-item-text ellipsis margin-xs-top">
+                                        <span class="" ng-bind="orders._originalPrice+ ' x'+orders._proNum + ' | '"></span>
+                                        <span ng-bind="orders._paraTitle1+': '+orders._param1+' &nbsp'"></span>
+                                        <span ng-bind="orders._paraTitle2+': '+orders._param2"></span>
+                                    </div>
+                                </div>
+                                <!-- <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i> -->
+                            </div>
+                        </a>
+                    </div>
+                </ion-item>
+                <ion-item class="textarea box-sizing">
+                    <textarea placeholder="请输入您的评价，如货品是否与面熟相符等..." autofocus ng-model="input.c_content"></textarea>
+                </ion-item>
+                <ion-item class="reviews-star">
+                    <p style="color: #ccc;">
+                        <i class="PFIcon-Star" ng-class="{'check-star': input.c_level >= 1}" ng-click="check_action(1)"></i>
+                        <i class="PFIcon-Star" ng-class="{'check-star': input.c_level >= 2}" ng-click="check_action(2)"></i>
+                        <i class="PFIcon-Star" ng-class="{'check-star': input.c_level >= 3}" ng-click="check_action(3)"></i>
+                        <i class="PFIcon-Star" ng-class="{'check-star': input.c_level >= 4}" ng-click="check_action(4)"></i>
+                        <i class="PFIcon-Star" ng-class="{'check-star': input.c_level >= 5}" ng-click="check_action(5)"></i>
+                        <span style="margin-left:10px;color:#ffa535;font-size:13px;" ng-if="input.c_level ==1">差评</span>
+                        <span style="margin-left:10px;color:#ffa535;font-size:13px;" ng-if="input.c_level<= 3 && input.c_level>=2">一般般</span>
+                        <span style="margin-left:10px;color:#ffa535;font-size:13px;" ng-if="input.c_level>=4">好评</span>
+                    </p>
+                </ion-item>
+                <ion-item>
+                    <div class="btn-wrap border-top">
+                        <a class="confirm-btn" ng-click="submit_acition()">
+                            <span>提交当前评论</span>
+                        </a>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
 </ion-view>

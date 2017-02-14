@@ -1,7 +1,7 @@
 <ion-view class="ordersInfo-Class">
 	<!-- header -->
 	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/ordersHome')"><i class="PFIcon-back"></i>返回</a>
+        <a class="headReturn" ng-click="$ionicGoBack('/orders')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	<ion-nav-title class="danger">
 		<h1 class="titleNav">填写订单信息</h1>
@@ -19,11 +19,28 @@
 							<p class="prompt border-bottom">选择收货方式<span class="pull-right font-secondary">当前：物流运输</span></p>
 						</ion-item>
 						<ion-item>
-							<a class="recive-info" ng-href="/pickup">
-								<div class="recive-name">刘先生，13927595547</div>
-								<div class="recive-address">深圳市南山区西丽街道南新花园A栋10H</div>
-								<i class="fa fa-angle-right fa-ms-right-absolute" aria-hidden="true"></i>
-							</a>
+                            <!--已选择取货方式 -->
+                            <a class="recive-info" ng-href="/pickup/{{input.provAgentId}}" ng-if="information[0].sc_Address_status !=''">
+                                <p class="recive-name">
+                                    <span ng-bind="information[0].sc_linkman"></span>
+                                    <span ng-bind="information[0].sc_phone"></span>
+                                </p>
+                                <p class="recive-address" ng-bind="information[0].sc_Pro+information[0].sc_city+information[0].sc_dist+information[0].sc_detailaddress"></p>
+                                <i class="fa fa-angle-right fa-ms-right-absolute" aria-hidden="true"></i>
+                            </a>
+                            <!-- 未选择取货方式,地址有值，未设置默认 -->
+                            <a class="recive-info" ng-href="/pickup/{{input.provAgentId}}" ng-if="information[0].sc_Address_status =='' &&defaultAddress.length >0 ">
+                                <p class="recive-name">
+                                    <span ng-bind="defaultAddress[0].a_name"></span>
+                                    <span ng-bind="defaultAddress[0].a_phone"></span>
+                                </p>
+                                <p class="recive-address" ng-bind="defaultAddress[0].a_prov+defaultAddress[0].a_city+defaultAddress[0].a_dist+defaultAddress[0].a_detailAddr"></p>
+                                <i class="fa fa-angle-right fa-ms-right-absolute" aria-hidden="true"></i>
+                            </a>
+                            <a ng-href="/pickup/{{input.provAgentId}}" class="recive-info" ng-if="defaultAddress.length <=0 && information[0].sc_Address_status ==''">
+                                <span style="font-size: 14px;">您还没有添加收货地址</span>
+                                <i class="fa fa-angle-right fa-ms-right-absolute" style="top: 20px;" aria-hidden="true"></i>
+                            </a>
 						</ion-item>
 					</ion-list>
 				</div>
@@ -33,10 +50,15 @@
 							<p class="prompt border-bottom">发票信息</p>
 						</ion-item>
 						<ion-item>
-							<a class="recive-info" ng-href="/invoice">
-								<span class="invoice zx-font">个人发票，抬头：XXX</span>
-								<i class="fa fa-angle-right fa-recive-absolute" aria-hidden="true"></i>
-							</a>
+                            <a class="recive-info" ng-href="/invoice/{{info.id}}" style="padding-right: 20px;">
+                                <p class="invoice zx-font" ng-if="information[0].sc_type == '1'"><em>个人</em>
+                                <em ng-if="information[0].sc_type =='2'">单位</em>，抬头：<em ng-bind="information[0].shopping_invoice"></em></p>
+                                <p class="invoice zx-font" ng-if="information[0].sc_type == '2'">
+                                    <em>单位</em>，抬头：<em ng-bind="information[0].shopping_invoice"></em>
+                                </p>
+                                <p class="invoice zx-font" ng-if="information[0].sc_type =='0'">点击此处选择发票信息</p>
+                                <i class="fa fa-angle-right fa-recive-absolute" aria-hidden="true"></i>
+                            </a>
 						</ion-item>
 					</ion-list>
 				</div>
@@ -46,51 +68,57 @@
 							<p class="prompt border-bottom">备注信息</p>
 						</ion-item>
 						<ion-item>
-							<a class="recive-info">
-								<span class="invoice zx-font font-secondary">点击此处填写给品牌商的备注信息</span>
-								<i class="fa fa-angle-right fa-recive-absolute" aria-hidden="true"></i>
-							</a>
+                            <a class="recive-info" ng-href="/remarks/{{info.id}}" style="padding-right: 20px;">
+                                <p class="invoice zx-font font-secondary" ng-if="information[0].shopping_remark == ''">点击此处填写给品牌商的备注信息</p>
+                                <p class="invoice zx-font font-secondary" ng-bind="information[0].shopping_remark" ng-if="information[0].shopping_remark != ''"></p>
+                                <i class="fa fa-angle-right fa-recive-absolute" aria-hidden="true"></i>
+                            </a>
 						</ion-item>
 					</ion-list>
 				</div>
 				<div class="orders-information margin-xs-bottom">
 					<ion-list>
 						<ion-item>
-							<a class="prompt border-bottom">进货单内容<span class="pull-right" style="margin-right:10px;">深圳罗技电子科技有限公司</span>
+							<a class="prompt border-bottom">进货单内容<span class="pull-right ellipsis" style="margin-right:10px; min-width:67%; text-align:right;" ng-bind="company"></span>
 							<i class="fa fa-angle-right fa-recive-absolute" aria-hidden="true"></i>
 							</a>
 						</ion-item>
 						<ion-item>
 							<div class="orders-group">
-								<div class="orders-item-wrap">
-									<a href="" class="orders-item">
-										<div class="orders-item-info">
-											<div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg)">
-											</div>
-											<div class="orders-item-message">
-												<h3 class="orders-item-name ellipsis">Beats Solo2 无线头戴式耳机</h3>
-												<div class="orders-item-text ellipsis margin-xs-top">
-													<span class="">￥199.00 x3 </span>
-													<span>|</span>
-				 									<span>颜色分类：黑色</span>
-													<span>版本：普通版</span>
-												</div>
-											</div>
-											<i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
-										</div>
-									</a>
-								</div>
+                                <div class="orders-item-wrap" ng-repeat="order in orders">
+                                    <a href="" class="orders-item">
+                                        <div class="orders-item-info">
+                                            <div class="orders-item-avatar imgMin" style="background:url('{{order.pic.split(',')[0]}}');top: 0;">
+                                            </div>
+                                            <div class="orders-item-message" style="height: 75px;">
+                                                <p class="orders-item-name ellipsis" ng-bind="order.name"></p>
+                                                <span style="font-size: 12px">
+                                                    <em ng-bind="order.paramTitle1+'：'+order.param1"></em>
+                                                    <em ng-bind="order.paramTitle2+'：'+order.param2"></em>
+                                                </span>
+                                                <p class="orders-item-text ellipsis">
+                                                    <span style="color: #f34242;font-size: 15px;" ng-bind="'￥'+order._Price"></span>
+                                                   
+                                                    <span ng-bind="'x'+order._num"></span>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                </div>
 							</div>
-							
 						</ion-item>
 						<ion-item>
 							<div class="orders-amount">
 								<div class="amount border-bottom">
-									<p class="font-secondary">订单金额<span class="pull-right">3478.00元</span></p>
-								    <p class="font-secondary">运费<span class="pull-right">0.00元</span></p>
+									<p class="font-secondary">订单金额<span class="pull-right" ng-bind="amount + '元'"></span></p>
+								    <p class="font-secondary">
+                                        运费<span class="pull-right" ng-if="Number(amount) >= input.freight">0.00元</span>
+                                        <span class="pull-right" ng-if="Number(amount) < input.freight">上门自付</span>
+                                    </p>
 								</div>
 								<div class="orders-amount-total">
-									<p class="">订单总金额<span class="pull-right font-denger">3748.00元</span></p>
+									<p class="">订单总金额<span class="pull-right font-denger" ng-bind="amount + '元'"></span></p>
 								</div>
 							</div>
 						</ion-item>
@@ -98,10 +126,10 @@
 				</div>
 			</ion-scroll>
 			<div class="bottom-wrap">
-				<a ui-sref = "ordersPay" href="pay" class="bottom-wrap">
-					<div class="pay-btn">
-						前往支付订单
-					</div>
+				<a class="bottom-wrap" >
+                    <div class="pay-btn" ng-click="confirm_pay(information,defaultAddress)">
+                        立即下单
+                    </div>
 				</a>
 			</div>		
 		</div>

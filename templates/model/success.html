@@ -1,0 +1,39 @@
+﻿<ion-modal-view class="confirm-Class" title="确认收货">
+
+    <ion-header-bar class="headBar">
+        <a href="javascript:void(0)" class="headReturn buttons buttons-left" ng-click="close()"><i class="PFIcon-back"></i>返回</a>
+        <h1 class="title title-center header-item titleNav ">确认收货 </h1>
+    </ion-header-bar>
+    <ion-content class="scroll-content has-header">
+        <div class="Content">
+            <ion-list class="confirm-info">
+                <ion-item>
+                    <div class="confirm-bg">
+                        <!-- <img src="" alt=""> -->
+                        <div class="imgMin images" style="background:url(/images/do.png);"></div>
+                        <span class="parole">
+                            恭喜您，确认收货成功！
+                        </span>
+                    </div>
+                </ion-item>
+                <ion-item class="confirm-detail">
+                    <p>订单编号<span class="pull-right">1003582388132</span></p>
+                    <p>支付方式<span class="pull-right">微信支付</span></p>
+                    <p>发票抬头<span class="pull-right">个人发票、抬头：无</span></p>
+                    <p>订单提交时间<span class="pull-right">2016-06-20 15:24:50</span></p>
+                </ion-item>
+                <ion-item>
+                    <div class="button-warp">
+                        <div class="col-xs-2 pull-left">
+                            <a class="back-btn" ng-click="$ionicGoBack('/tabs/user')">返回会员中心</a>
+                        </div>
+                        <div class="col-xs-2 pull-left">
+                            <a class="replace-btn" ng-href="/judge/{{input.id}}" ng-click="close()">立即评价</a>
+                            <!-- <a class="replace-btn" ui-sref = "replaceGoods">我要换货</a> -->
+                        </div>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-modal-view>

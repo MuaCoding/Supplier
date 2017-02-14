@@ -1,7 +1,7 @@
 <ion-view class="login-Class" title="用户登录">
 	
 	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
+        <!--<a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>-->
     </ion-nav-buttons>
 	<ion-nav-title>
 		<h1 class="titleNav">用户登录</h1>
@@ -37,9 +37,9 @@
 							<!-- <countdown class="smscode" countdown="countdown" ng-class="{'color-primary':countdown.message!='获取验证码'}" countdown-disabled="signupForm.telephone.$invalid">{{countdown.message}}</countdown> -->
 						</div>
 						<div class="btn-wrap">
-							<a class="confirm-btn"  ng-click="signin_action()">
-								<span>立即登录</span>
-							</a>			
+                            <a type="submit" class="confirm-btn" ng-click="signin_action()">
+                                <span>立即登录</span>
+                            </a>			
 						</div>
 						
 					</form>	

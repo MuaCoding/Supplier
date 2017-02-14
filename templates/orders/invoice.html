@@ -1,6 +1,6 @@
 <ion-view class="invoice-Class" title="发票">
 	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/orderInfo')"><i class="PFIcon-back"></i>返回</a>
+        <a href="javascript:history.back();" class="headReturn"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	<ion-nav-title>
 		<h1 class="titleNav">设置发票信息</h1>
@@ -41,7 +41,7 @@
 										</span>
 									</div>
 									<div class="check-input" ng-if="input.genre == '2'">
-										<input type="text" placeholder="请填写单位名称" class="full-width">
+                                        <input type="text" placeholder="请填写单位名称" class="full-width" ng-model="input.invoice">
 									</div>
 								</div>
 								
@@ -66,9 +66,9 @@
 				</ion-list>
 			</ion-scroll>
 			<div class="confirm-wrap">
-				<a href="" class="confirm">
-					确定
-				</a>
+                <a class="confirm" ng-click="confirm_action()">
+                    确定
+                </a>
 			</div>
 		</div>
 	</ion-content>

@@ -164,36 +164,15 @@ angular.module('DS.directive', [])
             $rootScope.$on("$ionicView.beforeLeave", function () {
                 ModalFact.clear();
             })
-
             //统一关闭模型事件（要进行其他操作时，用单独的关闭模型事件）
-            $scope.closeModal = function () {
-                ModalFact.clear();
-            }
 
-            //-------------------------------------------------- 搜索 --------------------------------------------------
-            //打开
-            $scope.openSearch = function () {
-                ModalFact.show($scope, "/templates/model/Search.html");
-            }
-            //关闭
-            $scope.closeSearch = function () {
-                ModalFact.clear();
-            }
+           
 
-
-            //打开
-            $scope.openpsdSystemBox = function () {
-                ModalFact.show($scope, "/templates/model/psdSystemBox.html");
-            }
-            //关闭
-            $scope.closepsdSystemBox = function () {
-                ModalFact.clear();
-            }
         }
     }
 })
 
-    ///获取验证码
+ ///获取验证码
 .directive('countdown', function ($interval) {
     return {
         restrict: 'E',
@@ -234,5 +213,20 @@ angular.module('DS.directive', [])
             }
         }
     };
-});
+})
 
+//自动获取焦点事件
+.directive('auto', function () {
+    return {
+        scope: false,
+        link: function (scope, element) {
+            scope.$watch("isCome", function (newValue, oldValue, scope) {
+                if (newValue) {
+                    element[0].focus();
+                }
+                console.log(newValue)
+                console.log(oldValue)
+            }, true);;
+        }
+    };
+})

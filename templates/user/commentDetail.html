@@ -5,29 +5,28 @@
 	<ion-nav-title>
 		<h1 class="titleNav">评价详情</h1>
 	</ion-nav-title>
-	
-	<ion-nav-buttons side="right">
+	<!-- <ion-nav-buttons side="right">
         <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
-    </ion-nav-buttons>
+    </ion-nav-buttons> -->
 	<ion-content overflow-scroll="true" class="scroll-content has-header">
 		<div class="commentDetail-Content">
 			<ion-scroll class= "scroll-view">
 				<ion-list class="orders-group">
-					<ion-item ng-repeat= "pro in proData">
+					<ion-item>
 						<!-- 商品 -->
 						<div class="orders-item-wrap">
 							<a href="" class="orders-item">
 								<i class="fa fa-circle-thin fa-xs-font fa-absolute" aria-hidden="true"></i>
 								<div class="orders-item-info">
-									<div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg)">
+									<div class="orders-item-avatar imgMin" style="background:url('{{regard[0]._proPic.split(',')[0]}}'); top:0;">
 									</div>
-									<div class="orders-item-message">
-										<h3 class="orders-item-name ellipsis" ng-bind="pro.tradeName"></h3>
+									<div class="orders-item-message" style="padding: 5px 10px 10px 75px;height: 75px;">
+										<h3 class="orders-item-name ellipsis" ng-bind="regard[0]._proName"></h3>
 										<div class="orders-item-text ellipsis margin-xs-top">
-											<span class="" ng-bind="pro.amount"></span>
+											<span class="" ng-bind="'￥'+regard[0]._discountPrice+' x'+regard[0]._proNum"></span>
 											<span>|</span>
-		 									<span >颜色分类：{{pro.color}}</span>
-											<span >版本：{{pro.edition}}</span>
+		 									<span ng-bind="regard[0]._paraTitle1+'：'+regard[0]._param1+'、'"></span>
+											<span ng-bind="regard[0]._paraTitle2+'：'+regard[0]._param2"></span>
 										</div>
 									</div>
 									<i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
@@ -36,18 +35,20 @@
 						</div>
 						<!-- 评价内容 -->
 						<div class="comment-detail">
-							<span ng-bind="pro.comment"></span>
+							<span ng-bind="regard[0].m_content"></span>
 						</div>
 						<div class="comment-info">
-							<span class="star">
-								<i class="PFIcon-Star check-star"></i>
-								<i class="PFIcon-Star check-star"></i>
-								<i class="PFIcon-Star check-star"></i>
-								<i class="PFIcon-Star uncheck-star"></i>
-								<i class="PFIcon-Star uncheck-star"></i>
-								<i style="margin-left:10px;color:#ffa535;font-size:12px;">一般般</i>
+							<span class="star" style="color: #ccc;">
+								<i class="PFIcon-Star" ng-class="{'check-star':regard[0].m_level>='1'}"></i>
+								<i class="PFIcon-Star" ng-class="{'check-star':regard[0].m_level>='2'}"></i>
+								<i class="PFIcon-Star" ng-class="{'check-star':regard[0].m_level>='3'}"></i>
+								<i class="PFIcon-Star" ng-class="{'check-star':regard[0].m_level>='4'}"></i>
+								<i class="PFIcon-Star" ng-class="{'check-star':regard[0].m_level>='5'}"></i>
+								<span style="margin-left:10px;color:#ffa535;font-size:13px;" ng-if="regard[0].m_level =='1'">差评</span>
+								<span style="margin-left:10px;color:#ffa535;font-size:13px;" ng-if="regard[0].m_level<='3' && regard[0].m_level>='2'">一般般</span>
+								<span style="margin-left:10px;color:#ffa535;font-size:13px;" ng-if="regard[0].m_level>='4'">好评</span>
 							</span>
-							<p style="color: #aaaaaa;font-size: 12px;">评价时间：<span>2016-09-23 12:55:45</span></p>
+							<p style="color: #aaaaaa;font-size: 12px;"><span ng-bind="'评价时间：'+regard[0].m_addtime"></span></p>
 						</div>
 					</ion-item>
 				</ion-list>

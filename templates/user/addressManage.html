@@ -1,7 +1,7 @@
 <ion-view class="addressManage-Class">
 
     <ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
+        <a class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
     <ion-nav-title>
         <h1 class="titleNav">收货地址管理</h1>
@@ -24,7 +24,7 @@
                             </div>
                             <div class="pickup-address">
                                 <span ng-bind="address.a_prov"></span>
-                                <span ng-bind="address.a_city"></span>
+                                <span ng-bind="address.a_city" ng-if="address.a_prov !=address.a_city"></span>
                                 <span ng-bind="address.a_dist"></span>
                                 <span ng-bind="address.a_detailAddr" class="ellipsis address"></span>
                             </div>

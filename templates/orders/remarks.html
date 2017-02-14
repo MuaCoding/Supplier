@@ -1,0 +1,20 @@
+﻿<ion-view class="remarks-Class">
+    <ion-nav-buttons side="left">
+        <a href="javascript:history.back();" class="headReturn"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+    <ion-nav-title class="danger">
+        <h1 class="titleNav">备注信息</h1>
+    </ion-nav-title>
+    <ion-content>
+        <ion-list>
+            <ion-item class="textarea box-sizing">
+                <textarea placeholder="请输入您的备注信息" autofocus ng-model="input.remark"></textarea>
+            </ion-item>
+        </ion-list>
+        <div class="remarks-section">
+            <a href="" class="confirm-btn" ng-click="confirm()">
+                确定
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

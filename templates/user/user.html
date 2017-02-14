@@ -1,155 +1,141 @@
 ﻿<ion-view class="user-Class">
-	
-	
-	<ion-nav-title>
-		<h1 class="titleNav">会员中心</h1>
-	</ion-nav-title>
-	
-
+    <ion-nav-title>
+        <h1 class="titleNav">会员中心</h1>
+    </ion-nav-title>
     <ion-content overflow-scroll="true" class="scroll-content has-header">
-    	<div class="user-Content">
-    		<ion-scroll class="scroll-view">
-	    		<ion-list  class="user-info">
-	    			<ion-item >
-	    				<a class="user-status border-bottom" ng-href="/accountSetting">
-	    					<i class="imgMin Images" style="background:url('{{user[0].pic}}')"></i>
-	    					<p class="user-name" ng-bind="user[0].nick"></p>
-							<p style="font-size:12px;margin-bottom:5px;height: 24px;line-height: 24px;">
-								<span style="border-right:1px solid #eaeaea;padding-right: 5px;">
-								    <i class="PFIcon-real font-success" ng-if = "isReal.res_Code == 1"></i>
-								    <i class="PFIcon-error font-secondary" ng-if = "isReal.res_Code == 0"></i>
+        <div class="user-Content">
+            <ion-scroll class="scroll-view">
+                <ion-list class="user-info">
+                    <ion-item>
+                        <a class="user-status border-bottom" ng-href="/accountSetting">
+                            <i class="imgMin Images" style="background:url('{{user.pic}}')"></i>
+                            <p class="user-name" ng-bind="user.nick"></p>
+                            <p style="font-size:12px;margin-bottom:5px;height: 24px;line-height: 24px;">
+                                <span style="border-right:1px solid #eaeaea;padding-right: 5px;">
+                                    <i class="PFIcon-real font-success" ng-if="user.idCard != ''"></i>
+                                    <i class="PFIcon-error font-secondary" ng-if="user.idCard == ''"></i>
 									实名认证
 								</span>
-								<!-- <span class="line"></span> -->
-								<span style="border-right:1px solid #eaeaea;padding: 0 5px;">
-									<i class="PFIcon-real font-success" ng-if = "isBindPhone.res_Code == 1"></i>
-								    <i class="PFIcon-error font-secondary" ng-if = "isBindPhone.res_Code == 0"></i>
+                                <!-- <span class="line"></span> -->
+                                <span style="border-right:1px solid #eaeaea;padding: 0 5px;">
+                                    <i class="PFIcon-real font-success" ng-if="user.phone != ''"></i>
+                                    <i class="PFIcon-error font-secondary" ng-if="user.phone == ''"></i>
 									手机绑定
 								</span>
-								<!-- <span class="line"></span> -->
-								<span style="padding-left: 5px;">
-									<i class="PFIcon-real font-success" ng-if = "isBindEmail.res_Code == 1"></i>
-								    <i class="PFIcon-error font-secondary" ng-if = "isBindEmail.res_Code == 0"></i>
+                                <!-- <span class="line"></span> -->
+                                <span style="padding-left: 5px;">
+                                    <i class="PFIcon-real font-success" ng-if="user.email != ''"></i>
+                                    <i class="PFIcon-error font-secondary" ng-if="user.email == ''"></i>
 									邮箱绑定
 								</span>
-							</p>
-							<i class="fa fa-angle-right fa-ms-right-absolute font-secondary" aria-hidden="true"></i>
-	    				</a>
-
-	    			</ion-item>
-
+                            </p>
+                            <i class="fa fa-angle-right fa-ms-right-absolute font-secondary" aria-hidden="true"></i>
+                        </a>
+                    </ion-item>
                     <ion-item class="wares-status row" style="width: 100%;padding: 15px 0;">
-                        <a class="wares-status-content pull-left col" ng-href="/pendingPayment">
+                        <a class="wares-status-content pull-left col" ng-click="go('allOrders/0')">
                             <span class="wares">
                                 <i class="PFIcon-paying font-secondary font18" style="font-size:22px;"></i>
-                                <i class="bg-circle" ng-bind="number[0].wait_Pay_Count"></i>
+                                <i class="bg-circle ellipsis" ng-bind="number[0].waitPayCount" ng-if="number[0].waitPayCount > '0'"></i>
                             </span>
                             <p style="font-size:13px;">待付款</p>
                         </a>
-                        <a class="wares-status-content pull-left col" ng-href="/shipped">
+                        <a class="wares-status-content pull-left col" ng-click="go('allOrders/1')">
                             <span class="wares">
                                 <i class="PFIcon-pickuping font-secondary font18"></i>
-                                <i class="bg-circle" ng-bind="number[0].wait_Goods_Count"></i>
+                                <i class="bg-circle ellipsis" ng-bind="number[0].waitSendCount" ng-if="number[0].waitSendCount > '0'"></i>
                             </span>
                             <p style="font-size:13px;">待发货</p>
                         </a>
-                        <a class="wares-status-content pull-left col" ng-href="/waitReceipt">
+                        <a class="wares-status-content pull-left col" ng-click="go('allOrders/2')">
                             <span class="wares">
                                 <i class="PFIcon-TakeDelivery font-secondary font18"></i>
-                                <i class="bg-circle" ng-bind="number[0].wait_Goods_Count"></i>
+                                <i class="bg-circle ellipsis" ng-bind="number[0].waitGoodsCount" ng-if="number[0].waitGoodsCount > '0'"></i>
                             </span>
                             <p style="font-size:13px;">待收货</p>
                         </a>
-                        <a class="wares-status-content pull-left col" ng-href="/waitEvaluation">
+                        <a class="wares-status-content pull-left col" ng-click="go('allOrders/3')">
                             <span class="wares">
                                 <i class="PFIcon-reviews font-secondary font18"></i>
-                                <i class="bg-circle" ng-bind="number[0].wait_Comment_Count"></i>
+                                <i class="bg-circle ellipsis" ng-bind="number[0].waitCommentCount" ng-if="number[0].waitCommentCount > '0'"></i>
                             </span>
                             <p style="font-size:13px;">待评价</p>
                         </a>
-
-                        <a class="wares-status-content pull-left col" ng-href="/allOrders">
+                        <a class="wares-status-content pull-left col" ng-click="go('allOrders/4')">
                             <span class="wares">
                                 <i class="PFIcon-coupon font-secondary font18"></i>
-                                <i class="bg-circle" ng-bind="number[0].ALLOrderList_Count"></i>
+                                <i class="bg-circle ellipsis" ng-bind="number[0].ALLOrderListCount" ng-if="number[0].ALLOrderListCount > '0'"></i>
                             </span>
                             <p style="font-size:13px;">全部货单</p>
-
                         </a>
                     </ion-item>
-
-
-					
-	    		</ion-list>
-	    		<ion-list class="action-group">
-	    			
-	    			<ion-item style="margin-top: 10px;">
-						<a class="action-group-item font-default" ng-href ="/orders">
-							<i class="icon-inner PFIcon-stock pull-left" style="color: #f77441"></i>
-							<p class="action-group-sub pull-left">我的进货单</p>
-							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
-					</ion-item> 
-					<ion-item >
-						<a class="action-group-item font-default" ng-href="/favorite">
-							<i class="icon-inner PFIcon-favorite pull-left" style="color: #f7e441"></i>
-							<p class="action-group-sub pull-left">收藏夹</p>
-							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
-					</ion-item>
-					<ion-item >
-						<a class="action-group-item font-default" ng-href = "/myNews">
-							<i class="icon-inner PFIcon-news pull-left" style="color: #1fad40"></i>
-							<p class="action-group-sub pull-left">我的消息</p>
-							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
-					</ion-item>
-					<ion-item style="margin-top: 10px;">
-						<a class="action-group-item font-default" ng-href="/boughtProduct">
-							<i class="icon-inner PFIcon-bought pull-left" style="color: #dfc377"></i>
-							<p class="action-group-sub pull-left">已买到的货品</p>
-							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
-					</ion-item>
-					<ion-item style="margin-top: 10px;">
-						<a class="action-group-item font-default" ng-href="/comment">
-							<i class="icon-inner PFIcon-praised pull-left" style="color: #77addf;font-size:24px;"></i>
-							<p class="action-group-sub pull-left">我的评价</p>
-							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
-					</ion-item>
-					<ion-item>
-						<a class="action-group-item font-default" ng-href ="/recordSearch">
-							<i class="icon-inner PFIcon-query pull-left" style="color: #23dbae"></i>
-							<p class="action-group-sub pull-left">交易记录查询</p>
-							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
-					</ion-item>
-					<ion-item ng-href ="inventory">
+                </ion-list>
+                <ion-list class="action-group">
+                    <ion-item style="margin-top: 10px;">
+                        <a class="action-group-item font-default" ng-href="/order">
+                            <i class="icon-inner PFIcon-stock pull-left" style="color: #f77441"></i>
+                            <p class="action-group-sub pull-left">我的进货单</p>
+                            <i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+                        </a>
+                    </ion-item>
+                    <ion-item>
+                        <a class="action-group-item font-default" ng-href="/favorite">
+                            <i class="icon-inner PFIcon-favorite pull-left" style="color: #f7e441"></i>
+                            <p class="action-group-sub pull-left">收藏夹</p>
+                            <i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+                        </a>
+                    </ion-item>
+                    <ion-item>
+                        <a class="action-group-item font-default" ng-href="/myNews">
+                            <i class="icon-inner PFIcon-news pull-left" style="color: #1fad40"></i>
+                            <p class="action-group-sub pull-left">我的消息</p>
+                            <i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+                        </a>
+                    </ion-item>
+                    <ion-item style="margin-top: 10px;">
+                        <a class="action-group-item font-default" ng-href="/boughtProduct">
+                            <i class="icon-inner PFIcon-bought pull-left" style="color: #dfc377"></i>
+                            <p class="action-group-sub pull-left">已买到的货品</p>
+                            <i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+                        </a>
+                    </ion-item>
+                    <ion-item style="margin-top: 10px;">
+                        <a class="action-group-item font-default" ng-href="/comment">
+                            <i class="icon-inner PFIcon-praised pull-left" style="color: #77addf;font-size:24px;"></i>
+                            <p class="action-group-sub pull-left">我的评价</p>
+                            <i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+                        </a>
+                    </ion-item>
+                    <ion-item>
+                        <a class="action-group-item font-default" ng-href="/recordSearch">
+                            <i class="icon-inner PFIcon-query pull-left" style="color: #23dbae"></i>
+                            <p class="action-group-sub pull-left">交易记录查询</p>
+                            <i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+                        </a>
+                    </ion-item>
+                    <ion-item ng-href="inventory">
                         <a class="action-group-item font-default" ng-href="/psdSystem">
                             <i class="icon-inner PFIcon-inventory pull-left" style="color: #888"></i>
                             <p class="action-group-sub pull-left">进销存</p>
                             <i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
                         </a>
-					</ion-item> 
-					<!-- <ion-item>
+                    </ion-item>
+                    <!-- <ion-item>
 						<a class="action-group-item font-default" ng-href ="/returns">
 							<i class="icon-inner PFIcon-ReturnPolicy pull-left" style="color: #595959"></i>
 							<p class="action-group-sub pull-left">退换货管理</p>
 							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
 						</a>
 					</ion-item> -->
-					<ion-item style="margin-bottom: 15px;">
-						<a class="action-group-item font-default">
-							<i class="icon-inner PFIcon-complain pull-left" style="color: #77addf"></i>
-							<p class="action-group-sub pull-left">投诉</p>
-							<i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
-						</a>
-					</ion-item>
-					
-	    		</ion-list>
-	    	</ion-scroll>
-    	</div>
-    	
+                    <ion-item style="margin-bottom: 15px;">
+                        <a class="action-group-item font-default" ng-href="/Complaints">
+                            <i class="icon-inner PFIcon-complain pull-left" style="color: #77addf"></i>
+                            <p class="action-group-sub pull-left">投诉</p>
+                            <i class="fa fa-angle-right font-secondary icon-forword pull-right" aria-hidden="true"></i>
+                        </a>
+                    </ion-item>
+                </ion-list>
+            </ion-scroll>
+        </div>
     </ion-content>
 </ion-view>

@@ -1,7 +1,7 @@
 <ion-view class="ordersDetail-Class">
 	
 	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/boughtProduct')"><i class="PFIcon-back"></i>返回</a>
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/allOrders')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
 	<ion-nav-title>
 		<h1 class="titleNav">订单详情</h1>
@@ -17,78 +17,90 @@
 					<ion-item class="orders-info" style = "margin-bottom:10px;">
 						<h3 class="orders-info-header">订单信息</h3>
 						<div class="orders-info-content">
-							<p>订单编号<span class="pull-right">100245745545</span></p>
-							<p>交付方式<span class="pull-right">微信支付</span></p>
-							<p>发票抬头<span class="pull-right">个人发票、抬头：无</span></p>
-							<p>订单提交时间<span class="pull-right">2016-06-20 15:24:50</span></p>
+							<p>订单编号<span class="pull-right" ng-bind="basic.o_payId"></span></p>
+							<p>交付方式<span class="pull-right" ng-bind="basic.p_payFrom"></span><span class="pull-right" ng-if="basic.p_payFrom ==''">未支付</span></p>
+							<p>发票抬头<span class="pull-right ellipsis" style="min-width: 70%;text-align: right;" ng-bind="basic.o_invoice"></span><span class="pull-right ellipsis" style="min-width: 70%;text-align: right;" ng-if="basic.o_invoice == ''">未填写</span></p>
+							<p>订单提交时间<span class="pull-right" ng-bind="input.add_time"></span></p>
 						</div>
 					</ion-item>
 					<ion-item class="orders-info" style = "margin-bottom:10px;">
 						<h3 class="orders-info-header">最新订单进度</h3>
 						<div class="orders-info-status">
-							<p style="color:#444444;">您提交了订单，请等待系统确认</p>
-							<p>2016-06-20 15:24:50</p>
+                            <p style="color:#444444;" ng-if="basic.o_status =='0'">已提交订单，等待支付</p>
+                            <p style="color:#444444;" ng-if="basic.o_status =='1'">您已支付，请等待系统确认</p>
+                            <p style="color:#444444;" ng-if="basic.o_status =='2'">系统已确认，正在配送中</p>
+                            <p style="color:#444444;" ng-if="basic.o_status =='3'">您已收货成功</p>
+							<p>
+                                <span ng-if="basic.o_status =='0'" ng-bind="input.add_time"></span>
+                                <span ng-if="basic.o_status =='1'" ng-bind="input.success_time"></span>
+                                <span ng-if="basic.o_status =='2'" ng-bind="input.send_time"></span>
+                                <span ng-if="basic.o_status =='3'" ng-bind="input.receive_time"></span>
+                            </p>
 							<i class="fa fa-angle-right font-secondary icon-go" aria-hidden="true"></i>
 						</div>
 					</ion-item>
 					<ion-item class="orders-info" style = "margin-bottom:10px;">
 						<h3 class="orders-info-header">收货地址</h3>
-						<div class="orders-info-status">
-							<p style="color:#444444;">您提交了订单，请等待系统确认</p>
-							<p style="color:#444444;">深圳市南山区西丽街道南新花园A洞10H</p>
-						</div>
+                        <div class="orders-info-status" style="color:#444444;">
+                            <p><em ng-bind="basic.o_reciever+'，'+basic.o_phone"></em></p>
+                            <p><em ng-bind="basic.o_prov+basic.o_city+basic.o_dist+basic.o_detailAddr"></em></p>
+                        </div>
 					</ion-item>
 				</ion-list>
-				<ion-list ng-repeat = "products in proData">
+				<ion-list >
 					<ion-item class="pro-content">
 						<div class="pro-content-header">
 							<p class="header-info pull-left" style="color:#444444;">进货单内容</p>
 							<i class="fa fa-angle-right font-secondary header-info pull-right icon-next" aria-hidden="true"></i>
-							<p class="header-info pull-right" style="color:#444444;" ng-bind="products.name"></p>
+                            <p class="header-info pull-right ellipsis" style="color:#444444;margin-right:10px; min-width:67%; text-align:right;" ng-bind="basic.pa_name"></p>
 						</div>
 					</ion-item>
-					<ion-item class="orders-group" ng-repeat = "pro in products.goods">
-						<div class="orders-item-wrap">
-							<a href="" class="orders-item">
-								<i class="fa fa-circle-thin fa-xs-font fa-absolute" aria-hidden="true"></i>
-								<div class="orders-item-info">
-									<div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg)">
-									</div>
-									<div class="orders-item-message">
-										<p class="orders-item-name ellipsis" ng-bind="pro.tradeName"></p>
-										<div class="orders-item-text ellipsis margin-xs-top">
-											<span class="" ng-bind="pro.amount"></span>
-											<span>|</span>
-		 									<span >颜色分类：{{pro.color}}</span>
-											<span >版本：{{pro.edition}}</span>
-										</div>
-									</div>
-									<i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
-								</div>
-							</a>
-						</div>
+                    <ion-item>
+                        <div class="orders-group">
+                            <div class="orders-item-wrap" ng-repeat="order in orders">
+                                <a href="" class="orders-item">
+                                    <div class="orders-item-info">
+                                        <div class="orders-item-avatar imgMin" style="background:url('{{order.op_proPic.split(',')[0]}}');top: 0;">
+                                        </div>
+                                        <div class="orders-item-message" style="height: 75px;">
+                                            <p class="orders-item-name ellipsis" ng-bind="order.op_proName"></p>
+                                            <span style="font-size: 12px">
+                                                <em ng-bind="order.op_paraTitle1+'：'+order.op_param1+'、'"></em>
+                                                <em ng-bind="order.op_paraTitle2+'：'+order.op_param2"></em>
+                                            </span>
+                                            <p class="orders-item-text ellipsis">
+                                                <span style="color: #f34242;font-size: 15px;" ng-bind="'￥'+order.op_discountPrice"></span>
+
+                                                <span ng-bind="'x'+order.op_proNum"></span>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </ion-item>
+					<ion-item ng-click="open()">
+                        <div class="orders-amount">
+                            <div class="amount border-bottom">
+                                <p class="font-secondary">订单金额<span class="pull-right" ng-bind="basic.o_totalPrice+'元'"></span></p>
+                                <p class="font-secondary">运费<span class="pull-right" ng-if="basic.o_freeFreight =='True'">免运费</span><span class="pull-right " ng-if="basic.o_freeFreight =='False'">上门自付</span></p>
+                            </div>
+                            <div class="orders-amount-total">
+                                <p class="">订单总金额<span class="pull-right font-denger" ng-bind="basic.o_totalPrice+'元'"></span></p>
+                            </div>
+                        </div>
 					</ion-item>
-					<ion-item>
-						<div class="orders-amount">
-							<div class="amount border-bottom">
-								<p class="font-secondary">订单金额<span class="pull-right">3478.00元</span></p>
-							    <p class="font-secondary">运费<span class="pull-right">0.00元</span></p>
-							</div>
-							<div class="orders-amount-total">
-								<p class="">订单总金额<span class="pull-right font-denger">3748.00元</span></p>
-							</div>
-						</div>
-					</ion-item>
-					<ion-item>
-						<a class="btn-wrap" style="padding:20px 10px;" ng-href="/confirm">
-							<div class="confirm-btn">
-								<span>确认收货</span>
-							</div>
-						</a>
-					</ion-item>
-					<a class="click-here" ng-click = "proPrompt()">
-						<span href="">需要售后服务？点击这里</span>
-					</a>
+                    <ion-item ng-if="basic.o_status !='3'">
+                        <a class="btn-wrap" style="padding:20px 10px;">
+                            <div class="confirm-btn" ng-click="confirm_action()">
+                                <span>确认收货</span>
+                            </div>
+                        </a>
+                    </ion-item>
+                    <a class="click-here" ng-click="proPrompt()" ng-if="basic.o_status =='3'">
+                        <span>需要售后服务？点击这里</span>
+                    </a>
 				</ion-list>
 			</ion-scroll>
 		</div>

@@ -1,0 +1,63 @@
+﻿<ion-modal-view class="newAddress-Class">
+    <ion-header-bar class="headBar">
+        <a href="javascript:void(0)" class="headReturn buttons buttons-left" ng-click="close()"><i class="PFIcon-back"></i>返回</a>
+        <h1 class="title title-center header-item titleNav ">添加收货地址 </h1>
+    </ion-header-bar>
+    <ion-content class="scroll-content has-header">
+        <div class="newAddress-Content">
+            <ion-list>
+                <ion-item>
+                    <div class="input-group addon">
+                        <div class="input-label">
+                            收货人
+                        </div>
+                        <input type="text" class="full-width form-control" ng-model="input.s_name" name="fullname" required placeholder="请输入姓名">
+                    </div>
+                    <div class="input-group addon">
+                        <div class="input-label">
+                            手机号码
+                        </div>
+                        <input type="text" class="full-width form-control" ng-model="input.s_phone" name="phone" required placeholder="请输入收货人手机号码">
+                    </div>
+                    <div class="input-group addon">
+                        <div class="input-label">
+                            固定电话
+                        </div>
+                        <input type="text" class="full-width form-control" ng-model="input.s_telephone" name="telephone" required placeholder="请输入电话，可忽略">
+                    </div>
+                    <div class="input-group addon">
+                        <div class="input-label">
+                            地址
+                        </div>
+                        <p class="input-select" ng-click="address_active()" ng-bind="select.City"></p>
+                    </div>
+                    <div class="input-group addon">
+                        <div class="input-label">
+                            详细地址
+                        </div>
+                        <input type="text" class="full-width form-control" ng-model="input.s_storeDetailAddr" name="detailAddress" required placeholder="请输入详细地址，详细至楼房号">
+                    </div>
+                    <div class="input-group addon">
+                        <div class="input-label">
+                            邮编
+                        </div>
+                        <input type="text" class="full-width form-control" ng-model="input.s_postcode" name="postcode" required placeholder="请输入邮编">
+                    </div>
+                    <div class="input-group addon">
+                        <div class="input-label">
+                            默认地址
+                        </div>
+                        <div class="input-checked">
+                            <span class="input-text pull-left" ng-click="is_agree()"><i class="mr10" ng-class="{'PFIcon-Hook': input.isDefault}"></i>设为默认地址</span>
+                        </div>
+                    </div>
+                    <div class="btn-wrap">
+                        <a class="confirm-btn" ng-click="add_address()">
+                            <span>添加新地址</span>
+                        </a>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-modal-view>

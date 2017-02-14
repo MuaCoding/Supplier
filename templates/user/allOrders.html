@@ -1,198 +1,363 @@
-﻿<ion-view class="allOrders-Class">
+﻿<ion-view class="Orders-Class allOrders-Class">
     <ion-nav-buttons side="left">
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
     <ion-nav-title>
         <h1 class="titleNav">全部货单</h1>
     </ion-nav-title>
-
     <!--<ion-nav-buttons side="right">
         <a href="javascrpt:;" class="edit-btn" ng-click=""></a>
     </ion-nav-buttons>-->
     <ion-content overflow-scroll="true" class="scroll-content has-header">
-        <ion-list class="listSwitch">
-            <ion-item class="button-bar">
-                <a class="button button-outline" ng-click="De_Switch.set(0)" ng-class="{'on':De_Switch.get(0)}">全部订单</a>
-                <a class="button button-outline" ng-click="De_Switch.set(1)" ng-class="{'on':De_Switch.get(1)}">待付款</a>
-                <a class="button button-outline" ng-click="De_Switch.set(2)" ng-class="{'on':De_Switch.get(2)}">待发货</a>
-                <a class="button button-outline" ng-click="De_Switch.set(3)" ng-class="{'on':De_Switch.get(3)}">待收货</a>
-                <a class="button button-outline" ng-click="De_Switch.set(4)" ng-class="{'on':De_Switch.get(4)}">待评价</a>
-            </ion-item>
-        </ion-list>
-        <ion-list class="listOrders" ng-show="De_Switch.proIndex==0">
-            <ion-item>
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>待发货</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
-                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a><a>我要催单</a></div>
-            </ion-item>
-            <ion-item>
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>交易成功</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
-                <div class="priceButton"><a ng-click="deleteOrder()">删除订单</a><a>查看物流</a><a>去评价</a></div>
-            </ion-item>
-            <ion-item class="listPayment">
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>等待付款</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <span class="priceAmount">共一件商品  需付款：<b>￥220.00</b></span>
-                <div class="priceButton"><a href="javascript:;" class="toPay">去支付</a><a>取消订单</a><a>联系卖家</a></div>
-            </ion-item>
-            <ion-item>
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>配送中</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
-                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a></div>
-            </ion-item>
-        </ion-list>
-        <ion-list class="listOrders listPayment" ng-show="De_Switch.proIndex==1">
-            <ion-item>
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>等待付款</span></div>
-                <a class="commodity ">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                </a>
-                <span class="priceAmount">共一件商品  需付款：<b>￥220.00</b></span>
-                <div class="priceButton"><a href="javascript:;" class="toPay">去支付</a><a>取消订单</a><a>联系卖家</a></div>
-            </ion-item>
-        </ion-list>
-        <ion-list class="listOrders" ng-show="De_Switch.proIndex==2">
-            <ion-item>
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>待发货</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
-                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a><a>我要催单</a></div>
-            </ion-item>
-        </ion-list>
-        <ion-list class="listOrders" ng-show="De_Switch.proIndex==3">
-            <ion-item>
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>配送中</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
-                <div class="priceButton"><a class="Receipt" ng-click="showConfirm()">确认收货</a><a>查看物流</a></div>
-            </ion-item>
-        </ion-list>
-        <ion-list class="listOrders" ng-show="De_Switch.proIndex==4">
-            <ion-item>
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>交易成功</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url(/images/Products.jpg);"></div>
-                    <h4>初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳初心拇指贝壳</h4>
-                    <span>颜色分类：闪耀磨砂黑</span>
-                    <div class="Service"><span>七天退换</span><span>七天退换</span><span>七天退换</span><span>七天退换</span></div>
-                    <div class="Amount">
-                        <span class="Current">￥20056312005631.00</span>
-                        <span class="Original">￥2005631.00</span>
-                        <span class="Number">×100000</span>
-                    </div>
-                </a>
-                <div class="priceAmount"><span>共1件商品</span><span>合计：￥<b>17.10</b>（含运费￥0.00）</span></div>
-                <div class="priceButton"><a ng-click="deleteOrder()">删除订单</a><a>查看物流</a><a>去评价</a></div>
-            </ion-item>
-        </ion-list>
+        <div class="wrap">
+            <ion-list class="listSwitch">
+                <ion-item class="button-bar">
+                    <a class="button button-outline" ng-click="De_Switch.set(4)" ng-class="{'on':De_Switch.get(4)}">全部订单</a>
+                    <a class="button button-outline" ng-click="De_Switch.set(0)" ng-class="{'on':De_Switch.get(0)}">待付款</a>
+                    <a class="button button-outline" ng-click="De_Switch.set(1)" ng-class="{'on':De_Switch.get(1)}">待发货</a>
+                    <a class="button button-outline" ng-click="De_Switch.set(2)" ng-class="{'on':De_Switch.get(2)}">待收货</a>
+                    <a class="button button-outline" ng-click="De_Switch.set(3)" ng-class="{'on':De_Switch.get(3)}">待评价</a>
+                </ion-item>
+            </ion-list>
+            <!-- 0为待付款，1为待发货，2为待收货，4为全部订单 -->
+            <ion-slide-box class="slideBox" show-pager="false" does-continue="false" delegate-handle="switchHandle" style="height:100%;">
+                <!-- 待付款 -->
+                <ion-slide ng-if="De_Switch.proIndex==0">
+                    <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false" style="height:100%;" delegate-handle="small">
+                        <ion-list class="listOrders listPayment">
+                            <ion-item ng-repeat="paying in payings">
+                                <div class="storeName">
+                                    <!-- <i class="PFIcon-store"></i> -->
+                                    <p class="header">
+                                        <i class="PFIcon-Sub icon-inner pull-left"></i>
+                                        <span class="ellipsis" ng-bind="paying.pa_name"></span>
+                                        <span class="pull-right" style="color: #f3a242;">等待付款</span>
+                                    </p>
+                                </div>
+                                <a ng-href="/ordersDetail/{{paying.o_id}}">
+                                    <div class="commodity" ng-repeat="cargo in paying.data">
+                                        <div class="Img imgMin" style="background-image: url('{{cargo._proPic.split(',')[0]}}');"></div>
+                                        <p class="" style="color:#444;font-size:15px;" ng-bind="cargo._proName"></p>
+
+                                        <p class="content">
+                                            <span ng-bind="cargo._paraTitle1+'：' + cargo._param1"></span>
+                                            <span ng-bind="cargo._paraTitle2+'：'+ cargo._param2"></span>
+                                        </p>
+                                        <p class="content" style="margin-top: 10px;">
+                                            <span style="font-size:14px;color:#f23030;" ng-bind=" '￥' +cargo._discountPrice"></span>
+                                            <span ng-bind="' x'+cargo._proNum"></span>
+                                        </p>
+
+                                        <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                <p class="priceAmount" style="margin-bottom: 0px;"><!--<span ng-bind="'共'+paying.o_totalCount+'件商品  合计：'"></span>--><span>合计：<b ng-bind="'￥'+paying.o_totalPrice" style="font-size:15px;color:#f23030;"></b></span></p>
+                                <div class="priceButton">
+                                    <div href="javascript:;" class="right-btn pull-right" ng-click="pay(paying.o_id)">
+                                        <span class="btn" style="color:#f34242; border-left: 1px solid #eee;">去支付</span>
+                                    </div>
+                                    <div class="left-btn pull-left" ng-click="delete_confirm(paying.o_id)">
+                                        <span class="btn">取消订单</span>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <p class="noData" ng-if="!noData">没有更多数据了！</p>
+                            <!-- 滚动刷新 -->
+                            <ion-infinite-scroll on-infinite="loadMore(0);" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
+                        </ion-list>
+                    </ion-scroll>
+                </ion-slide>
+                <!-- 待发货 -->
+                <ion-slide ng-if="De_Switch.proIndex==1">
+                    <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false" style="height:100%;" delegate-handle="small">
+                        <ion-list class="listOrders" ng-if="De_Switch.proIndex==1">
+                            <ion-item ng-repeat="deliver in sends">
+                                <div class="storeName">
+                                    <!-- <i class="PFIcon-store"></i> -->
+                                    <p class="header">
+                                        <i class="PFIcon-Sub icon-inner pull-left"></i>
+                                        <span class="ellipsis" ng-bind="deliver.pa_name"></span>
+                                        <span class="pull-right" style="color: #f3a242;">等待发货</span>
+                                    </p>
+                                </div>
+                                <a ng-href="/ordersDetail/{{deliver.o_id}}">
+                                    <div class="commodity" ng-repeat="shipped in deliver.data">
+                                        <div class="Img imgMin" style="background-image: url('{{shipped._proPic.split(',')[0]}}');"></div>
+                                        <p class="" style="color:#444;font-size:15px;" ng-bind="shipped._proName"></p>
+                                        <p class="content">
+                                            <span ng-bind="shipped._paraTitle1+'：' + shipped._param1"></span>
+                                            <span ng-bind="shipped._paraTitle2+'：'+ shipped._param2"></span>
+                                        </p>
+                                        <p class="content" style="margin-top: 10px;">
+                                            <span style="font-size:14px;color:#f23030;" ng-bind=" '￥' +shipped._discountPrice"></span>
+                                            <span ng-bind="' x'+shipped._proNum"></span>
+                                        </p>
+                                        <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                
+                                <div class="priceAmount"><!--<span ng-bind="'共'+deliver.o_totalCount+'件商品'"></span>--><span>合计：<b ng-bind="'￥'+deliver.o_totalPrice" style="font-size:15px;color:#f23030;"></b><!--（含运费￥0.00）--></span></div>
+                                <div class="priceButton">
+                                    <div href="javascript:;" class="right-btn pull-right">
+                                        <!--ng-click="isConfirm(deliver.o_id)"-->
+                                        <span class="btn" style="color:#f34242; border-left: 1px solid #eee;">确认收货</span>
+                                    </div>
+                                    <div class="left-btn pull-left">
+                                        <span class="btn">我要催单</span>
+                                    </div>
+                                </div>
+                                
+                            </ion-item>
+                            <p class="noData" ng-if="!noData1">没有更多数据了！</p>
+                            <!-- 滚动刷新 -->
+                            <ion-infinite-scroll on-infinite="loadMore(1);" ng-if="noData1" immediate-check="false"></ion-infinite-scroll>
+                        </ion-list>
+                    </ion-scroll>
+                </ion-slide>
+                <!-- 待收货 -->
+                <ion-slide ng-if="De_Switch.proIndex==2">
+                    <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false" style="height:100%;" delegate-handle="small">
+                        <ion-list class="listOrders">
+                            <ion-item ng-repeat="receipt in collects">
+                                <div class="storeName">
+                                    <!-- <i class="PFIcon-store"></i> -->
+                                    <p class="header">
+                                        <i class="PFIcon-Sub icon-inner pull-left"></i>
+                                        <span class="ellipsis" ng-bind="receipt.pa_name"></span>
+                                        <span class="pull-right" style="color: #f3a242;">配送中</span>
+                                    </p>
+                                </div>
+                                <a ng-href="/ordersDetail/{{receipt.o_id}}">
+                                    <div class="commodity" ng-repeat="receive in receipt.data">
+                                        <div class="Img imgMin" style="background-image: url('{{receive._proPic.split(',')[0]}}');"></div>
+                                        <p class="" style="color:#444;font-size:15px;" ng-bind="receive._proName"></p>
+                                        <p class="content">
+                                            <span ng-bind="receive._paraTitle1+'：' + receive._param1"></span>
+                                            <span ng-bind="receive._paraTitle2+'：'+ receive._param2"></span>
+                                        </p>
+                                        <p class="content" style="margin-top: 10px;">
+                                            <span style="font-size:14px;color:#f23030;" ng-bind=" '￥' +receive._discountPrice"></span>
+                                            <span ng-bind="' x'+receive._proNum"></span>
+                                        </p>
+                                        <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                               
+                                <div class="priceAmount"><!--<span ng-bind="'共'+receipt.o_totalCount+'件商品'"></span>--><span>合计：<b ng-bind="'￥'+receipt.o_totalPrice" style="font-size:15px;color:#f23030;"></b><!--（含运费￥0.00）--></span></div>
+                                <div class="priceButton">
+                                    <div href="javascript:;" class="right-btn pull-right">
+                                        <span class="btn" style="color:#f34242; border-left: 1px solid #eee;" ng-click="isConfirm(receipt.o_id)">确认收货</span>
+                                    </div>
+                                    <div class="left-btn pull-left">
+                                        <span class="btn">查看物流</span>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <p class="noData" ng-if="!noData2">没有更多数据了！</p>
+                            <!-- 滚动刷新 -->
+                            <ion-infinite-scroll on-infinite="loadMore(2);" ng-if="noData2" immediate-check="false"></ion-infinite-scroll>
+                        </ion-list>
+                    </ion-scroll>
+                </ion-slide>
+                <!-- 待评价 -->
+                <ion-slide ng-if="De_Switch.proIndex==3">
+                    <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false" style="height:100%;" delegate-handle="small">
+                        <ion-list class="listOrders">
+                            <ion-item ng-repeat="review in reviews">
+                                <div class="storeName">
+                                    <!-- <i class="PFIcon-store"></i> -->
+                                    <p class="header">
+                                        <i class="PFIcon-Sub icon-inner pull-left"></i>
+                                        <span class="ellipsis" ng-bind="review._name"></span>
+                                        <span class="pull-right" style="color: #f3a242;">交易成功</span>
+                                    </p>
+                                </div>
+                                <a class="commodity">
+                                    <div class="Img imgMin" style="background-image: url('{{review._proPic.split(',')[0]}}');"></div>
+                                    <p class="" style="color:#444;font-size:15px;" ng-bind="review._proName"></p>
+                                    <p class="content">
+                                        <span ng-bind="review._paraTitle1+'：' + review._param1"></span>
+                                        <span ng-bind="review._paraTitle2+'：'+ review._param2"></span>
+                                    </p>
+                                    <p class="content" style="margin-top: 10px;">
+                                        <span style="font-size:14px;color:#f23030;" ng-bind=" '￥' +review._discountPrice"></span>
+                                        <span ng-bind="' x'+review._proNum"></span>
+                                    </p>
+                                    <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                </a>
+                                <!--<div class="priceAmount"><span ng-bind="'共'+review.o_totalCount+'件商品'"></span><span>合计：￥<b ng-bind="review.o_totalPrice"></b></span></div>-->
+                                <div class="priceButton">
+                                    <div href="javascript:;" class="right-btn pull-right">
+                                        <a class="btn" style="color:#f34242; border-left: 1px solid #eee;" ng-href="/opinion/{{review._id}}">去评价</a>
+                                    </div>
+                                    <div class="left-btn pull-left" ng-click="delete_review(review._id)">
+                                        <span class="btn">删除订单</span>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <p class="noData" ng-if="!noData3">没有更多数据了！</p>
+                            <!-- 滚动刷新 -->
+                            <ion-infinite-scroll on-infinite="loadMore(3);" ng-if="noData3" immediate-check="false"></ion-infinite-scroll>
+                        </ion-list>
+                    </ion-scroll>
+                </ion-slide>
+                <!-- 全部订单 -->
+                <ion-slide ng-if="De_Switch.proIndex==4">
+                    <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false" style="height:100%;" delegate-handle="small">
+                        <ion-list class="listOrders">
+                            <div ng-repeat="coupon in coupons">
+                                <!-- 全部订单 -- 等待付款 -->
+                                <ion-item ng-if="coupon.Status == '0'">
+                                    <div class="storeName">
+                                        <!-- <i class="PFIcon-store"></i> -->
+                                        <p class="header">
+                                            <i class="PFIcon-Sub icon-inner pull-left"></i>
+                                            <span class="ellipsis" ng-bind="coupon.pa_name"></span>
+                                            <span class="pull-right" style="color: #f3a242;">等待付款</span>
+                                        </p>
+                                    </div>
+                                    <a ng-href="/ordersDetail/{{coupon.o_id}}">
+                                        <div class="commodity" ng-repeat="order in coupon.data">
+                                            <div class="Img imgMin" style="background-image: url('{{order._proPic.split(',')[0]}}');"></div>
+                                            <p class="" style="color:#444;font-size:15px;" ng-bind="order._proName"></p>
+                                            <p class="content">
+                                                <span ng-bind="order._paraTitle1+'：' + order._param1"></span>
+                                                <span ng-bind="order._paraTitle2+'：'+ order._param2"></span>
+                                            </p>
+                                            <p class="content" style="margin-top: 10px;">
+                                                <span style="font-size:14px;color:#f23030;" ng-bind=" '￥' +order._discountPrice"></span>
+                                                <span ng-bind="' x'+order._proNum"></span>
+                                            </p>
+                                            <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+
+                                    <div class="priceAmount"><!--<span ng-bind="'共'+coupon.o_totalCount+'件商品'"></span>--><span>合计：<b ng-bind="'￥'+coupon.o_totalPrice" style="font-size:15px;color:#f23030;"></b></span></div>
+                                    <div class="priceButton">
+                                        <div href="javascript:;" class="right-btn pull-right">
+                                            <span class="btn" style="color:#f34242; border-left: 1px solid #eee;" ng-click="pay(coupon.o_id)">去支付</span>
+                                        </div>
+                                        <div class="left-btn pull-left" ng-click="delete_confirm(coupon.o_id)">
+                                            <span class="btn">取消订单</span>
+                                        </div>
+                                    </div>
+                                </ion-item>
+                                <!-- 全部订单 -- 待发货 -->
+                                <ion-item ng-if="coupon.Status == '1'">
+                                    <div class="storeName">
+                                        <!-- <i class="PFIcon-store"></i> -->
+                                        <p class="header">
+                                            <i class="PFIcon-Sub icon-inner pull-left"></i>
+                                            <span class="ellipsis" ng-bind="coupon.pa_name"></span>
+                                            <span class="pull-right" style="color: #f3a242;">等待发货</span>
+                                        </p>
+                                    </div>
+                                    <a ng-href="/ordersDetail/{{coupon.o_id}}">
+                                        <div class="commodity" ng-repeat="order in coupon.data">
+                                            <div class="Img imgMin" style="background-image: url('{{order._proPic.split(',')[0]}}');"></div>
+                                            <p class="" style="color:#444;font-size:15px;" ng-bind="order._proName"></p>
+                                            <p class="content">
+                                                <span ng-bind="order._paraTitle1+'：' + order._param1"></span>
+                                                <span ng-bind="order._paraTitle2+'：'+ order._param2"></span>
+                                            </p>
+                                            <p class="content" style="margin-top: 10px;">
+                                                <span style="font-size:14px;color:#f23030;" ng-bind=" '￥' +order._discountPrice"></span>
+                                                <span ng-bind="' x'+order._proNum"></span>
+                                            </p>
+                                            <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="priceAmount"><!--<span ng-bind="'共'+coupon.o_totalCount+'件商品'"></span>--><span>合计：<b ng-bind="'￥'+coupon.o_totalPrice" style="font-size:15px;color:#f23030;"></b></span></div>
+                                    <div class="priceButton">
+                                        <div href="javascript:;" class="right-btn pull-right">
+                                            <!--ng-click="isConfirm(coupon.o_id)"-->
+                                            <span class="btn" style="color:#f34242; border-left: 1px solid #eee;">确认收货</span>
+                                        </div>
+                                        <div class="left-btn pull-left" ng-click="delete_confirm(order.o_id)">
+                                            <span class="btn">我要催单</span>
+                                        </div>
+                                    </div>
+                                </ion-item>
+                                <!-- 全部订单--等待收货 -->
+                                <ion-item ng-if="coupon.Status == '2'">
+                                    <div class="storeName">
+                                        <!-- <i class="PFIcon-store"></i> -->
+                                        <p class="header">
+                                            <i class="PFIcon-Sub icon-inner pull-left"></i>
+                                            <span class="ellipsis" ng-bind="coupon.pa_name"></span>
+                                            <span class="pull-right" style="color: #f3a242;">等待收货</span>
+                                        </p>
+                                    </div>
+                                    <a ng-href="/ordersDetail/{{coupon.o_id}}">
+                                        <div class="commodity" ng-repeat="order in coupon.data">
+                                            <div class="Img imgMin" style="background-image: url('{{order._proPic.split(',')[0]}}');"></div>
+                                            <p class="" style="color:#444;font-size:15px;" ng-bind="order._proName"></p>
+                                            <p class="content">
+                                                <span ng-bind="order._paraTitle1+'：' + order._param1"></span>
+                                                <span ng-bind="order._paraTitle2+'：'+ order._param2"></span>
+                                            </p>
+                                            <p class="content" style="margin-top: 10px;">
+                                                <span style="font-size:14px;color:#f23030;" ng-bind=" '￥' +order._discountPrice"></span>
+                                                <span ng-bind="' x'+order._proNum"></span>
+                                            </p>
+                                            <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                   
+                                    <div class="priceAmount"><!--<span ng-bind="'共'+coupon.o_totalCount+'件商品'"></span>--><span>合计：<b ng-bind="'￥'+coupon.o_totalPrice" style="font-size:15px;color:#f23030;"></b></span></div>
+                                    <div class="priceButton">
+                                        <div href="javascript:;" class="right-btn pull-right">
+                                            <span class="btn" style="color:#f34242; border-left: 1px solid #eee;" ng-click="isConfirm(coupon.o_id)">确认收货</span>
+                                        </div>
+                                        <div class="left-btn pull-left" ng-click="">
+                                            <span class="btn">查看物流</span>
+                                        </div>
+                                    </div>
+                                </ion-item>
+                                <!-- 全部订单--交易成功 -->
+                                <ion-item class="listPayment" ng-if="coupon.Status == '3'">
+                                    <div class="storeName">
+                                        <i class="PFIcon-store"></i>
+                                        <p class="header">
+                                            <i class="PFIcon-Sub icon-inner pull-left"></i>
+                                            <span class="ellipsis" ng-bind="coupon.pa_name"></span>
+                                            <span class="pull-right" style="color: #f3a242;">交易成功</span>
+                                        </p>
+                                    </div>
+                                    <a ng-href="/ordersDetail/{{coupon.o_id}}">
+                                        <div class="commodity" ng-repeat="order in coupon.data">
+                                            <div class="Img imgMin" style="background-image: url('{{order._proPic.split(',')[0]}}');"></div>
+                                            <p class="" style="color:#444;font-size:15px;" ng-bind="order._proName"></p>
+                                            <p class="content">
+                                                <span ng-bind="order._paraTitle1+'：' + order._param1"></span>
+                                                <span ng-bind="order._paraTitle2+'：'+ order._param2"></span>
+                                            </p>
+                                            <p class="content" style="margin-top: 10px;">
+                                                <span style="font-size:14px;color:#f23030;" ng-bind=" '￥' +order._discountPrice"></span>
+                                                <span ng-bind="' x'+order._proNum"></span>
+                                            </p>
+                                            <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                    <div class="priceAmount"><span>合计：<b style="font-size:15px;color:#f23030;" ng-bind="'￥'+coupon.o_totalPrice"></b></span></div>
+                                    <div class="priceButton">
+                                        <div href="javascript:;" class="right-btn pull-right">
+                                            <a class="btn" style="color:#f34242; border-left: 1px solid #eee;" ng-href="/stayGrade/{{coupon.o_id}}">去评价</a>
+                                        </div>
+                                        <div class="left-btn pull-left" ng-click="delete_review(coupon.o_id)">
+                                            <span class="btn">删除订单</span>
+                                        </div>
+                                    </div>
+                                </ion-item>
+                            </div>
+                            <p class="noData" ng-if="!noData4">没有更多数据了！</p>
+                            <!-- 滚动刷新 -->
+                            <ion-infinite-scroll on-infinite="loadMore(4);" ng-if="noData4" immediate-check="false"></ion-infinite-scroll>
+                        </ion-list>
+                    </ion-scroll>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
     </ion-content>
 </ion-view>

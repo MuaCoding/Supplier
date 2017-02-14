@@ -12,63 +12,64 @@
     padding: 10px 15px;
 }
 
-    .addressManage-Class .pickup-wrap .address-info {
-        display: block;
-        /*padding-bottom: 0px;*/
-    }
+.addressManage-Class .pickup-wrap .address-info {
+    display: block;
+    /*padding-bottom: 0px;*/
+}
 
-    .addressManage-Class .pickup-wrap .pickup-name {
-        display: block;
-        overflow: hidden;
-    }
+.addressManage-Class .pickup-wrap .pickup-name {
+    display: block;
+    overflow: hidden;
+}
 
-        .addressManage-Class .pickup-wrap .pickup-name span {
-            max-width: 45%;
-            display: block;
-            float: left;
-        }
-
-            /*收货人名称*/
-            .addressManage-Class .pickup-wrap .pickup-name span.Name {
-                color:#656565;
-                font-size: 15px;
-            }
-
-    .addressManage-Class .pickup-wrap .pickup-address span.address {
-        display: block;
-    }
+.addressManage-Class .pickup-wrap .pickup-name span {
+    max-width: 45%;
+    display: block;
+    float: left;
+}
 
 
-    /*收货人地址编辑*/
-    .addressManage-Class .pickup-wrap .setting {
-        display: block;
-        padding-top: 6px;
-        margin-top: 6px;
-        border-top: 1px solid #eaeaea;
-    }
+/*收货人名称*/
 
-        .addressManage-Class .pickup-wrap .setting span {
-            font-size: 14px;
-        }
+.addressManage-Class .pickup-wrap .pickup-name span.Name {
+    color: #656565;
+    font-size: 15px;
+}
 
-            .addressManage-Class .pickup-wrap .setting span > i {
-                font-size: 19px;
-                color: #eee;
-                display: block;
-                float: left;
-                height: 19px;
-                line-height: 24px;
-            }
+.addressManage-Class .pickup-wrap .pickup-address span.address {
+    display: block;
+}
 
-        .addressManage-Class .pickup-wrap .setting .Edit {
-            /*margin-top: 5px;*/
-            float: right;
-            color: #444;
-        }
 
-        .addressManage-Class .pickup-wrap .setting .Mored {
-            color: red;
-        }
+.addressManage-Class .pickup-wrap .setting {
+    display: block;
+    padding-top: 6px;
+    margin-top: 6px;
+    border-top: 1px solid #eaeaea;
+}
+
+.addressManage-Class .pickup-wrap .setting span {
+    font-size: 14px;
+}
+
+.addressManage-Class .pickup-wrap .setting span > i {
+    font-size: 19px;
+    color: #eee;
+    display: block;
+    float: left;
+    height: 19px;
+    line-height: 24px;
+}
+
+.addressManage-Class .pickup-wrap .setting .Edit {
+    /*margin-top: 5px;*/
+    float: right;
+    color: #444;
+}
+
+.addressManage-Class .pickup-wrap .setting .Mored {
+    color: red;
+}
 
 .addressManage-Class ion-item {
     border-top: solid 1px #ddd !important;

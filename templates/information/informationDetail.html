@@ -18,7 +18,7 @@
 
                 <div class="informationDetail-date">
                     <i class="pull-left" ng-bind="informationDetail[0].a_addTime"></i>
-                    <i class="pull-left" style="margin-left:15px;">浏览{{informationDetail[0].a_readTimes}}</i>
+                    <i class="pull-left" style="margin-left:15px;" ng-bind="'浏览'+informationDetail[0].a_readTimes"></i>
                 </div>
                 <div class="informationDetail-avatar">
                     <img src="{{informationDetail[0].a_pic}}" />

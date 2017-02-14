@@ -1,25 +1,18 @@
-﻿<ion-modal-view class="psdSystemBox-class">
+﻿<ion-modal-view class="psdSystemClass psdSystemBox-class">
     <ion-content>
         <div class="psbBg"></div>
         <ion-list class="Commodity">
             <ion-item class="CommodityName">
-                <h3 class="ellipsis">Beats Solo2 无线头戴式耳机</h3>
-                <div class="ellipsis"><span>预购数量：8000件</span> / <span>单件价格：19.00元</span></div>
+                <h3 class="ellipsis" ng-bind="pro_details.product_Name"></h3>
+                <div class="ellipsis"><span ng-bind="'预购数量：'+pro_details.Sum + '件'"></span> / <span ng-bind="'单件价格：'+'￥'+ pro_details.One_Price"></span></div>
                 <a ng-click="closepsdSystemBox()" class="closePsd">×</a>
             </ion-item>
             <ion-item class="CommodityDetails">
-                <div><span class="CDtit">预购总资金</span><span>￥2900.00</span></div>
-                <div><span class="CDtit">销价</span><span>￥29.00~￥31.00</span></div>
-                <div><span class="CDtit">预购日期</span><span>2016年10月16日</span></div>
-                <div><span class="CDtit">提醒</span><span>是</span></div>
+                <div><span class="CDtit">预购总资金</span><span ng-bind="'￥'+pro_details.Total_Price"></span></div>
+                <div><span class="CDtit">销价</span><span ng-bind="'￥'+pro_details.Selling_price1+'~'+'￥'+pro_details.Selling_price2"></span></div>
+                <div><span class="CDtit">预购日期</span><span>{{pro_details.date | date: 'yyyy-MM-dd'}}</span></div>
+                <div><span class="CDtit">提醒</span><span ng-if="pro_details.Remind == 'True'">是</span><span ng-if="pro_details.Remind == 'False'">否</span></div>
             </ion-item>
         </ion-list>
     </ion-content>
 </ion-modal-view>
-
-
-
-
-
-
-

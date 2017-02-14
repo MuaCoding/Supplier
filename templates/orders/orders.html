@@ -1,137 +1,138 @@
-﻿<ion-view  class="orders-Class" title="我的进货单">
-	<!-- header -->
-	
-	<ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/home')"><i class="PFIcon-back"></i>返回</a>
+﻿<ion-view class="orders-Class" title="我的进货单">
+    <!-- header -->
+    <ion-nav-buttons side="left">
+        <a class="headReturn" ng-click="$ionicGoBack('/tabs/home')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
-	<ion-nav-title>
-		<h1 class="titleNav">我的进货单</h1>
-	</ion-nav-title>
-	<ion-nav-buttons side="right">
-		<a href="javascrpt:;" class="edit-btn" ng-click="flag.showDelete=!flag.showDelete">编辑</a>
-	</ion-nav-buttons>
-	<ion-content overflow-scroll="true"  class="scroll-content has-header">
-		
-		<!-- <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher> -->
-		<div class="ordersHome-Content">
-			<ion-scroll class="scroll-view">
-                <ul class="orders-group margin-xs-bottom" ng-repeat="cart in cartData" show-delete="edit.showDelete" ng-show="cart.goods.length>0">
+    <ion-nav-title>
+        <h1 class="titleNav">我的进货单</h1>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <!--<a href="javascrpt:;" class="edit-btn" ng-click="flag.showDelete=!flag.showDelete">编辑</a>-->
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true" class="scroll-content has-header">
+        <!-- <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher> -->
+        <div class="ordersHome-Content">
+            <ion-scroll class="scroll-view">
+                <ul class="orders-group margin-xs-bottom" ng-repeat="cart in shoppings" show-delete="edit.showDelete" ng-show="cart.data.length>0">
                     <li class="item-remove-animate">
                         <div class="orders-title-wrap border-bottom">
                             <i class="fa fa-circle-thin fa-xs-font fa-xs-left-absolult hide" aria-hidden="true"></i>
-                            <div class="orders-title">
-                                <p style="font-size:15px;" ng-bind="cart.name"></p>
-                                <i class="fa fa-angle-right fa-zs-absolute" aria-hidden="true"></i>
+                            <div class="orders-title pull-left">
+                                <p style="font-size:15px;" ng-bind="cart.pa_name"></p>
+                            </div>
+                            <div class="orders-icon pull-right">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
                             </div>
                         </div>
                         <ion-list ng-init="brandNum=$index" show-delete="flag.showDelete">
-                            <ion-item ng-repeat="good in cart.goods" class="proItem" ng-href="#/productDetails?good.id">
+                            <ion-item ng-repeat="good in cart.data" class="proItem" ng-href="#/productDetails?good.id">
                                 <div class="orders-item-wrap">
                                     <a href="" class="orders-item">
                                         <i class="fa fa-circle-thin fa-xs-font fa-absolute" aria-hidden="true"></i>
                                         <div class="orders-item-info">
-                                            <div class="orders-item-avatar imgMin" style="background:url(/images/ear.jpg)">
+                                            <div class="orders-item-avatar imgMin" style="background:url('{{good.pic.split(',')[0]}}'); height: 75px;width: 75px;">
                                             </div>
-                                            <div class="orders-item-message">
-                                                <p class="orders-item-name ellipsis" style="color:rgba(12, 12, 12, 0.84);;" ng-bind="good.tradeName"></p>
-                                                <div class="orders-item-text ellipsis margin-xs-top">
-                                                    <span class="" ng-bind="good.amount"></span>
-                                                    <span>|</span>
-                                                    <span>颜色分类：{{good.color}}</span>
-                                                    <span>版本：{{good.edition}}</span>
-                                                </div>
+                                            <div class="orders-item-message" style="padding-right: 0;">
+                                                <p class="orders-item-name ellipsis" style="color:rgba(12, 12, 12, 0.84);" ng-bind="good.name"></p>
+                                                <span class="orders-item-text ellipsis" style="line-height:15px;">
+                                                    <em ng-bind="good.paramTitle1 +'：'+ good.param1"></em>
+                                                    <em ng-bind="good.paramTitle2 +'：'+ good.param2"></em>
+                                                   
+                                                </span>
+                                                <p style="margin-top:10px;" ng-if="Number(good._num) < Number(good.priceScopeTitle1)"><span class="font-denger" ng-bind="'￥'+good.priceOriginal"></span></p>
+                                                <p style="margin-top:10px" ng-if="Number(good._num) >= Number(good.priceScopeTitle1) && Number(good._num) < Number(good.priceScopeTitle2)"><span class="font-denger" ng-bind="'￥'+good.priceScope1"></span>(<s style="font-size:12px;" ng-bind="'￥'+good.priceOriginal"></s>)</p>
+                                                <p style="margin-top:10px" ng-if="Number(good._num) >= Number(good.priceScopeTitle2) && Number(good._num) < Number(good.priceScopeTitle3)"><span class="font-denger" ng-bind="'￥'+good.priceScope2"></span>(<s style="font-size:12px;" ng-bind="'￥'+good.priceOriginal"></s>)</p>
+                                                <p style="margin-top:10px" ng-if="Number(good._num) >= Number(good.priceScopeTitle3) "><span class="font-denger" ng-bind="'￥'+good.priceScope3"></span>(<s style="font-size:12px;" ng-bind="'￥'+good.priceOriginal"></s>)</p>
                                             </div>
-                                            <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                                            <!-- <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i> -->
+                                            <div class="count-section">
+                                                <span href="javascript:;" style="min-width:23px;" class="count-btn" ng-click="minus(good)">-</span>
+                                                <span style="max-width:100px;min-width:40px; border-left: 0; border-right: 0; " class="count-btn" />
+                                                <em ng-bind="good._num" ng-click="revise_action(good)"></em>
+
+                                                </span>
+                                                <span href="javascript:;" style="min-width:23px;" class="count-btn" ng-click="add(good)">+</span>
+                                            </div>
                                         </div>
                                     </a>
                                 </div>
                                 <ion-delete-button style="color:#aaa;">
-                                    <ion-checkbox class="isChecked check" data-id="{{good.id}}" onchange="checked()" style="left:-18px;border:none;"> </ion-checkbox>
+                                    <ion-checkbox class="isChecked check" data-id="{{good.id}}" onchange="checked()" style="left:-18px;border:none;"></ion-checkbox>
                                 </ion-delete-button>
-                                <ion-option-button class="bg-denger font-white" ng-click="delete(good,cart.goods)">
+                                <ion-option-button class="bg-denger font-white" ng-click="delete(good.oductId,good.ramId,good._num,cart.ProvA_Id,good._id,cart.data)">
                                     删除
                                 </ion-option-button>
-
                             </ion-item>
                         </ion-list>
                     </li>
-
-                    <!-- <div style="background-color: #eaeaea; height:1px;margin: 0 10px;" >
-        </div> -->
-
+                    <div class="count-wrap count-wrap-flex">
+                        <div class="count-total count-flex">
+                            <span style="font-size:12px;">合计：</span><span class="font-denger" ng-bind="'￥'+cart.count_total"></span>
+                        </div>
+                        <a class="count-next count-flex" ng-href="/ordersInfo/{{cart.ProvA_Id}}" ng-click="save_active()">
+                            下一步
+                        </a>
+                    </div>
                 </ul>
-				
-			</ion-scroll>
-			
-			<div class="count-wrap border-top count-wrap-flex" ng-if="!edit.showDelete">
-				<div class="count-total count-flex">
-					<span style="font-size:12px;">订单总价（不含运费）：</span><span class="font-denger" style="font-weight:400;">￥230.00</span>
-				</div>
-				<a class="count-next count-flex" ng-href="/ordersInfo">
-					下一步
-				</a>
-			</div>
-			<div class="count-wrap border-top count-wrap-flex" ng-if="flag.showDelete">
-				<!-- <div class="all-select all-select-new count-flex"> -->
-					<!-- <i class="fa fa-circle-thin fa-big-font" aria-hidden="true"></i>
-					<span style="position:relative;top:-2px;font-size:15px;">全选</span> -->
-					
-				<!-- </div> -->
-				<ion-checkbox class="isChecked allCheck" onchange="CheckAll(this)" ng-model="input.allCheck" style="left:-13px;border:none;">全选</ion-checkbox>
-				<!-- <a class="btn pull-right btn-focus"  ng-href="javascript:void(0)">
-						查看是否选中
-					</a> -->
-				<div class="count-btn count-flex margin-zs-right">
-					<!-- <a class="btn pull-right btn-delete" onclick="isChecked()" ng-href="javascript:void(0)">
-						删除
-					</a> -->
-					<a class="btn pull-right btn-focus" ng-href="javascript:void(0)">
-						移入关注
-					</a>
-					
-				</div>
-				
-			</div>  
-		</div>
-		
-	</ion-content>
-	  <script>
-      function CheckAll(allCheck){
-       	//全选和全不选
-      	// console.log($(allCheck).html())
+                <p class="noData mb15" ng-if="!noData">没有更多数据了！</p>
+                <!-- 滚动刷新 -->
+                <ion-infinite-scroll on-infinite="loadMore();" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
+            </ion-scroll>
+            
+            <!--<div class="count-wrap border-top count-wrap-flex" ng-if="flag.showDelete">
+                <div class="all-select all-select-new count-flex">
+                    <i class="fa fa-circle-thin fa-big-font" aria-hidden="true"></i>
+                    <span style="position:relative;top:-2px;font-size:15px;">全选</span>
+                </div>
+                <ion-checkbox class="isChecked allCheck" onchange="CheckAll(this)" ng-model="input.allCheck" style="left:-13px;border:none;">全选</ion-checkbox>
+                    <a class="btn pull-right btn-focus"  ng-href="javascript:void(0)">
+                        查看是否选中
+                    </a> 
+                <div class="count-btn count-flex margin-zs-right">
+                     <a class="btn pull-right btn-delete" onclick="isChecked()" ng-href="javascript:void(0)">
+                        删除
+                    </a> 
+                    <a class="btn pull-right btn-focus" ng-href="javascript:void(0)">
+                        移入关注
+                    </a>
+                </div>
+            </div>-->
+        </div>
+    </ion-content>
+    <script>
+    function CheckAll(allCheck) {
+        //全选和全不选
+        // console.log($(allCheck).html())
         if ($(allCheck).find("input").prop("checked")) {
-            $(".check input").prop('checked',true);
+            $(".check input").prop('checked', true);
+        } else {
+            $(".check input").prop('checked', false);
         }
-        else{
-            $(".check input").prop('checked',false);
+    }
+
+    function checked() {
+        var isChecked = true;
+        $(".check input").each(function() {
+            if (!this.checked) {
+                isChecked = false;
+            }
+        });
+        if (isChecked) {
+            $(".allCheck").find("input").prop('checked', true);
+        } else {
+            $(".allCheck").find("input").prop('checked', false);
         }
-      }
+    }
 
-      function checked(){
-    	var isChecked = true;
-    	$(".check input").each(function(){
-    		if(!this.checked){
-    			isChecked = false;
-    		}
-    	});
-    	if (isChecked) {
-    		$(".allCheck").find("input").prop('checked',true);
-    	}
-    	else{
-    		$(".allCheck").find("input").prop('checked',false);
-    	}
-      }
+    //获取列表id
+    function isChecked() {
+        $(".check input").each(function() {
+            if ($(this).prop('checked')) {
+                console.log($(this).closest('label').attr('data-id'));
 
-      //获取列表id
-      function isChecked(){
-  	   	$(".check input").each(function(){
-	 		if ($(this).prop('checked')) {
-	 			console.log($(this).closest('label').attr('data-id'));
+            }
 
-	 		}
-
-		});
-      }
-   
+        });
+    }
     </script>
 </ion-view>

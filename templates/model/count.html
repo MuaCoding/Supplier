@@ -1,0 +1,19 @@
+﻿<ion-popover-view class="count-group">
+    <div class="count-item">
+        <p class="header">
+            修改购买数量
+        </p>
+        <p class="count-item-edit">
+            <span class="count-item-file">
+                <em class="count-item-btn" style="border-right: none;" ng-click="minus(pro)">-</em>
+                <input type="text" name="name" value=" " onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" class="count-item-btn" ng-model="input.number" />
+                <em class="count-item-btn" style="border-left: none;" ng-click="add(pro)">+</em>
+            </span>
+        </p>
+        <p class="count-button">
+            <span class="btn pull-left" ng-click="closeConfirm(pro)">取消</span>
+            <span class="btn pull-left" style="color:#fff; background-color: #f34242" ng-click=" revise_confirm(input.number,pro)">确定</span>
+            
+        </p>
+    </div>
+</ion-popover-view>

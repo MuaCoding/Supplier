@@ -1,65 +1,56 @@
 <ion-view class="security-Class" title="账户安全设置">
-	
-	<ion-nav-buttons side="left">
+    <ion-nav-buttons side="left">
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
-	<ion-nav-title>
-		<h1 class="titleNav">账户安全设置</h1>
-	</ion-nav-title>
-	
-	<!-- <ion-nav-buttons side="right">
+    <ion-nav-title>
+        <h1 class="titleNav">账户安全设置</h1>
+    </ion-nav-title>
+    <!-- <ion-nav-buttons side="right">
         <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
     </ion-nav-buttons> -->
-	<ion-content  class="scroll-content has-header">
-
-		<div class="Content">
-			<ion-list>
-				<ion-item>
-					<div class="bg-frame">
-						<i class="PFIcon-identify"></i>
-					</div>
-					<h3 class="">实名认证</h3>
-					<p>用于提升账号的安全性和信任级别，认证后的账号 不能修改认证信息。</p>
-					<div class="binding-btn pull-left">
-						前往绑定
-					</div>
-					<div class="success-btn pull-left" ng-if="">
-						<i class="PFIcon-tick"></i>
-							已实名认证
-					</div>
-				</ion-item>
-				<ion-item>
-					<div class="bg-frame">
-						<i class="PFIcon-phone"></i>
-					</div>
-					<h3 class="">手机绑定</h3>
-					<p>绑定手机后，您即可享受XX电商的手机服务，如手 机号码登录、手机找回密码等。</p>
-					<div class="binding-btn pull-left" ng-if="">
-						前往绑定
-					</div>
-					<div class="success-btn pull-left">
-						<i class="PFIcon-tick"></i>
-							已实名认证
-					</div>
-				</ion-item>
-				<ion-item>
-					<div class="bg-frame">
-						<i class="PFIcon-email"></i>
-					</div>
-
-					<h3 class="">邮箱绑定</h3>
-					<p>绑定电子邮箱后，您即可享受XX电商的电子邮箱服 务，如电子邮箱登录、使用电子邮箱找回密码等。</p>
-					<div class="binding-btn pull-left" ng-if="">
-						前往绑定
-					</div>
-					<div class="success-btn pull-left">
-						<i class="PFIcon-tick"></i>
-							已实名认证
-					</div>
-				</ion-item>
-			</ion-list>
-			
-		</div>
-		
-	</ion-content>
+    <ion-content class="scroll-content has-header">
+        <div class="Content">
+            <ion-list>
+                <ion-item>
+                    <div class="bg-frame">
+                        <i class="PFIcon-identify"></i>
+                    </div>
+                    <h3 class="">实名认证</h3>
+                    <p>用于提升账号的安全性和信任级别，认证后的账号 不能修改认证信息。</p>
+                    <a class="binding-btn pull-left" ng-href="/nameCertification" ng-if="prove.idCard == ''">
+                        前往绑定
+                    </a>
+                    <div class="success-btn pull-left" ng-if="prove.idCard != ''">
+                        <i class="PFIcon-tick"></i> 已实名认证
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="bg-frame">
+                        <i class="PFIcon-phone"></i>
+                    </div>
+                    <h3 class="">手机绑定</h3>
+                    <p>绑定手机后，您即可享受XX电商的手机服务，如手机号码登录、手机找回密码等。</p>
+                    <a class="binding-btn pull-left" ng-if="prove.phone == ''" ng-href="/phoneBinding">
+                        前往绑定
+                    </a>
+                    <div class="success-btn pull-left" ng-if="prove.phone != ''">
+                        <i class="PFIcon-tick"></i> 已实名认证
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="bg-frame">
+                        <i class="PFIcon-email"></i>
+                    </div>
+                    <h3 class="">邮箱绑定</h3>
+                    <p>绑定电子邮箱后，您即可享受XX电商的电子邮箱服 务，如电子邮箱登录、使用电子邮箱找回密码等。</p>
+                    <a class="binding-btn pull-left" ng-if="prove.email == ''" ng-href="/emailBinding">
+                        前往绑定
+                    </a>
+                    <div class="success-btn pull-left" ng-if="prove.email != ''">
+                        <i class="PFIcon-tick"></i> 已实名认证
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
 </ion-view>

@@ -14,37 +14,28 @@
 		<div class="comments-Content">
 			<ion-scroll class= "scroll-view">
 				<ion-list class="comments-group">
-					<ion-item ng-href = "/commentDetail" class="">
+					<ion-item ng-href = "/commentDetail/{{judge.m_Id}}" ng-repeat="judge in judges" >
 						<div class="comments-group-item">
-							<i class="imgMin item-avatar" style="background:url('/images/ear.jpg')"></i>
-							<p>这款产品还可以。就是左右两个小写的b特鲜艳</p>
-							<span class="star">
-								<i class="PFIcon-Star check-star"></i>
-								<i class="PFIcon-Star check-star"></i>
-								<i class="PFIcon-Star check-star"></i>
-								<i class="PFIcon-Star uncheck-star"></i>
-								<i class="PFIcon-Star uncheck-star"></i>
-							</span>
-							<p style="color: #888888;font-size: 13px;">评价时间：<span>2016-09-23 12:55:45</span></p>
-							<i class="fa fa-angle-right fa-comment font-secondary" aria-hidden="true"></i>
-						</div>
-					</ion-item>
-					<ion-item ui-sref = "commentDetail">
-						<div class="comments-group-item">
-							<i class="imgMin item-avatar" style="background:url('/images/ear.jpg')"></i>
-							<p>这款产品还可以。就是左右两个小写的b特鲜艳</p>
-							<span class="star">
-								<i class="PFIcon-Star check-star"></i>
-								<i class="PFIcon-Star check-star"></i>
-								<i class="PFIcon-Star check-star"></i>
-								<i class="PFIcon-Star uncheck-star"></i>
-								<i class="PFIcon-Star uncheck-star"></i>
-							</span>
-							<p style="color: #888888;font-size: 13px;">评价时间：<span>2016-09-23 12:55:45</span></p>
+							<i class="imgMin item-avatar" style="background:url('{{judge._proPic.split(',')[0]}}')"></i>
+							<p ng-bind="judge._proName"></p>
+							<p class="star" style="color: #ccc;">
+								<i class="PFIcon-Star" ng-class="{'check-star':judge.m_level>='1'}"></i>
+								<i class="PFIcon-Star" ng-class="{'check-star':judge.m_level>='2'}"></i>
+								<i class="PFIcon-Star" ng-class="{'check-star':judge.m_level>='3'}"></i>
+								<i class="PFIcon-Star" ng-class="{'check-star':judge.m_level>='4'}"></i>
+								<i class="PFIcon-Star" ng-class="{'check-star':judge.m_level>='5'}"></i>
+								<span style="margin-left:10px;color:#ffa535;font-size:13px;" ng-if="judge.m_level =='1'">差评</span>
+								<span style="margin-left:10px;color:#ffa535;font-size:13px;" ng-if="judge.m_level<='3' && judge.m_level>='2'">一般般</span>
+								<span style="margin-left:10px;color:#ffa535;font-size:13px;" ng-if="judge.m_level>='4'">好评</span>
+							</p>
+							<p style="color: #888888;font-size: 13px;"><span ng-bind="'评价时间：'+judge.m_addtime"></span></p>
 							<i class="fa fa-angle-right fa-comment font-secondary" aria-hidden="true"></i>
 						</div>
 					</ion-item>
 				</ion-list>
+				<p class="noData" ng-if="!noData">没有更多数据了！</p>
+	            <!-- 滚动刷新 -->
+	            <ion-infinite-scroll on-infinite="loadMore();" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
 			</ion-scroll>
 		</div>
 	</ion-content>

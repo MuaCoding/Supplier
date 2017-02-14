@@ -1,4 +1,4 @@
-﻿<ion-view class="pendingPayment-Class">
+﻿<ion-view class="Orders-Class pendingPayment-Class">
     <ion-nav-buttons side="left">
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
@@ -10,26 +10,37 @@
         <a href="javascrpt:;" ng-repeat="" class="edit-btn" ng-click=""></a>
     </ion-nav-buttons>-->
     <ion-content overflow-scroll="true" class="scroll-content has-header">
-        <ion-list class="listPayment">
-            <ion-item ng-repeat="paying in payings.list">
-                <div class="storeName"><i class="PFIcon-store"></i><h3><a class="ellipsis">初心旗舰店</a></h3><span>等待付款</span></div>
-                <a class="commodity">
-                    <div class="Img imgMax" style="background-image: url('{{paying._proPic.split(',')[0]}}');"></div>
-                    <p style="height:24px;line-height:24px;" ng-bind="paying._proName"></p>
-                    <p style="height:24px;line-height:24px;">
-                        <em ng-bind="paying._paraTitle1"></em>:
-                        <em ng-bind="paying._param1"></em>
-                        <em style="margin-left:10px;" ng-bind="paying._paraTitle2"></em>:
-                        <em ng-bind="paying._param2"></em>
-                    </p>
-                </a>
-                <span class="Amount">共一件商品  需付款：<b>￥220.00</b></span>
-                <div class="priceButton"><a href="javascript:;" class="toPay">去支付</a></div>
+        <ion-list class="listSwitch">
+            <ion-item class="button-bar">
+                <a class="button button-outline" ng-href="/allOrders">全部订单</a>
+                <a class="button button-outline on" ng-href="/pendingPayment">待付款</a>
+                <a class="button button-outline" ng-href="/shipped">待发货</a>
+                <a class="button button-outline" ng-href="/waitReceipt">待收货</a>
+                <a class="button button-outline" ng-href="/Evaluation">待评价</a>
             </ion-item>
         </ion-list>
-        <p class="noData" ng-if="!noData">没有更多数据了！</p>
-
-        <!-- 滚动刷新 -->
-        <ion-infinite-scroll on-infinite="loadMore();" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
+        <ion-list class="listOrders listPayment" ng-if="De_Switch.proIndex==0">
+            <ion-item ng-repeat="paying in payings">
+                <div class="storeName">
+                    <!-- <i class="PFIcon-store"></i> -->
+                    <h3><a class="ellipsis" ng-bind="paying.pa_name"></a></h3><span>等待付款</span>
+                </div>
+                <a class="commodity" ng-repeat="cargo in paying.data">
+                    <div class="Img imgMax" style="background-image: url('{{cargo._proPic.split(',')[0]}}');"></div>
+                    <h4 class="mText" ng-bind="cargo._proName"></h4>
+                    <p>
+                        <span class="" ng-bind="'￥'+cargo._discountPrice+' x'+cargo._proNum"></span>
+                        <span ng-bind="' | '+cargo._paraTitle1+'：' + cargo._param1"></span>
+                        <span ng-bind="cargo._paraTitle2+'：'+ cargo._param2"></span>
+                    </p>
+                    <i class="fa fa-angle-right fa-right-absolute" aria-hidden="true"></i>
+                </a>
+                <p class="priceAmount"><span ng-bind="'共'+paying.o_totalCount+'件商品  需付款：'"></span><b ng-bind="'￥'+paying.o_totalPrice"></b></p>
+                <div class="priceButton"><a href="javascript:;" class="toPay">去支付</a><a>取消订单</a><a>联系卖家</a></div>
+            </ion-item>
+            <p class="noData" ng-if="!noData0">没有更多数据了！</p>
+            <!-- 滚动刷新 -->
+            <ion-infinite-scroll on-infinite="loadMore(1);" ng-if="noData0" immediate-check="false"></ion-infinite-scroll>
+        </ion-list>
     </ion-content>
 </ion-view>

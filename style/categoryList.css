@@ -5,7 +5,7 @@
     padding: 0px 5px 0px 5px;
 }
 
-    .categoryList-class .proList .item {
+.categoryList-class .proList .item {
         width: 48%;
         display: block;
         overflow: hidden;
@@ -16,21 +16,25 @@
         border: solid 1px #eee;
     }
 
-    .categoryList-class .proList .Img {
+.categoryList-class .proList .Img {
         overflow: hidden;
         width: 100%;
         padding-bottom: 100%;
     }
 
-    .categoryList-class .proList h3 {
+.categoryList-class .proList h3 {
         color: #676767;
         font-size: 13px;
         margin: 10px auto 0px auto;
     }
 
-    .categoryList-class .proList div {
+.categoryList-class .proList div {
         overflow: hidden;
         color: #e7493c;
         font-size: 13px;
         /*padding: 0px 5px;*/
     }
+
+.categoryList-class .proList .item .activated{
+    background:none !important;
+}

@@ -1,0 +1,15 @@
+﻿<ion-view class="Complaints-Class">
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <h1 class="titleNav">投诉</h1>
+    </ion-nav-title>
+    <ion-content overflow-scroll="true" class="scroll-content has-header">
+        <ion-scroll direction="y" zooming="false" style="height:100%">
+            <a ng-click="typeSet()" class="typeSet">请选择类型 <span>{{NameTxt}}</span></a>
+            <textarea textarea-auto="true" class="ComplaintsBox" ng-model="input.ComplaintsBox"></textarea>
+            <a ng-click="submit()" class="submit">提交</a>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

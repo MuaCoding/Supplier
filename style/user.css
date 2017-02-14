@@ -61,6 +61,8 @@
 	position: absolute;
 	min-width: 16px;
 	min-height: 16px;
+    max-width: 20px;
+    max-height: 20px;
 	top: -7px;
 	right: -7px;
 	border-radius: 100%;

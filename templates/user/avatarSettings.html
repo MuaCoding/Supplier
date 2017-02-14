@@ -1,33 +1,43 @@
 <ion-view class="avatarSettings-Class" title="头像设置">
-	
-	<ion-nav-buttons side="left">
+    <ion-nav-buttons side="left">
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
-	<ion-nav-title>
-		<h1 class="titleNav">头像设置</h1>
-	</ion-nav-title>
-	
-	<!-- <ion-nav-buttons side="right">
+    <ion-nav-title>
+        <h1 class="titleNav">头像设置</h1>
+    </ion-nav-title>
+    <!-- <ion-nav-buttons side="right">
         <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
     </ion-nav-buttons> -->
-	<ion-content  class="scroll-content has-header" modal-linkage upload-img-linkage>
-		<div class="avatarSettings-Content">
-			<ion-list class="fillList">
-				<ion-item>
-					<div class="settings-wrap">
-						<i class="settings-avatar imgMin" style="background:url(/images/default.png)"></i>
-					</div>
-				</ion-item>
-				<ion-item>
-					<div class="text-center">
-						<input type="file" class="fileImg" accept="image/*" />
-						<span>选择图片作为头像</span>
-					</div>
-					<div class="modify-wrap">
-						<div class="modify-btn">确认修改头像</div>
-					</div>
-				</ion-item>
-			</ion-list>
-		</div>
-	</ion-content>
+    <ion-content class="scroll-content has-header" modal-linkage upload-img-linkage>
+        <div class="avatarSettings-Content">
+            <ion-list class="fillList">
+                <ion-item>
+                    <input type="file" id="input-file-disable-remove" class="dropify" data-allowed-file-extensions="png jpg" data-show-remove="false" data-height="300" data-default-file="" ng-model="ImgChange" ng-change="upload()" />
+                </ion-item>
+                <ion-item style="height: 300px; width: 100%; position: absolute; top: 0px; left: 0px; z-index:2; padding:5px 10px;">
+                    
+                </ion-item>
+                <ion-item ng-repeat="item in user" style="height: 300px; width: 100%; position: absolute; top: 0px; left: 0px; z-index: 2; padding: 5px 10px;">
+                    <div style="width: 100%; height: 100%; background-size: contain; background: url({{item.pic}}) no-repeat center center;"></div>
+                </ion-item>
+                <!--<ion-item ng-repeat="item in user">
+                    <input type="file" id="input-file-disable-remove" class="dropify" data-allowed-file-extensions="png jpg" data-show-remove="false" data-height="300" data-default-file="{{item.pic}}" ng-model="ImgChange" ng-change="upload()" />
+                </ion-item>-->
+                <!--<ion-item>
+                    <input type="file" file-model="myFile" />
+                    <div class="col-md-12">
+                        <img ng-src="{{imageSrc}}" style="max-width:300px;max-height:300px;margin:0 auto;display:block;" />
+                    </div>
+                </ion-item>-->
+                <ion-item>
+                    <div class="text-center">
+                        <span>选择图片作为头像</span>
+                    </div>
+                    <div class="modify-wrap">
+                        <div class="modify-btn" ng-click="modify()"> 确认修改头像</div>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
 </ion-view>

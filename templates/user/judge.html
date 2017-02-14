@@ -1,0 +1,24 @@
+﻿<ion-view class="stayGrade-Class">
+    <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/ordersDetail')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <h1 class="titleNav">评价列表</h1>
+    </ion-nav-title>
+    <!--<ion-nav-buttons side="right">
+        <a href="javascrpt:;" class="edit-btn" ng-click=""></a>
+    </ion-nav-buttons>-->
+    <ion-content overflow-scroll="true" class="scroll-content has-header">
+        <ion-list class="listPayment">
+            <ion-item ng-repeat="opinion in opinions">
+                <div class="Img imgMax" style="background-image: url('{{opinion._proPic.split(',')[0]}}');"></div>
+                <h3 ng-bind="opinion._proName"></h3>
+                <span class="ellipsis">颜色分类：闪耀磨砂黑</span>
+                <a class="EvaButtom" ng-href="/reviews/{{opinion._id}}"><i class="PFIcon-reviews"></i>去评价</a>
+            </ion-item>
+            <p class="noData" ng-if="!noData">没有更多数据了！</p>
+            <!-- 滚动刷新 -->
+            <ion-infinite-scroll on-infinite="loadMore();" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
+        </ion-list>
+    </ion-content>
+</ion-view>

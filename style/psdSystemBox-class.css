@@ -1,13 +1,13 @@
-﻿.psdSystemBox-class {
+﻿.psdSystemClass {
     background: no-repeat;
 }
 
-    .psdSystemBox-class .scroll-content {
+    .psdSystemClass .scroll-content {
         background: none;
     }
 
     /*透明背景*/
-    .psdSystemBox-class .psbBg {
+    .psdSystemClass .psbBg {
         background-color: #000;
         opacity: 0.6;
         min-height: 100%;
@@ -19,21 +19,24 @@
         left: 0px;
     }
 
-    .psdSystemBox-class .Commodity {
+    .psdSystemClass .Commodity {
         background-color: #fff;
         width: 90%;
         margin: 0px 5%;
         position: absolute;
-        top: 30%;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
         border-radius: 5px;
     }
 
-        .psdSystemBox-class .Commodity > .list {
+        .psdSystemClass .Commodity > .list {
             border-radius: 5px;
             overflow: initial;
         }
 
-        .psdSystemBox-class .Commodity .CommodityName {
+        .psdSystemClass .Commodity .CommodityName {
             background-color: #fafafa;
             position: relative;
             border-bottom: solid 1px #d1d1d1;
@@ -41,51 +44,55 @@
             overflow: initial;
         }
 
-            .psdSystemBox-class .Commodity .CommodityName h3 {
+            .psdSystemClass .Commodity .CommodityName h3 {
                 overflow: hidden;
                 font-size: 14px;
                 color: #444;
             }
 
-            .psdSystemBox-class .Commodity .CommodityName div {
+            .psdSystemClass .Commodity .CommodityName div {
                 overflow: hidden;
                 font-size: 13px;
                 color: #888;
             }
 
-            .psdSystemBox-class .Commodity .CommodityName .closePsd {
+            .psdSystemClass .Commodity .CommodityName .closePsd {
                 width: 30px;
-                height:30px;
+                height: 30px;
                 position: absolute;
-                right: -15px;
-                top: -15px;
+                right: 10px;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
                 font-size: 23px;
+                color: #666;
                 text-align: center;
                 line-height: 28px;
                 border-radius: 15px;
-                background-color: #555;
             }
 
-        .psdSystemBox-class .Commodity .CommodityDetails {
+        .psdSystemClass .Commodity .CommodityDetails {
             overflow: hidden;
             background-color: #fff;
             position: relative;
             padding: 20px 20px 20px 15px;
         }
 
-            .psdSystemBox-class .Commodity .CommodityDetails > div {
+            .psdSystemClass .Commodity .CommodityDetails > div {
                 overflow: hidden;
                 text-align: right;
                 margin: 5px 0px;
             }
 
-                .psdSystemBox-class .Commodity .CommodityDetails > div > span {
+                .psdSystemClass .Commodity .CommodityDetails > div > span {
                     display: block;
                     overflow: hidden;
                     font-size: 14px;
                     color: #666666;
                 }
 
-                .psdSystemBox-class .Commodity .CommodityDetails > div > .CDtit {
+                .psdSystemClass .Commodity .CommodityDetails > div > .CDtit {
                     float: left;
+                    margin-right: 10px;
                 }

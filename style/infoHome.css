@@ -9,7 +9,7 @@
             overflow: hidden;
             background-color: #fff;
             border-bottom: solid 1px #dddddd;
-            padding: 25px 30px 20px 100px;
+            padding: 25px 20px 20px 100px;
             position: relative;
         }
 
@@ -48,7 +48,7 @@
             right: 0px;
             top: 0px;
             height: 100%;
-            font-size: 20px;
+            font-size: 15px;
             color: #808080;
             line-height: 111px;
         }

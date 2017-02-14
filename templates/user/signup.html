@@ -1,8 +1,8 @@
 <ion-view class="signup-Class" title="用户注册">
 	
-	<!-- <ion-nav-buttons side="left">
-        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/accountSetting')"><i class="PFIcon-back"></i>返回</a>
-    </ion-nav-buttons> -->
+	 <ion-nav-buttons side="left">
+        <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/login')"><i class="PFIcon-back"></i>返回</a>
+    </ion-nav-buttons> 
 	<ion-nav-title>
 		<h1 class="titleNav">用户注册</h1>
 	</ion-nav-title>
@@ -18,7 +18,7 @@
 						<div class="input-label">
 							用户名
 						</div>
-						<input type="text" class="full-width form-control login" ng-model="input.account" name="account" ng-required="true" placeholder="请输入用户名" ng-blur = "check_name()">
+						<input type="text" class="full-width form-control login" ng-model="input.account" name="account" ng-required="true" placeholder="请输入用户名">
 					</div>
 					<div class="input-group addon">
 						<div class="input-label">
@@ -65,7 +65,7 @@
 						<input type="text" class="full-width form-control password" ng-model="input.s_idCard" name="IdCart" ng-required="true" placeholder="请输入身份证">
 
 					</div>
-					<div class="input-group addon">
+					<!--<div class="input-group addon">
 						<div class="input-label">
 							性别
 						</div>
@@ -73,7 +73,7 @@
 							<span class="input-text pull-left" ng-click="single_check('gender','先生')"><i class="mr10" ng-class ="{'PFIcon-Hook': input.gender === '先生'}"></i>先生</span>
 							<span class="input-text ml30 pull-left" ng-click="single_check('gender','女士')"><i class="mr10" ng-class ="{'PFIcon-Hook': input.gender ==='女士'}"></i>女士</span>
 						</div>
-					</div>
+					</div>-->
 					<div class="input-group addon">
 						<div class="input-label">
 							店铺名
@@ -92,6 +92,8 @@
 							地址
 						</div>
 						<div class="text-select" ng-bind="select.City" ng-click="address_active();">
+                            <!--<select name="province" ng-model="input.province" ng-options="province for province in provinces"></select>
+                            <select name="city" ng-model="input.city" ng-options="city for city in cities"></select>-->
 						</div>
 					</div>
 
@@ -101,14 +103,14 @@
 						</div>
 						<input type="text" class="full-width form-control password" ng-model="input.s_storeDetailAddr" name="detail_address" ng-required="true" placeholder="街道、楼牌号等">
 					</div>
-					<div class="input-group addon">
+					<!--<div class="input-group addon">
 						<div class="input-label">
 							绑定省份
 						</div>
 						<div class="text-select" ng-bind="input.s_storeProv">
 							请选择省份
 						</div>
-					</div>
+					</div>-->
 
 					<div class="button-warp">
 			            <div class="col-xs-2 pull-left">

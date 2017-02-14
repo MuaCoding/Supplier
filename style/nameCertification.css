@@ -1,0 +1,51 @@
+﻿.nameCertification-Class .avatarSettings-Content {
+    height: 100%;
+}
+
+.nameCertification-Class .settings-wrap {
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+
+    .nameCertification-Class .settings-wrap .settings-avatar {
+        display: block;
+        width: 100%;
+        height: 250px;
+        border: 1px solid #eee;
+    }
+
+.nameCertification-Class .text-center {
+    display: block;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 13px;
+    color: #222;
+}
+
+.modify-wrap .modify-btn {
+    display: block;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    background-color: #f34242;
+}
+
+.nameCertification-Class .text-center > input.fileImg {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    opacity: 0;
+}
+
+.nameCertification-Class .dropify-infos {
+    display: none;
+}

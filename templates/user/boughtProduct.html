@@ -10,6 +10,17 @@
         <a href="javascript:void(0)" class="headRButton icon ion-ios-search placeholder-icon"></a>
     </ion-nav-buttons>
 	<ion-tabs class="tabs-top tabs-striped bg-white mb10">
+		<ion-tab title = "待发货">
+			<ion-view>
+				<ion-content overflow-scroll="true"  class="scroll-content has-header">
+					<ion-list>
+						<ion-item>
+							
+						</ion-item>
+					</ion-list>
+				</ion-content> 
+			</ion-view>
+		</ion-tab>
 		<ion-tab title = "待收货" badge="12">
 			<ion-view>
 				<ion-content overflow-scroll="true"  class="scroll-content has-header">
@@ -39,8 +50,6 @@
 					                			<span class="btn" style="color:#f34242;">确认收货</span>
 					                		</div>
 					                	</div>
-					                    
-					                    
 					                </ion-item>
 					                <ion-item class="boughtProduct-item" >
 					                	<div class="boughtProduct-item-header">
@@ -64,8 +73,6 @@
 					                			<a class="btn" style="color:#f34242;" ng-href="/confirm">确认收货</a>
 					                		</div>
 					                	</div>
-					                    
-					                    
 					                </ion-item>
 								</ion-list>
 							</div>
@@ -74,17 +81,7 @@
 				</ion-content> 
 			</ion-view>
 		</ion-tab>
-		<ion-tab title = "待支付">
-			<ion-view>
-				<ion-content overflow-scroll="true"  class="scroll-content has-header">
-					<ion-list>
-						<ion-item>
-							
-						</ion-item>
-					</ion-list>
-				</ion-content> 
-			</ion-view>
-		</ion-tab>
+		
 		<ion-tab title = "待评价">
 			<ion-view>
 				<ion-content overflow-scroll="true"  class="scroll-content has-header">

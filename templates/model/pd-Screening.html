@@ -13,36 +13,47 @@
             <ion-item>
                 <h3>品牌</h3><a href="javascript:;">全部<i class="PFIcon-BTriangle"></i></a>
                 <div>
-                    <a href="javascript:;" ng-repeat="item in AllModel.BrandModel track by $index" ng-click="SetCheck(item,AllModel.BrandModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                    <a href="javascript:;" class="ellipsis" ng-repeat="brand in brands track by $index" ng-click="SetCheck(brand,brands)" ng-class="{'on':brand.check}"><em ng-bind="brand.name"></em><i class="PFIcon-Tick"></i></a>
+                    <a href="javascript:;" class="ellipsis"  ng-if="!notData">全部<i class="PFIcon-Tick"></i></a>
+                    <a href="javascript:;" class="ellipsis" ng-click="loadMore(1)" ng-if="notData">...<i class="PFIcon-Tick"></i></a>
                 </div>
             </ion-item>
             <ion-item>
                 <h3>类型</h3><a href="javascript:;">全部<i class="PFIcon-BTriangle"></i></a>
                 <div>
-                    <a href="javascript:;" ng-repeat="item in AllModel.TypeModel track by $index" ng-click="SetCheck(item,AllModel.TypeModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                    <a href="javascript:;" class="ellipsis" ng-repeat="type in types track by $index" ng-click="check_type(type,types)" ng-class="{'on':type.check}"><em ng-bind="type._name"></em><i class="PFIcon-Tick"></i></a>
+                    <a href="javascript:;" class="ellipsis" ng-if="!_notData">全部<i class="PFIcon-Tick"></i></a>
+                    <a href="javascript:;" class="ellipsis" ng-click="loadMore(2)" ng-if="_notData">...<i class="PFIcon-Tick"></i></a>
                 </div>
             </ion-item>
             <ion-item>
                 <h3>起批数量</h3>
-                <div>
-                    <a href="javascript:;" ng-repeat="item in AllModel.NumberModel track by $index" ng-click="SetCheck(item,AllModel.NumberModel)" ng-class="{'on':item.Check}">{{item.TypeName}}<i class="PFIcon-Tick"></i></a>
+                <div class="price">
+                    <input type="text" placeholder="起批数" style="text-align: center;" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-model="input.p_minBuy_one" />
+                    <span>至</span>
+                    <input type="text" placeholder="起批数" style="text-align: center;" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-model="input.p_minBuy_two" />
                 </div>
             </ion-item>
             <ion-item>
                 <h3>价格区间</h3>
                 <div class="price">
-                    <input type="text" placeholder="请输入价格" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" /><span>至</span><input type="text" placeholder="请输入价格" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" />
+                    <input type="text" placeholder="最低价" style="text-align: center;" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-model="input.p_priceOriginal_One" />
+                    <span>至</span>
+                    <input type="text" placeholder="最高价" style="text-align: center;" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ng-model="input.p_priceOriginal_two" />
                 </div>
             </ion-item>
             <ion-item>
                 <h3>其他选项</h3>
-                <div class="Option">
-                    <ion-checkbox>卖家承担运费</ion-checkbox>
-                    <ion-checkbox>7天无理由退换</ion-checkbox>
+                <div class="Option input-group">
+                    <!--<span class="input-text pull-left input-checked" style="margin-right: 15px; line-height: 35px;" ng-click="is_checked()"><i class="mr10" ng-class="{'PFIcon-Hook': input.p_freeFreight}"></i>卖家承担运费</span>-->
+                    <span class="input-text pull-left input-checked" style="line-height: 35px;" ng-click="is_selected()"><i class="mr10" ng-class="{'PFIcon-Hook': input.return == '1'}"></i>7天无理由退换</span>
+
+                    <!--<ion-checkbox ng-model="input.p_freeFreight" ng-click="is_checked()">卖家承担运费</ion-checkbox>
+                    <ion-checkbox ng-model="input.return"  ng-click="is_selected()">7天无理由退换</ion-checkbox>-->
                     <!--<ion-checkbox></ion-checkbox>-->
                 </div>
             </ion-item>
         </ion-list>
-        <div class="button-bar mt10"><a class="button clear">清空筛选条件</a><a class="button">确认筛选</a></div>
+        <div class="button-bar mt10"><a class="button clear" ng-click="clear_action(brands,types)">清空筛选条件</a><a class="button" ng-click="filter_action()">确认筛选</a></div>
     </ion-content>
 </ion-modal-view>

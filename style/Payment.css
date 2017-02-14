@@ -1,0 +1,128 @@
+﻿.Payment-Class {
+}
+
+    .Payment-Class .payWrap {
+        overflow: hidden;
+    }
+
+        .Payment-Class .payWrap ion-list {
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+
+        .Payment-Class .payWrap .Timeleft {
+            overflow: hidden;
+            color: #434343;
+            font-size: 15px;
+            text-align: center;
+            padding: 10px;
+            border-bottom: solid 1px #dddddd;
+        }
+
+            .Payment-Class .payWrap .Timeleft > i {
+                color: #d3d3d3;
+                font-size: 20px;
+                font-weight: 700;
+                margin-right: 10px;
+            }
+
+        .Payment-Class .payWrap .OrderList {
+            padding: 15px 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .Payment-Class .payWrap .OrderList > div {
+                overflow: hidden;
+            }
+
+            .Payment-Class .payWrap .OrderList span {
+                display: block;
+                overflow: hidden;
+                font-size: 13px;
+                color: #606060;
+                float: left;
+            }
+
+    .Payment-Class .OrderList .OLtit {
+        width: 70px;
+    }
+
+    .Payment-Class .CDian {
+        position: absolute;
+        left: 10px;
+        top: 21px;
+        display: block;
+        overflow: hidden;
+        width: 8px;
+        height: 8px;
+        background-color: #f34242;
+        border-radius: 100%;
+    }
+
+
+    .Payment-Class .paymentOptions {
+        overflow: hidden;
+        background-color: #fff;
+    }
+
+
+    .Payment-Class .payOptions {
+        overflow: hidden;
+    }
+
+        .Payment-Class .payOptions .item {
+            padding: 10px 40px 10px 60px;
+            overflow: hidden;
+            position: relative;
+            min-height: 80px;
+            border-top: solid 1px #ddd;
+        }
+
+            .Payment-Class .payOptions .item .payIcon {
+                overflow: hidden;
+                width: 40px;
+                position: absolute;
+                left: 10px;
+                top: 10px;
+                font-size: 35px;
+                text-align: center;
+                line-height: 60px;
+            }
+
+            .Payment-Class .payOptions .item h3 {
+                font-size: 15px;
+                color: #000;
+                margin-top: 5px;
+            }
+
+            .Payment-Class .payOptions .item span {
+                font-size: 13px;
+                color: #606060;
+                display: block;
+            }
+
+            .Payment-Class .payOptions .item .Radio {
+                overflow: hidden;
+                width: 25px;
+                height: 25px;
+                border: solid 1px #ddd;
+                border-radius: 100%;
+                font-size: 25px;
+                color: #ec6a12;
+                position: absolute;
+                right: 10px;
+                top: 25px;
+            }
+
+    .Payment-Class .Immediately {
+        border-radius: 50px;
+        background-color: #f34242;
+        width: 90%;
+        margin: 20px auto 0px auto;
+        font-size: 15px;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0px;
+    }

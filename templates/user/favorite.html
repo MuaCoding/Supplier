@@ -1,77 +1,69 @@
-<ion-view  class="favorite-Class" title="收藏夹">
-	<!-- header -->
-	
-	<ion-nav-buttons side="left">
+<ion-view class="favorite-Class" title="收藏夹">
+    <!-- header -->
+    <ion-nav-buttons side="left">
         <a href="javascript:void(0)" class="headReturn" ng-click="$ionicGoBack('/tabs/user')"><i class="PFIcon-back"></i>返回</a>
     </ion-nav-buttons>
-	<ion-nav-title>
-		<h1 class="titleNav">收藏夹</h1>
-	</ion-nav-title>
-	<ion-nav-buttons side="right">
-		<a href="javascrpt:;" class="edit-btn" ng-click="">编辑</a>
-	</ion-nav-buttons>
-	<ion-tabs class="tabs-top tabs-striped bg-white mb10">
-			<ion-tab title = "收藏的货品（23）">
-				<ion-view>
-					<ion-content overflow-scroll="true"  class="scroll-content has-header">
-						<div class="favorite-Content">
-							<ion-scroll class="scroll-view">
-								<div class="products">
-
-									<ion-list class="products-item mb10">
-						                <ion-item>
-						                	<div ng-href="#/productDetails">
-						                		<div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
-							                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-							                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
-						                	</div>
-						                    <div class="cancal-btn" ng-click="confirm();">
-						                    	<i class="PFIcon-Cancal" style="font-size:15px;"></i>
-						                    	<span>取消收藏</span>
-						                    </div>
-						                </ion-item>
-						                <ion-item ng-href="#/productDetails">
-						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
-						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
-						                </ion-item>
-						                <ion-item ng-href="#/productDetails">
-						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
-						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
-						                </ion-item>
-						                <ion-item ng-href="#/productDetails">
-						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
-						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
-						                </ion-item>
-						                <ion-item ng-href="#/productDetails">
-						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
-						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
-						                </ion-item>
-						                <ion-item ng-href="#/productDetails">
-						                    <div class="products-avatar imgMin" style="background-image: url(/images/Products.jpg);"></div>
-						                    <h3 class="mt10 mb5">Lightning to USB 数据线</h3>
-						                    <div class="price">￥<span>99.00</span> - ￥<span>130.00</span></div>
-						                </ion-item>
-									</ion-list>
-								</div>
-							</ion-scroll>
-						</div>
-					</ion-content> 
-				</ion-view>
-			</ion-tab>
-			<ion-tab title = "收藏的品牌商（0）">
-				<ion-view>
-					<ion-content overflow-scroll="true"  class="scroll-content has-header">
-						<ion-list>
-							<ion-item>
-								
-							</ion-item>
-						</ion-list>
-					</ion-content> 
-				</ion-view>
-			</ion-tab>
-		</ion-tabs>
-</ion-view>	
+    <ion-nav-title>
+        <h1 class="titleNav">收藏夹</h1>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <a href="javascrpt:;" class="edit-btn" ng-click="edit_active()">编辑</a>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true" class="scroll-content has-header" tab-switch-linkage>
+        <div class="wrap">
+            <div class="button-bar">
+                <a class="button" ng-click="switch_active(0)"><span class="text" ng-class="{'on': input.change == 0}">收藏的货品（{{collects.length}}）</span></a>
+                <a class="button" ng-click="switch_active(1)"><span class="text" ng-class="{'on': input.change == 1}">收藏的品牌（{{favorites.length}}）</span></a>
+            </div>
+            <ion-slide-box class="slideBox" show-pager="false" does-continue="false" delegate-handle="switchHandle" style="height:100%;">
+                <ion-slide ng-if="input.change == 0">
+                    <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false" style="height:100%;">
+                        <ion-list>
+                            <div class="favorite">
+                                <ion-item class="item" ng-repeat="collect in collects" ng-if="collect.Type =='0'">
+                                    <div ng-href="#/productDetails">
+                                        <div class="favorite-avatar imgMin" style="background-image: url('{{collect.pic.split(',')[0]}}');"></div>
+                                        <p class="title" ng-bind="collect.name"></p>
+                                        <div class="price ellipsis">
+                                            <span ng-bind="'￥'+collect.priceScope3"></span>
+                                            <span ng-bind="'￥'+collect.priceScope2" ng-if="collect.priceScope3 == ''"></span>
+                                            <span ng-bind="'- ￥'+collect.priceScope1"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cancal-btn" ng-click="isConfirm(collect);" ng-if="isCancel == true">
+                                        <i class="PFIcon-Cancal" style="font-size:15px;"></i>
+                                        <span>取消收藏</span>
+                                    </div>
+                                </ion-item>
+                            </div>
+                        </ion-list>
+                        <p class="noData" ng-if="!noData">没有更多数据了！</p>
+                        <!-- 滚动刷新 -->
+                        <ion-infinite-scroll on-infinite="loadMore(0);" ng-if="noData" immediate-check="false"></ion-infinite-scroll>
+                    </ion-scroll>
+                </ion-slide>
+                <ion-slide ng-if="input.change == 1">
+                    <ion-scroll class="Specif" direction="y" zooming="false" scrollbar-y="false">
+                        <ion-list>
+                            <div class="favorite">
+                                <ion-item class="item" ng-repeat="favorite in favorites" ng-if="favorite.Type =='1'">
+                                    <div ng-href="#/productDetails">
+                                        <div class="favorite-avatar imgMin" style="background-image: url('{{favorite._logo}}');"></div>
+                                        <p class="title" ng-bind="favorite._name"></p>
+                                    </div>
+                                    <div class="cancal-btn" ng-click="isConfirm(favorite.Id);" ng-if="isCancel == true">
+                                        <i class="PFIcon-Cancal" style="font-size:15px;"></i>
+                                        <span>取消收藏</span>
+                                    </div>
+                                </ion-item>
+                            </div>
+                        </ion-list>
+                        <p class="noData" ng-if="!_noData">没有更多数据了！</p>
+                        <!-- 滚动刷新 -->
+                        <ion-infinite-scroll on-infinite="loadMore(1);" ng-if="_noData" immediate-check="false"></ion-infinite-scroll>
+                    </ion-scroll>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
+    </ion-content>
+</ion-view>

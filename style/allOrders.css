@@ -1,247 +1,305 @@
-﻿.allOrders-Class a.activated {
+﻿.Orders-Class a.activated {
     background: none !important;
 }
 
-.allOrders-Class {
+.Orders-Class {
     background-color: #f1f1f1;
 }
 
-    .allOrders-Class .listSwitch {
-        overflow: hidden;
-        display: block;
-    }
+.Orders-Class .wrap {
+    position: relative;
+    padding-top: 47px;
+    height: 100%;
+}
+.Orders-Class .listSwitch {
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
 
-        .allOrders-Class .listSwitch .button-bar {
-            border-bottom: solid 1px #eee;
-        }
+.Orders-Class .listSwitch .button-bar {
+    border-bottom: solid 1px #eee;
+}
 
-            .allOrders-Class .listSwitch .button-bar > .button {
-                /*background: no-repeat;*/
-                border: none;
-                font-size: 13px;
-                color: #636363;
-                height: 40px;
-                line-height: 45px;
-                bottom: -50%;
-            }
+.Orders-Class .listSwitch .button-bar > .button {
+    /*background: no-repeat;*/
+    border: none;
+    font-size: 13px;
+    color: #636363;
+    height: 40px;
+    line-height: 45px;
+    bottom: -50%;
+}
 
-            .allOrders-Class .listSwitch .button-bar > .on {
-                border-bottom: solid 2px rgb(255, 0, 0);
-                border-radius: 0px;
-                color: rgb(255, 0, 0);
-            }
+.Orders-Class .listSwitch .button-bar > .on {
+    border-bottom: solid 2px rgb(255, 0, 0);
+    border-radius: 0px;
+    color: rgb(255, 0, 0);
+}
 
+.Orders-Class .listOrders {
+    display: block;
+    margin-bottom: 15px;
+}
 
-    .allOrders-Class .listOrders {
-        display: block;
-        margin-bottom: 15px;
-    }
-
-        .allOrders-Class .listOrders .item {
-            overflow: hidden;
-            background-color: #fff;
-            border-bottom: solid 1px #dddddd;
-            position: relative;
-            margin-top: 15px;
-        }
-
-        /*产品的店铺*/
-        .allOrders-Class .listOrders .storeName {
-            overflow: hidden;
-            border-top: solid 1px #e3e5e9;
-            padding: 5px 75px 0px 30px;
-        }
-
-            .allOrders-Class .listOrders .storeName > h3 {
-                float: left;
-                height: 25px;
-                line-height: 25px;
-                margin: 0px;
-                max-width: 100%;
-            }
-
-                .allOrders-Class .listOrders .storeName > h3 > a {
-                    display: block;
-                    overflow: hidden;
-                    color: #444;
-                    font-size: 15px;
-                }
-
-            .allOrders-Class .listOrders .storeName > i {
-                position: absolute;
-                left: 10px;
-                top: 0px;
-                font-size: 17px;
-                color: #81838d;
-                height: 36px;
-                line-height: 33px;
-                width: 18px;
-            }
-
-            .allOrders-Class .listOrders .storeName > span {
-                position: absolute;
-                right: 10px;
-                top: 0px;
-                height: 36px;
-                line-height: 36px;
-                color: #f23030;
-                font-size: 15px;
-            }
-
-        /*产品*/
-        .allOrders-Class .listOrders .commodity {
-            background-color: #f8f8f8;
-            overflow: hidden;
-            position: relative;
-            padding: 11px 90px 20px 100px;
-            display: block;
-            height: 100px;
-            margin-top: 5px;
-        }
-            /*产品图片*/
-            .allOrders-Class .listOrders .commodity .Img {
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                width: 80px;
-                height: 80px;
-                overflow: hidden;
-                border: solid 1px #ececec;
-                border-radius: 5px;
-                background-color: #fff;
-            }
-
-            /*产品标题*/
-            .allOrders-Class .listOrders .commodity h4 {
-                font-size: 13px;
-                color: #636363;
-                font-family: 微软雅黑;
-                white-space: normal;
-                height: 30px;
-                line-height: 15px;
-                margin: 0px;
-            }
-
-            .allOrders-Class .listOrders .commodity > span {
-                display: block;
-            }
-
-            .allOrders-Class .listOrders .commodity span, .allOrders-Class .listOrders .commodity p {
-                font-size: 13px;
-                color: #808080;
-                height: 18px;
-                line-height: 18px;
-            }
-
-            /*服务*/
-            .allOrders-Class .listOrders .commodity > .Service {
-                overflow: hidden;
-                height: 38px;
-            }
-
-                .allOrders-Class .listOrders .commodity > .Service > span {
-                    background-color: #dd2727;
-                    color: #fff;
-                    float: left;
-                    font-size: 11px;
-                    margin-right: 5px;
-                    padding: 0px 1px;
-                    margin-bottom: 2px;
-                }
-
-            .allOrders-Class .listOrders .commodity > .Amount {
-                position: absolute;
-                right: 10px;
-                top: 10px;
-            }
-
-        /*单个产品金额及数量*/
-        .allOrders-Class .listOrders .Amount {
-            float: right;
-            overflow: hidden;
-            width: 80px;
-        }
-
-            .allOrders-Class .listOrders .Amount > span {
-                display: block;
-                overflow: hidden;
-                color: #999999;
-                text-align: right;
-                height: auto;
-                white-space: normal;
-                font-size: 11px;
-            }
-
-                .allOrders-Class .listOrders .Amount > span.Current {
-                    color: #000;
-                }
-
-                .allOrders-Class .listOrders .Amount > span.Original {
-                    font-weight: bolder;
-                    text-decoration: line-through;
-                }
-
-        /*商品合计*/
-        .allOrders-Class .listOrders .priceAmount {
-            display: block;
-            text-align: right;
-            overflow: hidden;
-            height: 40px;
-            line-height: 40px;
-            padding: 0px 10px;
-            border-bottom: solid 1px #e3e5e9;
-            font-size: 12px;
-        }
-
-            .allOrders-Class .listOrders .priceAmount > span {
-                /*font-size: 12px;*/
-                margin-left: 5px;
-            }
-
-            .allOrders-Class .listOrders .priceAmount b {
-                font-size: 17px;
-                font-weight: normal;
-            }
-
-        /*产品按钮块*/
-        .allOrders-Class .listOrders .priceButton {
-            overflow: hidden;
-            padding: 5px 10px;
-        }
-
-            .allOrders-Class .listOrders .priceButton > a {
-                display: block;
-                overflow: hidden;
-                font-size: 13px;
-                color: #000;
-                height: 30px;
-                line-height: 30px;
-                border: solid 1px #eee;
-                border-radius: 3px;
-                padding: 0px 10px;
-                margin-left: 10px;
-                float: right;
-            }
-
-                /*确认收货按钮*/
-                .allOrders-Class .listOrders .priceButton > a.Receipt {
-                    background-color: #ff5722;
-                    color: #fff;
-                }
-
-                /*待付款按钮*/
-                .allOrders-Class .listOrders .priceButton > a.toPay {
-                    color: #f23030;
-                    border: solid 1px #f33e3e;
-                }
+.Orders-Class .listOrders .item {
+    overflow: hidden;
+    background-color: #fff;
+    border:none;
+    border-bottom: solid 1px #dddddd;
+    position: relative;
+    margin-bottom: 15px;
+    padding:0px;
+}
 
 
-.button-Orange, .button-Orange.activated {
+/*产品的店铺*/
+
+.Orders-Class .listOrders .storeName {
+    display: block;
+    padding: 0 10px;
+    overflow: hidden;
+    color: #444;
+    border-bottom: 1px solid #eaeaea;
+}
+
+
+.Orders-Class .listOrders .storeName .header{
+    height: 50px;
+    text-align: left;
+    line-height: 50px;
+    font-size: 13px;
+    overflow: hidden;
+}
+
+.Orders-Class .listOrders .storeName .header .icon-inner {
+    width: 25px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    overflow: hidden;
+    line-height: 52px;
+    font-size: 14px;
+    color: #52ce49;
+}
+
+
+.Orders-Class .listOrders .storeName > i {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    font-size: 17px;
+    color: #81838d;
+    height: 36px;
+    line-height: 33px;
+    width: 18px;
+}
+
+
+
+/*产品*/
+
+.Orders-Class .listOrders .commodity {
+    position: relative;
+    display: block;
+    height: 106px;
+    padding: 18px 10px 18px 95px;
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+}
+
+.Orders-Class .listOrders .commodity .fa-right-absolute{
+  position: absolute;
+    top: 45px;
+    right: 10px;
+    color: #666;
+}
+
+
+/*产品图片*/
+
+.Orders-Class .listOrders .commodity .Img {
+    position:absolute;
+    top: 18px;
+    left: 15px;
+    width: 73px;
+    height: 73px;
+    border: 1px solid #eee;
+    margin-right: 10px;
+}
+.Orders-Class .listOrders .commodity .content{
+    display: block;
+    font-size:12px;
+    color:#636363;
+    overflow:hidden;
+}
+
+/*产品标题*/
+
+.Orders-Class .listOrders .commodity h4 {
+    font-size: 13px;
+    color: #636363;
+    font-family: 微软雅黑;
+    white-space: normal;
+    height: 30px;
+    line-height: 15px;
+    margin: 0 0 5px 0;
+}
+
+.Orders-Class .listOrders .commodity > span {
+    display: block;
+}
+
+.Orders-Class .listOrders .commodity span,
+.Orders-Class .listOrders .commodity p {
+    font-size: 13px;
+    color: #808080;
+    height: 18px;
+    line-height: 18px;
+}
+
+
+/*服务*/
+
+.Orders-Class .listOrders .commodity > .Service {
+    overflow: hidden;
+    height: 38px;
+}
+
+.Orders-Class .listOrders .commodity > .Service > span {
+    background-color: #dd2727;
+    color: #fff;
+    float: left;
+    font-size: 11px;
+    margin-right: 5px;
+    padding: 0px 1px;
+    margin-bottom: 2px;
+}
+
+.Orders-Class .listOrders .commodity > .Amount {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+
+/*单个产品金额及数量*/
+
+.Orders-Class .listOrders .Amount {
+    float: right;
+    overflow: hidden;
+    width: 80px;
+}
+
+.Orders-Class .listOrders .Amount > span {
+    display: block;
+    overflow: hidden;
+    color: #999999;
+    text-align: right;
+    height: auto;
+    white-space: normal;
+    font-size: 11px;
+}
+
+.Orders-Class .listOrders .Amount > span.Current {
+    color: #000;
+}
+
+.Orders-Class .listOrders .Amount > span.Original {
+    font-weight: bolder;
+    text-decoration: line-through;
+}
+
+
+/*商品合计*/
+
+.Orders-Class .listOrders .priceAmount {
+    display: block;
+    text-align: right;
+    overflow: hidden;
+    height: 45px;
+    line-height: 45px;
+    padding: 0px 10px;
+    border-bottom: solid 1px #e3e5e9;
+    font-size: 12px;
+}
+
+.Orders-Class .listOrders .priceAmount > span {
+    /*font-size: 12px;*/
+    margin-left: 5px;
+}
+
+.Orders-Class .listOrders .priceAmount b {
+    font-size: 17px;
+    font-weight: normal;
+}
+
+
+/*产品按钮块*/
+
+.Orders-Class .listOrders .priceButton {
+    width: 100%;
+    overflow: hidden;
+}
+
+.Orders-Class .listOrders .priceButton .left-btn {
+    width: 50%;
+}
+.Orders-Class .listOrders .priceButton .right-btn {
+    width: 50%;
+}
+.Orders-Class .listOrders .priceButton .left-btn .btn, .Orders-Class .listOrders .priceButton .right-btn .btn{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0 5px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 13px;
+}
+
+
+.Orders-Class .listOrders .priceButton > a {
+    display: block;
+    overflow: hidden;
+    font-size: 13px;
+    color: #000;
+    height: 30px;
+    line-height: 30px;
+    border: solid 1px #eee;
+    border-radius: 3px;
+    padding: 0px 10px;
+    margin-left: 10px;
+    float: right;
+}
+
+
+/*确认收货按钮*/
+
+.Orders-Class .listOrders .priceButton > a.Receipt,.Orders-Class .listOrders .priceButton > a.Receipt.activated {
+    background-color: #ff5722  !important;
+    color: #fff;
+}
+
+
+/*待付款按钮*/
+
+.Orders-Class .listOrders .priceButton > a.toPay {
+    color: #f23030;
+    border: solid 1px #f33e3e;
+}
+
+.button-Orange,
+.button-Orange.activated {
     background-color: #ff5722;
     color: #fff;
 }
 
-.button-Red, .button-Red.activated {
+.button-Red,
+.button-Red.activated {
     background-color: #ff0000;
     color: #fff;
 }

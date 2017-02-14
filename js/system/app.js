@@ -1,4 +1,4 @@
-﻿var domain = "http://192.168.1.113:86";
+﻿var domain = "http://192.168.1.22:86";
 //var domain = "http://api.pf.uprice.cn";
 //192.168.1.113:86
 
@@ -73,31 +73,43 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
         templateUrl: "/templates/orders/orders.html",
         controller: 'ordersController'
     })
+    //会员中心--我的进货单
+   .state('order', {
+       url: "/order",
+       templateUrl: "/templates/orders/order.html",
+       controller: 'orderController'
+   })
     // 4.2填写订单信息
     .state('ordersInfo', {
-        url: "/ordersInfo",
-        templateUrl: "/templates/orders/ordersInfo.html"
+        url: "/ordersInfo/{id:[0-9]*}",
+        templateUrl: "/templates/orders/ordersInfo.html",
+        controller: 'ordersInfoController'
     })
     // 4.3选择收货方式
     .state('pickup', {
-        url: "/pickup",
+        url: "/pickup/{id:[0-9]*}",
         templateUrl: "/templates/orders/pickup.html",
         controller: 'pickupController'
     })
     //4.4发票
     .state('invoice', {
-        url: "/invoice",
+        url: "/invoice/{id:[0-9]*}",
         templateUrl: "/templates/orders/invoice.html",
         controller: 'invoiceController'
     })
 
-    //4.5订单详情
+    //4.5购买详情
     .state('ordersDetail', {
-        url: "/ordersDetail",
+        url: "/ordersDetail/{id:[0-9]*}",
         templateUrl: "/templates/orders/ordersDetail.html",
         controller: 'ordersDetailController'
     })
-
+    //4.6备注信息
+    .state('remarks', {
+        url: "/remarks/{id:[0-9]*}",
+        templateUrl: "/templates/orders/remarks.html",
+        controller: 'remarksController'
+    })
     /****************************************咨讯************************************************/
     .state('informationDetail', {
         url: "/informationDetail/{Id:[0-9]*}",
@@ -109,7 +121,7 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
      //分类 -- 品牌列表
 
      .state('categoryList', {
-         url: "/categoryList/{typeId:[0-9]*}/{b_id:[0-9]*}",
+         url: "/categoryList/{typeId:[0-9]*}/{brandId:[0-9]*}",
          templateUrl: "/templates/category/categoryList.html",
          controller: 'categoryListController'
      })
@@ -137,7 +149,8 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
     //账户设置
     .state('accountSetting', {
         url: "/accountSetting",
-        templateUrl: "/templates/user/accountSetting.html"
+        templateUrl: "/templates/user/accountSetting.html",
+        controller: 'accountSettingController'
 
     })
     //我的消息
@@ -157,12 +170,12 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
     //我的评价
     .state('comment', {
         url: "/comment",
-        templateUrl: "/templates/user/comment.html"
-
+        templateUrl: "/templates/user/comment.html",
+        controller: 'commentController'
     })
     //评价详情
     .state('commentDetail', {
-        url: "/commentDetail",
+        url: "/commentDetail/{Id:[0-9]*}",
         templateUrl: "/templates/user/commentDetail.html",
         controller: 'commentDetailController'
 
@@ -242,12 +255,15 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
     //账户安全设置
     .state('accountSecurity', {
         url: "/accountSecurity",
-        templateUrl: "/templates/user/accountSecurity.html"
+        templateUrl: "/templates/user/accountSecurity.html",
+        controller: 'accountSecurityController'
+
     })
     //修改密码
     .state('changePassword', {
         url: "/changePassword",
-        templateUrl: "/templates/user/changePassword.html"
+        templateUrl: "/templates/user/changePassword.html",
+        controller: 'changePasswordController'
     })
 
     //账户设置 -- 收货地址管理
@@ -256,7 +272,12 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
         templateUrl: "/templates/user/addressManage.html",
         controller: 'addressManageController'
     })
-
+    //订单 -- 收货地址管理
+    .state('addressSupervise', {
+        url: "/addressSupervise",
+        templateUrl: "/templates/user/addressSupervise.html",
+        controller: 'addressSuperviseController'
+    })
     //账户设置 -- 添加新地址
     .state('newAddress', {
         url: "/newAddress",
@@ -301,7 +322,8 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
     //忘记密码
     .state('forgot', {
         url: "/forgot",
-        templateUrl: "/templates/user/forgot.html"
+        templateUrl: "/templates/user/forgot.html",
+        controller: 'forgotController'
     })
     //确认收货
     .state('confirm', {
@@ -325,9 +347,16 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
 
     //立即评价
     .state('reviews', {
-        url: "/reviews/{Id:[0-9]*}",
+        url: "/reviews/{id:[0-9]*}",
         templateUrl: "/templates/user/reviews.html",
         controller: 'reviewsController'
+    })
+
+     //全部货单
+    .state('allOrders', {
+        url: "/allOrders/{type:[0-9]*}",
+        templateUrl: "/templates/user/allOrders.html",
+        controller: 'allOrdersController'
     })
 
     //待付款
@@ -336,39 +365,45 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
         templateUrl: "/templates/user/pendingPayment.html",
         controller: 'pendingPaymentController'
     })
+
     //待发货
     .state('shipped', {
         url: "/shipped",
         templateUrl: "/templates/user/shipped.html",
         controller: 'shippedController'
     })
-    
-      //待收货
+
+     //待收货
     .state('waitReceipt', {
         url: "/waitReceipt",
         templateUrl: "/templates/user/waitReceipt.html",
         controller: 'waitReceiptController'
     })
 
-     //待评价
-    .state('waitEvaluation', {
-        url: "/waitEvaluation",
-        templateUrl: "/templates/user/waitEvaluation.html",
-        controller: 'waitEvaluationController'
+    //待评价
+    .state('Evaluation', {
+        url: "/Evaluation",
+        templateUrl: "/templates/user/Evaluation.html",
+        //controller: 'waitEvaluationtController'
     })
 
+     //去评价--列表
+    .state('stayGrade', {
+        url: "/stayGrade/{Id:[0-9]*}",
+        templateUrl: "/templates/user/stayGrade.html",
+        controller: 'stayGradeController'
+    })
+     //去评价--列表
+    .state('judge', {
+        url: "/judge/{id:[0-9]*}",
+        templateUrl: "/templates/user/judge.html",
+        controller: 'judgeController'
+    })
     //提交评价 
     .state('opinion', {
         url: "/opinion/{Id:[0-9]*}",
         templateUrl: "/templates/user/opinion.html",
         controller: 'opinionController'
-    })
-
-     //全部货单
-    .state('allOrders', {
-        url: "/allOrders",
-        templateUrl: "/templates/user/allOrders.html",
-        controller: 'allOrdersController'
     })
 
      //进销存系统
@@ -378,6 +413,19 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
         controller: 'psdSystemController'
     })
 
+    //投诉
+    .state('Complaints', {
+        url: "/Complaints",
+        templateUrl: "/templates/user/Complaints.html",
+        controller: 'ComplaintsController'
+    })
+
+    //实名认证
+    .state('nameCertification', {
+        url: "/nameCertification",
+        templateUrl: "/templates/user/nameCertification.html",
+        controller: 'nameCertificationController'
+    })
 })
 
 
@@ -405,17 +453,14 @@ angular.module('myApp', ['ionic', 'DS.controllers', 'DS.services', 'DS.directive
                 localStorage.removeItem("User-Token");
                 PopupFact.alert("提示", "用户信息丢失，请重新登录！", 'location.reload();');
                 break;
-
             case 10002:
                 localStorage.removeItem("User-Token");
                 PopupFact.alert("提示", "您已注销登录，请重新登录！", 'location.reload();');
                 break;
-
             case 10003:
                 localStorage.removeItem("User-Token");
-                PopupFact.alert("提示", "用户信息被篡改，请重新登录！", 'location.reload();');
+                PopupFact.alert("提示", "账号在其他设备登录，请重新登录！", 'location.reload();');
                 break;
-
             case 10004:
                 PopupFact.alert("提示", "您的权限不足！");
                 break;

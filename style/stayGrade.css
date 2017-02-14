@@ -1,0 +1,77 @@
+﻿.stayGrade-Class a.activated {
+    background: none !important;
+}
+
+.stayGrade-Class {
+    background-color: #f1f1f1;
+}
+
+.stayGrade-Class .listPayment {
+    display: block;
+}
+
+.stayGrade-Class .listPayment .item {
+    overflow: hidden;
+    background-color: #fff;
+    border-top: solid 1px #eee;
+    position: relative;
+    padding: 15px 10px 15px 100px;
+    display: block;
+    height: 120px;
+}
+
+
+/*产品图片*/
+
+.stayGrade-Class .listPayment .Img {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+
+
+/*标题*/
+
+.stayGrade-Class .listPayment h3 {
+    font-size: 15px;
+    color: #000;
+    height: 30px;
+    line-height: 15px;
+    margin: 0px;
+    white-space: normal;
+}
+
+.stayGrade-Class .listPayment span {
+    display: block;
+    font-size: 14px;
+    color: #808080;
+    margin-top: 5px;
+    white-space: normal;
+}
+
+.stayGrade-Class .listPayment .EvaButtom {
+    display: block;
+    overflow: hidden;
+    font-size: 13px;
+    color: #f00;
+    height: 30px;
+    line-height: 30px;
+    border: solid 1px #f00;
+    border-radius: 3px;
+    padding: 0px 10px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: #fff;
+}
+
+.stayGrade-Class .listPayment .EvaButtom > i {
+    display: block;
+    float: left;
+    font-size: 14px;
+    line-height: 30px;
+    margin-right: 4px;
+}
