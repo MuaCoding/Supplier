@@ -121,6 +121,7 @@ angular.module('DS.controllers', [])
 
         ],
     };
+    
     if (localStorage.getItem("SearchList")) {
         var UserSearchList = JSON.parse(localStorage.getItem("SearchList"));
         $scope.AllModel.SearchModel = UserSearchList;
@@ -1080,6 +1081,8 @@ angular.module('DS.controllers', [])
 
 })
 
+
+
 //评价详情
 .controller('commentDetailController', function ($scope, $rootScope, loginJumpFact) {
     loginJumpFact.tokenJudge("comment");
@@ -1326,21 +1329,13 @@ angular.module('DS.controllers', [])
 //会员中心--评价
 .controller('opinionController', function ($scope, $rootScope, $ionicPopup, $ionicScrollDelegate, loginJumpFact, HttpFact){
     $scope.input = {}
-    $scope.proData = [
-            {
-                name: "深圳罗技电子科技有限公司",
-                goods: [
-                    {
-                        id: 1,
-                        tradeName: "Beats Solo1 无线头戴式耳机",
-                        amount: "￥" + 198.00,
-                        color: "黑色",
-                        edition: "普通版"
-                    }
-                ]
-            }
-    ]
+    
 
+})
+
+//会员中心 -- 我的评价
+.controller('myReviewsController',function ($scope, $rootScope, $ionicPopup, $ionicScrollDelegate, loginJumpFact, HttpFact){
+    
 })
 //会员中心--账户设置
 .controller('basicDataController', function ($scope, $rootScope, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate, loginJumpFact, ModalFact, HttpFact, PopupFact) {
